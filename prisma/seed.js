@@ -16,8 +16,8 @@ async function main() {
     await prisma.user.create({
       data: {
         ...user,
-        password: await generateHash(user.password)
-      }
+        password: await generateHash(user.password),
+      },
     });
   }
 
