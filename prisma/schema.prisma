@@ -40,16 +40,15 @@ enum Role {
 model Booking {
   id          Int         @id @default(autoincrement())
   bookingCode String      @map("booking_code")
-  status      String
+  status      String      @default("UNPAID")
   expiredPaid DateTime    @map("expired_paid")
   totalPrice  Float       @map("total_price")
   flight      Flight      @relation(fields: [flightId], references: [id])
   flightId    Int         @map("flight_id")
   user        User        @relation(fields: [userId], references: [id])
   userId      Int         @map("user_id")
-  payment     Payment     @relation(fields: [paymentId], references: [id])
-  paymentId   Int         @unique @map("payment_id")
   passenger   Passenger[]
+  Payment     Payment[]
 
   @@map("bookings")
 }
@@ -76,10 +75,11 @@ model Notification {
 }
 
 model Payment {
-  id      Int      @id @default(autoincrement())
-  name    String
-  paidAt  DateTime @map("paid_at")
-  booking Booking?
+  id        Int      @id @default(autoincrement())
+  name      String
+  paidAt    DateTime @map("paid_at")
+  booking   Booking  @relation(fields: [bookingId], references: [id])
+  bookingId Int      @map("booking_id")
 
   @@map("payments")
 }
@@ -104,7 +104,7 @@ model City {
   name     String
   cityIata String    @map("city_iata")
   country  String
-  Airport  Airport[]
+  airport  Airport[]
 
   @@map("cities")
 }
@@ -130,7 +130,7 @@ model Airplane {
   inFlightFacility  String              @map("in_flight_facility")
   airline           Airline             @relation(fields: [airlineId], references: [id])
   airlineId         Int                 @map("airline_id")
-  AirplaneSeatClass AirplaneSeatClass[]
+  airplaneSeatClass AirplaneSeatClass[]
 
   @@map("airplanes")
 }
@@ -141,7 +141,7 @@ model Airline {
   airlineIata String     @map("airline_iata")
   logo_url    String?
   logo_id     String?
-  Airplane    Airplane[]
+  airplane    Airplane[]
 
   @@map("airlines")
 }
@@ -152,7 +152,7 @@ model AirplaneSeatClass {
   totalSeat  Int      @map("total_seat")
   airplane   Airplane @relation(fields: [airplaneId], references: [id])
   airplaneId Int      @map("airplane_id")
-  Ticket     Ticket?
+  ticket     Ticket?
 
   @@map("airplane_seat_class")
 }
