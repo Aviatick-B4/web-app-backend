@@ -5,7 +5,7 @@ const {
   getDetail,
 } = require('../../controllers/booking.controllers');
 
-router.post('/booking', booking);
+router.post('/new-booking', booking);
 router.get('/booking-history', getAll);
 router.get('/booking-history/:bookingId', getDetail);
 
