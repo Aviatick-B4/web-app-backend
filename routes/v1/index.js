@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 const Payment = require("../v1/payment.routes");
 
@@ -74,5 +74,9 @@ router.get('/payment-form/:bookingId', async (req, res) => {
       tax: 0, // Adjust as needed
     });
   });
+
+const Booking = require('../v1/booking.routes');
+
+router.use('/api/v1/bookings', Booking);
 
 module.exports = router;
