@@ -234,6 +234,16 @@ module.exports = {
         });
       }
 
+      // Create a notification for the user
+      await prisma.notification.create({
+        data: {
+          title: 'Pembayaran Berhasil',
+          message: `Pembayaran untuk booking ID ${bookingId} telah berhasil.`,
+          userId: booking.userId,
+          createdAt: new Date(),
+        },
+      });
+
       let responseMessage = '';
       if (paymentMethod === 'credit_card') {
         if (!cardNumber || !cardHolderName || !cvv || !expiryDate) {
