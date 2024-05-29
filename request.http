@@ -1,4 +1,4 @@
-POST http://localhost:3000/booking
+POST http://localhost:3000/api/v1/bookings/booking
 Content-Type: application/json
 
 {
@@ -49,7 +49,7 @@ Content-Type: application/json
 }
 
 ### GET ALL 
-GET http://localhost:3000/booking-history
+GET http://localhost:3000/api/v1/bookings/booking-history
 
 ### GET DETAIL 
-GET http://localhost:3000/booking-history/1
+GET http://localhost:3000/api/v1/bookings/booking-history/4
