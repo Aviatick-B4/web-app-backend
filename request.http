@@ -1,0 +1,55 @@
+POST http://localhost:3000/api/v1/bookings/new-booking
+Content-Type: application/json
+
+{
+    "userId": 2,
+    "flightId": 1,
+    "adult": 2,
+    "child": 0,
+    "baby": 1,
+    "seatClass": 1,
+    "passenger": [
+        {
+            "title": "Mr",
+            "fullName": "Kibow",
+            "familyName": "Ewok",
+            "birthDate": "1980-01-01T00:00:00.000Z",
+            "nationality": "Indonesia",
+            "identityType": "KTP",
+            "issuingCountry": "Indonesia",
+            "identityNumber": "123456123",
+            "expiredDate": "2025-01-01T00:00:00.000Z",
+            "ageGroup": "ADULT"
+        },
+        {
+            "title": "Mrs",
+            "fullName": "Puan",
+            "familyName": "Maharani",
+            "birthDate": "1985-02-01T00:00:00.000Z",
+            "nationality": "Indonesia",
+            "identityType": "KTP",
+            "issuingCountry": "Indonesia",
+            "identityNumber": "987654123",
+            "expiredDate": "2025-01-01T00:00:00.000Z",
+            "ageGroup": "ADULT"
+        },
+        {
+            "title": "Baby",
+            "fullName": "Iwan",
+            "familyName": "Aja",
+            "birthDate": "2024-01-01T00:00:00.000Z",
+            "nationality": "Indonesia",
+            "identityType": "KTP",
+            "issuingCountry": "Indonesia",
+            "identityNumber": "000000000",
+            "expiredDate": "2025-01-01T00:00:00.000Z",
+            "ageGroup": "BABY"
+        }
+    ]
+}
+
+### GET ALL 
+GET http://localhost:3000/api/v1/bookings/booking-history
+
+### GET DETAIL 
+GET http://localhost:3000/api/v1/bookings/booking-history/4

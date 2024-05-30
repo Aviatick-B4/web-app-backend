@@ -1,0 +1,3663 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "fullName": "John Doe",
+      "familyName": "Doe",
+      "phoneNumber": "+621234567890",
+      "email": "john@gmail.com",
+      "password": "123456",
+      "identityType": "Passport",
+      "identityNumber": "A12345678",
+      "nationality": "Indonesian",
+      "emailIsVerified": true,
+      "role": "USER"
+    },
+    {
+      "id": 2,
+      "fullName": "Jane Smith",
+      "familyName": "Smith",
+      "phoneNumber": "+621234567891",
+      "email": "jane@gmail.com",
+      "password": "123456",
+      "identityType": "KTP",
+      "identityNumber": "1234567890123456",
+      "nationality": "Indonesian",
+      "emailIsVerified": true,
+      "role": "USER"
+    },
+    {
+      "id": 3,
+      "fullName": "Alice Johnson",
+      "familyName": "Johnson",
+      "phoneNumber": "+621234567892",
+      "email": "alice@gmail.com",
+      "password": "123456",
+      "identityType": null,
+      "identityNumber": null,
+      "nationality": "Indonesian",
+      "emailIsVerified": true,
+      "role": "ADMIN"
+    },
+    {
+      "id": 4,
+      "fullName": "Bob Brown",
+      "familyName": "Brown",
+      "phoneNumber": "+621234567893",
+      "email": "bob@gmail.com",
+      "password": "123456",
+      "identityType": "SIM",
+      "identityNumber": "B1234567890",
+      "nationality": "Indonesian",
+      "emailIsVerified": true,
+      "role": "USER"
+    },
+    {
+      "id": 5,
+      "fullName": "Charlie Davis",
+      "familyName": "Davis",
+      "phoneNumber": "+621234567894",
+      "email": "charlie@gmail.com",
+      "password": "123456",
+      "identityType": "Passport",
+      "identityNumber": "B23456789",
+      "nationality": "Indonesian",
+      "emailIsVerified": true,
+      "role": "ADMIN"
+    }
+  ],
+  "cities": [
+    {
+      "id": 1,
+      "name": "New York",
+      "cityIata": "NYC",
+      "country": "USA"
+    },
+    {
+      "id": 2,
+      "name": "Los Angeles",
+      "cityIata": "LAX",
+      "country": "USA"
+    },
+    {
+      "id": 3,
+      "name": "Chicago",
+      "cityIata": "CHI",
+      "country": "USA"
+    },
+    {
+      "id": 4,
+      "name": "Houston",
+      "cityIata": "HOU",
+      "country": "USA"
+    },
+    {
+      "id": 5,
+      "name": "Miami",
+      "cityIata": "MIA",
+      "country": "USA"
+    },
+    {
+      "id": 6,
+      "name": "Jakarta",
+      "cityIata": "JKT",
+      "country": "Indonesia"
+    },
+    {
+      "id": 7,
+      "name": "Surabaya",
+      "cityIata": "SUB",
+      "country": "Indonesia"
+    },
+    {
+      "id": 8,
+      "name": "Denpasar",
+      "cityIata": "DPS",
+      "country": "Indonesia"
+    },
+    {
+      "id": 9,
+      "name": "Makassar",
+      "cityIata": "UPG",
+      "country": "Indonesia"
+    },
+    {
+      "id": 10,
+      "name": "Medan",
+      "cityIata": "MES",
+      "country": "Indonesia"
+    },
+    {
+      "id": 11,
+      "name": "London",
+      "cityIata": "LON",
+      "country": "UK"
+    },
+    {
+      "id": 12,
+      "name": "Paris",
+      "cityIata": "PAR",
+      "country": "France"
+    },
+    {
+      "id": 13,
+      "name": "Tokyo",
+      "cityIata": "TYO",
+      "country": "Japan"
+    },
+    {
+      "id": 14,
+      "name": "Beijing",
+      "cityIata": "BJS",
+      "country": "China"
+    },
+    {
+      "id": 15,
+      "name": "Moscow",
+      "cityIata": "MOW",
+      "country": "Russia"
+    },
+    {
+      "id": 16,
+      "name": "Berlin",
+      "cityIata": "BER",
+      "country": "Germany"
+    },
+    {
+      "id": 17,
+      "name": "Rome",
+      "cityIata": "ROM",
+      "country": "Italy"
+    },
+    {
+      "id": 18,
+      "name": "Sydney",
+      "cityIata": "SYD",
+      "country": "Australia"
+    },
+    {
+      "id": 19,
+      "name": "Dubai",
+      "cityIata": "DXB",
+      "country": "UAE"
+    },
+    {
+      "id": 20,
+      "name": "Toronto",
+      "cityIata": "YTO",
+      "country": "Canada"
+    },
+    {
+      "id": 21,
+      "name": "Singapore",
+      "cityIata": "SIN",
+      "country": "Singapore"
+    },
+    {
+      "id": 22,
+      "name": "Seoul",
+      "cityIata": "SEL",
+      "country": "South Korea"
+    },
+    {
+      "id": 23,
+      "name": "Bangkok",
+      "cityIata": "BKK",
+      "country": "Thailand"
+    },
+    {
+      "id": 24,
+      "name": "Kuala Lumpur",
+      "cityIata": "KUL",
+      "country": "Malaysia"
+    },
+    {
+      "id": 25,
+      "name": "Delhi",
+      "cityIata": "DEL",
+      "country": "India"
+    },
+    {
+      "id": 26,
+      "name": "Mumbai",
+      "cityIata": "BOM",
+      "country": "India"
+    },
+    {
+      "id": 27,
+      "name": "Cairo",
+      "cityIata": "CAI",
+      "country": "Egypt"
+    },
+    {
+      "id": 28,
+      "name": "Mexico City",
+      "cityIata": "MEX",
+      "country": "Mexico"
+    },
+    {
+      "id": 29,
+      "name": "São Paulo",
+      "cityIata": "SAO",
+      "country": "Brazil"
+    },
+    {
+      "id": 30,
+      "name": "Buenos Aires",
+      "cityIata": "BUE",
+      "country": "Argentina"
+    },
+    {
+      "id": 31,
+      "name": "Bandung",
+      "cityIata": "BDO",
+      "country": "Indonesia"
+    },
+    {
+      "id": 32,
+      "name": "Yogyakarta",
+      "cityIata": "JOG",
+      "country": "Indonesia"
+    },
+    {
+      "id": 33,
+      "name": "Semarang",
+      "cityIata": "SRG",
+      "country": "Indonesia"
+    },
+    {
+      "id": 34,
+      "name": "Palembang",
+      "cityIata": "PLM",
+      "country": "Indonesia"
+    },
+    {
+      "id": 35,
+      "name": "Padang",
+      "cityIata": "PDG",
+      "country": "Indonesia"
+    },
+    {
+      "id": 36,
+      "name": "Balikpapan",
+      "cityIata": "BPN",
+      "country": "Indonesia"
+    },
+    {
+      "id": 37,
+      "name": "Surakarta",
+      "cityIata": "SOC",
+      "country": "Indonesia"
+    },
+    {
+      "id": 38,
+      "name": "Pontianak",
+      "cityIata": "PNK",
+      "country": "Indonesia"
+    },
+    {
+      "id": 39,
+      "name": "Manado",
+      "cityIata": "MDC",
+      "country": "Indonesia"
+    },
+    {
+      "id": 40,
+      "name": "Ambon",
+      "cityIata": "AMQ",
+      "country": "Indonesia"
+    },
+    {
+      "id": 41,
+      "name": "Shanghai",
+      "cityIata": "SHA",
+      "country": "China"
+    },
+    {
+      "id": 42,
+      "name": "Hong Kong",
+      "cityIata": "HKG",
+      "country": "Hong Kong"
+    },
+    {
+      "id": 43,
+      "name": "Manila",
+      "cityIata": "MNL",
+      "country": "Philippines"
+    },
+    {
+      "id": 44,
+      "name": "Ho Chi Minh City",
+      "cityIata": "SGN",
+      "country": "Vietnam"
+    },
+    {
+      "id": 45,
+      "name": "Bangalore",
+      "cityIata": "BLR",
+      "country": "India"
+    },
+    {
+      "id": 46,
+      "name": "Cape Town",
+      "cityIata": "CPT",
+      "country": "South Africa"
+    },
+    {
+      "id": 47,
+      "name": "Lima",
+      "cityIata": "LIM",
+      "country": "Peru"
+    },
+    {
+      "id": 48,
+      "name": "Johannesburg",
+      "cityIata": "JNB",
+      "country": "South Africa"
+    },
+    {
+      "id": 49,
+      "name": "Istanbul",
+      "cityIata": "IST",
+      "country": "Turkey"
+    },
+    {
+      "id": 50,
+      "name": "Munich",
+      "cityIata": "MUC",
+      "country": "Germany"
+    },
+    {
+      "id": 51,
+      "name": "Dublin",
+      "cityIata": "DUB",
+      "country": "Ireland"
+    },
+    {
+      "id": 52,
+      "name": "Auckland",
+      "cityIata": "AKL",
+      "country": "New Zealand"
+    },
+    {
+      "id": 53,
+      "name": "Santiago",
+      "cityIata": "SCL",
+      "country": "Chile"
+    },
+    {
+      "id": 54,
+      "name": "Osaka",
+      "cityIata": "OSA",
+      "country": "Japan"
+    },
+    {
+      "id": 55,
+      "name": "Stockholm",
+      "cityIata": "STO",
+      "country": "Sweden"
+    },
+    {
+      "id": 56,
+      "name": "Vienna",
+      "cityIata": "VIE",
+      "country": "Austria"
+    },
+    {
+      "id": 57,
+      "name": "Zurich",
+      "cityIata": "ZRH",
+      "country": "Switzerland"
+    },
+    {
+      "id": 58,
+      "name": "Edinburgh",
+      "cityIata": "EDI",
+      "country": "UK"
+    },
+    {
+      "id": 59,
+      "name": "Barcelona",
+      "cityIata": "BCN",
+      "country": "Spain"
+    },
+    {
+      "id": 60,
+      "name": "Rio de Janeiro",
+      "cityIata": "RIO",
+      "country": "Brazil"
+    }
+  ],
+  "airports": [
+    {
+      "id": 1,
+      "name": "John F. Kennedy International Airport",
+      "airportCode": "JFK",
+      "cityId": 1
+    },
+    {
+      "id": 2,
+      "name": "Los Angeles International Airport",
+      "airportCode": "LAX",
+      "cityId": 2
+    },
+    {
+      "id": 3,
+      "name": "O'Hare International Airport",
+      "airportCode": "ORD",
+      "cityId": 3
+    },
+    {
+      "id": 4,
+      "name": "George Bush Intercontinental Airport",
+      "airportCode": "IAH",
+      "cityId": 4
+    },
+    {
+      "id": 5,
+      "name": "Miami International Airport",
+      "airportCode": "MIA",
+      "cityId": 5
+    },
+    {
+      "id": 6,
+      "name": "Soekarno Hatta International Airport",
+      "airportCode": "CGK",
+      "cityId": 6
+    },
+    {
+      "id": 7,
+      "name": "Juanda International Airport",
+      "airportCode": "SUB",
+      "cityId": 7
+    },
+    {
+      "id": 8,
+      "name": "Ngurah Rai International Airport",
+      "airportCode": "DPS",
+      "cityId": 8
+    },
+    {
+      "id": 9,
+      "name": "Sultan Hasanuddin International Airport",
+      "airportCode": "UPG",
+      "cityId": 9
+    },
+    {
+      "id": 10,
+      "name": "Kualanamu International Airport",
+      "airportCode": "KNO",
+      "cityId": 10
+    },
+    {
+      "id": 11,
+      "name": "Heathrow Airport",
+      "airportCode": "LHR",
+      "cityId": 11
+    },
+    {
+      "id": 12,
+      "name": "Charles de Gaulle Airport",
+      "airportCode": "CDG",
+      "cityId": 12
+    },
+    {
+      "id": 13,
+      "name": "Narita International Airport",
+      "airportCode": "NRT",
+      "cityId": 13
+    },
+    {
+      "id": 14,
+      "name": "Beijing Capital International Airport",
+      "airportCode": "PEK",
+      "cityId": 14
+    },
+    {
+      "id": 15,
+      "name": "Sheremetyevo International Airport",
+      "airportCode": "SVO",
+      "cityId": 15
+    },
+    {
+      "id": 16,
+      "name": "Berlin Brandenburg Airport",
+      "airportCode": "BER",
+      "cityId": 16
+    },
+    {
+      "id": 17,
+      "name": "Leonardo da Vinci-Fiumicino Airport",
+      "airportCode": "FCO",
+      "cityId": 17
+    },
+    {
+      "id": 18,
+      "name": "Sydney Kingsford Smith Airport",
+      "airportCode": "SYD",
+      "cityId": 18
+    },
+    {
+      "id": 19,
+      "name": "Dubai International Airport",
+      "airportCode": "DXB",
+      "cityId": 19
+    },
+    {
+      "id": 20,
+      "name": "Toronto Pearson International Airport",
+      "airportCode": "YYZ",
+      "cityId": 20
+    },
+    {
+      "id": 21,
+      "name": "Singapore Changi Airport",
+      "airportCode": "SIN",
+      "cityId": 21
+    },
+    {
+      "id": 22,
+      "name": "Incheon International Airport",
+      "airportCode": "ICN",
+      "cityId": 22
+    },
+    {
+      "id": 23,
+      "name": "Suvarnabhumi Airport",
+      "airportCode": "BKK",
+      "cityId": 23
+    },
+    {
+      "id": 24,
+      "name": "Kuala Lumpur International Airport",
+      "airportCode": "KUL",
+      "cityId": 24
+    },
+    {
+      "id": 25,
+      "name": "Indira Gandhi International Airport",
+      "airportCode": "DEL",
+      "cityId": 25
+    },
+    {
+      "id": 26,
+      "name": "Chhatrapati Shivaji Maharaj International Airport",
+      "airportCode": "BOM",
+      "cityId": 26
+    },
+    {
+      "id": 27,
+      "name": "Cairo International Airport",
+      "airportCode": "CAI",
+      "cityId": 27
+    },
+    {
+      "id": 28,
+      "name": "Mexico City International Airport",
+      "airportCode": "MEX",
+      "cityId": 28
+    },
+    {
+      "id": 29,
+      "name": "São Paulo-Guarulhos International Airport",
+      "airportCode": "GRU",
+      "cityId": 29
+    },
+    {
+      "id": 30,
+      "name": "Ministro Pistarini International Airport",
+      "airportCode": "EZE",
+      "cityId": 30
+    },
+    {
+      "id": 31,
+      "name": "Husein Sastranegara International Airport",
+      "airportCode": "BDO",
+      "cityId": 31
+    },
+    {
+      "id": 32,
+      "name": "Adisucipto International Airport",
+      "airportCode": "JOG",
+      "cityId": 32
+    },
+    {
+      "id": 33,
+      "name": "Ahmad Yani International Airport",
+      "airportCode": "SRG",
+      "cityId": 33
+    },
+    {
+      "id": 34,
+      "name": "Sultan Mahmud Badaruddin II International Airport",
+      "airportCode": "PLM",
+      "cityId": 34
+    },
+    {
+      "id": 35,
+      "name": "Minangkabau International Airport",
+      "airportCode": "PDG",
+      "cityId": 35
+    },
+    {
+      "id": 36,
+      "name": "Sultan Aji Muhammad Sulaiman Airport",
+      "airportCode": "BPN",
+      "cityId": 36
+    },
+    {
+      "id": 37,
+      "name": "Adisumarmo International Airport",
+      "airportCode": "SOC",
+      "cityId": 37
+    },
+    {
+      "id": 38,
+      "name": "Supadio International Airport",
+      "airportCode": "PNK",
+      "cityId": 38
+    },
+    {
+      "id": 39,
+      "name": "Sam Ratulangi International Airport",
+      "airportCode": "MDC",
+      "cityId": 39
+    },
+    {
+      "id": 40,
+      "name": "Pattimura Airport",
+      "airportCode": "AMQ",
+      "cityId": 40
+    },
+    {
+      "id": 41,
+      "name": "Shanghai Pudong International Airport",
+      "airportCode": "PVG",
+      "cityId": 41
+    },
+    {
+      "id": 42,
+      "name": "Hong Kong International Airport",
+      "airportCode": "HKG",
+      "cityId": 42
+    },
+    {
+      "id": 43,
+      "name": "Ninoy Aquino International Airport",
+      "airportCode": "MNL",
+      "cityId": 43
+    },
+    {
+      "id": 44,
+      "name": "Tan Son Nhat International Airport",
+      "airportCode": "SGN",
+      "cityId": 44
+    },
+    {
+      "id": 45,
+      "name": "Kempegowda International Airport",
+      "airportCode": "BLR",
+      "cityId": 45
+    },
+    {
+      "id": 46,
+      "name": "Cape Town International Airport",
+      "airportCode": "CPT",
+      "cityId": 46
+    },
+    {
+      "id": 47,
+      "name": "Jorge Chávez International Airport",
+      "airportCode": "LIM",
+      "cityId": 47
+    },
+    {
+      "id": 48,
+      "name": "O.R. Tambo International Airport",
+      "airportCode": "JNB",
+      "cityId": 48
+    },
+    {
+      "id": 49,
+      "name": "Istanbul Airport",
+      "airportCode": "IST",
+      "cityId": 49
+    },
+    {
+      "id": 50,
+      "name": "Munich Airport",
+      "airportCode": "MUC",
+      "cityId": 50
+    },
+    {
+      "id": 51,
+      "name": "Dublin Airport",
+      "airportCode": "DUB",
+      "cityId": 51
+    },
+    {
+      "id": 52,
+      "name": "Auckland Airport",
+      "airportCode": "AKL",
+      "cityId": 52
+    },
+    {
+      "id": 53,
+      "name": "Comodoro Arturo Merino Benítez International Airport",
+      "airportCode": "SCL",
+      "cityId": 53
+    },
+    {
+      "id": 54,
+      "name": "Kansai International Airport",
+      "airportCode": "KIX",
+      "cityId": 54
+    },
+    {
+      "id": 55,
+      "name": "Stockholm Arlanda Airport",
+      "airportCode": "ARN",
+      "cityId": 55
+    },
+    {
+      "id": 56,
+      "name": "Vienna International Airport",
+      "airportCode": "VIE",
+      "cityId": 56
+    },
+    {
+      "id": 57,
+      "name": "Zurich Airport",
+      "airportCode": "ZRH",
+      "cityId": 57
+    },
+    {
+      "id": 58,
+      "name": "Edinburgh Airport",
+      "airportCode": "EDI",
+      "cityId": 58
+    },
+    {
+      "id": 59,
+      "name": "Barcelona–El Prat Airport",
+      "airportCode": "BCN",
+      "cityId": 59
+    },
+    {
+      "id": 60,
+      "name": "Rio de Janeiro-Galeão International Airport",
+      "airportCode": "GIG",
+      "cityId": 60
+    }
+  ],
+  "airlines": [
+    {
+      "id": 1,
+      "name": "American Airlines",
+      "airlineIata": "AA"
+    },
+    {
+      "id": 2,
+      "name": "Delta Airlines",
+      "airlineIata": "DL"
+    },
+    {
+      "id": 3,
+      "name": "United Airlines",
+      "airlineIata": "UA"
+    },
+    {
+      "id": 4,
+      "name": "Southwest Airlines",
+      "airlineIata": "SW"
+    },
+    {
+      "id": 5,
+      "name": "Alaska Airlines",
+      "airlineIata": "AS"
+    },
+    {
+      "id": 6,
+      "name": "Citilink",
+      "airlineIata": "QG"
+    },
+    {
+      "id": 7,
+      "name": "Garuda Indonesia",
+      "airlineIata": "GA"
+    },
+    {
+      "id": 8,
+      "name": "Lion Air",
+      "airlineIata": "JT"
+    },
+    {
+      "id": 9,
+      "name": "Batik Air",
+      "airlineIata": "ID"
+    },
+    {
+      "id": 10,
+      "name": "Sriwijaya Air",
+      "airlineIata": "SJ"
+    }
+  ],
+  "airplanes": [
+    {
+      "id": 1,
+      "model": "Boeing 737",
+      "passengerCapacity": 160,
+      "baggageCapacity": 20,
+      "cabinCapacity": 7,
+      "inFlightFacility": "WiFi",
+      "airlineId": 1
+    },
+    {
+      "id": 2,
+      "model": "Airbus A320",
+      "passengerCapacity": 180,
+      "baggageCapacity": 20,
+      "cabinCapacity": 7,
+      "inFlightFacility": "WiFi, Entertainment",
+      "airlineId": 2
+    },
+    {
+      "id": 3,
+      "model": "Boeing 777",
+      "passengerCapacity": 300,
+      "baggageCapacity": 20,
+      "cabinCapacity": 7,
+      "inFlightFacility": "WiFi, Entertainment, Meal",
+      "airlineId": 3
+    },
+    {
+      "id": 4,
+      "model": "Boeing 787",
+      "passengerCapacity": 250,
+      "baggageCapacity": 20,
+      "cabinCapacity": 7,
+      "inFlightFacility": "WiFi, Entertainment, Meal, Extra Legroom",
+      "airlineId": 4
+    },
+    {
+      "id": 5,
+      "model": "Airbus A380",
+      "passengerCapacity": 500,
+      "baggageCapacity": 20,
+      "cabinCapacity": 7,
+      "inFlightFacility": "WiFi, Entertainment, Meal, Extra Legroom, Lounge",
+      "airlineId": 5
+    },
+    {
+      "id": 6,
+      "model": "Boeing 737",
+      "passengerCapacity": 150,
+      "baggageCapacity": 20,
+      "cabinCapacity": 7,
+      "inFlightFacility": "WiFi",
+      "airlineId": 6
+    },
+    {
+      "id": 7,
+      "model": "Airbus A320",
+      "passengerCapacity": 180,
+      "baggageCapacity": 20,
+      "cabinCapacity": 7,
+      "inFlightFacility": "WiFi, Entertainment",
+      "airlineId": 7
+    },
+    {
+      "id": 8,
+      "model": "Boeing 777",
+      "passengerCapacity": 150,
+      "baggageCapacity": 20,
+      "cabinCapacity": 7,
+      "inFlightFacility": "WiFi, Entertainment, Meal",
+      "airlineId": 8
+    },
+    {
+      "id": 9,
+      "model": "Boeing 787",
+      "passengerCapacity": 180,
+      "baggageCapacity": 20,
+      "cabinCapacity": 7,
+      "inFlightFacility": "WiFi, Entertainment, Meal, Extra Legroom",
+      "airlineId": 9
+    },
+    {
+      "id": 10,
+      "model": "Airbus A380",
+      "passengerCapacity": 150,
+      "baggageCapacity": 20,
+      "cabinCapacity": 7,
+      "inFlightFacility": "WiFi, Entertainment, Meal, Extra Legroom, Lounge",
+      "airlineId": 10
+    }
+  ],
+  "airplaneSeatClass": [
+    {
+      "id": 1,
+      "type": "First",
+      "totalSeat": 10,
+      "airplaneId": 1
+    },
+    {
+      "id": 2,
+      "type": "Business",
+      "totalSeat": 10,
+      "airplaneId": 1
+    },
+    {
+      "id": 3,
+      "type": "Economy",
+      "totalSeat": 140,
+      "airplaneId": 1
+    },
+    {
+      "id": 4,
+      "type": "First",
+      "totalSeat": 10,
+      "airplaneId": 2
+    },
+    {
+      "id": 5,
+      "type": "Business",
+      "totalSeat": 10,
+      "airplaneId": 2
+    },
+    {
+      "id": 6,
+      "type": "Economy",
+      "totalSeat": 160,
+      "airplaneId": 2
+    },
+    {
+      "id": 7,
+      "type": "First",
+      "totalSeat": 10,
+      "airplaneId": 3
+    },
+    {
+      "id": 8,
+      "type": "Business",
+      "totalSeat": 50,
+      "airplaneId": 3
+    },
+    {
+      "id": 9,
+      "type": "Economy",
+      "totalSeat": 240,
+      "airplaneId": 3
+    },
+    {
+      "id": 10,
+      "type": "First",
+      "totalSeat": 10,
+      "airplaneId": 4
+    },
+    {
+      "id": 11,
+      "type": "Business",
+      "totalSeat": 50,
+      "airplaneId": 4
+    },
+    {
+      "id": 12,
+      "type": "Economy",
+      "totalSeat": 190,
+      "airplaneId": 4
+    },
+    {
+      "id": 13,
+      "type": "First",
+      "totalSeat": 10,
+      "airplaneId": 5
+    },
+    {
+      "id": 14,
+      "type": "Business",
+      "totalSeat": 100,
+      "airplaneId": 5
+    },
+    {
+      "id": 15,
+      "type": "Economy",
+      "totalSeat": 390,
+      "airplaneId": 5
+    },
+    {
+      "id": 16,
+      "type": "First",
+      "totalSeat": 10,
+      "airplaneId": 6
+    },
+    {
+      "id": 17,
+      "type": "Business",
+      "totalSeat": 50,
+      "airplaneId": 6
+    },
+    {
+      "id": 18,
+      "type": "Economy",
+      "totalSeat": 90,
+      "airplaneId": 6
+    },
+    {
+      "id": 19,
+      "type": "First",
+      "totalSeat": 10,
+      "airplaneId": 7
+    },
+    {
+      "id": 20,
+      "type": "Business",
+      "totalSeat": 50,
+      "airplaneId": 7
+    },
+    {
+      "id": 21,
+      "type": "Economy",
+      "totalSeat": 120,
+      "airplaneId": 7
+    },
+    {
+      "id": 22,
+      "type": "First",
+      "totalSeat": 10,
+      "airplaneId": 8
+    },
+    {
+      "id": 23,
+      "type": "Business",
+      "totalSeat": 50,
+      "airplaneId": 8
+    },
+    {
+      "id": 24,
+      "type": "Economy",
+      "totalSeat": 90,
+      "airplaneId": 8
+    },
+    {
+      "id": 25,
+      "type": "First",
+      "totalSeat": 10,
+      "airplaneId": 9
+    },
+    {
+      "id": 26,
+      "type": "Business",
+      "totalSeat": 50,
+      "airplaneId": 9
+    },
+    {
+      "id": 27,
+      "type": "Economy",
+      "totalSeat": 120,
+      "airplaneId": 9
+    },
+    {
+      "id": 28,
+      "type": "First",
+      "totalSeat": 10,
+      "airplaneId": 10
+    },
+    {
+      "id": 29,
+      "type": "Business",
+      "totalSeat": 50,
+      "airplaneId": 10
+    },
+    {
+      "id": 30,
+      "type": "Economy",
+      "totalSeat": 90,
+      "airplaneId": 10
+    }
+  ],
+  "flights": [
+    {
+      "id": 1,
+      "flightNumber": "AA100",
+      "departureTime": "2024-06-01T08:00:00.000Z",
+      "arrivalTime": "2024-06-01T12:00:00.000Z",
+      "departureAirportId": 1,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 2,
+      "flightNumber": "DL200",
+      "departureTime": "2024-06-02T09:00:00.000Z",
+      "arrivalTime": "2024-06-02T13:00:00.000Z",
+      "departureAirportId": 2,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 3,
+      "flightNumber": "UA300",
+      "departureTime": "2024-06-03T10:00:00.000Z",
+      "arrivalTime": "2024-06-03T14:00:00.000Z",
+      "departureAirportId": 3,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 4,
+      "flightNumber": "SW400",
+      "departureTime": "2024-06-04T11:00:00.000Z",
+      "arrivalTime": "2024-06-04T15:00:00.000Z",
+      "departureAirportId": 4,
+      "arrivalAirportId": 5
+    },
+    {
+      "id": 5,
+      "flightNumber": "AS500",
+      "departureTime": "2024-06-05T12:00:00.000Z",
+      "arrivalTime": "2024-06-05T16:00:00.000Z",
+      "departureAirportId": 5,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 6,
+      "flightNumber": "GA600",
+      "departureTime": "2024-06-06T08:00:00.000Z",
+      "arrivalTime": "2024-06-06T12:00:00.000Z",
+      "departureAirportId": 6,
+      "arrivalAirportId": 7
+    },
+    {
+      "id": 7,
+      "flightNumber": "JT700",
+      "departureTime": "2024-06-07T09:00:00.000Z",
+      "arrivalTime": "2024-06-07T13:00:00.000Z",
+      "departureAirportId": 7,
+      "arrivalAirportId": 8
+    },
+    {
+      "id": 8,
+      "flightNumber": "ID800",
+      "departureTime": "2024-06-08T10:00:00.000Z",
+      "arrivalTime": "2024-06-08T14:00:00.000Z",
+      "departureAirportId": 8,
+      "arrivalAirportId": 9
+    },
+    {
+      "id": 9,
+      "flightNumber": "SJ900",
+      "departureTime": "2024-06-09T11:00:00.000Z",
+      "arrivalTime": "2024-06-09T15:00:00.000Z",
+      "departureAirportId": 9,
+      "arrivalAirportId": 10
+    },
+    {
+      "id": 10,
+      "flightNumber": "QG1000",
+      "departureTime": "2024-06-10T12:00:00.000Z",
+      "arrivalTime": "2024-06-10T16:00:00.000Z",
+      "departureAirportId": 10,
+      "arrivalAirportId": 6
+    },
+    {
+      "id": 11,
+      "flightNumber": "AA101",
+      "departureTime": "2024-06-11T08:00:00Z",
+      "arrivalTime": "2024-06-11T12:00:00Z",
+      "departureAirportId": 1,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 12,
+      "flightNumber": "DL201",
+      "departureTime": "2024-06-12T09:00:00Z",
+      "arrivalTime": "2024-06-12T13:00:00Z",
+      "departureAirportId": 2,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 13,
+      "flightNumber": "UA301",
+      "departureTime": "2024-06-13T10:00:00Z",
+      "arrivalTime": "2024-06-13T14:00:00Z",
+      "departureAirportId": 3,
+      "arrivalAirportId": 5
+    },
+    {
+      "id": 14,
+      "flightNumber": "SW401",
+      "departureTime": "2024-06-14T11:00:00Z",
+      "arrivalTime": "2024-06-14T15:00:00Z",
+      "departureAirportId": 4,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 15,
+      "flightNumber": "AS501",
+      "departureTime": "2024-06-15T12:00:00Z",
+      "arrivalTime": "2024-06-15T16:00:00Z",
+      "departureAirportId": 5,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 16,
+      "flightNumber": "GA601",
+      "departureTime": "2024-06-16T08:00:00Z",
+      "arrivalTime": "2024-06-16T12:00:00Z",
+      "departureAirportId": 6,
+      "arrivalAirportId": 8
+    },
+    {
+      "id": 17,
+      "flightNumber": "JT701",
+      "departureTime": "2024-06-17T09:00:00Z",
+      "arrivalTime": "2024-06-17T13:00:00Z",
+      "departureAirportId": 7,
+      "arrivalAirportId": 9
+    },
+    {
+      "id": 18,
+      "flightNumber": "ID801",
+      "departureTime": "2024-06-18T10:00:00Z",
+      "arrivalTime": "2024-06-18T14:00:00Z",
+      "departureAirportId": 8,
+      "arrivalAirportId": 10
+    },
+    {
+      "id": 19,
+      "flightNumber": "SJ901",
+      "departureTime": "2024-06-19T11:00:00Z",
+      "arrivalTime": "2024-06-19T15:00:00Z",
+      "departureAirportId": 9,
+      "arrivalAirportId": 6
+    },
+    {
+      "id": 20,
+      "flightNumber": "QG1001",
+      "departureTime": "2024-06-20T12:00:00Z",
+      "arrivalTime": "2024-06-20T16:00:00Z",
+      "departureAirportId": 10,
+      "arrivalAirportId": 7
+    },
+    {
+      "id": 21,
+      "flightNumber": "AA102",
+      "departureTime": "2024-06-21T08:00:00Z",
+      "arrivalTime": "2024-06-21T12:00:00Z",
+      "departureAirportId": 1,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 22,
+      "flightNumber": "DL202",
+      "departureTime": "2024-06-22T09:00:00Z",
+      "arrivalTime": "2024-06-22T13:00:00Z",
+      "departureAirportId": 2,
+      "arrivalAirportId": 5
+    },
+    {
+      "id": 23,
+      "flightNumber": "UA302",
+      "departureTime": "2024-06-23T10:00:00Z",
+      "arrivalTime": "2024-06-23T14:00:00Z",
+      "departureAirportId": 3,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 24,
+      "flightNumber": "SW402",
+      "departureTime": "2024-06-24T11:00:00Z",
+      "arrivalTime": "2024-06-24T15:00:00Z",
+      "departureAirportId": 4,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 25,
+      "flightNumber": "AS502",
+      "departureTime": "2024-06-25T12:00:00Z",
+      "arrivalTime": "2024-06-25T16:00:00Z",
+      "departureAirportId": 5,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 26,
+      "flightNumber": "GA602",
+      "departureTime": "2024-06-26T08:00:00Z",
+      "arrivalTime": "2024-06-26T12:00:00Z",
+      "departureAirportId": 6,
+      "arrivalAirportId": 9
+    },
+    {
+      "id": 27,
+      "flightNumber": "JT702",
+      "departureTime": "2024-06-27T09:00:00Z",
+      "arrivalTime": "2024-06-27T13:00:00Z",
+      "departureAirportId": 7,
+      "arrivalAirportId": 10
+    },
+    {
+      "id": 28,
+      "flightNumber": "ID802",
+      "departureTime": "2024-06-28T10:00:00Z",
+      "arrivalTime": "2024-06-28T14:00:00Z",
+      "departureAirportId": 8,
+      "arrivalAirportId": 6
+    },
+    {
+      "id": 29,
+      "flightNumber": "SJ902",
+      "departureTime": "2024-06-29T11:00:00Z",
+      "arrivalTime": "2024-06-29T15:00:00Z",
+      "departureAirportId": 9,
+      "arrivalAirportId": 7
+    },
+    {
+      "id": 30,
+      "flightNumber": "QG1002",
+      "departureTime": "2024-06-30T12:00:00Z",
+      "arrivalTime": "2024-06-30T16:00:00Z",
+      "departureAirportId": 10,
+      "arrivalAirportId": 8
+    },
+    {
+      "id": 31,
+      "flightNumber": "AA103",
+      "departureTime": "2024-07-01T08:00:00Z",
+      "arrivalTime": "2024-07-01T12:00:00Z",
+      "departureAirportId": 1,
+      "arrivalAirportId": 5
+    },
+    {
+      "id": 32,
+      "flightNumber": "DL203",
+      "departureTime": "2024-07-02T09:00:00Z",
+      "arrivalTime": "2024-07-02T13:00:00Z",
+      "departureAirportId": 2,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 33,
+      "flightNumber": "UA303",
+      "departureTime": "2024-07-03T10:00:00Z",
+      "arrivalTime": "2024-07-03T14:00:00Z",
+      "departureAirportId": 3,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 34,
+      "flightNumber": "SW403",
+      "departureTime": "2024-07-04T11:00:00Z",
+      "arrivalTime": "2024-07-04T15:00:00Z",
+      "departureAirportId": 4,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 35,
+      "flightNumber": "AS503",
+      "departureTime": "2024-07-05T12:00:00Z",
+      "arrivalTime": "2024-07-05T16:00:00Z",
+      "departureAirportId": 5,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 36,
+      "flightNumber": "GA603",
+      "departureTime": "2024-07-06T08:00:00Z",
+      "arrivalTime": "2024-07-06T12:00:00Z",
+      "departureAirportId": 6,
+      "arrivalAirportId": 10
+    },
+    {
+      "id": 37,
+      "flightNumber": "JT703",
+      "departureTime": "2024-07-07T09:00:00Z",
+      "arrivalTime": "2024-07-07T13:00:00Z",
+      "departureAirportId": 7,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 38,
+      "flightNumber": "ID803",
+      "departureTime": "2024-07-08T10:00:00Z",
+      "arrivalTime": "2024-07-08T14:00:00Z",
+      "departureAirportId": 8,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 39,
+      "flightNumber": "SJ903",
+      "departureTime": "2024-07-09T11:00:00Z",
+      "arrivalTime": "2024-07-09T15:00:00Z",
+      "departureAirportId": 9,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 40,
+      "flightNumber": "QG1003",
+      "departureTime": "2024-07-10T12:00:00Z",
+      "arrivalTime": "2024-07-10T16:00:00Z",
+      "departureAirportId": 10,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 41,
+      "flightNumber": "AA104",
+      "departureTime": "2024-07-11T08:00:00Z",
+      "arrivalTime": "2024-07-11T12:00:00Z",
+      "departureAirportId": 1,
+      "arrivalAirportId": 6
+    },
+    {
+      "id": 42,
+      "flightNumber": "DL204",
+      "departureTime": "2024-07-12T09:00:00Z",
+      "arrivalTime": "2024-07-12T13:00:00Z",
+      "departureAirportId": 2,
+      "arrivalAirportId": 7
+    },
+    {
+      "id": 43,
+      "flightNumber": "UA304",
+      "departureTime": "2024-07-13T10:00:00Z",
+      "arrivalTime": "2024-07-13T14:00:00Z",
+      "departureAirportId": 3,
+      "arrivalAirportId": 8
+    },
+    {
+      "id": 44,
+      "flightNumber": "SW404",
+      "departureTime": "2024-07-14T11:00:00Z",
+      "arrivalTime": "2024-07-14T15:00:00Z",
+      "departureAirportId": 4,
+      "arrivalAirportId": 9
+    },
+    {
+      "id": 45,
+      "flightNumber": "AS504",
+      "departureTime": "2024-07-15T12:00:00Z",
+      "arrivalTime": "2024-07-15T16:00:00Z",
+      "departureAirportId": 5,
+      "arrivalAirportId": 10
+    },
+    {
+      "id": 46,
+      "flightNumber": "GA604",
+      "departureTime": "2024-07-16T08:00:00Z",
+      "arrivalTime": "2024-07-16T12:00:00Z",
+      "departureAirportId": 6,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 47,
+      "flightNumber": "JT704",
+      "departureTime": "2024-07-17T09:00:00Z",
+      "arrivalTime": "2024-07-17T13:00:00Z",
+      "departureAirportId": 7,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 48,
+      "flightNumber": "ID804",
+      "departureTime": "2024-07-18T10:00:00Z",
+      "arrivalTime": "2024-07-18T14:00:00Z",
+      "departureAirportId": 8,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 49,
+      "flightNumber": "SJ904",
+      "departureTime": "2024-07-19T11:00:00Z",
+      "arrivalTime": "2024-07-19T15:00:00Z",
+      "departureAirportId": 9,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 50,
+      "flightNumber": "QG1004",
+      "departureTime": "2024-07-20T12:00:00Z",
+      "arrivalTime": "2024-07-20T16:00:00Z",
+      "departureAirportId": 10,
+      "arrivalAirportId": 5
+    },
+    {
+      "id": 51,
+      "flightNumber": "AA105",
+      "departureTime": "2024-07-21T08:00:00Z",
+      "arrivalTime": "2024-07-21T12:00:00Z",
+      "departureAirportId": 1,
+      "arrivalAirportId": 7
+    },
+    {
+      "id": 52,
+      "flightNumber": "DL205",
+      "departureTime": "2024-07-22T09:00:00Z",
+      "arrivalTime": "2024-07-22T13:00:00Z",
+      "departureAirportId": 2,
+      "arrivalAirportId": 8
+    },
+    {
+      "id": 53,
+      "flightNumber": "UA305",
+      "departureTime": "2024-07-23T10:00:00Z",
+      "arrivalTime": "2024-07-23T14:00:00Z",
+      "departureAirportId": 3,
+      "arrivalAirportId": 9
+    },
+    {
+      "id": 54,
+      "flightNumber": "SW405",
+      "departureTime": "2024-07-24T11:00:00Z",
+      "arrivalTime": "2024-07-24T15:00:00Z",
+      "departureAirportId": 4,
+      "arrivalAirportId": 10
+    },
+    {
+      "id": 55,
+      "flightNumber": "AS505",
+      "departureTime": "2024-07-25T12:00:00Z",
+      "arrivalTime": "2024-07-25T16:00:00Z",
+      "departureAirportId": 5,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 56,
+      "flightNumber": "GA605",
+      "departureTime": "2024-07-26T08:00:00Z",
+      "arrivalTime": "2024-07-26T12:00:00Z",
+      "departureAirportId": 6,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 57,
+      "flightNumber": "JT705",
+      "departureTime": "2024-07-27T09:00:00Z",
+      "arrivalTime": "2024-07-27T13:00:00Z",
+      "departureAirportId": 7,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 58,
+      "flightNumber": "ID805",
+      "departureTime": "2024-07-28T10:00:00Z",
+      "arrivalTime": "2024-07-28T14:00:00Z",
+      "departureAirportId": 8,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 59,
+      "flightNumber": "SJ905",
+      "departureTime": "2024-07-29T11:00:00Z",
+      "arrivalTime": "2024-07-29T15:00:00Z",
+      "departureAirportId": 9,
+      "arrivalAirportId": 5
+    },
+    {
+      "id": 60,
+      "flightNumber": "QG1005",
+      "departureTime": "2024-07-30T12:00:00Z",
+      "arrivalTime": "2024-07-30T16:00:00Z",
+      "departureAirportId": 10,
+      "arrivalAirportId": 6
+    },
+    {
+      "id": 61,
+      "flightNumber": "AA106",
+      "departureTime": "2024-07-31T08:00:00Z",
+      "arrivalTime": "2024-07-31T12:00:00Z",
+      "departureAirportId": 1,
+      "arrivalAirportId": 8
+    },
+    {
+      "id": 62,
+      "flightNumber": "DL206",
+      "departureTime": "2024-08-01T09:00:00Z",
+      "arrivalTime": "2024-08-01T13:00:00Z",
+      "departureAirportId": 2,
+      "arrivalAirportId": 9
+    },
+    {
+      "id": 63,
+      "flightNumber": "UA306",
+      "departureTime": "2024-08-02T10:00:00Z",
+      "arrivalTime": "2024-08-02T14:00:00Z",
+      "departureAirportId": 3,
+      "arrivalAirportId": 10
+    },
+    {
+      "id": 64,
+      "flightNumber": "SW406",
+      "departureTime": "2024-08-03T11:00:00Z",
+      "arrivalTime": "2024-08-03T15:00:00Z",
+      "departureAirportId": 4,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 65,
+      "flightNumber": "AS506",
+      "departureTime": "2024-08-04T12:00:00Z",
+      "arrivalTime": "2024-08-04T16:00:00Z",
+      "departureAirportId": 5,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 66,
+      "flightNumber": "GA606",
+      "departureTime": "2024-08-05T08:00:00Z",
+      "arrivalTime": "2024-08-05T12:00:00Z",
+      "departureAirportId": 6,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 67,
+      "flightNumber": "JT706",
+      "departureTime": "2024-08-06T09:00:00Z",
+      "arrivalTime": "2024-08-06T13:00:00Z",
+      "departureAirportId": 7,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 68,
+      "flightNumber": "ID806",
+      "departureTime": "2024-08-07T10:00:00Z",
+      "arrivalTime": "2024-08-07T14:00:00Z",
+      "departureAirportId": 8,
+      "arrivalAirportId": 5
+    },
+    {
+      "id": 69,
+      "flightNumber": "SJ906",
+      "departureTime": "2024-08-08T11:00:00Z",
+      "arrivalTime": "2024-08-08T15:00:00Z",
+      "departureAirportId": 9,
+      "arrivalAirportId": 6
+    },
+    {
+      "id": 70,
+      "flightNumber": "QG1006",
+      "departureTime": "2024-08-09T12:00:00Z",
+      "arrivalTime": "2024-08-09T16:00:00Z",
+      "departureAirportId": 10,
+      "arrivalAirportId": 7
+    },
+    {
+      "id": 71,
+      "flightNumber": "AA107",
+      "departureTime": "2024-08-10T08:00:00Z",
+      "arrivalTime": "2024-08-10T12:00:00Z",
+      "departureAirportId": 1,
+      "arrivalAirportId": 9
+    },
+    {
+      "id": 72,
+      "flightNumber": "DL207",
+      "departureTime": "2024-08-11T09:00:00Z",
+      "arrivalTime": "2024-08-11T13:00:00Z",
+      "departureAirportId": 2,
+      "arrivalAirportId": 10
+    },
+    {
+      "id": 73,
+      "flightNumber": "UA307",
+      "departureTime": "2024-08-12T10:00:00Z",
+      "arrivalTime": "2024-08-12T14:00:00Z",
+      "departureAirportId": 3,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 74,
+      "flightNumber": "SW407",
+      "departureTime": "2024-08-13T11:00:00Z",
+      "arrivalTime": "2024-08-13T15:00:00Z",
+      "departureAirportId": 4,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 75,
+      "flightNumber": "AS507",
+      "departureTime": "2024-08-14T12:00:00Z",
+      "arrivalTime": "2024-08-14T16:00:00Z",
+      "departureAirportId": 5,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 76,
+      "flightNumber": "GA607",
+      "departureTime": "2024-08-15T08:00:00Z",
+      "arrivalTime": "2024-08-15T12:00:00Z",
+      "departureAirportId": 6,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 77,
+      "flightNumber": "JT707",
+      "departureTime": "2024-08-16T09:00:00Z",
+      "arrivalTime": "2024-08-16T13:00:00Z",
+      "departureAirportId": 7,
+      "arrivalAirportId": 5
+    },
+    {
+      "id": 78,
+      "flightNumber": "ID807",
+      "departureTime": "2024-08-17T10:00:00Z",
+      "arrivalTime": "2024-08-17T14:00:00Z",
+      "departureAirportId": 8,
+      "arrivalAirportId": 6
+    },
+    {
+      "id": 79,
+      "flightNumber": "SJ907",
+      "departureTime": "2024-08-18T11:00:00Z",
+      "arrivalTime": "2024-08-18T15:00:00Z",
+      "departureAirportId": 9,
+      "arrivalAirportId": 7
+    },
+    {
+      "id": 80,
+      "flightNumber": "QG1007",
+      "departureTime": "2024-08-19T12:00:00Z",
+      "arrivalTime": "2024-08-19T16:00:00Z",
+      "departureAirportId": 10,
+      "arrivalAirportId": 8
+    },
+    {
+      "id": 81,
+      "flightNumber": "AA108",
+      "departureTime": "2024-08-20T08:00:00Z",
+      "arrivalTime": "2024-08-20T12:00:00Z",
+      "departureAirportId": 1,
+      "arrivalAirportId": 10
+    },
+    {
+      "id": 82,
+      "flightNumber": "DL208",
+      "departureTime": "2024-08-21T09:00:00Z",
+      "arrivalTime": "2024-08-21T13:00:00Z",
+      "departureAirportId": 2,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 83,
+      "flightNumber": "UA308",
+      "departureTime": "2024-08-22T10:00:00Z",
+      "arrivalTime": "2024-08-22T14:00:00Z",
+      "departureAirportId": 3,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 84,
+      "flightNumber": "SW408",
+      "departureTime": "2024-08-23T11:00:00Z",
+      "arrivalTime": "2024-08-23T15:00:00Z",
+      "departureAirportId": 4,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 85,
+      "flightNumber": "AS508",
+      "departureTime": "2024-08-24T12:00:00Z",
+      "arrivalTime": "2024-08-24T16:00:00Z",
+      "departureAirportId": 5,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 86,
+      "flightNumber": "GA608",
+      "departureTime": "2024-08-25T08:00:00Z",
+      "arrivalTime": "2024-08-25T12:00:00Z",
+      "departureAirportId": 6,
+      "arrivalAirportId": 5
+    },
+    {
+      "id": 87,
+      "flightNumber": "JT708",
+      "departureTime": "2024-08-26T09:00:00Z",
+      "arrivalTime": "2024-08-26T13:00:00Z",
+      "departureAirportId": 7,
+      "arrivalAirportId": 6
+    },
+    {
+      "id": 88,
+      "flightNumber": "ID808",
+      "departureTime": "2024-08-27T10:00:00Z",
+      "arrivalTime": "2024-08-27T14:00:00Z",
+      "departureAirportId": 8,
+      "arrivalAirportId": 7
+    },
+    {
+      "id": 89,
+      "flightNumber": "SJ908",
+      "departureTime": "2024-08-28T11:00:00Z",
+      "arrivalTime": "2024-08-28T15:00:00Z",
+      "departureAirportId": 9,
+      "arrivalAirportId": 8
+    },
+    {
+      "id": 90,
+      "flightNumber": "QG1008",
+      "departureTime": "2024-08-29T12:00:00Z",
+      "arrivalTime": "2024-08-29T16:00:00Z",
+      "departureAirportId": 10,
+      "arrivalAirportId": 9
+    },
+    {
+      "id": 91,
+      "flightNumber": "AA109",
+      "departureTime": "2024-08-30T08:00:00Z",
+      "arrivalTime": "2024-08-30T12:00:00Z",
+      "departureAirportId": 1,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 92,
+      "flightNumber": "DL209",
+      "departureTime": "2024-08-31T09:00:00Z",
+      "arrivalTime": "2024-08-31T13:00:00Z",
+      "departureAirportId": 2,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 93,
+      "flightNumber": "UA309",
+      "departureTime": "2024-09-01T10:00:00Z",
+      "arrivalTime": "2024-09-01T14:00:00Z",
+      "departureAirportId": 3,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 94,
+      "flightNumber": "SW409",
+      "departureTime": "2024-09-02T11:00:00Z",
+      "arrivalTime": "2024-09-02T15:00:00Z",
+      "departureAirportId": 4,
+      "arrivalAirportId": 5
+    },
+    {
+      "id": 95,
+      "flightNumber": "AS509",
+      "departureTime": "2024-09-03T12:00:00Z",
+      "arrivalTime": "2024-09-03T16:00:00Z",
+      "departureAirportId": 5,
+      "arrivalAirportId": 6
+    },
+    {
+      "id": 96,
+      "flightNumber": "GA609",
+      "departureTime": "2024-09-04T08:00:00Z",
+      "arrivalTime": "2024-09-04T12:00:00Z",
+      "departureAirportId": 6,
+      "arrivalAirportId": 7
+    },
+    {
+      "id": 97,
+      "flightNumber": "JT709",
+      "departureTime": "2024-09-05T09:00:00Z",
+      "arrivalTime": "2024-09-05T13:00:00Z",
+      "departureAirportId": 7,
+      "arrivalAirportId": 8
+    },
+    {
+      "id": 98,
+      "flightNumber": "ID809",
+      "departureTime": "2024-09-06T10:00:00Z",
+      "arrivalTime": "2024-09-06T14:00:00Z",
+      "departureAirportId": 8,
+      "arrivalAirportId": 9
+    },
+    {
+      "id": 99,
+      "flightNumber": "SJ909",
+      "departureTime": "2024-09-07T11:00:00Z",
+      "arrivalTime": "2024-09-07T15:00:00Z",
+      "departureAirportId": 9,
+      "arrivalAirportId": 10
+    },
+    {
+      "id": 100,
+      "flightNumber": "QG1009",
+      "departureTime": "2024-09-08T12:00:00Z",
+      "arrivalTime": "2024-09-08T16:00:00Z",
+      "departureAirportId": 10,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 101,
+      "flightNumber": "FL101",
+      "departureTime": "2024-06-01T08:00:00Z",
+      "arrivalTime": "2024-06-01T11:00:00Z",
+      "departureAirportId": 1,
+      "arrivalAirportId": 2
+    },
+    {
+      "id": 102,
+      "flightNumber": "FL102",
+      "departureTime": "2024-06-01T09:00:00Z",
+      "arrivalTime": "2024-06-01T12:00:00Z",
+      "departureAirportId": 2,
+      "arrivalAirportId": 1
+    },
+    {
+      "id": 103,
+      "flightNumber": "FL103",
+      "departureTime": "2024-06-01T10:00:00Z",
+      "arrivalTime": "2024-06-01T13:00:00Z",
+      "departureAirportId": 3,
+      "arrivalAirportId": 4
+    },
+    {
+      "id": 104,
+      "flightNumber": "FL104",
+      "departureTime": "2024-06-01T11:00:00Z",
+      "arrivalTime": "2024-06-01T14:00:00Z",
+      "departureAirportId": 4,
+      "arrivalAirportId": 3
+    },
+    {
+      "id": 105,
+      "flightNumber": "FL105",
+      "departureTime": "2024-06-01T12:00:00Z",
+      "arrivalTime": "2024-06-01T15:00:00Z",
+      "departureAirportId": 5,
+      "arrivalAirportId": 6
+    },
+    {
+      "id": 106,
+      "flightNumber": "FL106",
+      "departureTime": "2024-06-01T13:00:00Z",
+      "arrivalTime": "2024-06-01T16:00:00Z",
+      "departureAirportId": 6,
+      "arrivalAirportId": 5
+    },
+    {
+      "id": 107,
+      "flightNumber": "FL107",
+      "departureTime": "2024-06-01T14:00:00Z",
+      "arrivalTime": "2024-06-01T17:00:00Z",
+      "departureAirportId": 7,
+      "arrivalAirportId": 8
+    },
+    {
+      "id": 108,
+      "flightNumber": "FL108",
+      "departureTime": "2024-06-01T15:00:00Z",
+      "arrivalTime": "2024-06-01T18:00:00Z",
+      "departureAirportId": 8,
+      "arrivalAirportId": 7
+    },
+    {
+      "id": 109,
+      "flightNumber": "FL109",
+      "departureTime": "2024-06-01T16:00:00Z",
+      "arrivalTime": "2024-06-01T19:00:00Z",
+      "departureAirportId": 9,
+      "arrivalAirportId": 10
+    },
+    {
+      "id": 110,
+      "flightNumber": "FL110",
+      "departureTime": "2024-06-01T17:00:00Z",
+      "arrivalTime": "2024-06-01T20:00:00Z",
+      "departureAirportId": 10,
+      "arrivalAirportId": 9
+    },
+    {
+      "id": 111,
+      "flightNumber": "FL111",
+      "departureTime": "2024-06-01T18:00:00Z",
+      "arrivalTime": "2024-06-01T21:00:00Z",
+      "departureAirportId": 11,
+      "arrivalAirportId": 12
+    },
+    {
+      "id": 112,
+      "flightNumber": "FL112",
+      "departureTime": "2024-06-01T19:00:00Z",
+      "arrivalTime": "2024-06-01T22:00:00Z",
+      "departureAirportId": 12,
+      "arrivalAirportId": 11
+    },
+    {
+      "id": 113,
+      "flightNumber": "FL113",
+      "departureTime": "2024-06-01T20:00:00Z",
+      "arrivalTime": "2024-06-01T23:00:00Z",
+      "departureAirportId": 13,
+      "arrivalAirportId": 14
+    },
+    {
+      "id": 114,
+      "flightNumber": "FL114",
+      "departureTime": "2024-06-01T21:00:00Z",
+      "arrivalTime": "2024-06-02T00:00:00Z",
+      "departureAirportId": 14,
+      "arrivalAirportId": 13
+    },
+    {
+      "id": 115,
+      "flightNumber": "FL115",
+      "departureTime": "2024-06-01T22:00:00Z",
+      "arrivalTime": "2024-06-02T01:00:00Z",
+      "departureAirportId": 15,
+      "arrivalAirportId": 16
+    },
+    {
+      "id": 116,
+      "flightNumber": "FL116",
+      "departureTime": "2024-06-01T23:00:00Z",
+      "arrivalTime": "2024-06-02T02:00:00Z",
+      "departureAirportId": 16,
+      "arrivalAirportId": 15
+    },
+    {
+      "id": 117,
+      "flightNumber": "FL117",
+      "departureTime": "2024-06-02T00:00:00Z",
+      "arrivalTime": "2024-06-02T03:00:00Z",
+      "departureAirportId": 17,
+      "arrivalAirportId": 18
+    },
+    {
+      "id": 118,
+      "flightNumber": "FL118",
+      "departureTime": "2024-06-02T01:00:00Z",
+      "arrivalTime": "2024-06-02T04:00:00Z",
+      "departureAirportId": 18,
+      "arrivalAirportId": 17
+    },
+    {
+      "id": 119,
+      "flightNumber": "FL119",
+      "departureTime": "2024-06-02T02:00:00Z",
+      "arrivalTime": "2024-06-02T05:00:00Z",
+      "departureAirportId": 19,
+      "arrivalAirportId": 20
+    },
+    {
+      "id": 120,
+      "flightNumber": "FL120",
+      "departureTime": "2024-06-02T03:00:00Z",
+      "arrivalTime": "2024-06-02T06:00:00Z",
+      "departureAirportId": 20,
+      "arrivalAirportId": 19
+    },
+    {
+      "id": 121,
+      "flightNumber": "FL121",
+      "departureTime": "2024-06-02T04:00:00Z",
+      "arrivalTime": "2024-06-02T07:00:00Z",
+      "departureAirportId": 21,
+      "arrivalAirportId": 22
+    },
+    {
+      "id": 122,
+      "flightNumber": "FL122",
+      "departureTime": "2024-06-02T05:00:00Z",
+      "arrivalTime": "2024-06-02T08:00:00Z",
+      "departureAirportId": 22,
+      "arrivalAirportId": 21
+    },
+    {
+      "id": 123,
+      "flightNumber": "FL123",
+      "departureTime": "2024-06-02T06:00:00Z",
+      "arrivalTime": "2024-06-02T09:00:00Z",
+      "departureAirportId": 23,
+      "arrivalAirportId": 24
+    },
+    {
+      "id": 124,
+      "flightNumber": "FL124",
+      "departureTime": "2024-06-02T07:00:00Z",
+      "arrivalTime": "2024-06-02T10:00:00Z",
+      "departureAirportId": 24,
+      "arrivalAirportId": 23
+    },
+    {
+      "id": 125,
+      "flightNumber": "FL125",
+      "departureTime": "2024-06-02T08:00:00Z",
+      "arrivalTime": "2024-06-02T11:00:00Z",
+      "departureAirportId": 25,
+      "arrivalAirportId": 26
+    },
+    {
+      "id": 126,
+      "flightNumber": "FL126",
+      "departureTime": "2024-06-02T09:00:00Z",
+      "arrivalTime": "2024-06-02T12:00:00Z",
+      "departureAirportId": 26,
+      "arrivalAirportId": 25
+    },
+    {
+      "id": 127,
+      "flightNumber": "FL127",
+      "departureTime": "2024-06-02T10:00:00Z",
+      "arrivalTime": "2024-06-02T13:00:00Z",
+      "departureAirportId": 27,
+      "arrivalAirportId": 28
+    },
+    {
+      "id": 128,
+      "flightNumber": "FL128",
+      "departureTime": "2024-06-02T11:00:00Z",
+      "arrivalTime": "2024-06-02T14:00:00Z",
+      "departureAirportId": 28,
+      "arrivalAirportId": 27
+    },
+    {
+      "id": 129,
+      "flightNumber": "FL129",
+      "departureTime": "2024-06-02T12:00:00Z",
+      "arrivalTime": "2024-06-02T15:00:00Z",
+      "departureAirportId": 29,
+      "arrivalAirportId": 30
+    },
+    {
+      "id": 130,
+      "flightNumber": "FL130",
+      "departureTime": "2024-06-02T13:00:00Z",
+      "arrivalTime": "2024-06-02T16:00:00Z",
+      "departureAirportId": 30,
+      "arrivalAirportId": 29
+    },
+    {
+      "id": 131,
+      "flightNumber": "FL131",
+      "departureTime": "2024-06-02T14:00:00Z",
+      "arrivalTime": "2024-06-02T17:00:00Z",
+      "departureAirportId": 31,
+      "arrivalAirportId": 32
+    },
+    {
+      "id": 132,
+      "flightNumber": "FL132",
+      "departureTime": "2024-06-02T15:00:00Z",
+      "arrivalTime": "2024-06-02T18:00:00Z",
+      "departureAirportId": 32,
+      "arrivalAirportId": 31
+    },
+    {
+      "id": 133,
+      "flightNumber": "FL133",
+      "departureTime": "2024-06-02T16:00:00Z",
+      "arrivalTime": "2024-06-02T19:00:00Z",
+      "departureAirportId": 33,
+      "arrivalAirportId": 34
+    },
+    {
+      "id": 134,
+      "flightNumber": "FL134",
+      "departureTime": "2024-06-02T17:00:00Z",
+      "arrivalTime": "2024-06-02T20:00:00Z",
+      "departureAirportId": 34,
+      "arrivalAirportId": 33
+    },
+    {
+      "id": 135,
+      "flightNumber": "FL135",
+      "departureTime": "2024-06-02T18:00:00Z",
+      "arrivalTime": "2024-06-02T21:00:00Z",
+      "departureAirportId": 35,
+      "arrivalAirportId": 36
+    },
+    {
+      "id": 136,
+      "flightNumber": "FL136",
+      "departureTime": "2024-06-02T19:00:00Z",
+      "arrivalTime": "2024-06-02T22:00:00Z",
+      "departureAirportId": 36,
+      "arrivalAirportId": 35
+    },
+    {
+      "id": 137,
+      "flightNumber": "FL137",
+      "departureTime": "2024-06-02T20:00:00Z",
+      "arrivalTime": "2024-06-02T23:00:00Z",
+      "departureAirportId": 37,
+      "arrivalAirportId": 38
+    },
+    {
+      "id": 138,
+      "flightNumber": "FL138",
+      "departureTime": "2024-06-02T21:00:00Z",
+      "arrivalTime": "2024-06-03T00:00:00Z",
+      "departureAirportId": 38,
+      "arrivalAirportId": 37
+    },
+    {
+      "id": 139,
+      "flightNumber": "FL139",
+      "departureTime": "2024-06-02T22:00:00Z",
+      "arrivalTime": "2024-06-03T01:00:00Z",
+      "departureAirportId": 39,
+      "arrivalAirportId": 40
+    },
+    {
+      "id": 140,
+      "flightNumber": "FL140",
+      "departureTime": "2024-06-02T23:00:00Z",
+      "arrivalTime": "2024-06-03T02:00:00Z",
+      "departureAirportId": 40,
+      "arrivalAirportId": 39
+    },
+    {
+      "id": 141,
+      "flightNumber": "FL141",
+      "departureTime": "2024-06-03T00:00:00Z",
+      "arrivalTime": "2024-06-03T03:00:00Z",
+      "departureAirportId": 41,
+      "arrivalAirportId": 42
+    },
+    {
+      "id": 142,
+      "flightNumber": "FL142",
+      "departureTime": "2024-06-03T01:00:00Z",
+      "arrivalTime": "2024-06-03T04:00:00Z",
+      "departureAirportId": 42,
+      "arrivalAirportId": 41
+    },
+    {
+      "id": 143,
+      "flightNumber": "FL143",
+      "departureTime": "2024-06-03T02:00:00Z",
+      "arrivalTime": "2024-06-03T05:00:00Z",
+      "departureAirportId": 43,
+      "arrivalAirportId": 44
+    },
+    {
+      "id": 144,
+      "flightNumber": "FL144",
+      "departureTime": "2024-06-03T03:00:00Z",
+      "arrivalTime": "2024-06-03T06:00:00Z",
+      "departureAirportId": 44,
+      "arrivalAirportId": 43
+    },
+    {
+      "id": 145,
+      "flightNumber": "FL145",
+      "departureTime": "2024-06-03T04:00:00Z",
+      "arrivalTime": "2024-06-03T07:00:00Z",
+      "departureAirportId": 45,
+      "arrivalAirportId": 46
+    },
+    {
+      "id": 146,
+      "flightNumber": "FL146",
+      "departureTime": "2024-06-03T05:00:00Z",
+      "arrivalTime": "2024-06-03T08:00:00Z",
+      "departureAirportId": 46,
+      "arrivalAirportId": 45
+    },
+    {
+      "id": 147,
+      "flightNumber": "FL147",
+      "departureTime": "2024-06-03T06:00:00Z",
+      "arrivalTime": "2024-06-03T09:00:00Z",
+      "departureAirportId": 47,
+      "arrivalAirportId": 48
+    },
+    {
+      "id": 148,
+      "flightNumber": "FL148",
+      "departureTime": "2024-06-03T07:00:00Z",
+      "arrivalTime": "2024-06-03T10:00:00Z",
+      "departureAirportId": 48,
+      "arrivalAirportId": 47
+    },
+    {
+      "id": 149,
+      "flightNumber": "FL149",
+      "departureTime": "2024-06-03T08:00:00Z",
+      "arrivalTime": "2024-06-03T11:00:00Z",
+      "departureAirportId": 49,
+      "arrivalAirportId": 50
+    },
+    {
+      "id": 150,
+      "flightNumber": "FL150",
+      "departureTime": "2024-06-03T09:00:00Z",
+      "arrivalTime": "2024-06-03T12:00:00Z",
+      "departureAirportId": 50,
+      "arrivalAirportId": 49
+    },
+    {
+      "id": 151,
+      "flightNumber": "FL151",
+      "departureTime": "2024-06-03T10:00:00Z",
+      "arrivalTime": "2024-06-03T13:00:00Z",
+      "departureAirportId": 51,
+      "arrivalAirportId": 52
+    },
+    {
+      "id": 152,
+      "flightNumber": "FL152",
+      "departureTime": "2024-06-03T11:00:00Z",
+      "arrivalTime": "2024-06-03T14:00:00Z",
+      "departureAirportId": 52,
+      "arrivalAirportId": 51
+    },
+    {
+      "id": 153,
+      "flightNumber": "FL153",
+      "departureTime": "2024-06-03T12:00:00Z",
+      "arrivalTime": "2024-06-03T15:00:00Z",
+      "departureAirportId": 53,
+      "arrivalAirportId": 54
+    },
+    {
+      "id": 154,
+      "flightNumber": "FL154",
+      "departureTime": "2024-06-03T13:00:00Z",
+      "arrivalTime": "2024-06-03T16:00:00Z",
+      "departureAirportId": 54,
+      "arrivalAirportId": 53
+    },
+    {
+      "id": 155,
+      "flightNumber": "FL155",
+      "departureTime": "2024-06-03T14:00:00Z",
+      "arrivalTime": "2024-06-03T17:00:00Z",
+      "departureAirportId": 55,
+      "arrivalAirportId": 56
+    },
+    {
+      "id": 156,
+      "flightNumber": "FL156",
+      "departureTime": "2024-06-03T15:00:00Z",
+      "arrivalTime": "2024-06-03T18:00:00Z",
+      "departureAirportId": 56,
+      "arrivalAirportId": 55
+    },
+    {
+      "id": 157,
+      "flightNumber": "FL157",
+      "departureTime": "2024-06-03T16:00:00Z",
+      "arrivalTime": "2024-06-03T19:00:00Z",
+      "departureAirportId": 57,
+      "arrivalAirportId": 58
+    },
+    {
+      "id": 158,
+      "flightNumber": "FL158",
+      "departureTime": "2024-06-03T17:00:00Z",
+      "arrivalTime": "2024-06-03T20:00:00Z",
+      "departureAirportId": 58,
+      "arrivalAirportId": 57
+    },
+    {
+      "id": 159,
+      "flightNumber": "FL159",
+      "departureTime": "2024-06-03T18:00:00Z",
+      "arrivalTime": "2024-06-03T21:00:00Z",
+      "departureAirportId": 59,
+      "arrivalAirportId": 60
+    },
+    {
+      "id": 160,
+      "flightNumber": "FL160",
+      "departureTime": "2024-06-04T19:00:00Z",
+      "arrivalTime": "2024-06-04T22:00:00Z",
+      "departureAirportId": 60,
+      "arrivalAirportId": 59
+    }
+  ],
+  "tickets": [
+    {
+      "id": 1,
+      "price": 3000000,
+      "tax": 0.1,
+      "flightId": 1,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 2,
+      "price": 2000000,
+      "tax": 0.1,
+      "flightId": 1,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 3,
+      "price": 800000,
+      "tax": 0.1,
+      "flightId": 1,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 4,
+      "price": 8500000,
+      "tax": 0.1,
+      "flightId": 2,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 5,
+      "price": 5000000,
+      "tax": 0.1,
+      "flightId": 2,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 6,
+      "price": 1500000,
+      "tax": 0.1,
+      "flightId": 2,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 7,
+      "price": 7800000,
+      "tax": 0.1,
+      "flightId": 3,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 8,
+      "price": 4800000,
+      "tax": 0.1,
+      "flightId": 3,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 9,
+      "price": 1200000,
+      "tax": 0.1,
+      "flightId": 3,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 10,
+      "price": 9200000,
+      "tax": 0.1,
+      "flightId": 4,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 11,
+      "price": 6200000,
+      "tax": 0.1,
+      "flightId": 4,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 12,
+      "price": 2200000,
+      "tax": 0.1,
+      "flightId": 4,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 13,
+      "price": 8700000,
+      "tax": 0.1,
+      "flightId": 5,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 14,
+      "price": 5700000,
+      "tax": 0.1,
+      "flightId": 5,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 15,
+      "price": 1700000,
+      "tax": 0.1,
+      "flightId": 5,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 16,
+      "price": 9600000,
+      "tax": 0.1,
+      "flightId": 6,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 17,
+      "price": 6600000,
+      "tax": 0.1,
+      "flightId": 6,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 18,
+      "price": 2600000,
+      "tax": 0.1,
+      "flightId": 6,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 19,
+      "price": 10500000,
+      "tax": 0.1,
+      "flightId": 7,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 20,
+      "price": 7500000,
+      "tax": 0.1,
+      "flightId": 7,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 21,
+      "price": 2500000,
+      "tax": 0.1,
+      "flightId": 7,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 22,
+      "price": 11000000,
+      "tax": 0.1,
+      "flightId": 8,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 23,
+      "price": 8500000,
+      "tax": 0.1,
+      "flightId": 8,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 24,
+      "price": 3500000,
+      "tax": 0.1,
+      "flightId": 8,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 25,
+      "price": 11500000,
+      "tax": 0.1,
+      "flightId": 9,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 26,
+      "price": 9500000,
+      "tax": 0.1,
+      "flightId": 9,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 27,
+      "price": 4500000,
+      "tax": 0.1,
+      "flightId": 9,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 28,
+      "price": 12000000,
+      "tax": 0.1,
+      "flightId": 10,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 29,
+      "price": 10000000,
+      "tax": 0.1,
+      "flightId": 10,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 30,
+      "price": 5000000,
+      "tax": 0.1,
+      "flightId": 10,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 31,
+      "price": 12500000,
+      "tax": 0.1,
+      "flightId": 11,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 32,
+      "price": 10500000,
+      "tax": 0.1,
+      "flightId": 11,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 33,
+      "price": 5500000,
+      "tax": 0.1,
+      "flightId": 11,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 34,
+      "price": 13000000,
+      "tax": 0.1,
+      "flightId": 12,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 35,
+      "price": 11000000,
+      "tax": 0.1,
+      "flightId": 12,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 36,
+      "price": 6000000,
+      "tax": 0.1,
+      "flightId": 12,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 37,
+      "price": 13500000,
+      "tax": 0.1,
+      "flightId": 13,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 38,
+      "price": 11500000,
+      "tax": 0.1,
+      "flightId": 13,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 39,
+      "price": 6500000,
+      "tax": 0.1,
+      "flightId": 13,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 40,
+      "price": 14000000,
+      "tax": 0.1,
+      "flightId": 14,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 41,
+      "price": 12000000,
+      "tax": 0.1,
+      "flightId": 14,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 42,
+      "price": 7000000,
+      "tax": 0.1,
+      "flightId": 14,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 43,
+      "price": 14500000,
+      "tax": 0.1,
+      "flightId": 15,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 44,
+      "price": 12500000,
+      "tax": 0.1,
+      "flightId": 15,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 45,
+      "price": 7500000,
+      "tax": 0.1,
+      "flightId": 15,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 46,
+      "price": 15000000,
+      "tax": 0.1,
+      "flightId": 16,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 47,
+      "price": 13000000,
+      "tax": 0.1,
+      "flightId": 16,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 48,
+      "price": 8000000,
+      "tax": 0.1,
+      "flightId": 16,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 49,
+      "price": 15500000,
+      "tax": 0.1,
+      "flightId": 17,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 50,
+      "price": 13500000,
+      "tax": 0.1,
+      "flightId": 17,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 51,
+      "price": 8500000,
+      "tax": 0.1,
+      "flightId": 17,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 52,
+      "price": 16000000,
+      "tax": 0.1,
+      "flightId": 18,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 53,
+      "price": 14000000,
+      "tax": 0.1,
+      "flightId": 18,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 54,
+      "price": 9000000,
+      "tax": 0.1,
+      "flightId": 18,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 55,
+      "price": 16500000,
+      "tax": 0.1,
+      "flightId": 19,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 56,
+      "price": 14500000,
+      "tax": 0.1,
+      "flightId": 19,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 57,
+      "price": 9500000,
+      "tax": 0.1,
+      "flightId": 19,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 58,
+      "price": 17000000,
+      "tax": 0.1,
+      "flightId": 20,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 59,
+      "price": 15000000,
+      "tax": 0.1,
+      "flightId": 20,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 60,
+      "price": 10000000,
+      "tax": 0.1,
+      "flightId": 20,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 61,
+      "price": 17500000,
+      "tax": 0.1,
+      "flightId": 21,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 62,
+      "price": 15500000,
+      "tax": 0.1,
+      "flightId": 21,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 63,
+      "price": 10500000,
+      "tax": 0.1,
+      "flightId": 21,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 64,
+      "price": 18000000,
+      "tax": 0.1,
+      "flightId": 22,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 65,
+      "price": 16000000,
+      "tax": 0.1,
+      "flightId": 22,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 66,
+      "price": 11000000,
+      "tax": 0.1,
+      "flightId": 22,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 67,
+      "price": 18500000,
+      "tax": 0.1,
+      "flightId": 23,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 68,
+      "price": 16500000,
+      "tax": 0.1,
+      "flightId": 23,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 69,
+      "price": 11500000,
+      "tax": 0.1,
+      "flightId": 23,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 70,
+      "price": 19000000,
+      "tax": 0.1,
+      "flightId": 24,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 71,
+      "price": 17000000,
+      "tax": 0.1,
+      "flightId": 24,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 72,
+      "price": 12000000,
+      "tax": 0.1,
+      "flightId": 24,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 73,
+      "price": 19500000,
+      "tax": 0.1,
+      "flightId": 25,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 74,
+      "price": 17500000,
+      "tax": 0.1,
+      "flightId": 25,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 75,
+      "price": 12500000,
+      "tax": 0.1,
+      "flightId": 25,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 76,
+      "price": 20000000,
+      "tax": 0.1,
+      "flightId": 26,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 77,
+      "price": 18000000,
+      "tax": 0.1,
+      "flightId": 26,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 78,
+      "price": 13000000,
+      "tax": 0.1,
+      "flightId": 26,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 79,
+      "price": 20500000,
+      "tax": 0.1,
+      "flightId": 27,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 80,
+      "price": 18500000,
+      "tax": 0.1,
+      "flightId": 27,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 81,
+      "price": 13500000,
+      "tax": 0.1,
+      "flightId": 27,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 82,
+      "price": 21000000,
+      "tax": 0.1,
+      "flightId": 28,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 83,
+      "price": 19000000,
+      "tax": 0.1,
+      "flightId": 28,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 84,
+      "price": 14000000,
+      "tax": 0.1,
+      "flightId": 28,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 85,
+      "price": 21500000,
+      "tax": 0.1,
+      "flightId": 29,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 86,
+      "price": 19500000,
+      "tax": 0.1,
+      "flightId": 29,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 87,
+      "price": 14500000,
+      "tax": 0.1,
+      "flightId": 29,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 88,
+      "price": 22000000,
+      "tax": 0.1,
+      "flightId": 30,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 89,
+      "price": 20000000,
+      "tax": 0.1,
+      "flightId": 30,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 90,
+      "price": 15000000,
+      "tax": 0.1,
+      "flightId": 30,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 91,
+      "price": 3000000,
+      "tax": 0.1,
+      "flightId": 31,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 92,
+      "price": 2000000,
+      "tax": 0.1,
+      "flightId": 31,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 93,
+      "price": 800000,
+      "tax": 0.1,
+      "flightId": 31,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 94,
+      "price": 8500000,
+      "tax": 0.1,
+      "flightId": 32,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 95,
+      "price": 5000000,
+      "tax": 0.1,
+      "flightId": 32,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 96,
+      "price": 1500000,
+      "tax": 0.1,
+      "flightId": 32,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 97,
+      "price": 7800000,
+      "tax": 0.1,
+      "flightId": 33,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 98,
+      "price": 4800000,
+      "tax": 0.1,
+      "flightId": 33,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 99,
+      "price": 1200000,
+      "tax": 0.1,
+      "flightId": 33,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 100,
+      "price": 9200000,
+      "tax": 0.1,
+      "flightId": 34,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 101,
+      "price": 6200000,
+      "tax": 0.1,
+      "flightId": 34,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 102,
+      "price": 2200000,
+      "tax": 0.1,
+      "flightId": 34,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 103,
+      "price": 8700000,
+      "tax": 0.1,
+      "flightId": 35,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 104,
+      "price": 5700000,
+      "tax": 0.1,
+      "flightId": 35,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 105,
+      "price": 1700000,
+      "tax": 0.1,
+      "flightId": 35,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 106,
+      "price": 9600000,
+      "tax": 0.1,
+      "flightId": 36,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 107,
+      "price": 6600000,
+      "tax": 0.1,
+      "flightId": 36,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 108,
+      "price": 2600000,
+      "tax": 0.1,
+      "flightId": 36,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 109,
+      "price": 10500000,
+      "tax": 0.1,
+      "flightId": 37,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 110,
+      "price": 7500000,
+      "tax": 0.1,
+      "flightId": 37,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 111,
+      "price": 2500000,
+      "tax": 0.1,
+      "flightId": 37,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 112,
+      "price": 11000000,
+      "tax": 0.1,
+      "flightId": 38,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 113,
+      "price": 8500000,
+      "tax": 0.1,
+      "flightId": 38,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 114,
+      "price": 3500000,
+      "tax": 0.1,
+      "flightId": 38,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 115,
+      "price": 11500000,
+      "tax": 0.1,
+      "flightId": 39,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 116,
+      "price": 9500000,
+      "tax": 0.1,
+      "flightId": 39,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 117,
+      "price": 4500000,
+      "tax": 0.1,
+      "flightId": 39,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 118,
+      "price": 12000000,
+      "tax": 0.1,
+      "flightId": 40,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 119,
+      "price": 10000000,
+      "tax": 0.1,
+      "flightId": 40,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 120,
+      "price": 5000000,
+      "tax": 0.1,
+      "flightId": 40,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 121,
+      "price": 12500000,
+      "tax": 0.1,
+      "flightId": 41,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 122,
+      "price": 10500000,
+      "tax": 0.1,
+      "flightId": 41,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 123,
+      "price": 5500000,
+      "tax": 0.1,
+      "flightId": 41,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 124,
+      "price": 13000000,
+      "tax": 0.1,
+      "flightId": 42,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 125,
+      "price": 11000000,
+      "tax": 0.1,
+      "flightId": 42,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 126,
+      "price": 6000000,
+      "tax": 0.1,
+      "flightId": 42,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 127,
+      "price": 13500000,
+      "tax": 0.1,
+      "flightId": 43,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 128,
+      "price": 11500000,
+      "tax": 0.1,
+      "flightId": 43,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 129,
+      "price": 6500000,
+      "tax": 0.1,
+      "flightId": 43,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 130,
+      "price": 14000000,
+      "tax": 0.1,
+      "flightId": 44,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 131,
+      "price": 12000000,
+      "tax": 0.1,
+      "flightId": 44,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 132,
+      "price": 7000000,
+      "tax": 0.1,
+      "flightId": 44,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 133,
+      "price": 14500000,
+      "tax": 0.1,
+      "flightId": 45,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 134,
+      "price": 12500000,
+      "tax": 0.1,
+      "flightId": 45,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 135,
+      "price": 7500000,
+      "tax": 0.1,
+      "flightId": 45,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 136,
+      "price": 15000000,
+      "tax": 0.1,
+      "flightId": 46,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 137,
+      "price": 13000000,
+      "tax": 0.1,
+      "flightId": 46,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 138,
+      "price": 8000000,
+      "tax": 0.1,
+      "flightId": 46,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 139,
+      "price": 15500000,
+      "tax": 0.1,
+      "flightId": 47,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 140,
+      "price": 13500000,
+      "tax": 0.1,
+      "flightId": 47,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 141,
+      "price": 8500000,
+      "tax": 0.1,
+      "flightId": 47,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 142,
+      "price": 16000000,
+      "tax": 0.1,
+      "flightId": 48,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 143,
+      "price": 14000000,
+      "tax": 0.1,
+      "flightId": 48,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 144,
+      "price": 9000000,
+      "tax": 0.1,
+      "flightId": 48,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 145,
+      "price": 16500000,
+      "tax": 0.1,
+      "flightId": 49,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 146,
+      "price": 14500000,
+      "tax": 0.1,
+      "flightId": 49,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 147,
+      "price": 9500000,
+      "tax": 0.1,
+      "flightId": 49,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 148,
+      "price": 17000000,
+      "tax": 0.1,
+      "flightId": 50,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 149,
+      "price": 15000000,
+      "tax": 0.1,
+      "flightId": 50,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 150,
+      "price": 10000000,
+      "tax": 0.1,
+      "flightId": 50,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 151,
+      "price": 17500000,
+      "tax": 0.1,
+      "flightId": 51,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 152,
+      "price": 15500000,
+      "tax": 0.1,
+      "flightId": 51,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 153,
+      "price": 10500000,
+      "tax": 0.1,
+      "flightId": 51,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 154,
+      "price": 18000000,
+      "tax": 0.1,
+      "flightId": 52,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 155,
+      "price": 16000000,
+      "tax": 0.1,
+      "flightId": 52,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 156,
+      "price": 11000000,
+      "tax": 0.1,
+      "flightId": 52,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 157,
+      "price": 18500000,
+      "tax": 0.1,
+      "flightId": 53,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 158,
+      "price": 16500000,
+      "tax": 0.1,
+      "flightId": 53,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 159,
+      "price": 11500000,
+      "tax": 0.1,
+      "flightId": 53,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 160,
+      "price": 19000000,
+      "tax": 0.1,
+      "flightId": 54,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 161,
+      "price": 17000000,
+      "tax": 0.1,
+      "flightId": 54,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 162,
+      "price": 12000000,
+      "tax": 0.1,
+      "flightId": 54,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 163,
+      "price": 19500000,
+      "tax": 0.1,
+      "flightId": 55,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 164,
+      "price": 17500000,
+      "tax": 0.1,
+      "flightId": 55,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 165,
+      "price": 12500000,
+      "tax": 0.1,
+      "flightId": 55,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 166,
+      "price": 20000000,
+      "tax": 0.1,
+      "flightId": 56,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 167,
+      "price": 18000000,
+      "tax": 0.1,
+      "flightId": 56,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 168,
+      "price": 13000000,
+      "tax": 0.1,
+      "flightId": 56,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 169,
+      "price": 20500000,
+      "tax": 0.1,
+      "flightId": 57,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 170,
+      "price": 18500000,
+      "tax": 0.1,
+      "flightId": 57,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 171,
+      "price": 13500000,
+      "tax": 0.1,
+      "flightId": 57,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 172,
+      "price": 21000000,
+      "tax": 0.1,
+      "flightId": 58,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 173,
+      "price": 19000000,
+      "tax": 0.1,
+      "flightId": 58,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 174,
+      "price": 14000000,
+      "tax": 0.1,
+      "flightId": 58,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 175,
+      "price": 21500000,
+      "tax": 0.1,
+      "flightId": 159,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 176,
+      "price": 19500000,
+      "tax": 0.1,
+      "flightId": 159,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 177,
+      "price": 14500000,
+      "tax": 0.1,
+      "flightId": 159,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 178,
+      "price": 22000000,
+      "tax": 0.1,
+      "flightId": 160,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 179,
+      "price": 20000000,
+      "tax": 0.1,
+      "flightId": 160,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 180,
+      "price": 15000000,
+      "tax": 0.1,
+      "flightId": 160,
+      "airplaneSeatClassId": 30
+    }
+  ]
+}
