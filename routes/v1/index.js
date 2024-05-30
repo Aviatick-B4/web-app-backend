@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const ticketRoutes = require('./ticket.routes');
 const Payment = require("../v1/payment.routes");
 
+router.use('/api/v1/tickets', ticketRoutes);
 router.use("/api/v1/payments", Payment);
 
 router.get('/payment-form/:bookingId', async (req, res) => {
