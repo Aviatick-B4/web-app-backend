@@ -34,7 +34,8 @@
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "prisma": "^5.14.0",
-    "swagger-ui-express": "^5.0.0"
+    "swagger-ui-express": "^5.0.0",
+    "yaml": "^2.4.2"
   },
   "main": "index.js",
   "license": "MIT"
