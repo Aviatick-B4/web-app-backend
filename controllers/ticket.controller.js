@@ -33,21 +33,44 @@ module.exports = {
           airplaneSeatClass: {
             type: seatClass
           },
-          flight: {
-            departureTime: {
-              gt: new Date(departureDate)
-            },
-            departureAirport: {
-              city: {
-                cityIata: originCity
+          OR: [
+            {
+              flight: {
+                departureTime: {
+                  gt: new Date(departureDate)
+                },
+                departureAirport: {
+                  city: {
+                    cityIata: originCity
+                  }
+                },
+                arrivalAirport: {
+                  city: {
+                    cityIata: destinationCity
+                  }
+                }
               }
             },
-            arrivalAirport: {
-              city: {
-                cityIata: destinationCity
-              }
-            }
-          }
+            returnDate
+              ? {
+                  flight: {
+                    departureTime: {
+                      gt: new Date(returnDate)
+                    },
+                    departureAirport: {
+                      city: {
+                        cityIata: destinationCity
+                      }
+                    },
+                    arrivalAirport: {
+                      city: {
+                        cityIata: originCity
+                      }
+                    }
+                  }
+                }
+              : {}
+          ]
         },
         include: {
           airplaneSeatClass: {
