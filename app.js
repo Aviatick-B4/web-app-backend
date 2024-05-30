@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require("cors");
 const PORT = process.env.PORT || 3000;
-const routes = require('./routes/v1/index');
+const router = require('./routes/v1/index');
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(routes);
+app.use(router);
 
 app.get('/', (req, res) => {
   res.send('<h1> Hello world </h1>');
