@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 const ticketRoutes = require('./ticket.routes');
 const Payment = require("../v1/payment.routes");
 
