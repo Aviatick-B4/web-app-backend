@@ -152,7 +152,7 @@ model AirplaneSeatClass {
   totalSeat  Int      @map("total_seat")
   airplane   Airplane @relation(fields: [airplaneId], references: [id])
   airplaneId Int      @map("airplane_id")
-  ticket     Ticket?
+  Ticket     Ticket[]
 
   @@map("airplane_seat_class")
 }
@@ -164,7 +164,7 @@ model Ticket {
   flight              Flight            @relation(fields: [flightId], references: [id])
   flightId            Int               @map("flight_id")
   airplaneSeatClass   AirplaneSeatClass @relation(fields: [airplaneSeatClassId], references: [id])
-  airplaneSeatClassId Int               @unique @map("airplane_seat_class_id")
+  airplaneSeatClassId Int               @map("airplane_seat_class_id")
 
   @@map("tickets")
 }
