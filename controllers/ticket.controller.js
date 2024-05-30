@@ -1,9 +1,12 @@
 const { PrismaClient } = require('@prisma/client');
+const getPagination = require('../utils/getPagination');
 const prisma = new PrismaClient();
 
 module.exports = {
   getAll: async (req, res, next) => {
     const {
+      page = 1,
+      limit = 10,
       from: originCity,
       to: destinationCity,
       departure: departureDate,
@@ -29,6 +32,8 @@ module.exports = {
 
     try {
       const tickets = await prisma.ticket.findMany({
+        skip: (parseInt(page) - 1) * parseInt(limit),
+        take: parseInt(limit),
         where: {
           airplaneSeatClass: {
             type: seatClass
@@ -111,10 +116,60 @@ module.exports = {
         }
       });
 
+      const count = await prisma.ticket.count({
+        where: {
+          airplaneSeatClass: {
+            type: seatClass
+          },
+          OR: [
+            {
+              flight: {
+                departureTime: {
+                  gt: new Date(departureDate)
+                },
+                departureAirport: {
+                  city: {
+                    cityIata: originCity
+                  }
+                },
+                arrivalAirport: {
+                  city: {
+                    cityIata: destinationCity
+                  }
+                }
+              }
+            },
+            returnDate
+              ? {
+                  flight: {
+                    departureTime: {
+                      gt: new Date(returnDate)
+                    },
+                    departureAirport: {
+                      city: {
+                        cityIata: destinationCity
+                      }
+                    },
+                    arrivalAirport: {
+                      city: {
+                        cityIata: originCity
+                      }
+                    }
+                  }
+                }
+              : {}
+          ]
+        }
+      });
+      const pagination = getPagination(req, parseInt(page), parseInt(limit), count);
+
       res.status(200).json({
         status: true,
         message: 'Flight ticket(s) fetched',
-        data: formattedTickets
+        data: {
+          tickets: formattedTickets,
+          pagination
+        }
       });
     } catch (error) {
       next(error);
