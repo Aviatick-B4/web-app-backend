@@ -4,7 +4,7 @@ info:
   description: API for handling payments using Midtrans and fake payment validation
   version: 1.0.0
 servers:
-  - url: http://localhost:3000/api/v1
+  - url: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1
 tags:
   - name: Payments
     description: Payment operations

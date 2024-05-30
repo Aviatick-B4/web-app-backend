@@ -10,7 +10,7 @@ const yaml = require("yaml");
 const fs = require("fs");
 const path = require("path");
 
-const swagger_path = path.resolve(__dirname, "../../documents/payment.yaml");
+const swagger_path = path.resolve(__dirname, "../../docs/v1.yaml");
 const customCssUrl =
   "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css";
 const customJs = [
