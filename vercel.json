@@ -1,16 +1,20 @@
 {
-  "version": 2,
-  "name": "Aviatick-Backend-Project",
-  "builds": [
-    {
-      "src": "app.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/app.js"
-    }
-  ]
+    "version": 2,
+    "name": "Aviatick-Backend-Project",
+    "builds": [
+        {
+            "src": "./app.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/v1/(.)",
+            "dest": "/app.js"
+        },
+        {
+            "src": "/(.)",
+            "dest": "/app.js"
+        }
+    ]
 }
