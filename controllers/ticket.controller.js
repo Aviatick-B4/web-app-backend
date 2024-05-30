@@ -99,10 +99,22 @@ module.exports = {
         }
       });
 
+      const formattedTickets = { departure: [], return: [] };
+      tickets.forEach((ticket) => {
+        const departureTime = ticket.flight.departureTime
+          .toISOString()
+          .slice(0, 10);
+        if (departureTime === returnDate) {
+          formattedTickets.return.push(ticket);
+        } else {
+          formattedTickets.departure.push(ticket);
+        }
+      });
+
       res.status(200).json({
         status: true,
         message: 'Flight ticket(s) fetched',
-        data: tickets
+        data: formattedTickets
       });
     } catch (error) {
       next(error);
