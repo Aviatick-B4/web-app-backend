@@ -31,52 +31,54 @@ module.exports = {
     }
 
     try {
-      const tickets = await prisma.ticket.findMany({
-        skip: (parseInt(page) - 1) * parseInt(limit),
-        take: parseInt(limit),
-        where: {
-          airplaneSeatClass: {
-            type: seatClass
-          },
-          OR: [
-            {
-              flight: {
-                departureTime: {
-                  gt: new Date(departureDate)
-                },
-                departureAirport: {
-                  city: {
-                    cityIata: originCity
-                  }
-                },
-                arrivalAirport: {
-                  city: {
-                    cityIata: destinationCity
-                  }
+      const searchFilter = {
+        airplaneSeatClass: {
+          type: seatClass
+        },
+        OR: [
+          {
+            flight: {
+              departureTime: {
+                gt: new Date(departureDate)
+              },
+              departureAirport: {
+                city: {
+                  cityIata: originCity
+                }
+              },
+              arrivalAirport: {
+                city: {
+                  cityIata: destinationCity
                 }
               }
-            },
-            returnDate
-              ? {
-                  flight: {
-                    departureTime: {
-                      gt: new Date(returnDate)
-                    },
-                    departureAirport: {
-                      city: {
-                        cityIata: destinationCity
-                      }
-                    },
-                    arrivalAirport: {
-                      city: {
-                        cityIata: originCity
-                      }
+            }
+          },
+          returnDate
+            ? {
+                flight: {
+                  departureTime: {
+                    gt: new Date(returnDate)
+                  },
+                  departureAirport: {
+                    city: {
+                      cityIata: destinationCity
+                    }
+                  },
+                  arrivalAirport: {
+                    city: {
+                      cityIata: originCity
                     }
                   }
                 }
-              : {}
-          ]
-        },
+              }
+            : {}
+        ]
+      };
+
+      const tickets = await prisma.ticket.findMany({
+        skip: (parseInt(page) - 1) * parseInt(limit),
+        take: parseInt(limit),
+        where: searchFilter,
         include: {
           airplaneSeatClass: {
             include: {
@@ -116,51 +118,7 @@ module.exports = {
         }
       });
 
-      const count = await prisma.ticket.count({
-        where: {
-          airplaneSeatClass: {
-            type: seatClass
-          },
-          OR: [
-            {
-              flight: {
-                departureTime: {
-                  gt: new Date(departureDate)
-                },
-                departureAirport: {
-                  city: {
-                    cityIata: originCity
-                  }
-                },
-                arrivalAirport: {
-                  city: {
-                    cityIata: destinationCity
-                  }
-                }
-              }
-            },
-            returnDate
-              ? {
-                  flight: {
-                    departureTime: {
-                      gt: new Date(returnDate)
-                    },
-                    departureAirport: {
-                      city: {
-                        cityIata: destinationCity
-                      }
-                    },
-                    arrivalAirport: {
-                      city: {
-                        cityIata: originCity
-                      }
-                    }
-                  }
-                }
-              : {}
-          ]
-        }
-      });
+      const count = await prisma.ticket.count({ where: searchFilter });
       const pagination = getPagination(req, parseInt(page), parseInt(limit), count);
 
       res.status(200).json({
