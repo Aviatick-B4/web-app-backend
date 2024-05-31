@@ -9,10 +9,20 @@ module.exports = {
         searchKeyword
           ? {
               where: {
-                name: {
-                  contains: searchKeyword,
-                  mode: 'insensitive'
-                }
+                OR: [
+                  {
+                    name: {
+                      contains: searchKeyword,
+                      mode: 'insensitive'
+                    }
+                  },
+                  {
+                    country: {
+                      contains: searchKeyword,
+                      mode: 'insensitive'
+                    }
+                  }
+                ]
               }
             }
           : {}
