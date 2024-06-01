@@ -1,15 +1,304 @@
 openapi: 3.0.0
 info:
-  title: Payment API
-  description: API for handling payments using Midtrans and fake payment validation
+  title: Aviatick API
+  description: API developed by Aviatick's team to handle all of the business logics inside the app.
   version: 1.0.0
 servers:
   - url: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1
 tags:
+  - name: Flights
+    description: Flight ticket search
   - name: Payments
     description: Payment operations
+components:
+  schemas:
+    Ticket:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        price:
+          type: integer
+          example: 1750000
+        tax:
+          type: number
+          example: 0.1
+        flightId:
+          type: number
+          example: 2
+        airplaneSeatClassId:
+          type: number
+          example: 3
+    Flight:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        flightNumber:
+          type: string
+          example: FL001
+        departureTime:
+          type: string
+          example: 2024-06-03T18:00:00.000Z
+        arrivalTime:
+          type: string
+          example: 2024-06-03T21:00:00.000Z
+        departureAirportId:
+          type: integer
+          example: 2
+        arrivalAirportId:
+          type: integer
+          example: 3
+    Airport:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Soekarno-Hatta International Airport
+        airportCode:
+          type: string
+          example: CGK
+        cityId:
+          type: integer
+          example: 2
+    City:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Jakarta
+        cityIata:
+          type: string
+          example: JKT
+        country:
+          type: string
+          example: Indonesia
+    AirplaneSeatClass:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        type:
+          type: string
+          example: Economy
+        totalSeat:
+          type: integer
+          example: 90
+        airplaneId:
+          type: integer
+          example: 2
+    Airplane:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        model:
+          type: string
+          example: Airbus A380
+        passengerCapacity:
+          type: integer
+          example: 150
+        baggageCapacity:
+          type: integer
+          example: 20
+        cabinCapacity:
+          type: integer
+          example: 7
+        inFlightCapacity:
+          type: string
+          example: WiFi, Entertainment, Meal, Extra Legroom, Lounge
+        airlineId:
+          type: integer
+          example: 2
+    Airline:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: AirAsia
+        airlineIata:
+          type: string
+          example: AK
+        logo_url:
+          type: string
+          example: https://images.squarespace-cdn.com/content/v1/5a5dbe4632601eb31977f947/1629703651716-J8RVOTD1XO3SDINHP2RG/unnamed+%281%29.png?format=500w
+        logo_id:
+          type: string
+          example: 5a5dbe4632601eb31977f947
 
 paths:
+  /tickets:
+    get:
+      tags:
+        - Flights
+      summary: Fetch flight tickets data based on the query params given
+      parameters:
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            example: 10
+          description: Number of data to return
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            example: 1
+          description: Number of iteration of data based on the limit
+        - in: query
+          name: from
+          required: true
+          schema:
+            type: string
+            example: BCN
+          description: Departure city IATA
+        - in: query
+          name: to
+          required: true
+          schema:
+            type: string
+            example: RIO
+          description: Destination city IATA
+        - in: query
+          name: departure
+          required: true
+          schema:
+            type: string
+            example: 2024-06-03
+          description: Departure date in YYYY-MM-DD format
+        - in: query
+          name: return
+          required: false
+          schema:
+            type: string
+            example: 2024-06-04
+          description: Return date in YYYY-MM-DD format
+        - in: query
+          name: passengers
+          required: true
+          schema:
+            type: integer
+            example: 4
+          description: Number of passengers
+        - in: query
+          name: seat_class
+          required: true
+          schema:
+            type: string
+            example: Economy
+          description: Type of seat class (First / Business / Economy)
+      responses:
+        '200':
+          description: Flight tickets retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Flight ticket(s) fetched
+                  data:
+                    type: object
+                    properties:
+                      tickets:
+                        type: object
+                        properties:
+                          departure:
+                            type: array
+                            items:
+                              allOf:
+                                - $ref: "#/components/schemas/Ticket"
+                              properties:
+                                airplaneSeatClass:
+                                  allOf:
+                                    - $ref: "#/components/schemas/AirplaneSeatClass"
+                                  properties:
+                                    airplane:
+                                      allOf:
+                                        - $ref: "#/components/schemas/Airplane"
+                                      properties:
+                                        airline:
+                                          $ref: "#/components/schemas/Airline"
+                                flight:
+                                  allOf:
+                                    - $ref: "#/components/schemas/Flight"
+                                  properties:
+                                    arrivalAirport:
+                                      allOf:
+                                        - $ref: "#/components/schemas/Airport"
+                                      properties:
+                                        city:
+                                          $ref: "#/components/schemas/City"
+                                    departureAirport:
+                                      allOf:
+                                        - $ref: "#/components/schemas/Airport"
+                                      properties:
+                                        city:
+                                          $ref: "#/components/schemas/City"
+                          return:
+                            type: array
+                            items:
+                              allOf:
+                                - $ref: "#/components/schemas/Ticket"
+                              properties:
+                                airplaneSeatClass:
+                                  allOf:
+                                    - $ref: "#/components/schemas/AirplaneSeatClass"
+                                  properties:
+                                    airplane:
+                                      allOf:
+                                        - $ref: "#/components/schemas/Airplane"
+                                      properties:
+                                        airline:
+                                          $ref: "#/components/schemas/Airline"
+                                flight:
+                                  allOf:
+                                    - $ref: "#/components/schemas/Flight"
+                                  properties:
+                                    arrivalAirport:
+                                      allOf:
+                                        - $ref: "#/components/schemas/Airport"
+                                      properties:
+                                        city:
+                                          $ref: "#/components/schemas/City"
+                                    departureAirport:
+                                      allOf:
+                                        - $ref: "#/components/schemas/Airport"
+                                      properties:
+                                        city:
+                                          $ref: "#/components/schemas/City"
+                      pagination:
+                        type: object
+                        properties:
+                          next:
+                            type: string
+                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets?limit=10&page=4&from=BCN&to=RIO&departure=2024-06-03&return=2024-06-04&passengers=2&seat_class=Economy
+                          prev:
+                            type: string
+                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets?limit=10&page=2&from=BCN&to=RIO&departure=2024-06-03&return=2024-06-04&passengers=2&seat_class=Economy
+                          total:
+                            type: integer
+                            example: 50
+
   /payments/midtrans/token/{bookingId}:
     post:
       tags:
