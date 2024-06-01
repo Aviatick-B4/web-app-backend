@@ -3,11 +3,11 @@ Content-Type: application/json
 
 {
     "userId": 2,
-    "flightId": 1,
+    "flightId": 160,
     "adult": 2,
     "child": 0,
     "baby": 1,
-    "seatClass": 1,
+    "seatClass": "Business",
     "passenger": [
         {
             "title": "Mr",
@@ -52,7 +52,10 @@ Content-Type: application/json
 GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history
 
 ### GET DETAIL 
-GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history/4
+GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history/3
+
+### GET DETAIL 
+GET http://localhost:3000/api/v1/bookings/booking-history
 
 ###
 POST https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/new-booking

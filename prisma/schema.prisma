@@ -43,6 +43,7 @@ model Booking {
   status      String      @default("UNPAID")
   expiredPaid DateTime    @map("expired_paid")
   totalPrice  Float       @map("total_price")
+  bookingTax  Float       @map("booking_tax")
   flight      Flight      @relation(fields: [flightId], references: [id])
   flightId    Int         @map("flight_id")
   user        User        @relation(fields: [userId], references: [id])
@@ -160,7 +161,6 @@ model AirplaneSeatClass {
 model Ticket {
   id                  Int               @id @default(autoincrement())
   price               Float
-  tax                 Float
   flight              Flight            @relation(fields: [flightId], references: [id])
   flightId            Int               @map("flight_id")
   airplaneSeatClass   AirplaneSeatClass @relation(fields: [airplaneSeatClassId], references: [id])
