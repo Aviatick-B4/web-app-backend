@@ -42,6 +42,7 @@ model Booking {
   bookingCode String      @map("booking_code")
   status      String      @default("UNPAID")
   expiredPaid DateTime    @map("expired_paid")
+  createdAt   DateTime    @map("created_at")
   totalPrice  Float       @map("total_price")
   bookingTax  Float       @map("booking_tax")
   flight      Flight      @relation(fields: [flightId], references: [id])

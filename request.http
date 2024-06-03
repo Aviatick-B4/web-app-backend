@@ -1,3 +1,6 @@
+##############################################
+################## LOCAL ####################
+##############################################
 POST http://localhost:3000/api/v1/bookings/new-booking
 Content-Type: application/json
 
@@ -48,16 +51,27 @@ Content-Type: application/json
     ]
 }
 
-### GET ALL 
-GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history
-
-### GET DETAIL 
-GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history/3
-
-### GET DETAIL 
+### GET ALL BOOKING HISTORY 
 GET http://localhost:3000/api/v1/bookings/booking-history
 
-###
+### GET BOOKING BY BOOKING CODE
+GET http://localhost:3000/api/v1/bookings/booking-history?search=d
+
+### GET BOOKING BY BOOKING ID
+GET http://localhost:3000/api/v1/bookings/booking-history/2
+
+### GET BOOKING BY CREATED AT BOOKING
+GET http://localhost:3000/api/v1/bookings/booking-history?date=2024-06-03
+
+
+
+##############################################
+################## DEPLOY ####################
+##############################################
+
+
+
+### CREATE BOOKING
 POST https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/new-booking
 Content-Type: application/json
 
@@ -67,7 +81,7 @@ Content-Type: application/json
     "adult": 2,
     "child": 0,
     "baby": 1,
-    "seatClass": 1,
+    "seatClass": "Economy",
     "passenger": [
         {
             "title": "Mr",
@@ -107,3 +121,11 @@ Content-Type: application/json
         }
     ]
 }
+
+### GET ALL 
+GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history
+
+### GET DETAIL 
+GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history/3
+
+

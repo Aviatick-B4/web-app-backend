@@ -57,7 +57,7 @@ module.exports = {
 
         const total_price = ticket.price * (totalPassengers - baby);
         const tax = Math.round(total_price * 0.1);
-        const expiredPaid = new Date(Date.now() + 60 * 60 * 1000);
+        const expiredPaid = new Date(Date.now() + 15 * 60 * 1000);
 
         const newBooking = await prisma.booking.create({
           data: {
@@ -67,6 +67,7 @@ module.exports = {
             expiredPaid: expiredPaid,
             totalPrice: total_price + tax,
             bookingTax: tax,
+            createdAt: new Date(),
             passenger: {
               create: passenger.map((p) => ({
                 title: p.title,
@@ -95,6 +96,7 @@ module.exports = {
           bookingTax: tax,
           status: newBooking.status,
           paid_before: newBooking.expiredPaid,
+          created_at: newBooking.createdAt,
         };
       });
 
@@ -120,6 +122,7 @@ module.exports = {
   getAll: async (req, res, next) => {
     try {
       const userId = req.body.userId;
+      const { search, date } = req.query;
 
       if (!userId) {
         return res.status(400).json({
@@ -129,8 +132,36 @@ module.exports = {
         });
       }
 
+      let bookingFilter = { userId: userId };
+
+      if (search) {
+        bookingFilter.bookingCode = {
+          contains: search,
+          mode: 'insensitive',
+        };
+      }
+
+      if (date) {
+        const parsedDate = new Date(date);
+        if (!isNaN(parsedDate)) {
+          const nextDay = new Date(parsedDate);
+          nextDay.setDate(parsedDate.getDate() + 1);
+
+          bookingFilter.createdAt = {
+            gte: parsedDate,
+            lt: nextDay,
+          };
+        } else {
+          return res.status(400).json({
+            status: false,
+            message: 'Invalid date format',
+            data: null,
+          });
+        }
+      }
+
       const bookings = await prisma.booking.findMany({
-        where: { userId: userId },
+        where: bookingFilter,
         include: {
           flight: {
             include: {
