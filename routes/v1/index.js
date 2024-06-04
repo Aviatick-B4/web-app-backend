@@ -4,8 +4,9 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const authRoutes = require('./auth.routes');
 const ticketRoutes = require('./ticket.routes');
+const paymentRoutes = require('./payment.routes');
+const bookingRoutes = require('./booking.routes');
 const cityRoutes = require('./city.routes');
-const Payment = require("../v1/payment.routes");
 
 const swaggerUI = require('swagger-ui-express');
 const yaml = require('yaml');
@@ -23,6 +24,8 @@ const customJs = [
 const file = fs.readFileSync(swagger_path, 'utf-8');
 
 const swaggerDocument = yaml.parse(file);
+
+
 router.use(
   '/api/v1/api-docs',
   swaggerUI.serve,
@@ -32,13 +35,11 @@ router.use(
 router.use('/api/v1/auth', authRoutes);
 router.use('/api/v1/cities', cityRoutes);
 router.use('/api/v1/tickets', ticketRoutes);
-router.use('/api/v1/payments', Payment);
+router.use('/api/v1/payments', paymentRoutes);
+router.use('/api/v1/bookings', bookingRoutes);
+router.use('/api/v1/auth', authRoutes)
 
-router.get('/reset-password', async (req, res) => {
-  const { token } = req.query;
-  res.render('resetPassword', { token })
-});
-
+// Endpoint EJS View
 router.get('/payment-form/:bookingId', async (req, res) => {
   const bookingId = parseInt(req.params.bookingId);
   const booking = await prisma.booking.findUnique({
@@ -110,8 +111,5 @@ router.get('/payment-fake/:bookingId', async (req, res) => {
   });
 });
 
-const Booking = require('../v1/booking.routes');
-
-router.use('/api/v1/bookings', Booking);
 
 module.exports = router;

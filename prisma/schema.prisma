@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -15,15 +9,16 @@ datasource db {
 
 model User {
   id              Int            @id @default(autoincrement())
-  fullName        String         @map("full_name")
+  fullName        String?        @map("full_name")
   familyName      String?        @map("family_name")
-  phoneNumber     String         @map("phone_number")
+  phoneNumber     String?        @map("phone_number")
   email           String         @unique
-  password        String
+  password        String?
   identityType    String?        @map("identity_type")
   identityNumber  String?        @map("identity_number")
   nationality     String?
   emailIsVerified Boolean        @default(false) @map("email_isverified")
+  googleId        String?
   role            Role           @default(USER)
   booking         Booking[]
   otp             Otp?

@@ -154,8 +154,8 @@ module.exports = {
         // Create a notification for the user
       const notification = await prisma.notification.create({
         data: {
-          title: 'Pembayaran Berhasil',
-          message: `Pembayaran untuk booking ID ${bookingId} telah berhasil.`,
+          title: 'Payment Successfully',
+          message: `Payment for booking ID ${bookingId} has been successfully.`,
           userId: updatedBooking.userId,
           createdAt: new Date(),
         },
@@ -237,8 +237,8 @@ module.exports = {
       // Create a notification for the user
       await prisma.notification.create({
         data: {
-          title: 'Pembayaran Berhasil',
-          message: `Pembayaran untuk booking ID ${bookingId} telah berhasil.`,
+          title: 'Payment Successfully',
+          message: `Payment for booking ID ${bookingId} has been successfully.`,
           userId: booking.userId,
           createdAt: new Date(),
         },
