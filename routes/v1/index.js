@@ -3,7 +3,9 @@ const router = express.Router();
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const ticketRoutes = require('./ticket.routes');
-const Payment = require("../v1/payment.routes");
+const paymentRoutes = require("../v1/payment.routes");
+const bookingRoutes = require('../v1/booking.routes');
+const authRoutes = require('../v1/auth.routes')
 
 const swaggerUI = require("swagger-ui-express");
 const yaml = require("yaml");
@@ -21,6 +23,8 @@ const customJs = [
 const file = fs.readFileSync(swagger_path, "utf-8");
 
 const swaggerDocument = yaml.parse(file);
+
+
 router.use(
   "/api/v1/api-docs",
   swaggerUI.serve,
@@ -29,8 +33,11 @@ router.use(
 
 
 router.use('/api/v1/tickets', ticketRoutes);
-router.use("/api/v1/payments", Payment);
+router.use("/api/v1/payments", paymentRoutes);
+router.use('/api/v1/bookings', bookingRoutes);
+router.use('/api/v1/auth', authRoutes)
 
+// Endpoint EJS View
 router.get('/payment-form/:bookingId', async (req, res) => {
     const bookingId = parseInt(req.params.bookingId);
     const booking = await prisma.booking.findUnique({
@@ -102,8 +109,5 @@ router.get('/payment-form/:bookingId', async (req, res) => {
     });
   });
 
-const Booking = require('../v1/booking.routes');
-
-router.use('/api/v1/bookings', Booking);
 
 module.exports = router;
