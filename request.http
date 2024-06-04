@@ -14,7 +14,7 @@ Content-Type: application/json
     "passenger": [
         {
             "title": "Mr",
-            "fullName": "Kibow",
+            "fullName": "By",
             "familyName": "Ewok",
             "birthDate": "1980-01-01T00:00:00.000Z",
             "nationality": "Indonesia",
@@ -26,7 +26,7 @@ Content-Type: application/json
         },
         {
             "title": "Mrs",
-            "fullName": "Puan",
+            "fullName": "Mega",
             "familyName": "Maharani",
             "birthDate": "1985-02-01T00:00:00.000Z",
             "nationality": "Indonesia",
@@ -51,8 +51,22 @@ Content-Type: application/json
     ]
 }
 
+<<<<<<< HEAD
+### login
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "emailOrPhoneNumber": "john@gmail.com",
+    "password": "123456"
+}
+
+### GET ALL 
+GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history
+=======
 ### GET ALL BOOKING HISTORY 
 GET http://localhost:3000/api/v1/bookings/booking-history
+>>>>>>> 739d6942332b0a01aacd0b973264463b3e82bba0
 
 ### GET BOOKING BY BOOKING CODE
 GET http://localhost:3000/api/v1/bookings/booking-history?search=d
