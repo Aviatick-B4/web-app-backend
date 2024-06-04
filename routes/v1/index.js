@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const authRoutes = require('./auth.routes');
 const ticketRoutes = require('./ticket.routes');
 const cityRoutes = require('./city.routes');
 const Payment = require("../v1/payment.routes");
@@ -28,6 +29,7 @@ router.use(
   swaggerUI.setup(swaggerDocument, { customCssUrl, customJs })
 );
 
+router.use('/api/v1/auth', authRoutes);
 router.use('/api/v1/cities', cityRoutes);
 router.use('/api/v1/tickets', ticketRoutes);
 router.use('/api/v1/payments', Payment);
