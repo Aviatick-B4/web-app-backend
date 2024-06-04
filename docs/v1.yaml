@@ -5,7 +5,10 @@ info:
   version: 1.0.0
 servers:
   - url: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1
+  - url: http://localhost:3000/api/v1
 tags:
+  - name: Cities
+    description: City ticket search
   - name: Flights
     description: Flight ticket search
   - name: Payments
@@ -142,6 +145,51 @@ components:
           example: 5a5dbe4632601eb31977f947
 
 paths:
+  /cities:
+    get:
+      tags:
+        - Cities
+      summary: Search cities data based on on city or country name
+      parameters:
+        - in: query
+          name: search
+          required: true
+          schema:
+            type: string
+            example: Denpasar
+          description: City or country name
+      responses:
+        '200':
+          description: Cities fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Cities fetched
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: Denpasar
+                        cityIata:
+                          type: string
+                          example: DPS
+                        country:
+                          type: string
+                          example: Indonesia
+
   /tickets:
     get:
       tags:
