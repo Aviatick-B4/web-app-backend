@@ -34,6 +34,11 @@ router.use('/api/v1/cities', cityRoutes);
 router.use('/api/v1/tickets', ticketRoutes);
 router.use('/api/v1/payments', Payment);
 
+router.get('/reset-password', async (req, res) => {
+  const { token } = req.query;
+  res.render('resetPassword', { token })
+});
+
 router.get('/payment-form/:bookingId', async (req, res) => {
   const bookingId = parseInt(req.params.bookingId);
   const booking = await prisma.booking.findUnique({
