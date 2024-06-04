@@ -5,7 +5,10 @@ info:
   version: 1.0.0
 servers:
   - url: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1
+  - url: http://localhost:3000/api/v1
 tags:
+  - name: Cities
+    description: City ticket search
   - name: Flights
     description: Flight ticket search
   - name: Payments
@@ -142,6 +145,51 @@ components:
           example: 5a5dbe4632601eb31977f947
 
 paths:
+  /cities:
+    get:
+      tags:
+        - Cities
+      summary: Search cities data based on on city or country name
+      parameters:
+        - in: query
+          name: search
+          required: true
+          schema:
+            type: string
+            example: Denpasar
+          description: City or country name
+      responses:
+        200:
+          description: Cities fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Cities fetched
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: Denpasar
+                        cityIata:
+                          type: string
+                          example: DPS
+                        country:
+                          type: string
+                          example: Indonesia
+
   /tickets:
     get:
       tags:
@@ -205,7 +253,7 @@ paths:
             example: Economy
           description: Type of seat class (First / Business / Economy)
       responses:
-        '200':
+        200:
           description: Flight tickets retrieved successfully
           content:
             application/json:
@@ -323,7 +371,7 @@ paths:
                   type: string
                   example: credit_card
       responses:
-        '200':
+        200:
           description: Token retrieved successfully
           content:
             application/json:
@@ -341,7 +389,7 @@ paths:
                       token:
                         type: string
                         example: 2304b11f-fd1f-425e-b481-ced5e3f349c6
-        '400':
+        400:
           description: Invalid request
           content:
             application/json:
@@ -356,7 +404,7 @@ paths:
                     example: Invalid booking ID
                   data:
                     example: ~
-        '404':
+        404:
           description: Booking not found
           content:
             application/json:
@@ -371,7 +419,7 @@ paths:
                     example: Booking Not Found With Id 100
                   data:
                     example: ~
-        '500':
+        500:
           description: Server error
           content:
             application/json:
@@ -415,7 +463,7 @@ paths:
                   type: string
                   example: 'credit_card'
       responses:
-        '200':
+        200:
           description: Payment confirmed and booking status updated successfully
           content:
             application/json:
@@ -436,7 +484,7 @@ paths:
                       updatedBookingId:
                         type: integer
                         example: 1
-        '400':
+        400:
           description: Invalid request
           content:
             application/json:
@@ -449,7 +497,7 @@ paths:
                   message:
                     type: string
                     example: "Transaction is not successful. Status: pending"
-        '500':
+        500:
           description: Server error
           content:
             application/json:
@@ -499,7 +547,7 @@ paths:
                   type: string
                   example: 12/24
       responses:
-        '200':
+        200:
           description: Payment validated successfully
           content:
             application/json:
@@ -555,7 +603,7 @@ paths:
                           bookingId:
                             type: integer
                             example: 1
-        '400':
+        400:
           description: Invalid Booking ID
           content:
             application/json:
@@ -570,7 +618,7 @@ paths:
                     example: Invalid booking ID
                   data:
                     example: ~
-        '404':
+        404:
           description: Booking not found
           content:
             application/json:
@@ -585,7 +633,7 @@ paths:
                     example: Booking not found
                   data:
                     example: ~
-        '500':
+        500:
           description: Server error
           content:
             application/json:
