@@ -466,7 +466,7 @@ paths:
     get:
       tags:
         - Cities
-      summary: Search cities data based on on city or country name
+      summary: Fetch cities data based on city or country name
       parameters:
         - in: query
           name: search
