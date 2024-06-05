@@ -324,8 +324,6 @@ components:
                 items:
                   $ref: '#/components/schemas/Passenger'
 
-    
-
 paths:
   /auth/login:
     post:
@@ -462,6 +460,55 @@ paths:
                           token:
                               type: integer
                               example: 2304b11f-fd1f-425e-b481-ced5e3f349c6
+  /auth/forgot-password:
+    post:
+      tags:
+        - Auth
+      summary: Sends reset password email confirmation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: john@gmail.com
+      responses:
+        200:
+          description: Reset password confirmation email sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Email sent to john@gmail.com
+                  data:
+                    example: null
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    oneOf:
+                      - example: Field 'email' is required
+                      - example: Account with the corresponding email does not exist
+                  data:
+                    example: null
+
   /cities:
     get:
       tags:
