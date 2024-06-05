@@ -508,6 +508,88 @@ paths:
                       - example: Account with the corresponding email does not exist
                   data:
                     example: null
+  /auth/reset-password:
+    post:
+      tags:
+        - Auth
+      summary: Update user's password
+      parameters:
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE3NTExMzY5fQ.SQrgwd1qodyZWVkoR_2tGXNN-k3PnZXkDp_wqnfL0zM
+          description: Token retrieved from reset password confirmation email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: Aviatick@BinarAcademy2024!
+      responses:
+        200:
+          description: Password successfully updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Password updated
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      fullName:
+                        type: string
+                        example: John Doe
+                      email:
+                        type: string
+                        example: john@gmail.com
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    oneOf:
+                      - example: Token must be provided
+                      - example: Field 'password' is required
+                      - example: Invalid token
+                  data:
+                    example: null
+        401:
+          description: Unauthorized (invalid token)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Unauthorized
+                  data:
+                    example: null
 
   /cities:
     get:
