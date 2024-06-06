@@ -4,10 +4,170 @@ const bcrypt = require('bcrypt');
 const { generateHash } = require('../libs/bcrypt');
 const sendEmail = require('../utils/sendEmail');
 const getRenderedHtml = require('../utils/getRenderedHtml');
+const otp = require('../utils/generateOtp');
 const prisma = new PrismaClient();
 const { JWT_SECRET_KEY } = process.env;
 
 module.exports = {
+  register: async (req, res, next) => {
+    try {
+      let { fullName, email, phoneNumber, password } = req.body;
+
+      if (!fullName || !email || !password || !phoneNumber) {
+        return res.status(400).json({
+          status: false,
+          message: 'All required fields must be filled',
+          data: null,
+        });
+      }
+
+      let exist = await prisma.user.findUnique({ where: { email } });
+
+      if (exist) {
+        return res.status(401).json({
+          status: false,
+          message: 'Email already used!',
+          data: null,
+        });
+      }
+
+      let encryptedPassword = await bcrypt.hash(password, 10);
+
+      let user = await prisma.user.create({
+        data: {
+          fullName,
+          phoneNumber,
+          email,
+          password: encryptedPassword,
+          emailIsVerified: false,
+        },
+      });
+
+      const otpCode = otp.generateOTP().toString();
+
+      await prisma.otp.create({
+        data: {
+          userId: user.id,
+          code: otpCode,
+          createdAt: new Date(Date.now()),
+        },
+      });
+
+      await prisma.notification.create({
+        data: {
+          title: 'Success Register',
+          message: 'Akun berhasil dibuat!',
+          userId: user.id,
+          createdAt: new Date(Date.now()),
+        },
+      });
+
+      const html = getRenderedHtml('otp-email', {
+        fullName: user.fullName,
+        otp: otpCode,
+      });
+
+      await sendEmail({ to: email, subject: 'Your OTP Code', html });
+
+      return res.status(200).json({
+        status: true,
+        message: 'User registered successfully',
+        data: user,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  verifyOtp: async (req, res, next) => {
+    try {
+      let { email, otp } = req.body;
+
+      let user = await prisma.user.findUnique({ where: { email } });
+
+      if (!user) {
+        return res.status(400).json({
+          status: false,
+          message: 'Invalid email or OTP',
+          data: null,
+        });
+      }
+
+      let otpRecord = await prisma.otp.findUnique({
+        where: { userId: user.id },
+      });
+
+      if (otpRecord.code.toString() !== otp.toString()) {
+        return res.status(401).json({
+          status: false,
+          message: 'Invalid OTP',
+          data: null,
+        });
+      }
+
+      await prisma.otp.delete({ where: { userId: user.id } });
+
+      const updatedUser = await prisma.user.update({
+        where: { id: user.id },
+        data: { emailIsVerified: true },
+      });
+
+      return res.status(200).json({
+        status: true,
+        message: 'OTP verified successfully',
+        data: updatedUser,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  resendOtp: async (req, res, next) => {
+    try {
+      let { email } = req.body;
+
+      if (!email) {
+        return res.status(400).json({
+          status: false,
+          message: 'Email is required',
+          data: null,
+        });
+      }
+
+      const user = await prisma.user.findFirst({ where: { email } });
+
+      if (!user) {
+        return res.status(401).json({
+          status: false,
+          message: 'User not found',
+          data: null,
+        });
+      }
+
+      const newOtp = otp.generateOTP().toString();
+
+      const updateOtpUser = await prisma.otp.update({
+        where: { userId: user.id },
+        data: { code: newOtp, createdAt: new Date() },
+      });
+
+      const html = getRenderedHtml('otp-email', {
+        fullName: user.fullName,
+        otp: newOtp,
+      });
+
+      await sendEmail({ to: email, subject: 'Your OTP Code', html });
+
+      return res.status(200).json({
+        status: true,
+        message: 'OTP resent successfully',
+        data: updateOtpUser,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
   login: async (req, res, next) => {
     try {
       let { emailOrPhoneNumber, password } = req.body;
@@ -109,20 +269,20 @@ module.exports = {
         return res.status(400).json({
           status: false,
           message: `Field 'email' is required`,
-          data: null
+          data: null,
         });
       }
 
       const user = await prisma.user.findUnique({
         where: { email },
-        select: { id: true, fullName: true }
+        select: { id: true, fullName: true },
       });
-  
+
       if (!user) {
         return res.status(400).json({
           status: false,
           message: 'Account with the corresponding email does not exist',
-          data: null
+          data: null,
         });
       }
 
@@ -130,19 +290,19 @@ module.exports = {
       const baseUrl = `${req.protocol}://${req.get('host')}`;
       const html = getRenderedHtml('resetPasswordEmail', {
         name: user.fullName,
-        resetPasswordUrl: `${baseUrl}/reset-password?token=${token}`
+        resetPasswordUrl: `${baseUrl}/reset-password?token=${token}`,
       });
 
       await sendEmail({
         to: 'ramaastra333@gmail.com',
         subject: 'Aviatick - Reset Password Confirmation',
-        html
+        html,
       });
 
       res.status(200).json({
         status: true,
         message: `Email sent to ${email}`,
-        data: null
+        data: null,
       });
     } catch (error) {
       next(error);
@@ -155,7 +315,7 @@ module.exports = {
         res.status(400).json({
           status: false,
           message: 'Token must be provided',
-          data: null
+          data: null,
         });
       }
 
@@ -164,7 +324,7 @@ module.exports = {
         return res.status(400).json({
           status: false,
           message: `Field 'password' is required`,
-          data: null
+          data: null,
         });
       }
 
@@ -173,20 +333,20 @@ module.exports = {
           return res.status(401).json({
             status: false,
             message: 'Unauthorized',
-            data: null
+            data: null,
           });
         }
 
         const { email } = await prisma.user.findFirst({
           where: { id: data.id },
-          select: { email: true }
+          select: { email: true },
         });
 
         if (!email) {
           return res.status(400).json({
             status: false,
             message: 'Invalid token',
-            data: null
+            data: null,
           });
         }
 
@@ -197,18 +357,54 @@ module.exports = {
           select: {
             id: true,
             fullName: true,
-            email: true
-          }
+            email: true,
+          },
         });
 
         res.status(200).json({
           status: true,
           message: 'Password updated',
-          data: user
-        })
+          data: user,
+        });
       });
     } catch (error) {
       next(error);
     }
-  }
-}
+  },
+
+  deleteUser: async (req, res, next) => {
+    try {
+      const id = Number(req.params.id);
+
+      const user = await prisma.user.findUnique({
+        where: { id },
+      });
+
+      if (!user) {
+        return res.status(404).json({
+          status: false,
+          message: 'User not found',
+          data: null,
+        });
+      }
+
+      await prisma.notification.deleteMany({
+        where: { userId: id },
+      });
+
+      await prisma.otp.deleteMany({
+        where: { userId: id },
+      });
+
+      await prisma.user.delete({ where: { id } });
+
+      return res.status(200).json({
+        status: true,
+        message: 'User deleted successfully',
+        data: null,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+};

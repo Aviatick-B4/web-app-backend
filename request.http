@@ -77,6 +77,37 @@ GET http://localhost:3000/api/v1/bookings/booking-history/2
 ### GET BOOKING BY CREATED AT BOOKING
 GET http://localhost:3000/api/v1/bookings/booking-history?date=2024-06-03
 
+### REGISTER USER
+POST http://localhost:3000/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "fullName": "Kibow Aja",
+    "email": "21082010208@student.upnjatim.ac.id",
+    "phoneNumber": "082123468464",
+    "password": "123456"
+}
+
+### VERIFY OTP
+POST http://localhost:3000/api/v1/auth/verify-otp
+Content-Type: application/json
+
+{
+    "email": "21082010208@student.upnjatim.ac.id",
+    "otp": "233629"
+}
+
+### RESEND OTP
+POST http://localhost:3000/api/v1/auth/resend-otp
+Content-Type: application/json
+
+{
+    "email": "21082010208@student.upnjatim.ac.id"
+}
+
+### DELETE USER
+DELETE  http://localhost:3000/api/v1/auth/users/32
+
 ### POST PROMO
 POST http://localhost:3000/api/v1/promos
 Content-Type: application/json
