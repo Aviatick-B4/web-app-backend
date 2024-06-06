@@ -686,21 +686,7 @@ paths:
                           token:
                               type: integer
                               example: 2304b11f-fd1f-425e-b481-ced5e3f349c6
-  /users/{user_id}:
-    delete:
-      tags:
-        - Auth
-      summary: Delete user
-      parameters:
-      - schema:
-          type: integer
-        name: userId
-        in: path
-        required: true
-        description: User ID
-      responses:
-        200:
-          description: User deleted successfully
+  
   /auth/forgot-password:
     post:
       tags:
@@ -749,6 +735,7 @@ paths:
                       - example: Account with the corresponding email does not exist
                   data:
                     example: null
+
   /auth/reset-password:
     post:
       tags:
@@ -785,11 +772,6 @@ paths:
                     example: true
                   message:
                     type: string
-                    example: User deleted successfully
-                  data: 
-                    example: ~
-        400:
-          description: User not found
                     example: Password updated
                   data:
                     type: object
@@ -835,7 +817,51 @@ paths:
                     type: string
                     example: User not found
                   data:
-                    example: Unauthorized
+                    example: null
+                    
+  /users/{user_id}:
+    delete:
+      tags:
+        - Auth
+      summary: Delete user
+      parameters:
+      - schema:
+          type: integer
+        name: userId
+        in: path
+        required: true
+        description: User ID
+      responses:
+       200:
+        description: User deleted successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: boolean
+                  example: true
+                message:
+                  type: string
+                  example: User deleted successfully
+                data: 
+                  example: null
+       400:
+        description: User deleted successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: boolean
+                  example: false
+                message:
+                  type: string
+                  example: User not found
+                data: 
+                  example: null
 
   /cities:
     get:
