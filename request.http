@@ -51,6 +51,7 @@ Content-Type: application/json
     ]
 }
 
+
 ### login
 POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
@@ -62,6 +63,10 @@ Content-Type: application/json
 
 ### GET ALL 
 GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history
+=======
+### GET ALL BOOKING HISTORY 
+GET http://localhost:3000/api/v1/bookings/booking-history
+
 
 ### GET BOOKING BY BOOKING CODE
 GET http://localhost:3000/api/v1/bookings/booking-history?search=d
@@ -103,7 +108,30 @@ Content-Type: application/json
 ### DELETE USER
 DELETE  http://localhost:3000/api/v1/auth/users/32
 
+### POST PROMO
+POST http://localhost:3000/api/v1/promos
+Content-Type: application/json
 
+{
+    "name": "Promo test5 Aviatick",
+    "discount": 0.12,
+    "validFrom": "2024-06-01 00:00:00",
+    "validUntil": "2024-06-06 23:33:00"
+}
+
+### UPDATE TICKET WITH PROMO
+PUT http://localhost:3000/api/v1/promos/6
+Content-Type: application/json
+
+{
+    "promoId": 4
+}
+
+###
+PUT http://localhost:3000/api/v1/promos/update-status
+
+### GET ALL PROMO
+GET http://localhost:3000/api/v1/promos
 
 ##############################################
 ################## DEPLOY ####################

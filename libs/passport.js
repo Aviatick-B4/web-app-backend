@@ -12,7 +12,7 @@ passport.use(
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: GOOGLE_REDIRECT_URL,
     },
-    async function (accessToken, refreshToken, profile, done) {
+    async function (accessToken, GOOGLE_REFRESH_TOKEN, profile, done) {
       if (profile.emails && profile.emails.length > 0) {
         const email = profile.emails[0].value;
 

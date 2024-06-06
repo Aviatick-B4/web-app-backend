@@ -15,6 +15,8 @@ tags:
     description: Flight ticket search
   - name: Bookings
     description: Booking operations
+  - name: Promos
+    description: Promo operations
   - name: Payments
     description: Payment operations
 components:
@@ -284,6 +286,26 @@ components:
         bookingId:
           type: integer
           example: 1
+    Promo:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Promo 11.11 Aviatick"
+        discount:
+          type: number
+          example: 0.11
+        validFrom:
+          type: string
+          format: date-time
+          example: "2024-06-11T00:00:00.000Z"
+        validUntil:
+          type: string
+          format: date-time
+          example: "2024-06-21T00:00:00.000Z"
   requestBodies:
     RegisterUser:
       content:
@@ -345,212 +367,83 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Passenger'
+    NewPromo:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: "Promo 11.11 Aviatick"
+              discount:
+                type: number
+                example: 0.11
+              validFrom:
+                type: string
+                format: date-time
+                example: "2024-06-11T00:00:00.000Z"
+              validUntil:
+                type: string
+                format: date-time
+                example: "2024-06-21T00:00:00.000Z"
+    NewPayment:
+      required: true
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                paymentMethod:
+                  type: string
+                  example: credit_card
+                cardNumber:
+                  type: string
+                  example: 4515678901234
+                cardHolderName:
+                  type: string
+                  example: John Doe
+                cvv:
+                  type: string
+                  example: 123
+                expiryDate:
+                  type: string
+                  example: 12/24
+    RequestTokenMidtrans:
+      required: true
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                paymentMethod:
+                  type: string
+                  example: Midtrans
+    MidtransConfirm:
+      required: true
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_id:
+                  type: string
+                  example: 'BOOKING-1-123456789'
+                transaction_id:
+                  type: string
+                  example: 'TRANS123'
+                transaction_status:
+                  type: string
+                  example: 'capture'
+                gross_amount:
+                  type: number
+                  example: 100000
+                payment_type:
+                  type: string
+                  example: 'credit_cart'
 
 paths:
-  /auth/register:
-    post:
-      tags:
-        - Auth
-      summary: Register a new user
-      requestBody:
-        required: true
-        $ref: "#/components/requestBodies/RegisterUser"
-      responses:
-        200:
-          description: User registered successfully
-          content:
-            application/json:
-                schema:
-                  type: object
-                  properties:
-                    status:
-                      type: boolean
-                      example: true
-                    message:
-                      type: string
-                      example: User registered successfully
-                    data:
-                      type: object
-                      properties:
-                        user:
-                          allOf:
-                            - $ref: "#/components/schemas/User"
-        400:
-          description: Fields must be filled
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: All required fields must be filled
-                  data:
-                    example: ~
-        401:
-          description: Email already used
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Email already used!
-                  data:
-                    example: ~
-
-  /auth/verify-otp:
-    post:
-      tags:
-        - Auth
-      summary: Verify OTP User
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                  example: kibowaja@gmail.com
-                otp:
-                  type: string
-                  example: 233629
-      responses:
-        200: 
-          description: OTP verified successfully
-          content:
-            application/json:
-                schema:
-                  type: object
-                  properties:
-                    status:
-                      type: boolean
-                      example: true
-                    message:
-                      type: string
-                      example: OTP verified successfully
-                    data:
-                      type: object
-                      properties:
-                        user:
-                          allOf:
-                            - $ref: "#/components/schemas/User"
-        400:
-          description: Invalid email or OTP
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Invalid email or OTP
-                  data:
-                    example: ~
-        401:
-          description: Invalid OTP
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Invalid OTP
-                  data:
-                    example: ~
-  /auth/resend-otp:
-    post:
-      tags:
-        - Auth
-      summary: Resend OTP User
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                  example: kibowaja@gmail.com
-      responses:
-        200:
-          description: OTP resent successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: OTP resent successfully
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                        example: 2
-                      code:
-                        type: string
-                        example: "233629"
-                      createdAt:
-                        type: string
-                        example: "2024-06-06T07:17:48.785Z"
-                      userId:
-                        type: integer
-                        example: 12
-        400:
-          description: Email is required
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Email is required
-                  data:
-                    example: ~
-        401:
-          description: User not found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: User not found
-                  data:
-                    example: ~
-
   /auth/login:
     post:
       tags:
@@ -1080,14 +973,7 @@ paths:
             type: integer
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                paymentMethod:
-                  type: string
-                  example: credit_card
+        $ref: "#/components/requestBodies/RequestTokenMidtrans"
       responses:
         200:
           description: Token retrieved successfully
@@ -1160,26 +1046,7 @@ paths:
       summary: Confirm payment using Midtrans
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                order_id:
-                  type: string
-                  example: 'BOOKING-1-123456789'
-                transaction_id:
-                  type: string
-                  example: 'TRANS123'
-                transaction_status:
-                  type: string
-                  example: 'capture'
-                gross_amount:
-                  type: number
-                  example: 100000
-                payment_type:
-                  type: string
-                  example: 'credit_card'
+        $ref: "#/components/requestBodies/MidtransConfirm"
       responses:
         200:
           description: Payment confirmed and booking status updated successfully
@@ -1521,6 +1388,108 @@ paths:
                     type: object
                     nullable: true
                     example: null
+  /promos:
+    post:
+      tags:
+        - Promos
+      summary: Create a new promo
+      requestBody:
+        $ref: "#/components/requestBodies/NewPromo"
+      responses:
+        200:
+          description: Successfully created new promo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Promo created successfully'
+                  data:
+                    type: object
+                    $ref: "#/components/schemas/Promo"
+        '400':
+          description: Promo is no longer active
+          content:
+            application/json:
+              examples:
+                InvalidPromo:
+                  summary: Invalid promo
+                  value:
+                    status: false
+                    message: "Promo is no longer active"
+                    data: null
+        '404':
+          description: Ticket or Promo not found
+          content:
+            application/json:
+              examples:
+                TicketNotFound:
+                  summary: Ticket not found
+                  value:
+                    status: false
+                    message: "Ticket with ID {ticketId} not found"
+                    data: null
+                PromoNotFound:
+                  summary: Promo not found
+                  value:
+                    status: false
+                    message: "Promo with ID {promoId} not found"
+                    data: null
+    get:
+      tags:
+        - Promos
+      summary: Get all promos
+      responses:
+        200:
+          description: Successfully retrieved all promos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Promos fetched successfully'
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Promo"
+  /promos/{ticketId}:
+    put:
+      tags:
+        - Promos
+      summary: Update promo for a ticket
+      requestBody:
+        required: true
+        $ref: "#/components/requestBodies/NewPromo"
+      responses:
+        200:
+          description: Successfully updated promo for ticket
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Ticket prices after discounts with ID ${ticketId} have been successfully updated'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
   /payments/payment/{bookingId}:
     post:
       tags:
@@ -1534,26 +1503,7 @@ paths:
             type: integer
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                paymentMethod:
-                  type: string
-                  example: credit_card
-                cardNumber:
-                  type: string
-                  example: 4515678901234
-                cardHolderName:
-                  type: string
-                  example: John Doe
-                cvv:
-                  type: string
-                  example: 123
-                expiryDate:
-                  type: string
-                  example: 12/24
+        $ref: "#/components/requestBodies/NewPayment"
       responses:
         200:
           description: Payment validated successfully
