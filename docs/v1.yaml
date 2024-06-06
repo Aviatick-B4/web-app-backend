@@ -346,8 +346,6 @@ components:
                 items:
                   $ref: '#/components/schemas/Passenger'
 
-    
-
 paths:
   /auth/register:
     post:
@@ -703,6 +701,80 @@ paths:
       responses:
         200:
           description: User deleted successfully
+  /auth/forgot-password:
+    post:
+      tags:
+        - Auth
+      summary: Sends reset password email confirmation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: john@gmail.com
+      responses:
+        200:
+          description: Reset password confirmation email sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Email sent to john@gmail.com
+                  data:
+                    example: null
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    oneOf:
+                      - example: Field 'email' is required
+                      - example: Account with the corresponding email does not exist
+                  data:
+                    example: null
+  /auth/reset-password:
+    post:
+      tags:
+        - Auth
+      summary: Update user's password
+      parameters:
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE3NTExMzY5fQ.SQrgwd1qodyZWVkoR_2tGXNN-k3PnZXkDp_wqnfL0zM
+          description: Token retrieved from reset password confirmation email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: Aviatick@BinarAcademy2024!
+      responses:
+        200:
+          description: Password successfully updated
           content:
             application/json:
               schema:
@@ -718,6 +790,39 @@ paths:
                     example: ~
         400:
           description: User not found
+                    example: Password updated
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      fullName:
+                        type: string
+                        example: John Doe
+                      email:
+                        type: string
+                        example: john@gmail.com
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    oneOf:
+                      - example: Token must be provided
+                      - example: Field 'password' is required
+                      - example: Invalid token
+                  data:
+                    example: null
+        401:
+          description: Unauthorized (invalid token)
           content:
             application/json:
               schema:
@@ -729,14 +834,14 @@ paths:
                   message:
                     type: string
                     example: User not found
-                  data: 
-                    example: ~
+                  data:
+                    example: Unauthorized
 
   /cities:
     get:
       tags:
         - Cities
-      summary: Search cities data based on on city or country name
+      summary: Fetch cities data based on city or country name
       parameters:
         - in: query
           name: search
