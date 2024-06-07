@@ -32,6 +32,16 @@ module.exports = {
         });
       }
 
+      const existName = await prisma.promo.findFirst({ where: { name: name } });
+
+      if (existName) {
+        return res.status(400).json({
+          status: false,
+          message: 'Promo name is already been used',
+          data: null,
+        });
+      }
+
       res.status(201).json({
         status: true,
         message: 'Promo created successfully',
@@ -133,7 +143,7 @@ module.exports = {
           });
         })
       );
-  
+
       if (res) {
         res.json({
           status: true,

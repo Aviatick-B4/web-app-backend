@@ -3446,37 +3446,37 @@
     {
       "id": 175,
       "price": 21500000,
-      "flightId": 159,
+      "flightId": 59,
       "airplaneSeatClassId": 25
     },
     {
       "id": 176,
       "price": 19500000,
-      "flightId": 159,
+      "flightId": 59,
       "airplaneSeatClassId": 26
     },
     {
       "id": 177,
       "price": 14500000,
-      "flightId": 159,
+      "flightId": 59,
       "airplaneSeatClassId": 27
     },
     {
       "id": 178,
       "price": 22000000,
-      "flightId": 160,
+      "flightId": 60,
       "airplaneSeatClassId": 28
     },
     {
       "id": 179,
       "price": 20000000,
-      "flightId": 160,
+      "flightId": 60,
       "airplaneSeatClassId": 29
     },
     {
       "id": 180,
       "price": 15000000,
-      "flightId": 160,
+      "flightId": 60,
       "airplaneSeatClassId": 30
     }
   ]
