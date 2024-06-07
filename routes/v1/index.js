@@ -45,6 +45,11 @@ router.use('/api/v1/promos', promoRoutes)
 router.use('/api/v1/notifications', notificationRoutes)
 
 // Endpoint EJS View
+router.get('/reset-password', async (req, res) => {
+  const { token } = req.query;
+  res.render('resetPassword', { token })
+});
+
 router.get('/payment-form/:bookingId', async (req, res) => {
   const bookingId = parseInt(req.params.bookingId);
   const booking = await prisma.booking.findUnique({
