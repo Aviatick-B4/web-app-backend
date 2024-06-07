@@ -194,10 +194,10 @@ components:
         airlineIata:
           type: string
           example: AK
-        logo_url:
+        logoUrl:
           type: string
           example: https://images.squarespace-cdn.com/content/v1/5a5dbe4632601eb31977f947/1629703651716-J8RVOTD1XO3SDINHP2RG/unnamed+%281%29.png?format=500w
-        logo_id:
+        logoId:
           type: string
           example: 5a5dbe4632601eb31977f947
     Booking:
