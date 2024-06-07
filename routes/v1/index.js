@@ -7,6 +7,7 @@ const ticketRoutes = require('./ticket.routes');
 const paymentRoutes = require('./payment.routes');
 const bookingRoutes = require('./booking.routes');
 const cityRoutes = require('./city.routes');
+const airlineRoutes = require('./airline.routes');
 
 const swaggerUI = require('swagger-ui-express');
 const yaml = require('yaml');
@@ -38,6 +39,7 @@ router.use('/api/v1/tickets', ticketRoutes);
 router.use('/api/v1/payments', paymentRoutes);
 router.use('/api/v1/bookings', bookingRoutes);
 router.use('/api/v1/auth', authRoutes)
+router.use('/api/v1/airlines', airlineRoutes);
 
 // Endpoint EJS View
 router.get('/payment-form/:bookingId', async (req, res) => {
@@ -110,6 +112,8 @@ router.get('/payment-fake/:bookingId', async (req, res) => {
     tax: 0, // Adjust as needed
   });
 });
+
+
 
 
 module.exports = router;
