@@ -37,8 +37,8 @@ module.exports = {
       const { url, fileId } = await cloudStorage.upload(buffer, originalname, 'airlines');
       const updatedAirline = await prisma.airline.update({
         data: {
-          logo_url: url,
-          logo_id: fileId
+          logoUrl: url,
+          logoId: fileId
         },
         where: {
           id: parseInt(id)
