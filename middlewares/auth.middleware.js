@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET_KEY } = process.env;
 
 module.exports = {
-  authenticate: (req, res, next) => {
+  restrict: (req, res, next) => {
     try {
       let { authorization } = req.headers;
       if (!authorization || !authorization.split(' ')[1]) {
