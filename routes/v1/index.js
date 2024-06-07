@@ -7,6 +7,7 @@ const ticketRoutes = require('./ticket.routes');
 const paymentRoutes = require('./payment.routes');
 const bookingRoutes = require('./booking.routes');
 const cityRoutes = require('./city.routes');
+const airlineRoutes = require('./airline.routes');
 const promoRoutes = require('./promo.routes');
 const notificationRoutes = require('./notification.routes');
 
@@ -39,6 +40,7 @@ router.use('/api/v1/cities', cityRoutes);
 router.use('/api/v1/tickets', ticketRoutes);
 router.use('/api/v1/payments', paymentRoutes);
 router.use('/api/v1/bookings', bookingRoutes);
+router.use('/api/v1/airlines', airlineRoutes);
 router.use('/api/v1/promos', promoRoutes)
 router.use('/api/v1/notifications', notificationRoutes)
 
@@ -113,6 +115,8 @@ router.get('/payment-fake/:bookingId', async (req, res) => {
     tax: 0, // Adjust as needed
   });
 });
+
+
 
 
 module.exports = router;

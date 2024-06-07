@@ -21,6 +21,8 @@ tags:
     description: Notification operations
   - name: Payments
     description: Payment operations
+  - name: Airlines
+    description: Airline data management
 components:
   securitySchemes:
     bearerAuth:
@@ -196,10 +198,10 @@ components:
         airlineIata:
           type: string
           example: AK
-        logo_url:
+        logoUrl:
           type: string
           example: https://images.squarespace-cdn.com/content/v1/5a5dbe4632601eb31977f947/1629703651716-J8RVOTD1XO3SDINHP2RG/unnamed+%281%29.png?format=500w
-        logo_id:
+        logoId:
           type: string
           example: 5a5dbe4632601eb31977f947
     Booking:
@@ -1940,3 +1942,60 @@ paths:
                     items:
                       $ref: "#/components/schemas/Notification"
 
+  /airlines/{id}/logo:
+    put:
+      tags:
+        - Airlines
+      summary: Update airline's logo
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: Airline id
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        200:
+          description: Airline logo successfully updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Airline logo updated
+                  data:
+                    $ref: '#/components/schemas/Airline'
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    oneOf:
+                      - example: Could not find any airline data with id 999
+                      - example: Field 'file' is required
+                      - example: File size exceeds the maximum limit (300 KB)
+                  data:
+                    example: null

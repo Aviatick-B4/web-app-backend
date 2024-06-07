@@ -136,8 +136,8 @@ model Airline {
   id          Int        @id @default(autoincrement())
   name        String
   airlineIata String     @map("airline_iata")
-  logo_url    String?
-  logo_id     String?
+  logoUrl     String?    @map("logo_url")
+  logoId      String?    @map("logo_id")
   airplane    Airplane[]
 
   @@map("airlines")
