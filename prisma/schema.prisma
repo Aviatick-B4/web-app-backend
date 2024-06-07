@@ -157,12 +157,27 @@ model AirplaneSeatClass {
 model Ticket {
   id                  Int               @id @default(autoincrement())
   price               Float
+  afterDiscountPrice  Float?            @map("after_discount_price")
   flight              Flight            @relation(fields: [flightId], references: [id])
   flightId            Int               @map("flight_id")
   airplaneSeatClass   AirplaneSeatClass @relation(fields: [airplaneSeatClassId], references: [id])
   airplaneSeatClassId Int               @map("airplane_seat_class_id")
+  promo               Promo?            @relation("promo", fields: [promoId], references: [id])
+  promoId             Int?              @map("promo_id")
 
   @@map("tickets")
+}
+
+model Promo {
+  id         Int      @id @default(autoincrement())
+  name       String
+  discount   Float
+  validFrom  DateTime @map("valid_from")
+  validUntil DateTime @map("valid_until")
+  isActive   Boolean  @default(true) @map("is_active")
+  Ticket     Ticket[] @relation("promo")
+
+  @@map("promos")
 }
 
 model Passenger {

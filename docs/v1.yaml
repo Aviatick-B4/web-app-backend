@@ -15,6 +15,10 @@ tags:
     description: Flight ticket search
   - name: Bookings
     description: Booking operations
+  - name: Promos
+    description: Promo operations
+  - name: Notifications
+    description: Notification operations
   - name: Payments
     description: Payment operations
   - name: Airlines
@@ -286,6 +290,45 @@ components:
         bookingId:
           type: integer
           example: 1
+    Promo:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Promo 11.11 Aviatick"
+        discount:
+          type: number
+          example: 0.11
+        validFrom:
+          type: string
+          format: date-time
+          example: "2024-06-11T00:00:00.000Z"
+        validUntil:
+          type: string
+          format: date-time
+          example: "2024-06-21T00:00:00.000Z"
+    Notification:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: "New Promo"
+        message:
+          type: string
+          example: "New promo is available"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2024-06-01T12:30:00.000Z"
+        UserId:
+          type: integer
+          example: 1
   requestBodies:
     RegisterUser:
       content:
@@ -347,6 +390,93 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Passenger'
+    NewPromo:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: "Promo 11.11 Aviatick"
+              discount:
+                type: number
+                example: 0.11
+              validFrom:
+                type: string
+                format: date-time
+                example: "2024-06-11T00:00:00.000Z"
+              validUntil:
+                type: string
+                format: date-time
+                example: "2024-06-21T00:00:00.000Z"
+    NewPayment:
+      required: true
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                paymentMethod:
+                  type: string
+                  example: credit_card
+                cardNumber:
+                  type: string
+                  example: 4515678901234
+                cardHolderName:
+                  type: string
+                  example: John Doe
+                cvv:
+                  type: string
+                  example: 123
+                expiryDate:
+                  type: string
+                  example: 12/24
+    RequestTokenMidtrans:
+      required: true
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                paymentMethod:
+                  type: string
+                  example: Midtrans
+    MidtransConfirm:
+      required: true
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_id:
+                  type: string
+                  example: 'BOOKING-1-123456789'
+                transaction_id:
+                  type: string
+                  example: 'TRANS123'
+                transaction_status:
+                  type: string
+                  example: 'capture'
+                gross_amount:
+                  type: number
+                  example: 100000
+                payment_type:
+                  type: string
+                  example: 'credit_cart'
+    NewNotification:
+      required: true
+      content:
+        application/json:
+          schema:
+            properties:
+              title:
+                type: string
+                example: "New Promo"
+              message:
+                type: string
+                example: "New promo is available"
 
 paths:
   /auth/register:
@@ -552,7 +682,6 @@ paths:
                     example: User not found
                   data:
                     example: ~
-
   /auth/login:
     post:
       tags:
@@ -1082,14 +1211,7 @@ paths:
             type: integer
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                paymentMethod:
-                  type: string
-                  example: credit_card
+        $ref: "#/components/requestBodies/RequestTokenMidtrans"
       responses:
         200:
           description: Token retrieved successfully
@@ -1162,26 +1284,7 @@ paths:
       summary: Confirm payment using Midtrans
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                order_id:
-                  type: string
-                  example: 'BOOKING-1-123456789'
-                transaction_id:
-                  type: string
-                  example: 'TRANS123'
-                transaction_status:
-                  type: string
-                  example: 'capture'
-                gross_amount:
-                  type: number
-                  example: 100000
-                payment_type:
-                  type: string
-                  example: 'credit_card'
+        $ref: "#/components/requestBodies/MidtransConfirm"
       responses:
         200:
           description: Payment confirmed and booking status updated successfully
@@ -1523,6 +1626,108 @@ paths:
                     type: object
                     nullable: true
                     example: null
+  /promos:
+    post:
+      tags:
+        - Promos
+      summary: Create a new promo
+      requestBody:
+        $ref: "#/components/requestBodies/NewPromo"
+      responses:
+        200:
+          description: Successfully created new promo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Promo created successfully'
+                  data:
+                    type: object
+                    $ref: "#/components/schemas/Promo"
+        400:
+          description: Promo is no longer active
+          content:
+            application/json:
+              examples:
+                InvalidPromo:
+                  summary: Invalid promo
+                  value:
+                    status: false
+                    message: "Promo is no longer active"
+                    data: null
+        404:
+          description: Ticket or Promo not found
+          content:
+            application/json:
+              examples:
+                TicketNotFound:
+                  summary: Ticket not found
+                  value:
+                    status: false
+                    message: "Ticket with ID 1 not found"
+                    data: null
+                PromoNotFound:
+                  summary: Promo not found
+                  value:
+                    status: false
+                    message: "Promo with ID 1 not found"
+                    data: null
+    get:
+      tags:
+        - Promos
+      summary: Get all promos
+      responses:
+        200:
+          description: Successfully retrieved all promos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Promos fetched successfully'
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Promo"
+  /promos/{ticketId}:
+    put:
+      tags:
+        - Promos
+      summary: Update promo for a ticket
+      requestBody:
+        required: true
+        $ref: "#/components/requestBodies/NewPromo"
+      responses:
+        200:
+          description: Successfully updated promo for ticket
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Ticket prices after discounts with ID 1 have been successfully updated'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
   /payments/payment/{bookingId}:
     post:
       tags:
@@ -1536,26 +1741,7 @@ paths:
             type: integer
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                paymentMethod:
-                  type: string
-                  example: credit_card
-                cardNumber:
-                  type: string
-                  example: 4515678901234
-                cardHolderName:
-                  type: string
-                  example: John Doe
-                cvv:
-                  type: string
-                  example: 123
-                expiryDate:
-                  type: string
-                  example: 12/24
+        $ref: "#/components/requestBodies/NewPayment"
       responses:
         200:
           description: Payment validated successfully
@@ -1658,6 +1844,103 @@ paths:
                     example: Server error during payment validation
                   data:
                     example: ~
+  /notifications:
+    post:
+      tags:
+        - Notifications
+      summary: Create a new notification
+      requestBody:
+        $ref: "#/components/requestBodies/NewNotification"
+      responses:
+        201:
+          description: Successfully created new notification
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Notifications for all users created successfully'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      title:
+                        type: string
+                        example: "New Promo"
+                      message:
+                        type: string
+                        example: "New promo is available"
+                      createdAt:
+                        type: string
+                        format: date-time
+                        example: "2024-06-01T12:30:00.000Z"
+                      UserId:
+                        type: integer
+                        example: 1
+        400:
+          description: Fields are required or title is already exist
+          content:
+            application/json:
+              examples:
+                FieldRequired:
+                  summary: Fields are required
+                  value:
+                    status: false
+                    message: "Title and message fields are required"
+                    data: null
+                TitleExist:
+                  summary: Title is already exist
+                  value:
+                    status: false
+                    message: "Notification title is already been used"
+                    data: null
+    get:
+      tags:
+        - Notifications
+      summary: Get all notifications
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: Desired page number
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+          description: Number of notifications per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search keywords in notification title
+      responses:
+        200:
+          description: Successfully retrieved all notifications
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Notifications fetched successfully'
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Notification"
 
   /airlines/{id}/logo:
     put:

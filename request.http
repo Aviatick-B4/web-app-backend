@@ -51,6 +51,7 @@ Content-Type: application/json
     ]
 }
 
+
 ### login
 POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
@@ -62,6 +63,10 @@ Content-Type: application/json
 
 ### GET ALL 
 GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history
+=======
+### GET ALL BOOKING HISTORY 
+GET http://localhost:3000/api/v1/bookings/booking-history
+
 
 ### GET BOOKING BY BOOKING CODE
 GET http://localhost:3000/api/v1/bookings/booking-history?search=d
@@ -77,8 +82,8 @@ POST http://localhost:3000/api/v1/auth/register
 Content-Type: application/json
 
 {
-    "fullName": "Kibow Aja",
-    "email": "21082010208@student.upnjatim.ac.id",
+    "fullName": "Abiyi Aja",
+    "email": "21082010203@student.upnjatim.ac.id",
     "phoneNumber": "082123468464",
     "password": "123456"
 }
@@ -97,13 +102,46 @@ POST http://localhost:3000/api/v1/auth/resend-otp
 Content-Type: application/json
 
 {
-    "email": "21082010208@student.upnjatim.ac.id"
+    "email": "21082010203@student.upnjatim.ac.id"
 }
 
 ### DELETE USER
 DELETE  http://localhost:3000/api/v1/auth/users/32
 
+### POST PROMO
+POST http://localhost:3000/api/v1/promos
+Content-Type: application/json
 
+{
+    "name": "Promo 22222 Aviatick",
+    "discount": 0.12,
+    "validFrom": "2024-06-01 00:00:00",
+    "validUntil": "2024-06-07 20:54:00"
+}
+
+### POST NOTIFICATION
+POST http://localhost:3000/api/v1/notifications
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbE5hbWUiOiJDaGFybGllIERhdmlzIiwiZmFtaWx5TmFtZSI6IkRhdmlzIiwicGhvbmVOdW1iZXIiOiIrNjIxMjM0NTY3ODk0IiwiZW1haWwiOiJjaGFybGllQGdtYWlsLmNvbSIsImlkZW50aXR5VHlwZSI6IlBhc3Nwb3J0IiwiaWRlbnRpdHlOdW1iZXIiOiJCMjM0NTY3ODkiLCJuYXRpb25hbGl0eSI6IkluZG9uZXNpYW4iLCJlbWFpbElzVmVyaWZpZWQiOnRydWUsImdvb2dsZUlkIjpudWxsLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MTc3Njg3MDl9.CuHeh6ht_daFmdPimc5ais2J6okUunlCJQPDYxMpgHY
+
+{
+    "title": "Pesawat Tempur xxx",
+    "message": "Poke"
+}
+
+### UPDATE TICKET WITH PROMO
+PUT http://localhost:3000/api/v1/promos/6
+Content-Type: application/json
+
+{
+    "promoId": 4
+}
+
+###
+PUT http://localhost:3000/api/v1/promos/update-status
+
+### GET ALL PROMO
+GET http://localhost:3000/api/v1/promos
 
 ##############################################
 ################## DEPLOY ####################
