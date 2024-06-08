@@ -201,6 +201,8 @@ module.exports = {
 
       let token = jwt.sign(user, JWT_SECRET_KEY);
 
+      req.user = { ...user, token };
+
       if (!user.password && user.googleId) {
         return res.status(401).json({
           status: false,
@@ -233,6 +235,17 @@ module.exports = {
           user: user,
           token: token,
         },
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+  verified: async(req, res, next) => {
+    try {
+      return res.status(200).json({
+        status: true,
+        message: 'User verified successfully',
+        data: req.user,
       });
     } catch (error) {
       next(error);

@@ -3,6 +3,7 @@
 ##############################################
 POST http://localhost:3000/api/v1/bookings/new-booking
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE3ODIzODMxfQ.9n4_nC6bmuMCscYyFLypihULNm5ePSDYLUS0uoebAqA
 
 {
     "userId": 2,
@@ -104,6 +105,19 @@ Content-Type: application/json
 {
     "email": "21082010203@student.upnjatim.ac.id"
 }
+
+### LOGIN USER
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "emailOrPhoneNumber": "john@gmail.com",
+    "password": "123456"
+}
+
+### VERIFIED USER CHECK
+GET http://localhost:3000/api/v1/auth/verified
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE3ODIzODMxfQ.9n4_nC6bmuMCscYyFLypihULNm5ePSDYLUS0uoebAqA
 
 ### DELETE USER
 DELETE  http://localhost:3000/api/v1/auth/users/32

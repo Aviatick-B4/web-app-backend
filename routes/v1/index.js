@@ -28,7 +28,6 @@ const file = fs.readFileSync(swagger_path, 'utf-8');
 
 const swaggerDocument = yaml.parse(file);
 
-
 router.use(
   '/api/v1/api-docs',
   swaggerUI.serve,
@@ -41,16 +40,16 @@ router.use('/api/v1/tickets', ticketRoutes);
 router.use('/api/v1/payments', paymentRoutes);
 router.use('/api/v1/bookings', bookingRoutes);
 router.use('/api/v1/airlines', airlineRoutes);
-router.use('/api/v1/promos', promoRoutes)
-router.use('/api/v1/notifications', notificationRoutes)
+router.use('/api/v1/promos', promoRoutes);
+router.use('/api/v1/notifications', notificationRoutes);
 
 // Endpoint EJS View
 router.get('/reset-password', async (req, res) => {
   const { token } = req.query;
-  res.render('resetPassword', { token })
+  res.render('resetPassword', { token });
 });
 
-router.get('/payment-form/:bookingId', async (req, res) => {
+router.get('/payment-form/:bookingId', restrict, async (req, res) => {
   const bookingId = parseInt(req.params.bookingId);
   const booking = await prisma.booking.findUnique({
     where: { id: bookingId },
@@ -120,8 +119,5 @@ router.get('/payment-fake/:bookingId', async (req, res) => {
     tax: 0, // Adjust as needed
   });
 });
-
-
-
 
 module.exports = router;

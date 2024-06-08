@@ -760,6 +760,20 @@ paths:
                     example: Your account is not verified
                   data:
                     example: ~
+  /auth/verified:
+    get:
+      tags:
+        - Auth
+      summary: Verify user check
+      responses:
+        200:
+          description: User verified successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+      security:  
+        - bearerAuth: [] 
   /auth/google:
     get:
       tags:
@@ -773,7 +787,7 @@ paths:
         "302":
           description: Redirect to Google for authentication.
 
-  /users/google/callback:
+  /auth/google/callback:
     get:
       tags:
         - Auth
@@ -949,7 +963,6 @@ paths:
                     example: User not found
                   data:
                     example: null
-                    
   /users/{user_id}:
     delete:
       tags:
@@ -1402,7 +1415,8 @@ paths:
                     type: object
                     nullable: true
                     example: null
-
+      security:  
+        - bearerAuth: []
   /bookings/booking-history:
     get:
       summary: Get all bookings for a user with filter
@@ -1501,7 +1515,8 @@ paths:
                     type: object
                     nullable: true
                     example: null
-
+      security:  
+        - bearerAuth: []
   /bookings/booking-history/{bookingId}:
     get:
       summary: Get booking details
@@ -1626,6 +1641,8 @@ paths:
                     type: object
                     nullable: true
                     example: null
+      security:  
+        - bearerAuth: []
   /promos:
     post:
       tags:
@@ -1678,6 +1695,8 @@ paths:
                     status: false
                     message: "Promo with ID 1 not found"
                     data: null
+      security:  
+        - bearerAuth: []
     get:
       tags:
         - Promos
@@ -1700,6 +1719,8 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/Promo"
+      security:  
+        - bearerAuth: []
   /promos/{ticketId}:
     put:
       tags:
@@ -1728,6 +1749,8 @@ paths:
                       id:
                         type: integer
                         example: 1
+      security:  
+        - bearerAuth: []
   /payments/payment/{bookingId}:
     post:
       tags:
@@ -1901,6 +1924,8 @@ paths:
                     status: false
                     message: "Notification title is already been used"
                     data: null
+      security:  
+        - bearerAuth: []
     get:
       tags:
         - Notifications
@@ -1941,7 +1966,8 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/Notification"
-
+      security:  
+        - bearerAuth: []
   /airlines/{id}/logo:
     put:
       tags:
