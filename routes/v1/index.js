@@ -49,7 +49,7 @@ router.get('/reset-password', async (req, res) => {
   res.render('resetPassword', { token });
 });
 
-router.get('/payment-form/:bookingId', restrict, async (req, res) => {
+router.get('/payment-form/:bookingId', async (req, res) => {
   const bookingId = parseInt(req.params.bookingId);
   const booking = await prisma.booking.findUnique({
     where: { id: bookingId },
