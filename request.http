@@ -110,7 +110,7 @@ POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "emailOrPhoneNumber": "john@gmail.com",
+    "emailOrPhoneNumber": "charlie@gmail.com",
     "password": "123456"
 }
 
@@ -135,7 +135,7 @@ Content-Type: application/json
 ### POST NOTIFICATION
 POST http://localhost:3000/api/v1/notifications
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbE5hbWUiOiJDaGFybGllIERhdmlzIiwiZmFtaWx5TmFtZSI6IkRhdmlzIiwicGhvbmVOdW1iZXIiOiIrNjIxMjM0NTY3ODk0IiwiZW1haWwiOiJjaGFybGllQGdtYWlsLmNvbSIsImlkZW50aXR5VHlwZSI6IlBhc3Nwb3J0IiwiaWRlbnRpdHlOdW1iZXIiOiJCMjM0NTY3ODkiLCJuYXRpb25hbGl0eSI6IkluZG9uZXNpYW4iLCJlbWFpbElzVmVyaWZpZWQiOnRydWUsImdvb2dsZUlkIjpudWxsLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MTc3Njg3MDl9.CuHeh6ht_daFmdPimc5ais2J6okUunlCJQPDYxMpgHY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbE5hbWUiOiJDaGFybGllIERhdmlzIiwiZmFtaWx5TmFtZSI6IkRhdmlzIiwicGhvbmVOdW1iZXIiOiIrNjIxMjM0NTY3ODk0IiwiZW1haWwiOiJjaGFybGllQGdtYWlsLmNvbSIsImlkZW50aXR5VHlwZSI6IlBhc3Nwb3J0IiwiaWRlbnRpdHlOdW1iZXIiOiJCMjM0NTY3ODkiLCJuYXRpb25hbGl0eSI6IkluZG9uZXNpYW4iLCJlbWFpbElzVmVyaWZpZWQiOnRydWUsImdvb2dsZUlkIjpudWxsLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MTc4Njc2MTd9.17f2K1eHxgpRZuA1DbNN1rk9wXy2tyg-YY85p9lfjbg
 
 {
     "title": "Pesawat Tempur xxx",
