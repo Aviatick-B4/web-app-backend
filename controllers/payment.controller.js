@@ -160,6 +160,7 @@ module.exports = {
           data: {
             title: 'Payment Successfully',
             message: `Payment for booking ID ${bookingId} has been successfully.`,
+            type: 'transaction',
             userId: updatedBooking.userId,
             createdAt: new Date(),
           },
@@ -268,6 +269,7 @@ module.exports = {
         data: {
           title: 'Payment Successfully',
           message: `Payment for booking ID ${bookingId} has been successfully.`,
+          type: 'transaction',
           userId: booking.userId,
           createdAt: new Date(),
         },

@@ -9,19 +9,32 @@ module.exports = {
         page = req.query.page || 1,
         limit = req.query.limit || 10,
         search,
+        type,
       } = req.query;
 
+      let whereClause = {
+        userId: Number(req.user.id),
+        title: { contains: search, mode: 'insensitive' },
+      };
+
+      if (type) {
+        if (type === 'transaction') {
+          whereClause.type = 'transaction';
+        } else if (type === 'promo') {
+          whereClause.type = 'promo';
+        } else {
+          whereClause.type = 'general';
+        }
+      }
+
       const notifications = await prisma.notification.findMany({
-        where: {
-          userId: Number(req.user.id),
-          title: { contains: search, mode: 'insensitive' },
-        },
+        where: whereClause,
         skip: (parseInt(page) - 1) * parseInt(limit),
         take: parseInt(limit),
       });
 
       const count = await prisma.notification.count({
-        where: { userId: Number(req.user.id) },
+        where: whereClause,
       });
 
       const pagination = getPagination(req, page, limit, count);
@@ -72,6 +85,7 @@ module.exports = {
             data: {
               title,
               message,
+              type: 'promo',
               userId: user.id,
               createdAt: convertCurrentDate,
             },
