@@ -2,6 +2,7 @@ const { Router } = require('express');
 const passport = require('../../libs/passport');
 const auth = require('../../controllers/auth.controller.js');
 const router = Router();
+const {restrict} = require('../../middlewares/auth.middleware');
 
 router.post('/register', auth.register);
 router.post('/verify-otp', auth.verifyOtp);
@@ -24,5 +25,6 @@ router.get(
 
 router.post('/forgot-password', auth.sendResetPasswordEmail);
 router.post('/reset-password', auth.resetPassword);
+router.get('/verified', restrict, auth.verified);
 
 module.exports = router;
