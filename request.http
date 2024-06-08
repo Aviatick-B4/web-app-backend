@@ -52,7 +52,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hb
     ]
 }
 
-
 ### login
 POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
@@ -83,9 +82,9 @@ POST http://localhost:3000/api/v1/auth/register
 Content-Type: application/json
 
 {
-    "fullName": "Abiyi Aja",
-    "email": "21082010203@student.upnjatim.ac.id",
-    "phoneNumber": "082123468464",
+    "fullName": "haha",
+    "email": "abiyizzaja@student.upnjatim.ac.id",
+    "phoneNumber": "032123468464",
     "password": "123456"
 }
 
