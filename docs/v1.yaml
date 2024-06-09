@@ -1211,6 +1211,88 @@ paths:
                             type: integer
                             example: 50
 
+  /flights/favorite:
+    get:
+      tags:
+          - Flights 
+      summary: Get all favorite destinations
+      description: Retrieve a paginated list of favorite destinations ordered by count.
+      parameters:
+        - name: page
+          in: query
+          description: Page number for pagination
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          description: Number of items per page for pagination
+          required: false
+          schema:
+            type: integer
+            default: 5
+      responses:
+        200:
+          description: Favorite destinations retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Favorite destinations retrieved successfully
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        flightId:
+                          type: integer
+                          example: 1
+                        flightNumber:
+                          type: string
+                          example: AA100
+                        departureCity:
+                          type: string
+                          example: New York
+                        arrivalCity:
+                          type: string
+                          example: Los Angeles
+                        departureTime:
+                          type: string
+                          format: date-time
+                          example: "2024-06-01T08:00:00.000Z"
+                        arrivalTime:
+                          type: string
+                          format: date-time
+                          example: "2024-06-01T12:00:00.000Z"
+                        airline:
+                          type: string
+                          example: American Airlines
+                        price:
+                          type: number
+                          format: float
+                          example: 3000000
+                        count:
+                          type: integer
+                          example: 2
+                  pagination:
+                    type: object
+                    properties:
+                      next:
+                        type: string
+                        nullable: true
+                        example: null
+                      prev:
+                        type: string
+                        nullable: true
+                        example: http://localhost:3000/api/v1/flight/favorite?page=1&limit=5
+
   /payments/midtrans/token/{bookingId}:
     post:
       tags:

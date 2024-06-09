@@ -86,6 +86,11 @@ module.exports = {
           include: { passenger: true },
         });
 
+        await prisma.flight.update({
+          where: { id: flightId },
+          data: { count: flight.count + 1 },
+        });
+
         return {
           id: newBooking.id,
           flight_id: newBooking.flightId,
