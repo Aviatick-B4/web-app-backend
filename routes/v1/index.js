@@ -10,6 +10,7 @@ const cityRoutes = require('./city.routes');
 const airlineRoutes = require('./airline.routes');
 const promoRoutes = require('./promo.routes');
 const notificationRoutes = require('./notification.routes');
+const flightRoutes = require('./flight.routes');
 
 const swaggerUI = require('swagger-ui-express');
 const yaml = require('yaml');
@@ -42,6 +43,7 @@ router.use('/api/v1/bookings', bookingRoutes);
 router.use('/api/v1/airlines', airlineRoutes);
 router.use('/api/v1/promos', promoRoutes);
 router.use('/api/v1/notifications', notificationRoutes);
+router.use('/api/v1/flights', flightRoutes);
 
 // Endpoint EJS View
 router.get('/reset-password', async (req, res) => {

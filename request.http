@@ -3,11 +3,11 @@
 ##############################################
 POST http://localhost:3000/api/v1/bookings/new-booking
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE3ODIzODMxfQ.9n4_nC6bmuMCscYyFLypihULNm5ePSDYLUS0uoebAqA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE3ODYyMjg4fQ.1_gHKRX_6--nHcoje55lKtaZVrhWU0mlHz5qlhoI5T0
 
 {
-    "userId": 2,
-    "flightId": 160,
+    "userId": 1,
+    "flightId": 3,
     "adult": 2,
     "child": 0,
     "baby": 1,
@@ -64,7 +64,7 @@ Content-Type: application/json
 
 ### GET ALL 
 GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history
-=======
+
 ### GET ALL BOOKING HISTORY 
 GET http://localhost:3000/api/v1/bookings/booking-history
 
@@ -156,6 +156,9 @@ PUT http://localhost:3000/api/v1/promos/update-status
 
 ### GET ALL PROMO
 GET http://localhost:3000/api/v1/promos
+
+### GET ALL FAVORITE DESTINATION
+GET http://localhost:3000/api/v1/flights/favorite?limit=5&page=1
 
 ##############################################
 ################## DEPLOY ####################
