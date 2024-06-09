@@ -109,6 +109,7 @@ module.exports = {
         data: {
           title: 'New Booking',
           message: `Successful in making a new booking, complete it before ${result.paid_before}`,
+          type: 'transaction',
           userId: Number(req.body.userId),
           createdAt: new Date(Date.now()),
         },

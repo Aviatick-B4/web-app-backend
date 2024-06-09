@@ -1982,6 +1982,9 @@ paths:
                       message:
                         type: string
                         example: "New promo is available"
+                      type:
+                        type: string
+                        example: "promo"
                       createdAt:
                         type: string
                         format: date-time
@@ -2029,7 +2032,12 @@ paths:
           name: search
           schema:
             type: string
-          description: Search keywords in notification title
+          description: Search keywords in notification
+        - in: query
+          name: type
+          schema:
+            type: string
+          description: type keywords for filter in notification (transaction, promo, general)
       responses:
         200:
           description: Successfully retrieved all notifications

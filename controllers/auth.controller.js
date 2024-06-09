@@ -57,6 +57,7 @@ module.exports = {
         data: {
           title: 'Success Register',
           message: 'Akun berhasil dibuat!',
+          type: 'general',
           userId: user.id,
           createdAt: new Date(Date.now()),
         },
@@ -223,6 +224,7 @@ module.exports = {
         data: {
           title: 'Login Successfully',
           message: 'You have successfully logged in',
+          type: 'general',
           createdAt: new Date(),
           userId: user.id,
         },
