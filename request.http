@@ -81,8 +81,8 @@ POST http://localhost:3000/api/v1/auth/register
 Content-Type: application/json
 
 {
-    "fullName": "haha",
-    "email": "21082010208@student.upnjatim.ac.id",
+    "fullName": "abiyyi sepek haha",
+    "email": "21082010203@student.upnjatim.ac.id",
     "phoneNumber": "032123468464",
     "password": "123456"
 }
@@ -101,7 +101,7 @@ POST http://localhost:3000/api/v1/auth/resend-otp
 Content-Type: application/json
 
 {
-    "email": "21082010203@student.upnjatim.ac.id"
+    "email": "21082010208@student.upnjatim.ac.id"
 }
 
 ### LOGIN USER

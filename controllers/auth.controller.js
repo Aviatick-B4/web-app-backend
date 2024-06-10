@@ -45,11 +45,16 @@ module.exports = {
 
       const otpCode = otp.generateOTP().toString();
 
+      const convertCreatedAt = new Date();
+      const convertUTCCreatedAt = new Date(
+        convertCreatedAt.getTime() + 7 * 60 * 60 * 1000
+      ).toISOString();
+
       await prisma.otp.create({
         data: {
           userId: user.id,
           code: otpCode,
-          createdAt: new Date(Date.now()),
+          createdAt: convertUTCCreatedAt,
         },
       });
 
@@ -59,7 +64,7 @@ module.exports = {
           message: 'Akun berhasil dibuat!',
           type: 'general',
           userId: user.id,
-          createdAt: new Date(Date.now()),
+          createdAt: convertUTCCreatedAt,
         },
       });
 
@@ -147,9 +152,14 @@ module.exports = {
 
       const newOtp = otp.generateOTP().toString();
 
+      const convertCreatedAt = new Date();
+      const convertUTCCreatedAt = new Date(
+        convertCreatedAt.getTime() + 7 * 60 * 60 * 1000
+      ).toISOString();
+
       const updateOtpUser = await prisma.otp.update({
         where: { userId: user.id },
-        data: { code: newOtp, createdAt: new Date() },
+        data: { code: newOtp, createdAt: convertUTCCreatedAt },
       });
 
       const html = getRenderedHtml('otp-email', {
@@ -220,12 +230,17 @@ module.exports = {
         });
       }
 
+      const convertCreatedAt = new Date();
+      const convertUTCCreatedAt = new Date(
+        convertCreatedAt.getTime() + 7 * 60 * 60 * 1000
+      ).toISOString();
+
       await prisma.notification.create({
         data: {
           title: 'Login Successfully',
           message: 'You have successfully logged in',
           type: 'general',
-          createdAt: new Date(),
+          createdAt: convertUTCCreatedAt,
           userId: user.id,
         },
       });
