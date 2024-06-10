@@ -971,6 +971,8 @@ paths:
       responses:
         200:
           description: Users fetched successfully
+      security:  
+        - bearerAuth: []
   /auth/users/{id}:
     get:
       tags:
