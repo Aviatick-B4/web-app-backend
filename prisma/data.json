@@ -794,52 +794,62 @@
     {
       "id": 1,
       "name": "American Airlines",
-      "airlineIata": "AA"
-    },
+      "airlineIata": "AA",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/american-airlines.jpg"
+      },
     {
       "id": 2,
       "name": "Delta Airlines",
-      "airlineIata": "DL"
+      "airlineIata": "DL",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/delta-airlines.jpg"
     },
     {
       "id": 3,
       "name": "United Airlines",
-      "airlineIata": "UA"
+      "airlineIata": "UA",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/united-airlines.jpg"
     },
     {
       "id": 4,
       "name": "Southwest Airlines",
-      "airlineIata": "SW"
+      "airlineIata": "SW",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/southwest-airlines.jpg"
     },
     {
       "id": 5,
       "name": "Alaska Airlines",
-      "airlineIata": "AS"
+      "airlineIata": "AS",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/alaska-airlines.jpg"
     },
     {
       "id": 6,
       "name": "Citilink",
-      "airlineIata": "QG"
+      "airlineIata": "QG",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/citilink.jpg"
     },
     {
       "id": 7,
       "name": "Garuda Indonesia",
-      "airlineIata": "GA"
+      "airlineIata": "GA",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/garuda-indonesia.jpg"
     },
     {
       "id": 8,
       "name": "Lion Air",
-      "airlineIata": "JT"
+      "airlineIata": "JT",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/lion-air.jpg"
     },
     {
       "id": 9,
       "name": "Batik Air",
-      "airlineIata": "ID"
+      "airlineIata": "ID",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/batik-air.jpg"
     },
     {
       "id": 10,
       "name": "Sriwijaya Air",
-      "airlineIata": "SJ"
+      "airlineIata": "SJ",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/sriwijaya-air.jpg"
     }
   ],
   "airplanes": [
