@@ -35,6 +35,7 @@ module.exports = {
 
       const { buffer, originalname } = req.file;
       const { url, fileId } = await cloudStorage.upload(buffer, originalname, 'airlines');
+      console.log(url, fileId)
       const updatedAirline = await prisma.airline.update({
         data: {
           logoUrl: url,
@@ -45,7 +46,7 @@ module.exports = {
         }
       });
 
-      if (airline.logo_id) await cloudStorage.delete(airline.logo_id);
+      if (airline.logoId) await cloudStorage.delete(airline.logoId);
 
       res.status(200).json({
         status: true,
