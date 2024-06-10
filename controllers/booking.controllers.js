@@ -5,16 +5,27 @@ const crypto = require('crypto');
 module.exports = {
   booking: async (req, res, next) => {
     try {
-      const userId = req.body.userId;
-      const { flightId, adult, child, baby, seatClass, passenger } = req.body;
+      const authHeader  = req.headers.authorization;
 
-      if (!userId) {
-        return res.status(400).json({
-          status: false,
-          message: "Can't find user with id " + userId,
+      const token = authHeader.split(' ')[1]
+
+      if (!authHeader) {
+        return res.status(401).json({
+          status: "error",
+          message: "No authorization token provided",
           data: null,
         });
       }
+
+      if (!req.user || !req.user.id) {
+        return res.status(401).json({
+          status: "error",
+          message: "User not authenticated",
+          data: null,
+        });
+      }
+
+      const { flightId, adult, child, baby, seatClass, passenger } = req.body;
 
       const totalPassengers = adult + child + baby;
 
@@ -61,7 +72,7 @@ module.exports = {
 
         const newBooking = await prisma.booking.create({
           data: {
-            userId: userId,
+            userId: req.user.id,
             flightId: flightId,
             bookingCode: booking_code,
             expiredPaid: expiredPaid,
@@ -88,7 +99,7 @@ module.exports = {
 
         await prisma.flight.update({
           where: { id: flightId },
-          data: { count: flight.count + 1 },
+          data: { count: flight.count ++ },
         });
 
         return {
@@ -110,15 +121,17 @@ module.exports = {
           title: 'New Booking',
           message: `Successful in making a new booking, complete it before ${result.paid_before}`,
           type: 'transaction',
-          userId: Number(req.body.userId),
+          userId: req.user.id,
           createdAt: new Date(Date.now()),
         },
       });
 
+      const urlPayment = (`${req.protocol}://${req.get('host')}/payment-form/${result.id}?token=${token}`)
+
       return res.status(200).json({
         status: true,
         message: 'Success creating new Booking',
-        data: result,
+        data: { ...result, urlPayment},
       });
     } catch (error) {
       next(error);

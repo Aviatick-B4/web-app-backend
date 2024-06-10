@@ -34,6 +34,7 @@
         <div class="payment-form">
           <h2>Isi Data Pembayaran</h2>
           <input type="hidden" id="bookingId" value="<%= bookingId %>" />
+          <input type="hidden" id="authToken" value="<%= token %>" />
           <select id="paymentMethod" name="paymentMethod">
             <option value="gopay">Gopay</option>
             <option value="mandiri_va">Mandiri Virtual Account</option>
@@ -64,13 +65,15 @@
           // const paymentMethod = document.getElementById('paymentMethod').value;
           const bookingId = document.getElementById('bookingId').value;
           const paymentMethod = 'midtrans';
+          const token = document.getElementById('authToken').value;
 
           const response = await fetch(
-            `/api/v1/payments/midtrans/token/${bookingId}`,
+            `/api/v1/payments/midtrans/token/${bookingId}?token=${token}`,
             {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
               },
               body: JSON.stringify({ paymentMethod }),
             }

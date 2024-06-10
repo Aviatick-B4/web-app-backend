@@ -93,7 +93,7 @@ model Flight {
   flightNumber       String    @map("flight_number")
   departureTime      DateTime  @map("departure_time")
   arrivalTime        DateTime  @map("arrival_time")
-  count              Int?      @default(0)
+  count              Int?      
   departureAirport   Airport   @relation("departure_airport", fields: [departureAirportId], references: [id])
   departureAirportId Int       @map("departure_airport_id")
   arrivalAirport     Airport   @relation("arrival_airport", fields: [arrivalAirportId], references: [id])

@@ -65,7 +65,7 @@ module.exports = {
 
       const parameter = {
         transaction_details: {
-          order_id: `BOOKING-${checkBook.id}-${Date.now()}`,
+          order_id: `BOOKING with ID ${checkBook.id}-${Date.now()}`,
           gross_amount: checkBook.totalPrice,
         },
         credit_card: {
@@ -100,14 +100,14 @@ module.exports = {
   confirmPayment: async (req, res, next) => {
     let transactionResult;
     try {
+      const {
+        order_id,
+        transaction_id,
+        transaction_status,
+        gross_amount,
+        payment_type,
+      } = req.body;
       transactionResult = await prisma.$transaction(async (prisma) => {
-        const {
-          order_id,
-          transaction_id,
-          transaction_status,
-          gross_amount,
-          payment_type,
-        } = req.body;
 
         if (
           transaction_status !== 'capture' &&
@@ -131,7 +131,8 @@ module.exports = {
             });
           }
         }
-        const bookingId = parseInt(parts[1]);
+        // const bookingId = parseInt(parts[1]);
+        const bookingId = parts[0].split(' ')[3];
 
         if (isNaN(bookingId)) {
           if (!res.headersSent) {
@@ -146,12 +147,12 @@ module.exports = {
           data: {
             name: payment_type,
             paidAt: new Date(),
-            bookingId: bookingId,
+            bookingId: Number(bookingId),
           },
         });
 
         const updatedBooking = await prisma.booking.update({
-          where: { id: bookingId },
+          where: { id: Number(bookingId) },
           data: { status: 'PAID' },
         });
 
