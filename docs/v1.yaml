@@ -1418,66 +1418,6 @@ paths:
       security:  
         - bearerAuth: [] 
 
-  /payments/midtrans/confirm:
-    post:
-      tags:
-        - Payments
-      summary: Confirm payment using Midtrans
-      requestBody:
-        required: true
-        $ref: "#/components/requestBodies/MidtransConfirm"
-      responses:
-        200:
-          description: Payment confirmed and booking status updated successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                  message:
-                    type: string
-                    example: Payment confirmed and booking status updated successfully
-                  data:
-                    type: object
-                    properties:
-                      newPaymentId:
-                        type: integer
-                        example: 1
-                      updatedBookingId:
-                        type: integer
-                        example: 1
-        400:
-          description: Invalid request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: "Transaction is not successful. Status: pending"
-        500:
-          description: Server error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Server error during payment confirmation
-                  data:
-                    example: ~
-      security:  
-        - bearerAuth: []
   /bookings/new-booking:
     post:
       summary: Create a new booking
@@ -1527,7 +1467,12 @@ paths:
                     type: string
                     example: 'Success creating new Booking'
                   data:
-                    $ref: "#/components/schemas/Booking"
+                    allOf:
+                      - $ref: "#/components/schemas/Booking"
+                      - properties:
+                          urlPayment:
+                            type: string
+                            example: "http://localhost:3000/payment-form/1?token=1234567890"
         400:
           description: Bad Request
           content:

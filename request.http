@@ -3,10 +3,9 @@
 ##############################################
 POST http://localhost:3000/api/v1/bookings/new-booking
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE3ODYyMjg4fQ.1_gHKRX_6--nHcoje55lKtaZVrhWU0mlHz5qlhoI5T0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwicm9sZSI6IlVTRVIiLCJnb29nbGVJZCI6bnVsbCwiaWF0IjoxNzE4MDM0NDQwfQ.sfcu8LiBMi-PoYgWQAbyVfVaM3AH1prhbAnu5pqpfj4
 
 {
-    "userId": 1,
     "flightId": 3,
     "adult": 2,
     "child": 0,
@@ -83,7 +82,7 @@ Content-Type: application/json
 
 {
     "fullName": "haha",
-    "email": "abiyizzaja@student.upnjatim.ac.id",
+    "email": "21082010208@student.upnjatim.ac.id",
     "phoneNumber": "032123468464",
     "password": "123456"
 }
