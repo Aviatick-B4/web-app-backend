@@ -25,6 +25,7 @@ router.get(
 
 router.post('/forgot-password', auth.sendResetPasswordEmail);
 router.post('/reset-password', auth.resetPassword);
+router.post('/change-password', restrict, auth.changePassword);
 router.get('/verified', restrict, auth.verified);
 router.get('/users', restrict, isAdmin, auth.getAll);
 router.get('/users/:id', restrict, auth.getUserById);
