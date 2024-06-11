@@ -1,7 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const { generateHash } = require('../libs/bcrypt');
+const { generateHash, compareHash } = require('../libs/bcrypt');
 const sendEmail = require('../utils/sendEmail');
 const getRenderedHtml = require('../utils/getRenderedHtml');
 const otp = require('../utils/generateOtp');
@@ -31,7 +30,7 @@ module.exports = {
         });
       }
 
-      let encryptedPassword = await bcrypt.hash(password, 10);
+      let encryptedPassword = await generateHash(password);
 
       let user = await prisma.user.create({
         data: {
@@ -190,7 +189,7 @@ module.exports = {
         });
       }
 
-      let isPasswordCorrect = await bcrypt.compare(password, user.password);
+      let isPasswordCorrect = await compareHash(password, user.password);
       if (!isPasswordCorrect) {
         return res.status(400).json({
           status: false,
