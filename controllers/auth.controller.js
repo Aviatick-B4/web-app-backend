@@ -421,6 +421,14 @@ module.exports = {
       });
     }
 
+    if (oldPassword === newPassword) {
+      return res.status(400).json({
+        status: false,
+        message: 'New password could not be the same as old password',
+        data: null
+      });
+    }
+
     const newHashedPassword = await generateHash(newPassword);
     await prisma.user.update({
       data: {
