@@ -68,14 +68,6 @@ module.exports = {
         },
       });
 
-      // Send response immediately
-      res.status(200).json({
-        status: true,
-        message: 'User registered successfully',
-        data: user,
-      });
-
-      // Send email asynchronously
       try {
         const html = getRenderedHtml('otp-email', {
           fullName: user.fullName,
@@ -88,6 +80,11 @@ module.exports = {
         console.error('Failed to send email:', error);
       }
 
+      res.status(200).json({
+        status: true,
+        message: 'User registered successfully',
+        data: user,
+      });
     } catch (error) {
       next(error);
     }
