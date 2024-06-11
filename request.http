@@ -81,8 +81,8 @@ POST http://localhost:3000/api/v1/auth/register
 Content-Type: application/json
 
 {
-    "fullName": "tydavavavy",
-    "email": "bqmwktheblms@miteon.com",
+    "fullName": "Sony",
+    "email": "rqtmxljz@nespressopixie.com",
     "phoneNumber": "032123468464",
     "password": "123456"
 }
@@ -92,8 +92,8 @@ POST http://localhost:3000/api/v1/auth/verify-otp
 Content-Type: application/json
 
 {
-    "email": "21082010208@student.upnjatim.ac.id",
-    "otp": "233629"
+    "email": "rqtmxljz@nespressopixie.com",
+    "otp": "482638"
 }
 
 ### RESEND 
@@ -101,7 +101,7 @@ POST http://localhost:3000/api/v1/auth/resend-otp
 Content-Type: application/json
 
 {
-    "email": "rywyujoy@miteon.com"
+    "email": "rqtmxljz@nespressopixie.com"
 }
 
 ### LOGIN USER
@@ -109,8 +109,22 @@ POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "emailOrPhoneNumber": "charlie@gmail.com",
+    "emailOrPhoneNumber": "rqtmxljz@nespressopixie.com",
     "password": "123456"
+}
+
+### UPDATE USER
+PUT http://localhost:3000/api/v1/auth/users/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJTb255IiwiZmFtaWx5TmFtZSI6bnVsbCwicGhvbmVOdW1iZXIiOiIwMzIxMjM0Njg0NjQiLCJlbWFpbCI6InJxdG14bGp6QG5lc3ByZXNzb3BpeGllLmNvbSIsImlkZW50aXR5VHlwZSI6bnVsbCwiaWRlbnRpdHlOdW1iZXIiOm51bGwsIm5hdGlvbmFsaXR5IjpudWxsLCJlbWFpbElzVmVyaWZpZWQiOnRydWUsImdvb2dsZUlkIjpudWxsLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcxODE0MjgyMn0.27Wp06MVluq0Zai15BFBjmrXTUwIm8F7CF6OmMy4ODw
+
+{
+    "fullName": "Shonny",
+    "familyName": "Wakwaw",
+    "phoneNumber": "123456789",
+    "identityType": "KTP",
+    "identityNumber": "1234567890123",
+    "nationality": "Singapore"
 }
 
 ### VERIFIED USER CHECK
@@ -157,6 +171,7 @@ GET http://localhost:3000/api/v1/promos
 
 ### GET ALL FAVORITE DESTINATION
 GET http://localhost:3000/api/v1/flights/favorite?limit=5&page=1
+
 
 ##############################################
 ################## DEPLOY ####################

@@ -760,6 +760,74 @@ paths:
                     example: Your account is not verified
                   data:
                     example: ~
+  
+  /auth/users/profile:
+    put:
+      tags:
+        - Auth
+      summary: Update User Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fullName:
+                  type: string
+                  example: Shonny
+                familyName:
+                  type: string
+                  example: Wakwaw
+                phoneNumber:
+                  type: string
+                  example: 123456789
+                identityType:
+                  type: string
+                  example: KTP
+                identityNumber:
+                  type: string
+                  example: 1234567890123
+                nationality:
+                  type: string
+                  example: Singapore
+      responses:
+        200:
+          description: User profile updated successfully
+          content:
+            application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: boolean
+                      example: true
+                    message:
+                      type: string
+                      example: User profile updated successfully
+                    data:
+                      type: object
+                      properties:
+                        user:
+                          allOf:
+                            - $ref: "#/components/schemas/User"
+        404:
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: User not found
+                  data:
+                    example: ~
+      security:  
+        - bearerAuth: [] 
+
   /auth/verified:
     get:
       tags:
