@@ -385,6 +385,58 @@ module.exports = {
       next(error);
     }
   },
+  changePassword: async (req, res, next) => {
+    const { oldPassword, newPassword, confirmNewPassword } = req.body;
+    if (!oldPassword || !newPassword || !confirmNewPassword) {
+      return res.status(400).json({
+        status: false,
+        message: `Field 'oldPassword', 'newPassword', and 'confirmNewPassword' are required`,
+        data: null
+      });
+    }
+
+    const { password: currentHashedPassword} = await prisma.user.findUnique({
+      where: {
+        email: req.user.email
+      },
+      select: {
+        password: true
+      }
+    });
+
+    const isCurrentPasswordMatch = await compareHash(oldPassword, currentHashedPassword);
+    if (!isCurrentPasswordMatch) {
+      return res.status(400).json({
+        status: false,
+        message: `Field 'oldPassword' do not match the current password`,
+        data: null
+      });
+    }
+
+    if (newPassword !== confirmNewPassword) {
+      return res.status(400).json({
+        status: false,
+        message: `Field 'newPassword' and 'confirmNewPassword' do not match`,
+        data: null
+      });
+    }
+
+    const newHashedPassword = await generateHash(newPassword);
+    await prisma.user.update({
+      data: {
+        password: newHashedPassword
+      },
+      where: {
+        email: req.user.email,
+      }
+    });
+
+    res.status(200).json({
+      status: true,
+      message: 'Password changed',
+      data: null
+    });
+  },
 
   deleteUser: async (req, res, next) => {
     try {
