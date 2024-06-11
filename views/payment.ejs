@@ -40,8 +40,8 @@
             <option value="mandiri_va">Mandiri Virtual Account</option>
             <option value="credit_card">Credit Card</option>
           </select>
-          <button id="pay-button" class="btn btn-pay">Bayar</button>
           <div id="snap-container" style="width: 100%; height: 500px"></div>
+          <button id="pay-button" class="btn btn-pay">Bayar</button>
           <!-- Container for Snap Embed -->
         </div>
         <div class="booking-details">
@@ -86,7 +86,7 @@
               onSuccess: function (result) {
                 alert('Payment success!');
                 console.log(result);
-                // window.location.href = '/'; // Redirect on success
+                window.location.href = '/'; // Redirect on success
               },
               onPending: function (result) {
                 alert('Waiting for your payment...');

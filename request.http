@@ -3,7 +3,7 @@
 ##############################################
 POST http://localhost:3000/api/v1/bookings/new-booking
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwicm9sZSI6IlVTRVIiLCJnb29nbGVJZCI6bnVsbCwiaWF0IjoxNzE4MDM0NDQwfQ.sfcu8LiBMi-PoYgWQAbyVfVaM3AH1prhbAnu5pqpfj4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTA3ODQyfQ.BkSIsAeaZACbWLIk5RB_wF1NS9wq9Z2MEI-cF5alof0
 
 {
     "flightId": 3,
@@ -81,8 +81,8 @@ POST http://localhost:3000/api/v1/auth/register
 Content-Type: application/json
 
 {
-    "fullName": "abiyyi sepek haha",
-    "email": "21082010203@student.upnjatim.ac.id",
+    "fullName": "tydavavavy",
+    "email": "bqmwktheblms@miteon.com",
     "phoneNumber": "032123468464",
     "password": "123456"
 }
@@ -96,12 +96,12 @@ Content-Type: application/json
     "otp": "233629"
 }
 
-### RESEND OTP
+### RESEND 
 POST http://localhost:3000/api/v1/auth/resend-otp
 Content-Type: application/json
 
 {
-    "email": "21082010208@student.upnjatim.ac.id"
+    "email": "rywyujoy@miteon.com"
 }
 
 ### LOGIN USER
