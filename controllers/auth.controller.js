@@ -68,18 +68,26 @@ module.exports = {
         },
       });
 
-      const html = getRenderedHtml('otp-email', {
-        fullName: user.fullName,
-        otp: otpCode,
-      });
-
-      await sendEmail({ to: email, subject: 'Your OTP Code', html });
-
-      return res.status(200).json({
+      // Send response immediately
+      res.status(200).json({
         status: true,
         message: 'User registered successfully',
         data: user,
       });
+
+      // Send email asynchronously
+      try {
+        const html = getRenderedHtml('otp-email', {
+          fullName: user.fullName,
+          otp: otpCode,
+        });
+
+        await sendEmail({ to: email, subject: 'Your OTP Code', html });
+        console.log('Email sent successfully');
+      } catch (error) {
+        console.error('Failed to send email:', error);
+      }
+
     } catch (error) {
       next(error);
     }
@@ -257,7 +265,7 @@ module.exports = {
       next(error);
     }
   },
-  verified: async(req, res, next) => {
+  verified: async (req, res, next) => {
     try {
       return res.status(200).json({
         status: true,
@@ -437,7 +445,7 @@ module.exports = {
       next(error);
     }
   },
-  getAll: async(req, res, next) => {
+  getAll: async (req, res, next) => {
     try {
       const users = await prisma.user.findMany();
       return res.status(200).json({
@@ -456,7 +464,7 @@ module.exports = {
         where: { id },
       });
 
-      if(!user){
+      if (!user) {
         return res.status(404).json({
           status: false,
           message: `User with ID ${id} not found`,
