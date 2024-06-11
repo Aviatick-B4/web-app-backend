@@ -28,5 +28,6 @@ router.post('/reset-password', auth.resetPassword);
 router.get('/verified', restrict, auth.verified);
 router.get('/users', restrict, isAdmin, auth.getAll);
 router.get('/users/:id', restrict, auth.getUserById);
+router.put('/users/profile', restrict, auth.updateUserProfile);
 
 module.exports = router;

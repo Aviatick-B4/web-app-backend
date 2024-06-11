@@ -407,6 +407,52 @@ module.exports = {
     }
   },
 
+  updateUserProfile: async (req, res, next) => {
+    try {
+      const { id } = req.user;
+      const {
+        fullName,
+        familyName,
+        phoneNumber,
+        identityType,
+        identityNumber,
+        nationality,
+      } = req.body;
+
+      const user = await prisma.user.findUnique({
+        where: { id },
+      });
+
+      if (!user) {
+        return res.status(404).json({
+          status: false,
+          message: 'User not found',
+          data: null,
+        });
+      }
+
+      const updatedUser = await prisma.user.update({
+        where: { id },
+        data: {
+          fullName,
+          familyName,
+          phoneNumber,
+          identityType,
+          identityNumber,
+          nationality,
+        },
+      });
+
+      return res.status(200).json({
+        status: true,
+        message: 'User profile updated successfully',
+        data: updatedUser,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
   deleteUser: async (req, res, next) => {
     try {
       const id = Number(req.params.id);
