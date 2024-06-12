@@ -1031,6 +1031,81 @@ paths:
                     example: User not found
                   data:
                     example: null
+
+  /auth/change-password:
+    post:
+      tags:
+        - Auth
+      summary: Update user's password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                oldPassword:
+                  type: string
+                  example: 123456
+                newPassword:
+                  type: string
+                  example: Aviatick@BinarAcademy2024!
+                confirmNewPassword:
+                  type: string
+                  example: Aviatick@BinarAcademy2024!
+      responses:
+        200:
+          description: Password successfully updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Password changed
+                  data:
+                    example: null
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    oneOf:
+                      - example: Field 'oldPassword', 'newPassword', and 'confirmNewPassword' are required
+                      - example: Field 'oldPassword' do not match the current password
+                      - example: Field 'newPassword' and 'confirmNewPassword' do not match
+                      - example: New password could not be the same as old password
+                  data:
+                    example: null
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Token is missing or not provided
+                  data:
+                    example: null
+      security:  
+        - bearerAuth: [] 
+
   /auth/users:
     get:
       tags:
