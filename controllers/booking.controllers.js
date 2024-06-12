@@ -32,6 +32,15 @@ module.exports = {
 
       const totalPassengers = adult + child + baby;
 
+      if (passenger.length !== totalPassengers) {
+        return res.status(400).json({
+          status: 'error',
+          message:
+            'Total number of passengers does not match the provided passenger details',
+          data: null,
+        });
+      }
+
       const result = await prisma.$transaction(async (prisma) => {
         const flight = await prisma.flight.findUnique({
           where: { id: flightId },
