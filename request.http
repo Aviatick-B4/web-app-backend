@@ -3,7 +3,7 @@
 ##############################################
 POST http://localhost:3000/api/v1/bookings/new-booking
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTk5ODQwfQ.YbGj5YruyqA9T8AmjbkqE9GMNjdlX_AWFIalQlEgEpc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MjAzMzAxfQ.niDjF3qLlMv-x9VZBTZn4TU2LG5n-oHtkgV7oPer-GQ
 
 {
     "flightId": 5,
@@ -56,7 +56,7 @@ POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "emailOrPhoneNumber": "john@gmail.com",
+    "emailOrPhoneNumber": "charlie@gmail.com",
     "password": "123456"
 }
 
@@ -91,8 +91,8 @@ POST http://localhost:3000/api/v1/auth/register
 Content-Type: application/json
 
 {
-    "fullName": "Sony",
-    "email": "rqtmxljz@nespressopixie.com",
+    "fullName": "semena mena",
+    "email": "21082010208@student.upnjatim.ac.id",
     "phoneNumber": "032123468464",
     "password": "123456"
 }
@@ -102,16 +102,16 @@ POST http://localhost:3000/api/v1/auth/verify-otp
 Content-Type: application/json
 
 {
-    "email": "rqtmxljz@nespressopixie.com",
-    "otp": "482638"
+    "email": "21082010208@student.upnjatim.ac.id",
+    "otp": "121439"
 }
 
 ### RESEND 
-POST http://localhost:3000/api/v1/auth/resend-otp
+POST https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/auth/resend-otp
 Content-Type: application/json
 
 {
-    "email": "rqtmxljz@nespressopixie.com"
+    "email": "ezilxbbgfnoqohl@maxamba.com"
 }
 
 ### LOGIN USER
@@ -119,7 +119,7 @@ POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "emailOrPhoneNumber": "rqtmxljz@nespressopixie.com",
+    "emailOrPhoneNumber": "21082010208@student.upnjatim.ac.id",
     "password": "123456"
 }
 
@@ -139,20 +139,31 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hb
 
 ### VERIFIED USER CHECK
 GET http://localhost:3000/api/v1/auth/verified
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTk2MDA3fQ.mWJczSCMITfSdLcjnTongENkFO8rdSTkDYoolqDBrP8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTk5OTM0fQ.xdCn7M3_DLndOA2Ox1TvWqL-Q6gdpSt_8hNRu2l9yJM
+
+### GET USER BY ID (ADMIN)
+GET http://localhost:3000/api/v1/auth/users/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbE5hbWUiOiJDaGFybGllIERhdmlzIiwiZmFtaWx5TmFtZSI6IkRhdmlzIiwicGhvbmVOdW1iZXIiOiIrNjIxMjM0NTY3ODk0IiwiZW1haWwiOiJjaGFybGllQGdtYWlsLmNvbSIsImlkZW50aXR5VHlwZSI6IlBhc3Nwb3J0IiwiaWRlbnRpdHlOdW1iZXIiOiJCMjM0NTY3ODkiLCJuYXRpb25hbGl0eSI6IkluZG9uZXNpYW4iLCJlbWFpbElzVmVyaWZpZWQiOnRydWUsImdvb2dsZUlkIjpudWxsLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MTgyMDA5Nzh9.sYEY26fNYYInC4J3_O42MxmZXvxrfgOBDPD9Urw6y7w
+
+### GET USER BY TOKEN
+GET http://localhost:3000/api/v1/auth/users/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTk5OTM0fQ.xdCn7M3_DLndOA2Ox1TvWqL-Q6gdpSt_8hNRu2l9yJM
+
 
 ### DELETE USER
-DELETE  http://localhost:3000/api/v1/auth/users/32
+DELETE  http://localhost:3000/api/v1/auth/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MjAzMzAxfQ.niDjF3qLlMv-x9VZBTZn4TU2LG5n-oHtkgV7oPer-GQ
 
 ### POST PROMO
 POST http://localhost:3000/api/v1/promos
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbE5hbWUiOiJDaGFybGllIERhdmlzIiwiZmFtaWx5TmFtZSI6IkRhdmlzIiwicGhvbmVOdW1iZXIiOiIrNjIxMjM0NTY3ODk0IiwiZW1haWwiOiJjaGFybGllQGdtYWlsLmNvbSIsImlkZW50aXR5VHlwZSI6IlBhc3Nwb3J0IiwiaWRlbnRpdHlOdW1iZXIiOiJCMjM0NTY3ODkiLCJuYXRpb25hbGl0eSI6IkluZG9uZXNpYW4iLCJlbWFpbElzVmVyaWZpZWQiOnRydWUsImdvb2dsZUlkIjpudWxsLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MTgxOTY5Nzd9.gxd_7Vlh0prDE9hoPG7SCurkj_tdOgieW5kX89Jp-Go
 
 {
-    "name": "Promo 22222 Aviatick",
+    "name": "Promo test x23x Aviatick",
     "discount": 0.12,
     "validFrom": "2024-06-01 00:00:00",
-    "validUntil": "2024-06-07 20:54:00"
+    "validUntil": "2024-06-12 20:22:00"
 }
 
 ### POST NOTIFICATION

@@ -406,11 +406,11 @@ components:
               validFrom:
                 type: string
                 format: date-time
-                example: "2024-06-11T00:00:00.000Z"
+                example: "2024-06-11 00:00:00"
               validUntil:
                 type: string
                 format: date-time
-                example: "2024-06-21T00:00:00.000Z"
+                example: "2024-06-21 00:00:00"
     NewPayment:
       required: true
       content:
@@ -760,8 +760,28 @@ paths:
                     example: Your account is not verified
                   data:
                     example: ~
-  
   /auth/users/profile:
+    get:
+      tags:
+        - Auth
+      summary: Get user profile with token
+      responses:
+        200:
+          description: User profile fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "User profile fetched successfully"
+                  data:
+                    items:
+                      $ref: "#/components/schemas/User"
     put:
       tags:
         - Auth
@@ -827,7 +847,6 @@ paths:
                     example: ~
       security:  
         - bearerAuth: [] 
-
   /auth/verified:
     get:
       tags:
@@ -1110,17 +1129,32 @@ paths:
     get:
       tags:
         - Auth
-      summary: Fetch all users
+      summary: (Admin Only) Fetch all users
       responses:
         200:
           description: Users fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "User profile fetched successfully"
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/User"
       security:  
         - bearerAuth: []
   /auth/users/{id}:
     get:
       tags:
         - Auth
-      summary: Fetch user by ID
+      summary: (Admin Only) Fetch user by ID
       parameters:
       - schema:
           type: integer
@@ -1195,12 +1229,12 @@ paths:
                 data: 
                   example: null
       security:  
-        - bearerAuth: [] 
+        - bearerAuth: []
   /cities:
     get:
       tags:
         - Cities
-      summary: Fetch cities data based on city or country name
+      summary: (Admin Only) Fetch cities data based on city or country name
       parameters:
         - in: query
           name: search
@@ -1240,7 +1274,6 @@ paths:
                         country:
                           type: string
                           example: Indonesia
-
   /tickets:
     get:
       tags:
@@ -1868,7 +1901,7 @@ paths:
     post:
       tags:
         - Promos
-      summary: Create a new promo
+      summary: (Admin Only) Create a new promo
       requestBody:
         $ref: "#/components/requestBodies/NewPromo"
       responses:
@@ -1921,7 +1954,7 @@ paths:
     get:
       tags:
         - Promos
-      summary: Get all promos
+      summary: (Admin Only) Get all promos
       responses:
         200:
           description: Successfully retrieved all promos
@@ -1946,7 +1979,7 @@ paths:
     put:
       tags:
         - Promos
-      summary: Update promo for a ticket
+      summary: (Admin Only) Update promo for a ticket
       requestBody:
         required: true
         $ref: "#/components/requestBodies/NewPromo"
@@ -2094,7 +2127,7 @@ paths:
     post:
       tags:
         - Notifications
-      summary: Create a new notification
+      summary: (Admin Only) Create a new notification
       requestBody:
         $ref: "#/components/requestBodies/NewNotification"
       responses:
@@ -2203,7 +2236,7 @@ paths:
     put:
       tags:
         - Airlines
-      summary: Update airline's logo
+      summary: (Admin Only) Update airline's logo
       parameters:
         - in: path
           name: id
