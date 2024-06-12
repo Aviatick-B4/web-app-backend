@@ -3,13 +3,13 @@
 ##############################################
 POST http://localhost:3000/api/v1/bookings/new-booking
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MjAzMzAxfQ.niDjF3qLlMv-x9VZBTZn4TU2LG5n-oHtkgV7oPer-GQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MjA5MDk5fQ._K0x-4_k738IyL8ftP9H6u-4NEVFZNg37gfRCqn-aiU
 
 {
-    "flightId": 5,
-    "adult": 2,
+    "flightId": 3,
+    "adult": 1,
     "child": 0,
-    "baby": 1,
+    "baby": 0,
     "seatClass": "Business",
     "passenger": [
         {
@@ -23,30 +23,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hb
             "identityNumber": "123456123",
             "expiredDate": "2025-01-01T00:00:00.000Z",
             "ageGroup": "ADULT"
-        },
-        {
-            "title": "Mrs",
-            "fullName": "Mega",
-            "familyName": "Maharani",
-            "birthDate": "1985-02-01T00:00:00.000Z",
-            "nationality": "Indonesia",
-            "identityType": "KTP",
-            "issuingCountry": "Indonesia",
-            "identityNumber": "987654123",
-            "expiredDate": "2025-01-01T00:00:00.000Z",
-            "ageGroup": "ADULT"
-        },
-        {
-            "title": "Baby",
-            "fullName": "Iwan",
-            "familyName": "Aja",
-            "birthDate": "2024-01-01T00:00:00.000Z",
-            "nationality": "Indonesia",
-            "identityType": "KTP",
-            "issuingCountry": "Indonesia",
-            "identityNumber": "000000000",
-            "expiredDate": "2025-01-01T00:00:00.000Z",
-            "ageGroup": "BABY"
         }
     ]
 }
@@ -67,6 +43,10 @@ GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1
 GET http://localhost:3000/api/v1/bookings/booking-history
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTk2MDA3fQ.mWJczSCMITfSdLcjnTongENkFO8rdSTkDYoolqDBrP8
+
+### GET BOOKING HISTORY BY BOOKING ID
+GET http://localhost:3000/api/v1/bookings/booking-history/7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MjA5MDk5fQ._K0x-4_k738IyL8ftP9H6u-4NEVFZNg37gfRCqn-aiU
 
 ### GET BOOKING BY BOOKING STATUS
 GET http://localhost:3000/api/v1/bookings/booking-history?status=CANCELED
@@ -119,7 +99,7 @@ POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "emailOrPhoneNumber": "21082010208@student.upnjatim.ac.id",
+    "emailOrPhoneNumber": "john@gmail.com",
     "password": "123456"
 }
 
@@ -177,11 +157,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbE5hb
 }
 
 ### UPDATE TICKET WITH PROMO
-PUT http://localhost:3000/api/v1/promos/6
+PUT http://localhost:3000/api/v1/promos/1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbE5hbWUiOiJDaGFybGllIERhdmlzIiwiZmFtaWx5TmFtZSI6IkRhdmlzIiwicGhvbmVOdW1iZXIiOiIrNjIxMjM0NTY3ODk0IiwiZW1haWwiOiJjaGFybGllQGdtYWlsLmNvbSIsImlkZW50aXR5VHlwZSI6IlBhc3Nwb3J0IiwiaWRlbnRpdHlOdW1iZXIiOiJCMjM0NTY3ODkiLCJuYXRpb25hbGl0eSI6IkluZG9uZXNpYW4iLCJlbWFpbElzVmVyaWZpZWQiOnRydWUsImdvb2dsZUlkIjpudWxsLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MTgyMTE5NDh9.zbLoRkNKHJX7mSOZesVIc2_lrCly6PVbyPU2Idctejo
 
 {
-    "promoId": 4
+    "promoId": 1
 }
 
 ###

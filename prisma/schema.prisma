@@ -40,6 +40,7 @@ model Booking {
   createdAt   DateTime    @map("created_at")
   totalPrice  Float       @map("total_price")
   bookingTax  Float       @map("booking_tax")
+  urlPayment    String?   @map("url_payment")
   flight      Flight      @relation(fields: [flightId], references: [id])
   flightId    Int         @map("flight_id")
   user        User        @relation(fields: [userId], references: [id])
