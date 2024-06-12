@@ -1569,11 +1569,12 @@ paths:
         - Bookings
       parameters:
         - in: query
-          name: userId
+          name: status
           schema:
-            type: integer
+            type: string
           required: false
-          description: ID of the user
+          description: Booking berdasarkan status
+          example: UNPAID, PAID, CANCELED
         - in: query
           name: search
           schema:
