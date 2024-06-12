@@ -6,6 +6,26 @@ module.exports = {
     try {
       const { name, discount, validFrom, validUntil } = req.body;
 
+      if (!name || !discount || !validFrom || !validUntil) {
+        return res.status(400).json({
+          status: false,
+          message: 'All fields are required',
+          data: null,
+        });
+      }
+
+      const existName = await prisma.promo.findFirst({
+        where: { name: { equals: name, mode: 'insensitive' } },
+      });
+
+      if (existName) {
+        return res.status(400).json({
+          status: false,
+          message: 'Promo name is already been used',
+          data: null,
+        });
+      }
+
       const convertValidFrom = new Date(validFrom);
       const convertValidUntil = new Date(validUntil);
       const convertUTCValidFrom = new Date(
@@ -23,24 +43,6 @@ module.exports = {
           validUntil: convertUTCValidUntil,
         },
       });
-
-      if (!name || !discount || !validFrom || !validUntil) {
-        return res.status(400).json({
-          status: false,
-          message: 'All fields are required',
-          data: null,
-        });
-      }
-
-      const existName = await prisma.promo.findFirst({ where: { name: name } });
-
-      if (existName) {
-        return res.status(400).json({
-          status: false,
-          message: 'Promo name is already been used',
-          data: null,
-        });
-      }
 
       res.status(201).json({
         status: true,

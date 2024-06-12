@@ -409,7 +409,7 @@ module.exports = {
 
   deleteUser: async (req, res, next) => {
     try {
-      const id = Number(req.params.id);
+      const id = req.user.id;
 
       const user = await prisma.user.findUnique({
         where: { id },
@@ -430,6 +430,22 @@ module.exports = {
       await prisma.otp.deleteMany({
         where: { userId: id },
       });
+
+      const bookings = await prisma.booking.findMany({
+        where: { userId: id }
+      });
+
+      for (const booking of bookings) {
+        await prisma.payment.deleteMany({
+          where: { bookingId: booking.id }
+        });
+        await prisma.passenger.deleteMany({
+          where: { bookingId: booking.id }
+        });
+        await prisma.booking.delete({
+          where: { id: booking.id }
+        });
+      }
 
       await prisma.user.delete({ where: { id } });
 
@@ -471,6 +487,30 @@ module.exports = {
       return res.status(200).json({
         status: true,
         message: 'User fetched successfully',
+        data: user,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+  getUserByToken: async (req, res, next) => {
+    try {
+      const id = req.user.id;
+      const user = await prisma.user.findUnique({
+        where: { id: id },
+      });
+
+      if (!user) {
+        return res.status(404).json({
+          status: false,
+          message: 'User not found',
+          data: null,
+        });
+      }
+
+      return res.status(200).json({
+        status: true,
+        message: 'User profile fetched successfully',
         data: user,
       });
     } catch (error) {

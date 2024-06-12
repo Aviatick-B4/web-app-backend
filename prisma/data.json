@@ -3489,5 +3489,28 @@
       "flightId": 60,
       "airplaneSeatClassId": 30
     }
+  ],
+  "promos": [
+    {
+      "id": 1,
+      "name": "Grand Openning Aviatick Promotion",
+      "discount": 0.1,
+      "validFrom": "2024-06-01T00:00:00Z",
+      "validUntil": "2024-12-31T23:59:59Z"
+    },
+    {
+      "id": 2,
+      "name": "Aviatick 1th Anniversary Promotion",
+      "discount": 0.1,
+      "validFrom": "2024-06-01T00:00:00Z",
+      "validUntil": "2024-12-31T23:59:59Z"
+    },
+    {
+      "id": 3,
+      "name": "Aviatick 2th Anniversary Promotion",
+      "discount": 0.1,
+      "validFrom": "2024-06-11T00:00:00Z",
+      "validUntil": "2024-06-13T06:00:00Z"
+    }
   ]
 }
