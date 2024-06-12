@@ -3,7 +3,7 @@
 ##############################################
 POST http://localhost:3000/api/v1/bookings/new-booking
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MjAzMzAxfQ.niDjF3qLlMv-x9VZBTZn4TU2LG5n-oHtkgV7oPer-GQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MjA2NDc0fQ.N2TVWTPN9WHrhiCywO9CIovgcCZGY1JAdZgjlixQYJ4
 
 {
     "flightId": 5,
@@ -103,7 +103,7 @@ Content-Type: application/json
 
 {
     "email": "21082010208@student.upnjatim.ac.id",
-    "otp": "121439"
+    "otp": "703045"
 }
 
 ### RESEND 
