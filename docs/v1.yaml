@@ -953,7 +953,7 @@ paths:
     post:
       tags:
         - Auth
-      summary: Update user's password
+      summary: Hard reset user's password
       parameters:
         - in: query
           name: token
