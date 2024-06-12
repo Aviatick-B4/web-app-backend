@@ -6,7 +6,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MjAzMzAxfQ.niDjF3qLlMv-x9VZBTZn4TU2LG5n-oHtkgV7oPer-GQ
 
 {
-    "flightId": 3,
+    "flightId": 5,
     "adult": 2,
     "child": 0,
     "baby": 1,
@@ -65,13 +65,23 @@ GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1
 
 ### GET ALL BOOKING HISTORY 
 GET http://localhost:3000/api/v1/bookings/booking-history
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTk2MDA3fQ.mWJczSCMITfSdLcjnTongENkFO8rdSTkDYoolqDBrP8
 
+### GET BOOKING BY BOOKING STATUS
+GET http://localhost:3000/api/v1/bookings/booking-history?status=CANCELED
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTk2MDA3fQ.mWJczSCMITfSdLcjnTongENkFO8rdSTkDYoolqDBrP8
 
 ### GET BOOKING BY BOOKING CODE
 GET http://localhost:3000/api/v1/bookings/booking-history?search=d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTk2MDA3fQ.mWJczSCMITfSdLcjnTongENkFO8rdSTkDYoolqDBrP8
 
 ### GET BOOKING BY BOOKING ID
 GET http://localhost:3000/api/v1/bookings/booking-history/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTk2MDA3fQ.mWJczSCMITfSdLcjnTongENkFO8rdSTkDYoolqDBrP8
 
 ### GET BOOKING BY CREATED AT BOOKING
 GET http://localhost:3000/api/v1/bookings/booking-history?date=2024-06-03
@@ -113,6 +123,20 @@ Content-Type: application/json
     "password": "123456"
 }
 
+### UPDATE USER
+PUT http://localhost:3000/api/v1/auth/users/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJTb255IiwiZmFtaWx5TmFtZSI6bnVsbCwicGhvbmVOdW1iZXIiOiIwMzIxMjM0Njg0NjQiLCJlbWFpbCI6InJxdG14bGp6QG5lc3ByZXNzb3BpeGllLmNvbSIsImlkZW50aXR5VHlwZSI6bnVsbCwiaWRlbnRpdHlOdW1iZXIiOm51bGwsIm5hdGlvbmFsaXR5IjpudWxsLCJlbWFpbElzVmVyaWZpZWQiOnRydWUsImdvb2dsZUlkIjpudWxsLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcxODE0MjgyMn0.27Wp06MVluq0Zai15BFBjmrXTUwIm8F7CF6OmMy4ODw
+
+{
+    "fullName": "Shonny",
+    "familyName": "Wakwaw",
+    "phoneNumber": "123456789",
+    "identityType": "KTP",
+    "identityNumber": "1234567890123",
+    "nationality": "Singapore"
+}
+
 ### VERIFIED USER CHECK
 GET http://localhost:3000/api/v1/auth/verified
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTk5OTM0fQ.xdCn7M3_DLndOA2Ox1TvWqL-Q6gdpSt_8hNRu2l9yJM
@@ -124,6 +148,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbE5hb
 ### GET USER BY TOKEN
 GET http://localhost:3000/api/v1/auth/users/profile
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiJKb2huIERvZSIsImZhbWlseU5hbWUiOiJEb2UiLCJwaG9uZU51bWJlciI6Iis2MjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiaWRlbnRpdHlUeXBlIjoiUGFzc3BvcnQiLCJpZGVudGl0eU51bWJlciI6IkExMjM0NTY3OCIsIm5hdGlvbmFsaXR5IjoiSW5kb25lc2lhbiIsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4MTk5OTM0fQ.xdCn7M3_DLndOA2Ox1TvWqL-Q6gdpSt_8hNRu2l9yJM
+
 
 ### DELETE USER
 DELETE  http://localhost:3000/api/v1/auth/users
@@ -167,6 +192,7 @@ GET http://localhost:3000/api/v1/promos
 
 ### GET ALL FAVORITE DESTINATION
 GET http://localhost:3000/api/v1/flights/favorite?limit=5&page=1
+
 
 ##############################################
 ################## DEPLOY ####################
