@@ -1611,21 +1611,18 @@ paths:
             schema:
               type: object
               properties:
-                userId:
-                  type: integer
-                  example: 1
                 flightId:
                   type: integer
                   example: 1
                 adult:
                   type: integer
-                  example: 2
+                  example: 1
                 child:
                   type: integer
                   example: 0
                 baby:
                   type: integer
-                  example: 1
+                  example: 0
                 seatClass:
                   type: string
                   example: "Economy"
