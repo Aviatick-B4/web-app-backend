@@ -2,25 +2,28 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const crypto = require('crypto');
 
+const convertToUTC = (date) => {
+  return new Date(date.getTime() + 7 * 60 * 60 * 1000).toISOString();
+};
+
 module.exports = {
   booking: async (req, res, next) => {
     try {
-      const authHeader  = req.headers.authorization;
-
-      const token = authHeader.split(' ')[1]
+      const authHeader = req.headers.authorization;
+      const token = authHeader.split(' ')[1];
 
       if (!authHeader) {
         return res.status(401).json({
-          status: "error",
-          message: "No authorization token provided",
+          status: 'error',
+          message: 'No authorization token provided',
           data: null,
         });
       }
 
       if (!req.user || !req.user.id) {
         return res.status(401).json({
-          status: "error",
-          message: "User not authenticated",
+          status: 'error',
+          message: 'User not authenticated',
           data: null,
         });
       }
@@ -78,7 +81,7 @@ module.exports = {
             expiredPaid: expiredPaid,
             totalPrice: total_price + tax,
             bookingTax: tax,
-            createdAt: new Date(),
+            createdAt: convertToUTC(new Date()),
             passenger: {
               create: passenger.map((p) => ({
                 title: p.title,
@@ -99,7 +102,7 @@ module.exports = {
 
         await prisma.flight.update({
           where: { id: flightId },
-          data: { count: flight.count ++ },
+          data: { count: flight.count++ },
         });
 
         return {
@@ -111,7 +114,7 @@ module.exports = {
           total_price: total_price + tax,
           bookingTax: tax,
           status: newBooking.status,
-          paid_before: newBooking.expiredPaid,
+          paid_before: convertToUTC(newBooking.expiredPaid),
           created_at: newBooking.createdAt,
         };
       });
@@ -126,12 +129,14 @@ module.exports = {
         },
       });
 
-      const urlPayment = (`${req.protocol}://${req.get('host')}/payment-form/${result.id}?token=${token}`)
+      const urlPayment = `${req.protocol}://${req.get('host')}/payment-form/${
+        result.id
+      }?token=${token}`;
 
       return res.status(200).json({
         status: true,
         message: 'Success creating new Booking',
-        data: { ...result, urlPayment},
+        data: { ...result, urlPayment },
       });
     } catch (error) {
       next(error);
@@ -140,8 +145,8 @@ module.exports = {
 
   getAll: async (req, res, next) => {
     try {
-      const userId = req.body.userId;
-      const { search, date } = req.query;
+      const { id: userId } = req.user;
+      const { search, date, status } = req.query;
 
       if (!userId) {
         return res.status(400).json({
@@ -177,6 +182,10 @@ module.exports = {
             data: null,
           });
         }
+      }
+
+      if (status) {
+        bookingFilter.status = status.toUpperCase();
       }
 
       const bookings = await prisma.booking.findMany({
@@ -219,17 +228,17 @@ module.exports = {
 
           return {
             id: booking.id,
-            date: booking.flight.departureTime,
+            date: convertToUTC(booking.flight.departureTime),
             status: status,
             booking_code: booking.bookingCode,
             seat_class: booking.seatClass,
-            paid_before: booking.expiredPaid,
+            paid_before: convertToUTC(booking.expiredPaid),
             price: booking.totalPrice,
             flight_detail: {
               departure_city: booking.flight.departureAirport.city.name,
               arrival_city: booking.flight.arrivalAirport.city.name,
-              departure_time: booking.flight.departureTime,
-              arrival_time: booking.flight.arrivalTime,
+              departure_time: convertToUTC(booking.flight.departureTime),
+              arrival_time: convertToUTC(booking.flight.arrivalTime),
             },
           };
         })
@@ -247,7 +256,7 @@ module.exports = {
 
   getDetail: async (req, res, next) => {
     try {
-      const userId = req.body.userId;
+      const { id: userId } = req.user;
 
       const { bookingId } = req.params;
 
@@ -292,12 +301,12 @@ module.exports = {
         id: booking.id,
         booking_code: booking.bookingCode,
         status: booking.status,
-        paid_before: booking.expiredPaid,
+        paid_before: convertToUTC(booking.expiredPaid),
         flight_detail: {
           departure_city: booking.flight.departureAirport.city,
           arrival_city: booking.flight.arrivalAirport.city,
-          departure_time: booking.flight.departureTime,
-          arrival_time: booking.flight.arrivalTime,
+          departure_time: convertToUTC(booking.flight.departureTime),
+          arrival_time: convertToUTC(booking.flight.arrivalTime),
         },
         passengers: passengers,
         price_detail: {
