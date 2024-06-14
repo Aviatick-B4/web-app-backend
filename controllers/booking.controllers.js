@@ -104,9 +104,16 @@ module.exports = {
                 expiredDate: p.expiredDate,
                 ageGroup: p.ageGroup,
               })),
-            },
+            }
           },
           include: { passenger: true },
+        });
+
+        const urlPayment = `${req.protocol}://${req.get('host')}/payment-form/${newBooking.id}?token=${token}`;
+
+        await prisma.booking.update({
+          where: { id: newBooking.id },
+          data: { urlPayment: urlPayment },
         });
 
         await prisma.flight.update({
@@ -125,6 +132,7 @@ module.exports = {
           status: newBooking.status,
           paid_before: convertToUTC(newBooking.expiredPaid),
           created_at: newBooking.createdAt,
+          urlPayment: urlPayment,
         };
       });
 
@@ -138,14 +146,10 @@ module.exports = {
         },
       });
 
-      const urlPayment = `${req.protocol}://${req.get('host')}/payment-form/${
-        result.id
-      }?token=${token}`;
-
       return res.status(200).json({
         status: true,
         message: 'Success creating new Booking',
-        data: { ...result, urlPayment },
+        data: result,
       });
     } catch (error) {
       next(error);
@@ -323,6 +327,7 @@ module.exports = {
           total_price: booking.totalPrice,
           tax: booking.bookingTax,
         },
+        url_payment: booking.urlPayment,
       };
 
       return res.status(200).json({

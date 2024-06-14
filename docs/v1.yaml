@@ -239,6 +239,9 @@ components:
           type: string
           format: date-time
           example: "2024-06-01T12:30:00.000Z"
+        urlPayment:
+          type: string
+          example: "http://localhost:3000/payment-form/1?token=ahdviohavoaivioadjvioajiv"
     Passenger:
       type: object
       properties:
@@ -1642,12 +1645,7 @@ paths:
                     type: string
                     example: 'Success creating new Booking'
                   data:
-                    allOf:
-                      - $ref: "#/components/schemas/Booking"
-                      - properties:
-                          urlPayment:
-                            type: string
-                            example: "http://localhost:3000/payment-form/1?token=1234567890"
+                    $ref: "#/components/schemas/Booking"
         400:
           description: Bad Request
           content:
@@ -1858,6 +1856,9 @@ paths:
                           tax:
                             type: number
                             example: 600000
+                      urlPayment:
+                        type: string
+                        example: "http://localhost:3000/payment-form/1?token=ahdviohavoaivioadjvioajiv"
         400:
           description: Bad Request
           content:
@@ -1919,33 +1920,20 @@ paths:
                     type: object
                     $ref: "#/components/schemas/Promo"
         400:
-          description: Promo is no longer active
+          description: field are required
           content:
             application/json:
-              examples:
-                InvalidPromo:
-                  summary: Invalid promo
-                  value:
-                    status: false
-                    message: "Promo is no longer active"
-                    data: null
-        404:
-          description: Ticket or Promo not found
-          content:
-            application/json:
-              examples:
-                TicketNotFound:
-                  summary: Ticket not found
-                  value:
-                    status: false
-                    message: "Ticket with ID 1 not found"
-                    data: null
-                PromoNotFound:
-                  summary: Promo not found
-                  value:
-                    status: false
-                    message: "Promo with ID 1 not found"
-                    data: null
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "All fields are required"
+                  data:
+                    example: ~
       security:  
         - bearerAuth: []
     get:
@@ -1977,9 +1965,22 @@ paths:
       tags:
         - Promos
       summary: (Admin Only) Update promo for a ticket
+      parameters:
+        - in: path
+          name: ticketId
+          required: true
+          schema:
+            type: integer
       requestBody:
         required: true
-        $ref: "#/components/requestBodies/NewPromo"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                promoId:
+                  type: integer
+                  example: 1
       responses:
         200:
           description: Successfully updated promo for ticket
@@ -2000,6 +2001,49 @@ paths:
                       id:
                         type: integer
                         example: 1
+                      price:
+                        type: number
+                        example: 3000000
+                      afterDiscountPrice:
+                        type: number
+                        example: 2700000
+                      flightId:
+                        type: integer
+                        example: 1
+                      airplaneSeatClassId:
+                        type: integer
+                        example: 1
+                      promoId:
+                        type: integer
+                        example: 1
+        400:
+          description: Promo is no longer active
+          content:
+            application/json:
+              examples:
+                InvalidPromo:
+                  summary: Invalid promo
+                  value:
+                    status: false
+                    message: "Promo is no longer active"
+                    data: null
+        404:
+          description: Ticket or Promo not found
+          content:
+            application/json:
+              examples:
+                TicketNotFound:
+                  summary: Ticket not found
+                  value:
+                    status: false
+                    message: "Ticket with ID 1 not found"
+                    data: null
+                PromoNotFound:
+                  summary: Promo not found
+                  value:
+                    status: false
+                    message: "Promo with ID 1 not found"
+                    data: null
       security:  
         - bearerAuth: []
   /payments/payment/{bookingId}:
