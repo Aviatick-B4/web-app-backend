@@ -242,6 +242,7 @@ module.exports = {
             booking_code: booking.bookingCode,
             seat_class: booking.seatClass,
             paid_before: convertToUTC(booking.expiredPaid),
+            createdAt: booking.createdAt,
             price: booking.totalPrice,
             flight_detail: {
               departure_city: booking.flight.departureAirport.city.name,
