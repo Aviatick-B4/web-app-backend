@@ -71,361 +71,421 @@
       "id": 1,
       "name": "New York",
       "cityIata": "NYC",
-      "country": "USA"
+      "country": "USA",
+      "continent": "North America"
     },
     {
       "id": 2,
       "name": "Los Angeles",
       "cityIata": "LAX",
-      "country": "USA"
+      "country": "USA",
+      "continent": "North America"
     },
     {
       "id": 3,
       "name": "Chicago",
       "cityIata": "CHI",
-      "country": "USA"
+      "country": "USA",
+      "continent": "North America"
     },
     {
       "id": 4,
       "name": "Houston",
       "cityIata": "HOU",
-      "country": "USA"
+      "country": "USA",
+      "continent": "North America"
     },
     {
       "id": 5,
       "name": "Miami",
       "cityIata": "MIA",
-      "country": "USA"
+      "country": "USA",
+      "continent": "North America"
     },
     {
       "id": 6,
       "name": "Jakarta",
       "cityIata": "JKT",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 7,
       "name": "Surabaya",
       "cityIata": "SUB",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 8,
       "name": "Denpasar",
       "cityIata": "DPS",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 9,
       "name": "Makassar",
       "cityIata": "UPG",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 10,
       "name": "Medan",
       "cityIata": "MES",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 11,
       "name": "London",
       "cityIata": "LON",
-      "country": "UK"
+      "country": "UK",
+      "continent": "Europe"
     },
     {
       "id": 12,
       "name": "Paris",
       "cityIata": "PAR",
-      "country": "France"
+      "country": "France",
+      "continent": "Europe"
     },
     {
       "id": 13,
       "name": "Tokyo",
       "cityIata": "TYO",
-      "country": "Japan"
+      "country": "Japan",
+      "continent": "Asia"
     },
     {
       "id": 14,
       "name": "Beijing",
       "cityIata": "BJS",
-      "country": "China"
+      "country": "China",
+      "continent": "Asia"
     },
     {
       "id": 15,
       "name": "Moscow",
       "cityIata": "MOW",
-      "country": "Russia"
+      "country": "Russia",
+      "continent": "Europe"
     },
     {
       "id": 16,
       "name": "Berlin",
       "cityIata": "BER",
-      "country": "Germany"
+      "country": "Germany",
+      "continent": "Europe"
     },
     {
       "id": 17,
       "name": "Rome",
       "cityIata": "ROM",
-      "country": "Italy"
+      "country": "Italy",
+      "continent": "Europe"
     },
     {
       "id": 18,
       "name": "Sydney",
       "cityIata": "SYD",
-      "country": "Australia"
+      "country": "Australia",
+      "continent": "Oceania"
     },
     {
       "id": 19,
       "name": "Dubai",
       "cityIata": "DXB",
-      "country": "UAE"
+      "country": "UAE",
+      "continent": "Asia"
     },
     {
       "id": 20,
       "name": "Toronto",
       "cityIata": "YTO",
-      "country": "Canada"
+      "country": "Canada",
+      "continent": "North America"
     },
     {
       "id": 21,
       "name": "Singapore",
       "cityIata": "SIN",
-      "country": "Singapore"
+      "country": "Singapore",
+      "continent": "Asia"
     },
     {
       "id": 22,
       "name": "Seoul",
       "cityIata": "SEL",
-      "country": "South Korea"
+      "country": "South Korea",
+      "continent": "Asia"
     },
     {
       "id": 23,
       "name": "Bangkok",
       "cityIata": "BKK",
-      "country": "Thailand"
+      "country": "Thailand",
+      "continent": "Asia"
     },
     {
       "id": 24,
       "name": "Kuala Lumpur",
       "cityIata": "KUL",
-      "country": "Malaysia"
+      "country": "Malaysia",
+      "continent": "Asia"
     },
     {
       "id": 25,
       "name": "Delhi",
       "cityIata": "DEL",
-      "country": "India"
+      "country": "India",
+      "continent": "Asia"
     },
     {
       "id": 26,
       "name": "Mumbai",
       "cityIata": "BOM",
-      "country": "India"
+      "country": "India",
+      "continent": "Asia"
     },
     {
       "id": 27,
       "name": "Cairo",
       "cityIata": "CAI",
-      "country": "Egypt"
+      "country": "Egypt",
+      "continent": "Africa"
     },
     {
       "id": 28,
       "name": "Mexico City",
       "cityIata": "MEX",
-      "country": "Mexico"
+      "country": "Mexico",
+      "continent": "North America"
     },
     {
       "id": 29,
       "name": "São Paulo",
       "cityIata": "SAO",
-      "country": "Brazil"
+      "country": "Brazil",
+      "continent": "South America"
     },
     {
       "id": 30,
       "name": "Buenos Aires",
       "cityIata": "BUE",
-      "country": "Argentina"
+      "country": "Argentina",
+      "continent": "South America"
     },
     {
       "id": 31,
       "name": "Bandung",
       "cityIata": "BDO",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 32,
       "name": "Yogyakarta",
       "cityIata": "JOG",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 33,
       "name": "Semarang",
       "cityIata": "SRG",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 34,
       "name": "Palembang",
       "cityIata": "PLM",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 35,
       "name": "Padang",
       "cityIata": "PDG",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 36,
       "name": "Balikpapan",
       "cityIata": "BPN",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 37,
       "name": "Surakarta",
       "cityIata": "SOC",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 38,
       "name": "Pontianak",
       "cityIata": "PNK",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 39,
       "name": "Manado",
       "cityIata": "MDC",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 40,
       "name": "Ambon",
       "cityIata": "AMQ",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia"
     },
     {
       "id": 41,
       "name": "Shanghai",
       "cityIata": "SHA",
-      "country": "China"
+      "country": "China",
+      "continent": "Asia"
     },
     {
       "id": 42,
       "name": "Hong Kong",
       "cityIata": "HKG",
-      "country": "Hong Kong"
+      "country": "Hong Kong",
+      "continent": "Asia"
     },
     {
       "id": 43,
       "name": "Manila",
       "cityIata": "MNL",
-      "country": "Philippines"
+      "country": "Philippines",
+      "continent": "Asia"
     },
     {
       "id": 44,
       "name": "Ho Chi Minh City",
       "cityIata": "SGN",
-      "country": "Vietnam"
+      "country": "Vietnam",
+      "continent": "Asia"
     },
     {
       "id": 45,
       "name": "Bangalore",
       "cityIata": "BLR",
-      "country": "India"
+      "country": "India",
+      "continent": "Asia"
     },
     {
       "id": 46,
       "name": "Cape Town",
       "cityIata": "CPT",
-      "country": "South Africa"
+      "country": "South Africa",
+      "continent": "Africa"
     },
     {
       "id": 47,
       "name": "Lima",
       "cityIata": "LIM",
-      "country": "Peru"
+      "country": "Peru",
+      "continent": "South America"
     },
     {
       "id": 48,
       "name": "Johannesburg",
       "cityIata": "JNB",
-      "country": "South Africa"
+      "country": "South Africa",
+      "continent": "Africa"
     },
     {
       "id": 49,
       "name": "Istanbul",
       "cityIata": "IST",
-      "country": "Turkey"
+      "country": "Turkey",
+      "continent": "Europe"
     },
     {
       "id": 50,
       "name": "Munich",
       "cityIata": "MUC",
-      "country": "Germany"
+      "country": "Germany",
+      "continent": "Europe"
     },
     {
       "id": 51,
       "name": "Dublin",
       "cityIata": "DUB",
-      "country": "Ireland"
+      "country": "Ireland",
+      "continent": "Europe"
     },
     {
       "id": 52,
       "name": "Auckland",
       "cityIata": "AKL",
-      "country": "New Zealand"
+      "country": "New Zealand",
+      "continent": "Oceania"
     },
     {
       "id": 53,
       "name": "Santiago",
       "cityIata": "SCL",
-      "country": "Chile"
+      "country": "Chile",
+      "continent": "South America"
     },
     {
       "id": 54,
       "name": "Osaka",
       "cityIata": "OSA",
-      "country": "Japan"
+      "country": "Japan",
+      "continent": "Asia"
     },
     {
       "id": 55,
       "name": "Stockholm",
       "cityIata": "STO",
-      "country": "Sweden"
+      "country": "Sweden",
+      "continent": "Europe"
     },
     {
       "id": 56,
       "name": "Vienna",
       "cityIata": "VIE",
-      "country": "Austria"
+      "country": "Austria",
+      "continent": "Europe"
     },
     {
       "id": 57,
       "name": "Zurich",
       "cityIata": "ZRH",
-      "country": "Switzerland"
+      "country": "Switzerland",
+      "continent": "Europe"
     },
     {
       "id": 58,
       "name": "Edinburgh",
       "cityIata": "EDI",
-      "country": "UK"
+      "country": "UK",
+      "continent": "Europe"
     },
     {
       "id": 59,
       "name": "Barcelona",
       "cityIata": "BCN",
-      "country": "Spain"
+      "country": "Spain",
+      "continent": "Europe"
     },
     {
       "id": 60,
       "name": "Rio de Janeiro",
       "cityIata": "RIO",
-      "country": "Brazil"
+      "country": "Brazil",
+      "continent": "South America"
     }
   ],
   "airports": [

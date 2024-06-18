@@ -104,12 +104,14 @@ module.exports = {
                 expiredDate: p.expiredDate,
                 ageGroup: p.ageGroup,
               })),
-            }
+            },
           },
           include: { passenger: true },
         });
 
-        const urlPayment = `${req.protocol}://${req.get('host')}/payment-form/${newBooking.id}?token=${token}`;
+        const urlPayment = `${req.protocol}://${req.get('host')}/payment-form/${
+          newBooking.id
+        }?token=${token}`;
 
         await prisma.booking.update({
           where: { id: newBooking.id },
@@ -118,7 +120,7 @@ module.exports = {
 
         await prisma.flight.update({
           where: { id: flightId },
-          data: { count: flight.count++ },
+          data: { count: flight.count + 1 },
         });
 
         return {

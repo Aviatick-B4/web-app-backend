@@ -1536,6 +1536,13 @@ paths:
       summary: Get all favorite destinations
       description: Retrieve a paginated list of favorite destinations ordered by count.
       parameters:
+        - name: arrivalContinent
+          in: query
+          description: Arrival city continent
+          required: false
+          schema:
+            type: string
+            default: Asia, Africa, South America, North America, Europe, Oceania
         - name: page
           in: query
           description: Page number for pagination
@@ -1578,9 +1585,15 @@ paths:
                         departureCity:
                           type: string
                           example: New York
+                        departureContinent:
+                          type: string
+                          example: North America
                         arrivalCity:
                           type: string
                           example: Los Angeles
+                        arrivalContinent:
+                          type: string
+                          example: North America
                         departureTime:
                           type: string
                           format: date-time
@@ -1605,11 +1618,15 @@ paths:
                       next:
                         type: string
                         nullable: true
-                        example: null
+                        example: http://localhost:3000/api/v1/flight/favorite?page=2&limit=5
                       prev:
                         type: string
                         nullable: true
-                        example: http://localhost:3000/api/v1/flight/favorite?page=1&limit=5
+                        example: null
+                      total:
+                        type: integer
+                        nullable: true
+                        example: 9
 
   /payments/midtrans/token/{bookingId}:
     post:
