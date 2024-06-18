@@ -3,6 +3,54 @@ const getPagination = require('../utils/getPagination');
 const prisma = new PrismaClient();
 
 module.exports = {
+  getAll: async (req, res, next) => {
+    const { page = 1, limit = 10, promo } = req.query;
+    const isPromo = Boolean(promo);
+
+    try {
+      const tickets = await prisma.ticket.findMany({
+        skip: (parseInt(page) - 1) * parseInt(limit),
+        take: parseInt(limit),
+        where: isPromo ? { promoId: { not: null } } : {},
+        include: {
+          airplaneSeatClass: {
+            include: {
+              airplane: {
+                include: {
+                  airline: true
+                }
+              }
+            }
+          },
+          flight: {
+            include: {
+              arrivalAirport: {
+                include: {
+                  city: true
+                }
+              },
+              departureAirport: {
+                include: {
+                  city: true
+                }
+              }
+            }
+          }
+        }
+      });
+
+      const count = await prisma.ticket.count({ where: isPromo ? { promoId: { not: null } } : {} });
+      const pagination = getPagination(req, parseInt(page), parseInt(limit), count);
+
+      res.status(200).json({
+        status: true,
+        message: 'Flight ticket(s) fetched',
+        data: { tickets, pagination }
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
   search: async (req, res, next) => {
     const {
       page = 1,
