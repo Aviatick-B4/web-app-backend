@@ -87,15 +87,18 @@ components:
         price:
           type: integer
           example: 1750000
-        tax:
-          type: number
-          example: 0.1
+        afterDiscountPrice:
+          type: integer
+          example: 1575000
         flightId:
           type: number
           example: 2
         airplaneSeatClassId:
           type: number
           example: 3
+        promoId:
+          type: number
+          example: 1
     Flight:
       type: object
       properties:
