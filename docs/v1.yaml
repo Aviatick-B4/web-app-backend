@@ -1277,11 +1277,101 @@ paths:
                         country:
                           type: string
                           example: Indonesia
+
   /tickets:
     get:
       tags:
         - Flights
-      summary: Fetch flight tickets data based on the query params given
+      summary: Fetch all flight tickets data
+      parameters:
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            example: 10
+          description: Number of data to return
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            example: 1
+          description: Number of iteration of data based on the limit
+        - in: query
+          name: promo
+          required: false
+          schema:
+            type: boolean
+            example: true
+          description: Filter based on ticket's promo availability
+      responses:
+        200:
+          description: Flight tickets retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Flight ticket(s) fetched
+                  data:
+                    type: object
+                    properties:
+                      tickets:
+                        type: array
+                        items:
+                          allOf:
+                            - $ref: "#/components/schemas/Ticket"
+                          properties:
+                            airplaneSeatClass:
+                              allOf:
+                                - $ref: "#/components/schemas/AirplaneSeatClass"
+                              properties:
+                                airplane:
+                                  allOf:
+                                    - $ref: "#/components/schemas/Airplane"
+                                  properties:
+                                    airline:
+                                      $ref: "#/components/schemas/Airline"
+                            flight:
+                              allOf:
+                                - $ref: "#/components/schemas/Flight"
+                              properties:
+                                arrivalAirport:
+                                  allOf:
+                                    - $ref: "#/components/schemas/Airport"
+                                  properties:
+                                    city:
+                                      $ref: "#/components/schemas/City"
+                                departureAirport:
+                                  allOf:
+                                    - $ref: "#/components/schemas/Airport"
+                                  properties:
+                                    city:
+                                      $ref: "#/components/schemas/City"
+                      pagination:
+                        type: object
+                        properties:
+                          next:
+                            type: string
+                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets?page=3&limit=10&promo=true
+                          prev:
+                            type: string
+                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets/?page=1&limit=10&promo=true
+                          total:
+                            type: integer
+                            example: 50
+
+  /tickets/search:
+    get:
+      tags:
+        - Flights
+      summary: Fetch flight tickets data based on the search query params given
       parameters:
         - in: query
           name: limit
