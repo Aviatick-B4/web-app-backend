@@ -3,7 +3,7 @@ const getPagination = require('../utils/getPagination');
 const prisma = new PrismaClient();
 
 module.exports = {
-  getAll: async (req, res, next) => {
+  search: async (req, res, next) => {
     const {
       page = 1,
       limit = 10,
