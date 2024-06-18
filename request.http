@@ -6,7 +6,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4NzE4MjY0fQ.EnWyfzgzq1ybgq14qS3bxJFTBVMp62y2GQvZMVGpmz8
 
 {
-    "flightId": 150,
+    "flightId": 4,
     "adult": 1,
     "child": 0,
     "baby": 0,
@@ -172,10 +172,10 @@ PUT http://localhost:3000/api/v1/promos/update-status
 GET http://localhost:3000/api/v1/promos
 
 ### GET ALL FAVORITE DESTINATION
-GET http://localhost:3000/api/v1/flights/favorite?limit=5&page=2
+GET http://localhost:3000/api/v1/flights/favorite?limit=5&page=1
 
 ### GET ALL FAVORITE DESTINATION BY ARRIVAL CONTINENT
-GET http://localhost:3000/api/v1/flights/favorite?arrivalContinent=Asia
+GET http://localhost:3000/api/v1/flights/favorite?arrivalContinent=Europe
 
 
 ##############################################

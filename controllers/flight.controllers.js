@@ -16,11 +16,12 @@ module.exports = {
 
       let flightFilter = {
         count: {
-          gt: 3,
+          gt: 0,
         },
       };
       if (arrivalContinent) {
         flightFilter = {
+          ...flightFilter,
           arrivalAirport: {
             city: {
               continent: arrivalContinent,
