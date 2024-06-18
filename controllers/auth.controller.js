@@ -411,25 +411,28 @@ module.exports = {
       return res.status(400).json({
         status: false,
         message: `Field 'oldPassword', 'newPassword', and 'confirmNewPassword' are required`,
-        data: null
+        data: null,
       });
     }
 
-    const { password: currentHashedPassword} = await prisma.user.findUnique({
+    const { password: currentHashedPassword } = await prisma.user.findUnique({
       where: {
-        email: req.user.email
+        email: req.user.email,
       },
       select: {
-        password: true
-      }
+        password: true,
+      },
     });
 
-    const isCurrentPasswordMatch = await compareHash(oldPassword, currentHashedPassword);
+    const isCurrentPasswordMatch = await compareHash(
+      oldPassword,
+      currentHashedPassword
+    );
     if (!isCurrentPasswordMatch) {
       return res.status(400).json({
         status: false,
         message: `Field 'oldPassword' do not match the current password`,
-        data: null
+        data: null,
       });
     }
 
@@ -437,7 +440,7 @@ module.exports = {
       return res.status(400).json({
         status: false,
         message: `Field 'newPassword' and 'confirmNewPassword' do not match`,
-        data: null
+        data: null,
       });
     }
 
@@ -445,24 +448,24 @@ module.exports = {
       return res.status(400).json({
         status: false,
         message: 'New password could not be the same as old password',
-        data: null
+        data: null,
       });
     }
 
     const newHashedPassword = await generateHash(newPassword);
     await prisma.user.update({
       data: {
-        password: newHashedPassword
+        password: newHashedPassword,
       },
       where: {
         email: req.user.email,
-      }
+      },
     });
 
     res.status(200).json({
       status: true,
       message: 'Password changed',
-      data: null
+      data: null,
     });
   },
 
@@ -537,18 +540,18 @@ module.exports = {
       });
 
       const bookings = await prisma.booking.findMany({
-        where: { userId: id }
+        where: { userId: id },
       });
 
       for (const booking of bookings) {
         await prisma.payment.deleteMany({
-          where: { bookingId: booking.id }
+          where: { bookingId: booking.id },
         });
         await prisma.passenger.deleteMany({
-          where: { bookingId: booking.id }
+          where: { bookingId: booking.id },
         });
         await prisma.booking.delete({
-          where: { id: booking.id }
+          where: { id: booking.id },
         });
       }
 

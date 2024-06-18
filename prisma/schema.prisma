@@ -40,7 +40,7 @@ model Booking {
   createdAt   DateTime    @map("created_at")
   totalPrice  Float       @map("total_price")
   bookingTax  Float       @map("booking_tax")
-  urlPayment    String?   @map("url_payment")
+  urlPayment  String?     @map("url_payment")
   flight      Flight      @relation(fields: [flightId], references: [id])
   flightId    Int         @map("flight_id")
   user        User        @relation(fields: [userId], references: [id])
@@ -94,7 +94,7 @@ model Flight {
   flightNumber       String    @map("flight_number")
   departureTime      DateTime  @map("departure_time")
   arrivalTime        DateTime  @map("arrival_time")
-  count              Int?      
+  count              Int?
   departureAirport   Airport   @relation("departure_airport", fields: [departureAirportId], references: [id])
   departureAirportId Int       @map("departure_airport_id")
   arrivalAirport     Airport   @relation("arrival_airport", fields: [arrivalAirportId], references: [id])
@@ -106,11 +106,12 @@ model Flight {
 }
 
 model City {
-  id       Int       @id @default(autoincrement())
-  name     String
-  cityIata String    @map("city_iata")
-  country  String
-  airport  Airport[]
+  id        Int       @id @default(autoincrement())
+  name      String
+  continent String?
+  cityIata  String    @map("city_iata")
+  country   String
+  airport   Airport[]
 
   @@map("cities")
 }

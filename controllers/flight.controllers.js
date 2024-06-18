@@ -5,10 +5,32 @@ const getPagination = require('../utils/getPagination');
 module.exports = {
   favoriteDestinations: async (req, res, next) => {
     try {
-      const { page = req.query.page || 1, limit = req.query.limit || 5 } =
-        req.query;
+      const {
+        page = req.query.page || 1,
+        limit = req.query.limit || 5,
+        arrivalContinent,
+      } = req.query;
+
+      const parsedPage = parseInt(page);
+      const parsedLimit = parseInt(limit);
+
+      let flightFilter = {
+        count: {
+          gt: 3,
+        },
+      };
+      if (arrivalContinent) {
+        flightFilter = {
+          arrivalAirport: {
+            city: {
+              continent: arrivalContinent,
+            },
+          },
+        };
+      }
 
       const getFavorite = await prisma.flight.findMany({
+        where: flightFilter,
         orderBy: {
           count: 'desc',
         },
@@ -45,7 +67,9 @@ module.exports = {
         flightId: flight.id,
         flightNumber: flight.flightNumber,
         departureCity: flight.departureAirport.city.name,
+        departureContinent: flight.departureAirport.city.continent,
         arrivalCity: flight.arrivalAirport.city.name,
+        arrivalContinent: flight.arrivalAirport.city.continent,
         departureTime: flight.departureTime,
         arrivalTime: flight.arrivalTime,
         airline: flight.ticket[0]?.airplaneSeatClass?.airplane?.airline?.name,
@@ -53,7 +77,11 @@ module.exports = {
         count: flight.count,
       }));
 
-      const pagination = getPagination(req, page, limit);
+      const count = await prisma.flight.count({
+        where: flightFilter,
+      });
+
+      const pagination = getPagination(req, parsedPage, parsedLimit, count);
 
       return res.status(200).json({
         status: true,
