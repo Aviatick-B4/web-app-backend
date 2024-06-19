@@ -24,9 +24,8 @@ app.use(cookieParser());
 app.use(router);
 
 // Cron jobs
-const promoStatusCron = cron.schedule('0 */3 * * *', updatePromoStatus, {
-  scheduled: false,
-  timezone: 'Asia/Jakarta',
+const promoStatusCron = cron.schedule('0 0 * * *', updatePromoStatus, {
+  scheduled: true
 });
 
 promoStatusCron.start();

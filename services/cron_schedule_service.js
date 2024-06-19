@@ -1174,8 +1174,8 @@ async function addFlight() {
 }
 
 const flightCron = cron.schedule('0 0 * * *', addFlight, {
-  scheduled: false,
-  timezone: 'Asia/Jakarta',
+  scheduled: true
 });
+
 
 module.exports = { flightCron };
