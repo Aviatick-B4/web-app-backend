@@ -24,8 +24,8 @@ app.use(cookieParser());
 app.use(router);
 
 // Cron jobs
-const promoStatusCron = cron.schedule('0 0 * * *', updatePromoStatus, {
-  scheduled: true
+const promoStatusCron = cron.schedule('0 17 * * *', updatePromoStatus, {
+  scheduled: false
 });
 
 promoStatusCron.start();

@@ -1173,8 +1173,8 @@ async function addFlight() {
   }
 }
 
-const flightCron = cron.schedule('0 0 * * *', addFlight, {
-  scheduled: true
+const flightCron = cron.schedule('0 17 * * *', addFlight, {
+  scheduled: false
 });
 
 
