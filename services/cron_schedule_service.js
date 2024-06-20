@@ -1173,8 +1173,9 @@ async function addFlight() {
   }
 }
 
-const flightCron = cron.schedule('0 0 * * *', addFlight, {
-  scheduled: false
+const flightCron = cron.schedule('* * * * *', addFlight, {
+  scheduled: false,
+  timezone: 'Asia/Jakarta',
 });
 
 
