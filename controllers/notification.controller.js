@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const getPagination = require('../utils/getPagination');
+const { convertDate } = require('../utils/formatedDate');
 
 module.exports = {
   getAll: async (req, res, next) => {
@@ -77,17 +78,13 @@ module.exports = {
 
       const allNotification = await Promise.all(
         users.map(async (user) => {
-          const currentDate = new Date();
-          const convertCurrentDate = new Date(
-            currentDate.getTime() + 7 * 60 * 60 * 1000
-          ).toISOString();
           return prisma.notification.create({
             data: {
               title,
               message,
               type: 'promo',
               userId: user.id,
-              createdAt: convertCurrentDate,
+              createdAt: convertDate(new Date()),
             },
           });
         })
