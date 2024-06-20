@@ -6,8 +6,8 @@ const logger = require('morgan');
 const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 const router = require('./routes/v1/index');
-const { updatePromoStatus } = require('./controllers/promo.controller');
-const {flightCron} = require('./services/cron_schedule_service');
+// const { updatePromoStatus } = require('./controllers/promo.controller');
+// const {flightCron} = require('./services/cron_schedule_service');
 const cron = require("node-cron");
 
 const app = express();
@@ -24,13 +24,13 @@ app.use(cookieParser());
 app.use(router);
 
 // Cron jobs
-const promoStatusCron = cron.schedule('* * * * *', updatePromoStatus, {
-  scheduled: false,
-  timezone: 'Asia/Jakarta',
-});
+// const promoStatusCron = cron.schedule('* * * * *', updatePromoStatus, {
+//   scheduled: false,
+//   timezone: 'Asia/Jakarta',
+// });
 
-promoStatusCron.start();
-flightCron.start();
+// promoStatusCron.start();
+// flightCron.start();
 
 
 app.get('/', (req, res) => {

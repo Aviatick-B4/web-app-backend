@@ -12,5 +12,17 @@
       "src": "/(.*)",
       "dest": "/app.js"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/add-flight",
+      "schedule": "* * * * *",
+      "timezone": "Asia/Jakarta"
+    },
+    {
+      "path": "/api/update-promo-status",
+      "schedule": "* * * * *",
+      "timezone": "Asia/Jakarta"
+    }
   ]
 }
