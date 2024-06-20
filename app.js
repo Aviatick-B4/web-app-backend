@@ -25,7 +25,8 @@ app.use(router);
 
 // Cron jobs
 const promoStatusCron = cron.schedule('* * * * *', updatePromoStatus, {
-  scheduled: false
+  scheduled: false,
+  timezone: 'Asia/Jakarta',
 });
 
 promoStatusCron.start();
