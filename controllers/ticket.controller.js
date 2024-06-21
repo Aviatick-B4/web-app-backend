@@ -79,6 +79,15 @@ module.exports = {
     }
 
     const departureDate = new Date(departure);
+    if (!departureDate.getDate()) {
+      return res.status(400).json({
+        status: false,
+        message:
+          "Invalid date (only accepts YYYY-MM-DD format)",
+        data: null
+      });
+    }
+
     const departureAfterDay = new Date(departure);
     departureAfterDay.setDate(departureAfterDay.getDate() + 1);
 
