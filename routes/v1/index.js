@@ -58,7 +58,7 @@ router.post('/api/add-flight', async (req, res) => {
   }
 });
 
-router.put('/api/update-promo-status', async (req, res) => {
+router.post('/api/update-promo-status', async (req, res) => {
   try {
     await updatePromoStatus(req, res);
   } catch (error) {
