@@ -1,10 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const crypto = require('crypto');
-
-const convertToUTC = (date) => {
-  return new Date(date.getTime() + 7 * 60 * 60 * 1000).toISOString();
-};
+const { convertDate } = require('../utils/formatedDate');
 
 module.exports = {
   booking: async (req, res, next) => {
@@ -90,7 +87,7 @@ module.exports = {
             expiredPaid: expiredPaid,
             totalPrice: total_price + tax,
             bookingTax: tax,
-            createdAt: convertToUTC(new Date()),
+            createdAt: convertDate(new Date()),
             passenger: {
               create: passenger.map((p) => ({
                 title: p.title,
@@ -132,7 +129,7 @@ module.exports = {
           total_price: total_price + tax,
           bookingTax: tax,
           status: newBooking.status,
-          paid_before: convertToUTC(newBooking.expiredPaid),
+          paid_before: convertDate(newBooking.expiredPaid),
           created_at: newBooking.createdAt,
           urlPayment: urlPayment,
         };
@@ -144,7 +141,7 @@ module.exports = {
           message: `Successful in making a new booking, complete it before ${result.paid_before}`,
           type: 'transaction',
           userId: req.user.id,
-          createdAt: new Date(Date.now()),
+          createdAt: convertDate(new Date()),
         },
       });
 
@@ -243,18 +240,18 @@ module.exports = {
 
           return {
             id: booking.id,
-            date: convertToUTC(booking.flight.departureTime),
+            date: convertDate(booking.flight.departureTime),
             status: status,
             booking_code: booking.bookingCode,
             seat_class: booking.seatClass,
-            paid_before: convertToUTC(booking.expiredPaid),
+            paid_before: convertDate(booking.expiredPaid),
             createdAt: booking.createdAt,
             price: booking.totalPrice,
             flight_detail: {
               departure_city: booking.flight.departureAirport.city.name,
               arrival_city: booking.flight.arrivalAirport.city.name,
-              departure_time: convertToUTC(booking.flight.departureTime),
-              arrival_time: convertToUTC(booking.flight.arrivalTime),
+              departure_time: convertDate(booking.flight.departureTime),
+              arrival_time: convertDate(booking.flight.arrivalTime),
             },
           };
         })
@@ -317,12 +314,12 @@ module.exports = {
         id: booking.id,
         booking_code: booking.bookingCode,
         status: booking.status,
-        paid_before: convertToUTC(booking.expiredPaid),
+        paid_before: convertDate(booking.expiredPaid),
         flight_detail: {
           departure_city: booking.flight.departureAirport.city,
           arrival_city: booking.flight.arrivalAirport.city,
-          departure_time: convertToUTC(booking.flight.departureTime),
-          arrival_time: convertToUTC(booking.flight.arrivalTime),
+          departure_time: convertDate(booking.flight.departureTime),
+          arrival_time: convertDate(booking.flight.arrivalTime),
         },
         passengers: passengers,
         price_detail: {

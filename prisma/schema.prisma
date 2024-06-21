@@ -185,6 +185,7 @@ model Promo {
   discount   Float
   validFrom  DateTime @map("valid_from")
   validUntil DateTime @map("valid_until")
+  createdAt  DateTime? @map("created_at")
   isActive   Boolean  @default(true) @map("is_active")
   Ticket     Ticket[] @relation("promo")
 

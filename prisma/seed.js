@@ -10,8 +10,8 @@ async function main() {
   await prisma.airplane.createMany({ data: data.airplanes });
   await prisma.airplaneSeatClass.createMany({ data: data.airplaneSeatClass });
   await prisma.flight.createMany({ data: data.flights });
-  await prisma.ticket.createMany({ data: data.tickets });
   await prisma.promo.createMany({ data: data.promos });
+  await prisma.ticket.createMany({ data: data.tickets });
   for (const user of data.users) {
     await prisma.user.create({
       data: {

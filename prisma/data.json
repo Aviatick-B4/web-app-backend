@@ -2532,152 +2532,202 @@
     {
       "id": 1,
       "price": 3000000,
+      "afterDiscountPrice": 2700000,
       "flightId": 1,
-      "airplaneSeatClassId": 1
+      "airplaneSeatClassId": 1,
+      "promoId": 1
     },
     {
       "id": 2,
       "price": 2000000,
+      "afterDiscountPrice": 1800000,
       "flightId": 1,
-      "airplaneSeatClassId": 2
+      "airplaneSeatClassId": 2,
+      "promoId": 1
     },
     {
       "id": 3,
       "price": 800000,
+      "afterDiscountPrice": 720000,
       "flightId": 1,
-      "airplaneSeatClassId": 3
+      "airplaneSeatClassId": 3,
+      "promoId": 1
     },
     {
       "id": 4,
       "price": 8500000,
+      "afterDiscountPrice": 7650000,
       "flightId": 2,
-      "airplaneSeatClassId": 4
+      "airplaneSeatClassId": 4,
+      "promoId": 1
     },
     {
       "id": 5,
       "price": 5000000,
+      "afterDiscountPrice": 4500000,
       "flightId": 2,
-      "airplaneSeatClassId": 5
+      "airplaneSeatClassId": 5,
+      "promoId": 1
     },
     {
       "id": 6,
       "price": 1500000,
+      "afterDiscountPrice": 1350000,
       "flightId": 2,
-      "airplaneSeatClassId": 6
+      "airplaneSeatClassId": 6,
+      "promoId": 1
     },
     {
       "id": 7,
       "price": 7800000,
+      "afterDiscountPrice": 7020000,
       "flightId": 3,
-      "airplaneSeatClassId": 7
+      "airplaneSeatClassId": 7,
+      "promoId": 1
     },
     {
       "id": 8,
       "price": 4800000,
+      "afterDiscountPrice": 4320000,
       "flightId": 3,
-      "airplaneSeatClassId": 8
+      "airplaneSeatClassId": 8,
+      "promoId": 1
     },
     {
       "id": 9,
       "price": 1200000,
+      "afterDiscountPrice": 1080000,
       "flightId": 3,
-      "airplaneSeatClassId": 9
+      "airplaneSeatClassId": 9,
+      "promoId": 1
     },
     {
       "id": 10,
       "price": 9200000,
+      "afterDiscountPrice": 8280000,
       "flightId": 4,
-      "airplaneSeatClassId": 10
+      "airplaneSeatClassId": 10,
+      "promoId": 1
     },
     {
       "id": 11,
       "price": 6200000,
+      "afterDiscountPrice": 5580000,
       "flightId": 4,
-      "airplaneSeatClassId": 11
+      "airplaneSeatClassId": 11,
+      "promoId": 1
     },
     {
       "id": 12,
       "price": 2200000,
+      "afterDiscountPrice": 1980000,
       "flightId": 4,
-      "airplaneSeatClassId": 12
+      "airplaneSeatClassId": 12,
+      "promoId": 1
     },
     {
       "id": 13,
       "price": 8700000,
+      "afterDiscountPrice": 7830000,
       "flightId": 5,
-      "airplaneSeatClassId": 13
+      "airplaneSeatClassId": 13,
+      "promoId": 1
     },
     {
       "id": 14,
       "price": 5700000,
+      "afterDiscountPrice": 5130000,
       "flightId": 5,
-      "airplaneSeatClassId": 14
+      "airplaneSeatClassId": 14,
+      "promoId": 1
     },
     {
       "id": 15,
       "price": 1700000,
+      "afterDiscountPrice": 1530000,
       "flightId": 5,
-      "airplaneSeatClassId": 15
+      "airplaneSeatClassId": 15,
+      "promoId": 1
     },
     {
       "id": 16,
       "price": 9600000,
+      "afterDiscountPrice": 8640000,
       "flightId": 6,
-      "airplaneSeatClassId": 16
+      "airplaneSeatClassId": 16,
+      "promoId": 1
     },
     {
       "id": 17,
       "price": 6600000,
+      "afterDiscountPrice": 5940000,
       "flightId": 6,
-      "airplaneSeatClassId": 17
+      "airplaneSeatClassId": 17,
+      "promoId": 1
     },
     {
       "id": 18,
       "price": 2600000,
+      "afterDiscountPrice": 2340000,
       "flightId": 6,
-      "airplaneSeatClassId": 18
+      "airplaneSeatClassId": 18,
+      "promoId": 1
     },
     {
       "id": 19,
       "price": 10500000,
+      "afterDiscountPrice": 9450000,
       "flightId": 7,
-      "airplaneSeatClassId": 19
+      "airplaneSeatClassId": 19,
+      "promoId": 1
     },
     {
       "id": 20,
       "price": 7500000,
+      "afterDiscountPrice": 6750000,
       "flightId": 7,
-      "airplaneSeatClassId": 20
+      "airplaneSeatClassId": 20,
+      "promoId": 1
     },
     {
       "id": 21,
       "price": 2500000,
+      "afterDiscountPrice": 2250000,
       "flightId": 7,
-      "airplaneSeatClassId": 21
+      "airplaneSeatClassId": 21,
+      "promoId": 1
     },
     {
       "id": 22,
       "price": 11000000,
+      "afterDiscountPrice": 9900000,
       "flightId": 8,
-      "airplaneSeatClassId": 22
+      "airplaneSeatClassId": 22,
+      "promoId": 1
     },
     {
       "id": 23,
       "price": 8500000,
+      "afterDiscountPrice": 7650000,
       "flightId": 8,
-      "airplaneSeatClassId": 23
+      "airplaneSeatClassId": 23,
+      "promoId": 1
     },
     {
       "id": 24,
       "price": 3500000,
+      "afterDiscountPrice": 3150000,
       "flightId": 8,
-      "airplaneSeatClassId": 24
+      "airplaneSeatClassId": 24,
+      "promoId": 1
     },
     {
       "id": 25,
       "price": 11500000,
+      "afterDiscountPrice": 10350000,
       "flightId": 9,
-      "airplaneSeatClassId": 25
+      "airplaneSeatClassId": 25,
+      "promoId": 1
     },
     {
       "id": 26,
@@ -5416,21 +5466,24 @@
       "name": "Grand Openning Aviatick Promotion",
       "discount": 0.1,
       "validFrom": "2024-06-01T00:00:00Z",
-      "validUntil": "2024-12-31T23:59:59Z"
+      "validUntil": "2024-12-31T23:59:59Z",
+      "createdAt": "2024-06-01T00:00:00Z"
     },
     {
       "id": 2,
       "name": "Aviatick 1th Anniversary Promotion",
       "discount": 0.1,
       "validFrom": "2024-06-01T00:00:00Z",
-      "validUntil": "2024-12-31T23:59:59Z"
+      "validUntil": "2024-12-31T23:59:59Z",
+      "createdAt": "2024-06-01T00:00:00Z"
     },
     {
       "id": 3,
       "name": "Aviatick 2th Anniversary Promotion",
       "discount": 0.1,
       "validFrom": "2024-06-11T00:00:00Z",
-      "validUntil": "2024-06-13T06:00:00Z"
+      "validUntil": "2024-06-13T06:00:00Z",
+      "createdAt": "2024-06-11T00:00:00Z"
     }
   ]
 }

@@ -6,8 +6,6 @@ const logger = require('morgan');
 const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 const router = require('./routes/v1/index');
-const { updatePromoStatus } = require('./controllers/promo.controller');
-const cron = require("node-cron");
 
 const app = express();
 
@@ -21,10 +19,6 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(router);
-
-cron.schedule("* * * * *", () => {
-  updatePromoStatus();
-});
 
 app.get('/', (req, res) => {
   res.send('<h1> Hello world </h1>');

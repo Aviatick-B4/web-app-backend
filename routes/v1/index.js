@@ -11,6 +11,8 @@ const airlineRoutes = require('./airline.routes');
 const promoRoutes = require('./promo.routes');
 const notificationRoutes = require('./notification.routes');
 const flightRoutes = require('./flight.routes');
+const { addFlight } = require('../../services/cron_schedule_service');
+const { updatePromoStatus } = require('../../controllers/promo.controller');
 
 const swaggerUI = require('swagger-ui-express');
 const yaml = require('yaml');
@@ -44,6 +46,26 @@ router.use('/api/v1/airlines', airlineRoutes);
 router.use('/api/v1/promos', promoRoutes);
 router.use('/api/v1/notifications', notificationRoutes);
 router.use('/api/v1/flights', flightRoutes);
+
+// Endpoint Cron Job
+router.post('/api/add-flight', async (req, res) => {
+  try {
+    await addFlight();
+    res.status(200).send('Flight added successfully');
+  } catch (error) {
+    console.error('Failed to add flight:', error);
+    res.status(500).send('Failed to add flight');
+  }
+});
+
+router.post('/api/update-promo-status', async (req, res) => {
+  try {
+    await updatePromoStatus(req, res);
+  } catch (error) {
+    console.error('Failed to update promo status:', error);
+    res.status(500).send('Failed to update promo status');
+  }
+});
 
 // Endpoint EJS View
 router.get('/reset-password', async (req, res) => {
