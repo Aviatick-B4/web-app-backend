@@ -412,11 +412,11 @@ components:
               validFrom:
                 type: string
                 format: date-time
-                example: "2024-06-11 00:00:00"
+                example: "2024-06-11T00:00:00Z"
               validUntil:
                 type: string
                 format: date-time
-                example: "2024-06-21 00:00:00"
+                example: "2024-06-21T00:00:00Z"
     NewPayment:
       required: true
       content:
