@@ -89,16 +89,101 @@ components:
           example: 1750000
         afterDiscountPrice:
           type: integer
+          nullable: true
           example: 1575000
-        flightId:
-          type: number
-          example: 2
-        airplaneSeatClassId:
-          type: number
-          example: 3
-        promoId:
-          type: number
+        promo:
+          type: integer
+          nullable: true
           example: 1
+        flight:
+          type: object
+          properties:
+            code:
+              type: string
+              example: FL159
+            departure:
+              type: object
+              properties:
+                time:
+                  type: string
+                  format: date-time
+                  example: 2024-06-03T18:00:00.000Z
+                city:
+                  type: string
+                  example: Barcelona
+                cityIata:
+                  type: string
+                  example: BCN
+                country:
+                  type: string
+                  example: Spain
+                airport:
+                  type: string
+                  example: Barcelona–El Prat Airport
+                airportCode:
+                  type: string
+                  example: BCN
+            arrival:
+              type: object
+              properties:
+                time:
+                  type: string
+                  format: date-time
+                  example: 2024-06-03T21:00:00.000Z
+                city:
+                  type: string
+                  example: Rio de Janeiro
+                cityIata:
+                  type: string
+                  example: RIO
+                country:
+                  type: string
+                  example: Brazil
+                airport:
+                  type: string
+                  example: Rio de Janeiro-Galeão International Airport
+                airportCode:
+                  type: string
+                  example: GIG
+        airplane:
+          type: object
+          properties:
+            model:
+              type: string
+              example: Boeing 787
+            passengerCapacity:
+              type: integer
+              example: 180
+            baggageCapacity:
+              type: integer
+              example: 20
+            cabinCapacity:
+              type: integer
+              example: 7
+            inFlightFacility:
+              type: string
+              example: WiFi, Entertainment, Meal, Extra Legroom
+            seatClass:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: Economy
+                seatCount:
+                  type: integer
+                  example: 120
+            airline:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Batik Air
+                code:
+                  type: string
+                  example: ID
+                logoUrl:
+                  type: string
+                  example: https://ik.imagekit.io/aviatick/airlines/batik-air.jpg
     Flight:
       type: object
       properties:
@@ -1328,35 +1413,7 @@ paths:
                       tickets:
                         type: array
                         items:
-                          allOf:
-                            - $ref: "#/components/schemas/Ticket"
-                          properties:
-                            airplaneSeatClass:
-                              allOf:
-                                - $ref: "#/components/schemas/AirplaneSeatClass"
-                              properties:
-                                airplane:
-                                  allOf:
-                                    - $ref: "#/components/schemas/Airplane"
-                                  properties:
-                                    airline:
-                                      $ref: "#/components/schemas/Airline"
-                            flight:
-                              allOf:
-                                - $ref: "#/components/schemas/Flight"
-                              properties:
-                                arrivalAirport:
-                                  allOf:
-                                    - $ref: "#/components/schemas/Airport"
-                                  properties:
-                                    city:
-                                      $ref: "#/components/schemas/City"
-                                departureAirport:
-                                  allOf:
-                                    - $ref: "#/components/schemas/Airport"
-                                  properties:
-                                    city:
-                                      $ref: "#/components/schemas/City"
+                          $ref: "#/components/schemas/Ticket"
                       pagination:
                         type: object
                         properties:
@@ -1445,35 +1502,7 @@ paths:
                       tickets:
                         type: array
                         items:
-                          allOf:
-                            - $ref: "#/components/schemas/Ticket"
-                          properties:
-                            airplaneSeatClass:
-                              allOf:
-                                - $ref: "#/components/schemas/AirplaneSeatClass"
-                              properties:
-                                airplane:
-                                  allOf:
-                                    - $ref: "#/components/schemas/Airplane"
-                                  properties:
-                                    airline:
-                                      $ref: "#/components/schemas/Airline"
-                            flight:
-                              allOf:
-                                - $ref: "#/components/schemas/Flight"
-                              properties:
-                                arrivalAirport:
-                                  allOf:
-                                    - $ref: "#/components/schemas/Airport"
-                                  properties:
-                                    city:
-                                      $ref: "#/components/schemas/City"
-                                departureAirport:
-                                  allOf:
-                                    - $ref: "#/components/schemas/Airport"
-                                  properties:
-                                    city:
-                                      $ref: "#/components/schemas/City"
+                          $ref: "#/components/schemas/Ticket"
                       pagination:
                         type: object
                         properties:
