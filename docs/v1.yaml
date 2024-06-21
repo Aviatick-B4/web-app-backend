@@ -1412,13 +1412,6 @@ paths:
             example: 2024-06-03
           description: Departure date in YYYY-MM-DD format
         - in: query
-          name: return
-          required: false
-          schema:
-            type: string
-            example: 2024-06-04
-          description: Return date in YYYY-MM-DD format
-        - in: query
           name: passengers
           required: true
           schema:
@@ -1450,81 +1443,46 @@ paths:
                     type: object
                     properties:
                       tickets:
-                        type: object
-                        properties:
-                          departure:
-                            type: array
-                            items:
+                        type: array
+                        items:
+                          allOf:
+                            - $ref: "#/components/schemas/Ticket"
+                          properties:
+                            airplaneSeatClass:
                               allOf:
-                                - $ref: "#/components/schemas/Ticket"
+                                - $ref: "#/components/schemas/AirplaneSeatClass"
                               properties:
-                                airplaneSeatClass:
+                                airplane:
                                   allOf:
-                                    - $ref: "#/components/schemas/AirplaneSeatClass"
+                                    - $ref: "#/components/schemas/Airplane"
                                   properties:
-                                    airplane:
-                                      allOf:
-                                        - $ref: "#/components/schemas/Airplane"
-                                      properties:
-                                        airline:
-                                          $ref: "#/components/schemas/Airline"
-                                flight:
-                                  allOf:
-                                    - $ref: "#/components/schemas/Flight"
-                                  properties:
-                                    arrivalAirport:
-                                      allOf:
-                                        - $ref: "#/components/schemas/Airport"
-                                      properties:
-                                        city:
-                                          $ref: "#/components/schemas/City"
-                                    departureAirport:
-                                      allOf:
-                                        - $ref: "#/components/schemas/Airport"
-                                      properties:
-                                        city:
-                                          $ref: "#/components/schemas/City"
-                          return:
-                            type: array
-                            items:
+                                    airline:
+                                      $ref: "#/components/schemas/Airline"
+                            flight:
                               allOf:
-                                - $ref: "#/components/schemas/Ticket"
+                                - $ref: "#/components/schemas/Flight"
                               properties:
-                                airplaneSeatClass:
+                                arrivalAirport:
                                   allOf:
-                                    - $ref: "#/components/schemas/AirplaneSeatClass"
+                                    - $ref: "#/components/schemas/Airport"
                                   properties:
-                                    airplane:
-                                      allOf:
-                                        - $ref: "#/components/schemas/Airplane"
-                                      properties:
-                                        airline:
-                                          $ref: "#/components/schemas/Airline"
-                                flight:
+                                    city:
+                                      $ref: "#/components/schemas/City"
+                                departureAirport:
                                   allOf:
-                                    - $ref: "#/components/schemas/Flight"
+                                    - $ref: "#/components/schemas/Airport"
                                   properties:
-                                    arrivalAirport:
-                                      allOf:
-                                        - $ref: "#/components/schemas/Airport"
-                                      properties:
-                                        city:
-                                          $ref: "#/components/schemas/City"
-                                    departureAirport:
-                                      allOf:
-                                        - $ref: "#/components/schemas/Airport"
-                                      properties:
-                                        city:
-                                          $ref: "#/components/schemas/City"
+                                    city:
+                                      $ref: "#/components/schemas/City"
                       pagination:
                         type: object
                         properties:
                           next:
                             type: string
-                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets?limit=10&page=4&from=BCN&to=RIO&departure=2024-06-03&return=2024-06-04&passengers=2&seat_class=Economy
+                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets?limit=10&page=4&from=BCN&to=RIO&departure=2024-06-03&passengers=2&seat_class=Economy
                           prev:
                             type: string
-                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets?limit=10&page=2&from=BCN&to=RIO&departure=2024-06-03&return=2024-06-04&passengers=2&seat_class=Economy
+                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets?limit=10&page=2&from=BCN&to=RIO&departure=2024-06-03&passengers=2&seat_class=Economy
                           total:
                             type: integer
                             example: 50
