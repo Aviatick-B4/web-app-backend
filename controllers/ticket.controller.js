@@ -58,7 +58,6 @@ module.exports = {
       from: originCity,
       to: destinationCity,
       departure: departureDate,
-      return: returnDate,
       passengers: passengersCount,
       seat_class: seatClass
     } = req.query;
@@ -83,44 +82,21 @@ module.exports = {
         airplaneSeatClass: {
           type: seatClass
         },
-        OR: [
-          {
-            flight: {
-              departureTime: {
-                gt: new Date(departureDate)
-              },
-              departureAirport: {
-                city: {
-                  cityIata: originCity
-                }
-              },
-              arrivalAirport: {
-                city: {
-                  cityIata: destinationCity
-                }
-              }
+        flight: {
+          departureTime: {
+            gt: new Date(departureDate)
+          },
+          departureAirport: {
+            city: {
+              cityIata: originCity
             }
           },
-          returnDate
-            ? {
-                flight: {
-                  departureTime: {
-                    gt: new Date(returnDate)
-                  },
-                  departureAirport: {
-                    city: {
-                      cityIata: destinationCity
-                    }
-                  },
-                  arrivalAirport: {
-                    city: {
-                      cityIata: originCity
-                    }
-                  }
-                }
-              }
-            : {}
-        ]
+          arrivalAirport: {
+            city: {
+              cityIata: destinationCity
+            }
+          }
+        }
       };
 
       const tickets = await prisma.ticket.findMany({
@@ -154,18 +130,6 @@ module.exports = {
         }
       });
 
-      const formattedTickets = { departure: [], return: [] };
-      tickets.forEach((ticket) => {
-        const departureTime = ticket.flight.departureTime
-          .toISOString()
-          .slice(0, 10);
-        if (departureTime === returnDate) {
-          formattedTickets.return.push(ticket);
-        } else {
-          formattedTickets.departure.push(ticket);
-        }
-      });
-
       const count = await prisma.ticket.count({ where: searchFilter });
       const pagination = getPagination(req, parseInt(page), parseInt(limit), count);
 
@@ -173,7 +137,7 @@ module.exports = {
         status: true,
         message: 'Flight ticket(s) fetched',
         data: {
-          tickets: formattedTickets,
+          tickets,
           pagination
         }
       });
