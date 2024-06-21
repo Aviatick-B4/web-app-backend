@@ -57,7 +57,7 @@ module.exports = {
       limit = 10,
       from: originCity,
       to: destinationCity,
-      departure: departureDate,
+      departure,
       passengers: passengersCount,
       seat_class: seatClass
     } = req.query;
@@ -65,7 +65,7 @@ module.exports = {
     if (
       !originCity ||
       !destinationCity ||
-      !departureDate ||
+      !departure ||
       !passengersCount ||
       !seatClass
     ) {
@@ -77,6 +77,10 @@ module.exports = {
       });
     }
 
+    const departureDate = new Date(departure);
+    const departureAfterDay = new Date(departure);
+    departureAfterDay.setDate(departureAfterDay.getDate() + 1);
+
     try {
       const searchFilter = {
         airplaneSeatClass: {
@@ -84,7 +88,8 @@ module.exports = {
         },
         flight: {
           departureTime: {
-            gt: new Date(departureDate)
+            gte: departureDate,
+            lt: departureAfterDay
           },
           departureAirport: {
             city: {
