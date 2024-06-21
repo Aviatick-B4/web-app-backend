@@ -193,6 +193,12 @@ components:
         name:
           type: string
           example: Jakarta
+        continent:
+          type: string
+          example: Asia
+        imageUrl:
+          type: string
+          example: https://ik.imagekit.io/aviatick/cities/jakarta.jpg
         cityIata:
           type: string
           example: JKT
@@ -1506,6 +1512,9 @@ paths:
                         arrivalContinent:
                           type: string
                           example: North America
+                        arrivalCityImageUrl:
+                          type: string
+                          example: https://ik.imagekit.io/aviatick/cities/los-angeles.jpg
                         departureTime:
                           type: string
                           format: date-time

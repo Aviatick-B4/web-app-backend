@@ -72,420 +72,480 @@
       "name": "New York",
       "cityIata": "NYC",
       "country": "USA",
-      "continent": "North America"
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/new-york.jpg"
     },
     {
       "id": 2,
       "name": "Los Angeles",
       "cityIata": "LAX",
       "country": "USA",
-      "continent": "North America"
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/los-angeles.jpg"
     },
     {
       "id": 3,
       "name": "Chicago",
       "cityIata": "CHI",
       "country": "USA",
-      "continent": "North America"
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/chicago.jpg"
     },
     {
       "id": 4,
       "name": "Houston",
       "cityIata": "HOU",
       "country": "USA",
-      "continent": "North America"
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/houston.jpg"
     },
     {
       "id": 5,
       "name": "Miami",
       "cityIata": "MIA",
       "country": "USA",
-      "continent": "North America"
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/miami-skyline.jpg"
     },
     {
       "id": 6,
       "name": "Jakarta",
       "cityIata": "JKT",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/jakarta.jpg"
     },
     {
       "id": 7,
       "name": "Surabaya",
       "cityIata": "SUB",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/surabaya.jpg"
     },
     {
       "id": 8,
       "name": "Denpasar",
       "cityIata": "DPS",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/denpasar.jpg"
     },
     {
       "id": 9,
       "name": "Makassar",
       "cityIata": "UPG",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/makassar.jpg"
     },
     {
       "id": 10,
       "name": "Medan",
       "cityIata": "MES",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/medan.jpg"
     },
     {
       "id": 11,
       "name": "London",
       "cityIata": "LON",
       "country": "UK",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/london.jpg"
     },
     {
       "id": 12,
       "name": "Paris",
       "cityIata": "PAR",
       "country": "France",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/haze-paris.jpg"
     },
     {
       "id": 13,
       "name": "Tokyo",
       "cityIata": "TYO",
       "country": "Japan",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/tokyo.jpg"
     },
     {
       "id": 14,
       "name": "Beijing",
       "cityIata": "BJS",
       "country": "China",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/beijing.jpg"
     },
     {
       "id": 15,
       "name": "Moscow",
       "cityIata": "MOW",
       "country": "Russia",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/moscow.jpg"
     },
     {
       "id": 16,
       "name": "Berlin",
       "cityIata": "BER",
       "country": "Germany",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/berlin.jpg"
     },
     {
       "id": 17,
       "name": "Rome",
       "cityIata": "ROM",
       "country": "Italy",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/rome.jpg"
     },
     {
       "id": 18,
       "name": "Sydney",
       "cityIata": "SYD",
       "country": "Australia",
-      "continent": "Oceania"
+      "continent": "Oceania",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/sydney.jpg"
     },
     {
       "id": 19,
       "name": "Dubai",
       "cityIata": "DXB",
       "country": "UAE",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/dubai.jpg"
     },
     {
       "id": 20,
       "name": "Toronto",
       "cityIata": "YTO",
       "country": "Canada",
-      "continent": "North America"
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/toronto.jpg"
     },
     {
       "id": 21,
       "name": "Singapore",
       "cityIata": "SIN",
       "country": "Singapore",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/singapore.jpg"
     },
     {
       "id": 22,
       "name": "Seoul",
       "cityIata": "SEL",
       "country": "South Korea",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/seoul.jpg"
     },
     {
       "id": 23,
       "name": "Bangkok",
       "cityIata": "BKK",
       "country": "Thailand",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/bangkok.jpg"
     },
     {
       "id": 24,
       "name": "Kuala Lumpur",
       "cityIata": "KUL",
       "country": "Malaysia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/kuala-lumpur.jpg"
     },
     {
       "id": 25,
       "name": "Delhi",
       "cityIata": "DEL",
       "country": "India",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/delhi.jpg"
     },
     {
       "id": 26,
       "name": "Mumbai",
       "cityIata": "BOM",
       "country": "India",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/mumbai.jpg"
     },
     {
       "id": 27,
       "name": "Cairo",
       "cityIata": "CAI",
       "country": "Egypt",
-      "continent": "Africa"
+      "continent": "Africa",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/cairo.jpg"
     },
     {
       "id": 28,
       "name": "Mexico City",
       "cityIata": "MEX",
       "country": "Mexico",
-      "continent": "North America"
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/mexico.jpg"
     },
     {
       "id": 29,
       "name": "São Paulo",
       "cityIata": "SAO",
       "country": "Brazil",
-      "continent": "South America"
+      "continent": "South America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/sao-paulo.jpg"
     },
     {
       "id": 30,
       "name": "Buenos Aires",
       "cityIata": "BUE",
       "country": "Argentina",
-      "continent": "South America"
+      "continent": "South America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Buenos-Aires.jpg"
     },
     {
       "id": 31,
       "name": "Bandung",
       "cityIata": "BDO",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/bandung.jpg"
     },
     {
       "id": 32,
       "name": "Yogyakarta",
       "cityIata": "JOG",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/yogyakarta.jpg"
     },
     {
       "id": 33,
       "name": "Semarang",
       "cityIata": "SRG",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Semarang.jpg"
     },
     {
       "id": 34,
       "name": "Palembang",
       "cityIata": "PLM",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Palembang.jpg"
     },
     {
       "id": 35,
       "name": "Padang",
       "cityIata": "PDG",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/padang.jpg"
     },
     {
       "id": 36,
       "name": "Balikpapan",
       "cityIata": "BPN",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Balikpapan.JPG"
     },
     {
       "id": 37,
       "name": "Surakarta",
       "cityIata": "SOC",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Surakarta.jpg"
     },
     {
       "id": 38,
       "name": "Pontianak",
       "cityIata": "PNK",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Pontianak.jpg"
     },
     {
       "id": 39,
       "name": "Manado",
       "cityIata": "MDC",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/manado.jpg"
     },
     {
       "id": 40,
       "name": "Ambon",
       "cityIata": "AMQ",
       "country": "Indonesia",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Ambon.jpg"
     },
     {
       "id": 41,
       "name": "Shanghai",
       "cityIata": "SHA",
       "country": "China",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/shanghai.jpg"
     },
     {
       "id": 42,
       "name": "Hong Kong",
       "cityIata": "HKG",
       "country": "Hong Kong",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/hong-kong.jpg"
     },
     {
       "id": 43,
       "name": "Manila",
       "cityIata": "MNL",
       "country": "Philippines",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/manila.jpg"
     },
     {
       "id": 44,
       "name": "Ho Chi Minh City",
       "cityIata": "SGN",
       "country": "Vietnam",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Ho-Chi-Minh-City.jpg"
     },
     {
       "id": 45,
       "name": "Bangalore",
       "cityIata": "BLR",
       "country": "India",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Bangalore.jpg"
     },
     {
       "id": 46,
       "name": "Cape Town",
       "cityIata": "CPT",
       "country": "South Africa",
-      "continent": "Africa"
+      "continent": "Africa",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Cape-Town.jpg"
     },
     {
       "id": 47,
       "name": "Lima",
       "cityIata": "LIM",
       "country": "Peru",
-      "continent": "South America"
+      "continent": "South America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/lima-peru.jpg"
     },
     {
       "id": 48,
       "name": "Johannesburg",
       "cityIata": "JNB",
       "country": "South Africa",
-      "continent": "Africa"
+      "continent": "Africa",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Johannesburg.jpg"
     },
     {
       "id": 49,
       "name": "Istanbul",
       "cityIata": "IST",
       "country": "Turkey",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Istanbul.jpg"
     },
     {
       "id": 50,
       "name": "Munich",
       "cityIata": "MUC",
       "country": "Germany",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/munich.jpg"
     },
     {
       "id": 51,
       "name": "Dublin",
       "cityIata": "DUB",
       "country": "Ireland",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Dublin.jpg"
     },
     {
       "id": 52,
       "name": "Auckland",
       "cityIata": "AKL",
       "country": "New Zealand",
-      "continent": "Oceania"
+      "continent": "Oceania",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/auckland.jpg"
     },
     {
       "id": 53,
       "name": "Santiago",
       "cityIata": "SCL",
       "country": "Chile",
-      "continent": "South America"
+      "continent": "South America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Santiago.jpg"
     },
     {
       "id": 54,
       "name": "Osaka",
       "cityIata": "OSA",
       "country": "Japan",
-      "continent": "Asia"
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/osaka.jpg"
     },
     {
       "id": 55,
       "name": "Stockholm",
       "cityIata": "STO",
       "country": "Sweden",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Stockholm.jpg"
     },
     {
       "id": 56,
       "name": "Vienna",
       "cityIata": "VIE",
       "country": "Austria",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Vienna.jpg"
     },
     {
       "id": 57,
       "name": "Zurich",
       "cityIata": "ZRH",
       "country": "Switzerland",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/zurich.jpg"
     },
     {
       "id": 58,
       "name": "Edinburgh",
       "cityIata": "EDI",
       "country": "UK",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Edinburgh.jpg"
     },
     {
       "id": 59,
       "name": "Barcelona",
       "cityIata": "BCN",
       "country": "Spain",
-      "continent": "Europe"
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Barcelona.jpg"
     },
     {
       "id": 60,
       "name": "Rio de Janeiro",
       "cityIata": "RIO",
       "country": "Brazil",
-      "continent": "South America"
+      "continent": "South America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/rio-de-janeiro.jpg"
     }
   ],
   "airports": [

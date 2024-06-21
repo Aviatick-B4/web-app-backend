@@ -3,10 +3,10 @@
 ##############################################
 POST http://localhost:3000/api/v1/bookings/new-booking
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4NzE4MjY0fQ.EnWyfzgzq1ybgq14qS3bxJFTBVMp62y2GQvZMVGpmz8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MDA5ODEwfQ.sWTENa76Pugpf0kGItlsbpFztYLn3E75t6CBJmfT7RQ
 
 {
-    "flightId": 4,
+    "flightId": 6,
     "adult": 1,
     "child": 0,
     "baby": 0,
@@ -83,7 +83,7 @@ Content-Type: application/json
 
 {
     "email": "21082010208@student.upnjatim.ac.id",
-    "otp": "488463"
+    "otp": "353649"
 }
 
 ### RESEND 
@@ -99,7 +99,7 @@ POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "emailOrPhoneNumber": "john@gmail.com",
+    "emailOrPhoneNumber": "charlie@gmail.com",
     "password": "123456"
 }
 
@@ -157,9 +157,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbE5hb
 }
 
 ### UPDATE TICKET WITH PROMO
-PUT http://localhost:3000/api/v1/promos/1
+PUT http://localhost:3000/api/v1/promos/5
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbE5hbWUiOiJDaGFybGllIERhdmlzIiwiZmFtaWx5TmFtZSI6IkRhdmlzIiwicGhvbmVOdW1iZXIiOiIrNjIxMjM0NTY3ODk0IiwiZW1haWwiOiJjaGFybGllQGdtYWlsLmNvbSIsImlkZW50aXR5VHlwZSI6IlBhc3Nwb3J0IiwiaWRlbnRpdHlOdW1iZXIiOiJCMjM0NTY3ODkiLCJuYXRpb25hbGl0eSI6IkluZG9uZXNpYW4iLCJlbWFpbElzVmVyaWZpZWQiOnRydWUsImdvb2dsZUlkIjpudWxsLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MTgyMTE5NDh9.zbLoRkNKHJX7mSOZesVIc2_lrCly6PVbyPU2Idctejo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbE5hbWUiOiJDaGFybGllIERhdmlzIiwiZmFtaWx5TmFtZSI6IkRhdmlzIiwicGhvbmVOdW1iZXIiOiIrNjIxMjM0NTY3ODk0IiwiZW1haWwiOiJjaGFybGllQGdtYWlsLmNvbSIsImlkZW50aXR5VHlwZSI6IlBhc3Nwb3J0IiwiaWRlbnRpdHlOdW1iZXIiOiJCMjM0NTY3ODkiLCJuYXRpb25hbGl0eSI6IkluZG9uZXNpYW4iLCJlbWFpbElzVmVyaWZpZWQiOnRydWUsImdvb2dsZUlkIjpudWxsLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MTkwMTA4NDB9.A2VZGEan3eqGGClMMKTWuiIew928agb96N26fefVVvQ
 
 {
     "promoId": 1
@@ -176,6 +176,9 @@ GET http://localhost:3000/api/v1/flights/favorite?limit=5&page=1
 
 ### GET ALL FAVORITE DESTINATION BY ARRIVAL CONTINENT
 GET http://localhost:3000/api/v1/flights/favorite?arrivalContinent=Europe
+
+### GET ALL TICKETS PROMO
+GET http://localhost:3000/api/v1/tickets?promo=true
 
 
 ##############################################

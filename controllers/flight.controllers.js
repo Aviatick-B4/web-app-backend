@@ -71,6 +71,7 @@ module.exports = {
         departureContinent: flight.departureAirport.city.continent,
         arrivalCity: flight.arrivalAirport.city.name,
         arrivalContinent: flight.arrivalAirport.city.continent,
+        arrivalCityImageUrl: flight.arrivalAirport.city.imageUrl,
         departureTime: flight.departureTime,
         arrivalTime: flight.arrivalTime,
         airline: flight.ticket[0]?.airplaneSeatClass?.airplane?.airline?.name,

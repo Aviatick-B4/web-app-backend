@@ -17,26 +17,26 @@ module.exports = {
             include: {
               airplane: {
                 include: {
-                  airline: true
-                }
-              }
-            }
+                  airline: true,
+                },
+              },
+            },
           },
           flight: {
             include: {
               arrivalAirport: {
                 include: {
-                  city: true
-                }
+                  city: true,
+                },
               },
               departureAirport: {
                 include: {
-                  city: true
-                }
-              }
-            }
-          }
-        }
+                  city: true,
+                },
+              },
+            },
+          },
+        },
       });
 
       const formattedTickets = getFormattedTickets(tickets);
@@ -60,7 +60,7 @@ module.exports = {
       to: destinationCity,
       departure,
       passengers: passengersCount,
-      seat_class: seatClass
+      seat_class: seatClass,
     } = req.query;
 
     if (
@@ -74,7 +74,7 @@ module.exports = {
         status: false,
         message:
           "Field 'from', 'to', 'departure', 'passengers', and 'seat_class' are required",
-        data: null
+        data: null,
       });
     }
 
@@ -94,7 +94,7 @@ module.exports = {
     try {
       const searchFilter = {
         airplaneSeatClass: {
-          type: seatClass
+          type: seatClass,
         },
         flight: {
           departureTime: {
@@ -123,31 +123,36 @@ module.exports = {
             include: {
               airplane: {
                 include: {
-                  airline: true
-                }
-              }
-            }
+                  airline: true,
+                },
+              },
+            },
           },
           flight: {
             include: {
               arrivalAirport: {
                 include: {
-                  city: true
-                }
+                  city: true,
+                },
               },
               departureAirport: {
                 include: {
-                  city: true
-                }
-              }
-            }
-          }
-        }
+                  city: true,
+                },
+              },
+            },
+          },
+        },
       });
 
       const formattedTickets = getFormattedTickets(tickets);
       const count = await prisma.ticket.count({ where: searchFilter });
-      const pagination = getPagination(req, parseInt(page), parseInt(limit), count);
+      const pagination = getPagination(
+        req,
+        parseInt(page),
+        parseInt(limit),
+        count
+      );
 
       res.status(200).json({
         status: true,
@@ -157,7 +162,7 @@ module.exports = {
     } catch (error) {
       next(error);
     }
-  }
+  },
 };
 
 function getFormattedTickets(tickets) {
