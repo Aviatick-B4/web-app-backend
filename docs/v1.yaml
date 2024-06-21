@@ -184,42 +184,6 @@ components:
                 logoUrl:
                   type: string
                   example: https://ik.imagekit.io/aviatick/airlines/batik-air.jpg
-    Flight:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        flightNumber:
-          type: string
-          example: FL001
-        departureTime:
-          type: string
-          example: 2024-06-03T18:00:00.000Z
-        arrivalTime:
-          type: string
-          example: 2024-06-03T21:00:00.000Z
-        departureAirportId:
-          type: integer
-          example: 2
-        arrivalAirportId:
-          type: integer
-          example: 3
-    Airport:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        name:
-          type: string
-          example: Soekarno-Hatta International Airport
-        airportCode:
-          type: string
-          example: CGK
-        cityId:
-          type: integer
-          example: 2
     City:
       type: object
       properties:
@@ -235,45 +199,6 @@ components:
         country:
           type: string
           example: Indonesia
-    AirplaneSeatClass:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        type:
-          type: string
-          example: Economy
-        totalSeat:
-          type: integer
-          example: 90
-        airplaneId:
-          type: integer
-          example: 2
-    Airplane:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        model:
-          type: string
-          example: Airbus A380
-        passengerCapacity:
-          type: integer
-          example: 150
-        baggageCapacity:
-          type: integer
-          example: 20
-        cabinCapacity:
-          type: integer
-          example: 7
-        inFlightCapacity:
-          type: string
-          example: WiFi, Entertainment, Meal, Extra Legroom, Lounge
-        airlineId:
-          type: integer
-          example: 2
     Airline:
       type: object
       properties:
