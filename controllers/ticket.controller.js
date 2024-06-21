@@ -4,8 +4,8 @@ const prisma = new PrismaClient();
 
 module.exports = {
   getAll: async (req, res, next) => {
-    const { page = 1, limit = 10, promo } = req.query;
-    const isPromo = Boolean(promo);
+    const { page = 1, limit = 10, promo = '' } = req.query;
+    const isPromo = promo.toLowerCase() === 'true';
 
     try {
       const tickets = await prisma.ticket.findMany({
