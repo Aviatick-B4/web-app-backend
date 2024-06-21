@@ -328,7 +328,7 @@ module.exports = {
       });
 
       await sendEmail({
-        to: 'ramaastra333@gmail.com',
+        to: email,
         subject: 'Aviatick - Reset Password Confirmation',
         html,
       });
