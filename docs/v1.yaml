@@ -111,6 +111,12 @@ components:
                 city:
                   type: string
                   example: Barcelona
+                continent:
+                  type: string
+                  example: Europe
+                imageUrl:
+                  type: string
+                  example: https://ik.imagekit.io/aviatick/cities/barcelona.jpg
                 cityIata:
                   type: string
                   example: BCN
@@ -133,6 +139,12 @@ components:
                 city:
                   type: string
                   example: Rio de Janeiro
+                continent:
+                  type: string
+                  example: South America
+                imageUrl:
+                  type: string
+                  example: https://ik.imagekit.io/aviatick/cities/rio-de-janeiro.jpg
                 cityIata:
                   type: string
                   example: RIO

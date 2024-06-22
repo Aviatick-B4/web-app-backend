@@ -40,13 +40,20 @@ module.exports = {
       });
 
       const formattedTickets = getFormattedTickets(tickets);
-      const count = await prisma.ticket.count({ where: isPromo ? { promoId: { not: null } } : {} });
-      const pagination = getPagination(req, parseInt(page), parseInt(limit), count);
+      const count = await prisma.ticket.count({
+        where: isPromo ? { promoId: { not: null } } : {},
+      });
+      const pagination = getPagination(
+        req,
+        parseInt(page),
+        parseInt(limit),
+        count
+      );
 
       res.status(200).json({
         status: true,
         message: 'Flight ticket(s) fetched',
-        data: { tickets: formattedTickets, pagination }
+        data: { tickets: formattedTickets, pagination },
       });
     } catch (error) {
       next(error);
@@ -82,9 +89,8 @@ module.exports = {
     if (!departureDate.getDate()) {
       return res.status(400).json({
         status: false,
-        message:
-          "Invalid date (only accepts YYYY-MM-DD format)",
-        data: null
+        message: 'Invalid date (only accepts YYYY-MM-DD format)',
+        data: null,
       });
     }
 
@@ -99,19 +105,19 @@ module.exports = {
         flight: {
           departureTime: {
             gte: departureDate,
-            lt: departureAfterDay
+            lt: departureAfterDay,
           },
           departureAirport: {
             city: {
-              cityIata: originCity
-            }
+              cityIata: originCity,
+            },
           },
           arrivalAirport: {
             city: {
-              cityIata: destinationCity
-            }
-          }
-        }
+              cityIata: destinationCity,
+            },
+          },
+        },
       };
 
       const tickets = await prisma.ticket.findMany({
@@ -157,7 +163,7 @@ module.exports = {
       res.status(200).json({
         status: true,
         message: 'Flight ticket(s) fetched',
-        data: { tickets: formattedTickets, pagination }
+        data: { tickets: formattedTickets, pagination },
       });
     } catch (error) {
       next(error);
@@ -177,19 +183,23 @@ function getFormattedTickets(tickets) {
         departure: {
           time: ticket.flight.departureTime,
           city: ticket.flight.departureAirport.city.name,
+          continent: ticket.flight.departureAirport.city.continent,
+          imageUrl: ticket.flight.departureAirport.city.imageUrl,
           cityIata: ticket.flight.departureAirport.city.cityIata,
           country: ticket.flight.departureAirport.city.country,
           airport: ticket.flight.departureAirport.name,
-          airportCode: ticket.flight.departureAirport.airportCode
+          airportCode: ticket.flight.departureAirport.airportCode,
         },
         arrival: {
           time: ticket.flight.arrivalTime,
           city: ticket.flight.arrivalAirport.city.name,
+          continent: ticket.flight.arrivalAirport.city.continent,
+          imageUrl: ticket.flight.arrivalAirport.city.imageUrl,
           cityIata: ticket.flight.arrivalAirport.city.cityIata,
           country: ticket.flight.arrivalAirport.city.country,
           airport: ticket.flight.arrivalAirport.name,
-          airportCode: ticket.flight.arrivalAirport.airportCode
-        }
+          airportCode: ticket.flight.arrivalAirport.airportCode,
+        },
       },
       airplane: {
         model: ticket.airplaneSeatClass.airplane.model,
@@ -199,15 +209,15 @@ function getFormattedTickets(tickets) {
         inFlightFacility: ticket.airplaneSeatClass.airplane.inFlightFacility,
         seatClass: {
           type: ticket.airplaneSeatClass.type,
-          seatCount: ticket.airplaneSeatClass.totalSeat
+          seatCount: ticket.airplaneSeatClass.totalSeat,
         },
         airline: {
           name: ticket.airplaneSeatClass.airplane.airline.name,
           code: ticket.airplaneSeatClass.airplane.airline.airlineIata,
-          logoUrl: ticket.airplaneSeatClass.airplane.airline.logoUrl
-        }
-      }
-    }
+          logoUrl: ticket.airplaneSeatClass.airplane.airline.logoUrl,
+        },
+      },
+    };
   });
 
   return formattedTickets;
