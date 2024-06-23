@@ -179,6 +179,7 @@ function getFormattedTickets(tickets) {
       afterDiscountPrice: ticket.afterDiscountPrice,
       promo: ticket.promoId,
       flight: {
+        id: ticket.flight.id,
         code: ticket.flight.flightNumber,
         departure: {
           time: ticket.flight.departureTime,
