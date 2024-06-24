@@ -1373,6 +1373,52 @@ paths:
                             type: integer
                             example: 50
 
+  /tickets/{id}:
+    get:
+      tags:
+        - Flights
+      summary: Fetch a single ticket data
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 10
+          description: Ticket id
+      responses:
+        200:
+          description: Flight ticket retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Successfully fetched ticket with id 10
+                  data:
+                    $ref: "#/components/schemas/Ticket"
+        404:
+          description: Flight ticket not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Ticket record with id 999 does not exist
+                  data:
+                    example: null
+
+
   /tickets/search:
     get:
       tags:
