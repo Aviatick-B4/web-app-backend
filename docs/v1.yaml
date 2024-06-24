@@ -98,6 +98,9 @@ components:
         flight:
           type: object
           properties:
+            id:
+              type: integer
+              example: 1
             code:
               type: string
               example: FL159
