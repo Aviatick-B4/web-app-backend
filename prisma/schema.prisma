@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -15,15 +9,16 @@ datasource db {
 
 model User {
   id              Int            @id @default(autoincrement())
-  fullName        String         @map("full_name")
+  fullName        String?        @map("full_name")
   familyName      String?        @map("family_name")
-  phoneNumber     String         @map("phone_number")
+  phoneNumber     String?        @map("phone_number")
   email           String         @unique
-  password        String
+  password        String?
   identityType    String?        @map("identity_type")
   identityNumber  String?        @map("identity_number")
   nationality     String?
   emailIsVerified Boolean        @default(false) @map("email_isverified")
+  googleId        String?
   role            Role           @default(USER)
   booking         Booking[]
   otp             Otp?
@@ -42,7 +37,10 @@ model Booking {
   bookingCode String      @map("booking_code")
   status      String      @default("UNPAID")
   expiredPaid DateTime    @map("expired_paid")
+  createdAt   DateTime    @map("created_at")
   totalPrice  Float       @map("total_price")
+  bookingTax  Float       @map("booking_tax")
+  urlPayment  String?     @map("url_payment")
   flight      Flight      @relation(fields: [flightId], references: [id])
   flightId    Int         @map("flight_id")
   user        User        @relation(fields: [userId], references: [id])
@@ -64,14 +62,21 @@ model Otp {
 }
 
 model Notification {
-  id        Int      @id @default(autoincrement())
+  id        Int               @id @default(autoincrement())
   title     String
   message   String
-  createdAt DateTime @map("created_at")
-  user      User     @relation(fields: [userId], references: [id])
-  userId    Int      @map("user_id")
+  type      NotificationType?
+  createdAt DateTime          @map("created_at")
+  user      User              @relation(fields: [userId], references: [id])
+  userId    Int               @map("user_id")
 
   @@map("notifications")
+}
+
+enum NotificationType {
+  transaction
+  promo
+  general
 }
 
 model Payment {
@@ -89,6 +94,7 @@ model Flight {
   flightNumber       String    @map("flight_number")
   departureTime      DateTime  @map("departure_time")
   arrivalTime        DateTime  @map("arrival_time")
+  count              Int?
   departureAirport   Airport   @relation("departure_airport", fields: [departureAirportId], references: [id])
   departureAirportId Int       @map("departure_airport_id")
   arrivalAirport     Airport   @relation("arrival_airport", fields: [arrivalAirportId], references: [id])
@@ -100,11 +106,13 @@ model Flight {
 }
 
 model City {
-  id       Int       @id @default(autoincrement())
-  name     String
-  cityIata String    @map("city_iata")
-  country  String
-  airport  Airport[]
+  id        Int       @id @default(autoincrement())
+  name      String
+  continent String?
+  imageUrl  String?   @map("image_url")
+  cityIata  String    @map("city_iata")
+  country   String
+  airport   Airport[]
 
   @@map("cities")
 }
@@ -139,8 +147,8 @@ model Airline {
   id          Int        @id @default(autoincrement())
   name        String
   airlineIata String     @map("airline_iata")
-  logo_url    String?
-  logo_id     String?
+  logoUrl     String?    @map("logo_url")
+  logoId      String?    @map("logo_id")
   airplane    Airplane[]
 
   @@map("airlines")
@@ -160,13 +168,28 @@ model AirplaneSeatClass {
 model Ticket {
   id                  Int               @id @default(autoincrement())
   price               Float
-  tax                 Float
+  afterDiscountPrice  Float?            @map("after_discount_price")
   flight              Flight            @relation(fields: [flightId], references: [id])
   flightId            Int               @map("flight_id")
   airplaneSeatClass   AirplaneSeatClass @relation(fields: [airplaneSeatClassId], references: [id])
   airplaneSeatClassId Int               @map("airplane_seat_class_id")
+  promo               Promo?            @relation("promo", fields: [promoId], references: [id])
+  promoId             Int?              @map("promo_id")
 
   @@map("tickets")
+}
+
+model Promo {
+  id         Int      @id @default(autoincrement())
+  name       String
+  discount   Float
+  validFrom  DateTime @map("valid_from")
+  validUntil DateTime @map("valid_until")
+  createdAt  DateTime? @map("created_at")
+  isActive   Boolean  @default(true) @map("is_active")
+  Ticket     Ticket[] @relation("promo")
+
+  @@map("promos")
 }
 
 model Passenger {

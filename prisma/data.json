@@ -71,361 +71,481 @@
       "id": 1,
       "name": "New York",
       "cityIata": "NYC",
-      "country": "USA"
+      "country": "USA",
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/new-york.jpg"
     },
     {
       "id": 2,
       "name": "Los Angeles",
       "cityIata": "LAX",
-      "country": "USA"
+      "country": "USA",
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/los-angeles.jpg"
     },
     {
       "id": 3,
       "name": "Chicago",
       "cityIata": "CHI",
-      "country": "USA"
+      "country": "USA",
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/chicago.jpg"
     },
     {
       "id": 4,
       "name": "Houston",
       "cityIata": "HOU",
-      "country": "USA"
+      "country": "USA",
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/houston.jpg"
     },
     {
       "id": 5,
       "name": "Miami",
       "cityIata": "MIA",
-      "country": "USA"
+      "country": "USA",
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/miami-skyline.jpg"
     },
     {
       "id": 6,
       "name": "Jakarta",
       "cityIata": "JKT",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/jakarta.jpg"
     },
     {
       "id": 7,
       "name": "Surabaya",
       "cityIata": "SUB",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/surabaya.jpg"
     },
     {
       "id": 8,
       "name": "Denpasar",
       "cityIata": "DPS",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/denpasar.jpg"
     },
     {
       "id": 9,
       "name": "Makassar",
       "cityIata": "UPG",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/makassar.jpg"
     },
     {
       "id": 10,
       "name": "Medan",
       "cityIata": "MES",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/medan.jpg"
     },
     {
       "id": 11,
       "name": "London",
       "cityIata": "LON",
-      "country": "UK"
+      "country": "UK",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/london.jpg"
     },
     {
       "id": 12,
       "name": "Paris",
       "cityIata": "PAR",
-      "country": "France"
+      "country": "France",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/haze-paris.jpg"
     },
     {
       "id": 13,
       "name": "Tokyo",
       "cityIata": "TYO",
-      "country": "Japan"
+      "country": "Japan",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/tokyo.jpg"
     },
     {
       "id": 14,
       "name": "Beijing",
       "cityIata": "BJS",
-      "country": "China"
+      "country": "China",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/beijing.jpg"
     },
     {
       "id": 15,
       "name": "Moscow",
       "cityIata": "MOW",
-      "country": "Russia"
+      "country": "Russia",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/moscow.jpg"
     },
     {
       "id": 16,
       "name": "Berlin",
       "cityIata": "BER",
-      "country": "Germany"
+      "country": "Germany",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/berlin.jpg"
     },
     {
       "id": 17,
       "name": "Rome",
       "cityIata": "ROM",
-      "country": "Italy"
+      "country": "Italy",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/rome.jpg"
     },
     {
       "id": 18,
       "name": "Sydney",
       "cityIata": "SYD",
-      "country": "Australia"
+      "country": "Australia",
+      "continent": "Oceania",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/sydney.jpg"
     },
     {
       "id": 19,
       "name": "Dubai",
       "cityIata": "DXB",
-      "country": "UAE"
+      "country": "UAE",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/dubai.jpg"
     },
     {
       "id": 20,
       "name": "Toronto",
       "cityIata": "YTO",
-      "country": "Canada"
+      "country": "Canada",
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/toronto.jpg"
     },
     {
       "id": 21,
       "name": "Singapore",
       "cityIata": "SIN",
-      "country": "Singapore"
+      "country": "Singapore",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/singapore.jpg"
     },
     {
       "id": 22,
       "name": "Seoul",
       "cityIata": "SEL",
-      "country": "South Korea"
+      "country": "South Korea",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/seoul.jpg"
     },
     {
       "id": 23,
       "name": "Bangkok",
       "cityIata": "BKK",
-      "country": "Thailand"
+      "country": "Thailand",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/bangkok.jpg"
     },
     {
       "id": 24,
       "name": "Kuala Lumpur",
       "cityIata": "KUL",
-      "country": "Malaysia"
+      "country": "Malaysia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/kuala-lumpur.jpg"
     },
     {
       "id": 25,
       "name": "Delhi",
       "cityIata": "DEL",
-      "country": "India"
+      "country": "India",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/delhi.jpg"
     },
     {
       "id": 26,
       "name": "Mumbai",
       "cityIata": "BOM",
-      "country": "India"
+      "country": "India",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/mumbai.jpg"
     },
     {
       "id": 27,
       "name": "Cairo",
       "cityIata": "CAI",
-      "country": "Egypt"
+      "country": "Egypt",
+      "continent": "Africa",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/cairo.jpg"
     },
     {
       "id": 28,
       "name": "Mexico City",
       "cityIata": "MEX",
-      "country": "Mexico"
+      "country": "Mexico",
+      "continent": "North America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/mexico.jpg"
     },
     {
       "id": 29,
       "name": "São Paulo",
       "cityIata": "SAO",
-      "country": "Brazil"
+      "country": "Brazil",
+      "continent": "South America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/sao-paulo.jpg"
     },
     {
       "id": 30,
       "name": "Buenos Aires",
       "cityIata": "BUE",
-      "country": "Argentina"
+      "country": "Argentina",
+      "continent": "South America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Buenos-Aires.jpg"
     },
     {
       "id": 31,
       "name": "Bandung",
       "cityIata": "BDO",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/bandung.jpg"
     },
     {
       "id": 32,
       "name": "Yogyakarta",
       "cityIata": "JOG",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/yogyakarta.jpg"
     },
     {
       "id": 33,
       "name": "Semarang",
       "cityIata": "SRG",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Semarang.jpg"
     },
     {
       "id": 34,
       "name": "Palembang",
       "cityIata": "PLM",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Palembang.jpg"
     },
     {
       "id": 35,
       "name": "Padang",
       "cityIata": "PDG",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/padang.jpg"
     },
     {
       "id": 36,
       "name": "Balikpapan",
       "cityIata": "BPN",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Balikpapan.JPG"
     },
     {
       "id": 37,
       "name": "Surakarta",
       "cityIata": "SOC",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Surakarta.jpg"
     },
     {
       "id": 38,
       "name": "Pontianak",
       "cityIata": "PNK",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Pontianak.jpg"
     },
     {
       "id": 39,
       "name": "Manado",
       "cityIata": "MDC",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/manado.jpg"
     },
     {
       "id": 40,
       "name": "Ambon",
       "cityIata": "AMQ",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Ambon.jpg"
     },
     {
       "id": 41,
       "name": "Shanghai",
       "cityIata": "SHA",
-      "country": "China"
+      "country": "China",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/shanghai.jpg"
     },
     {
       "id": 42,
       "name": "Hong Kong",
       "cityIata": "HKG",
-      "country": "Hong Kong"
+      "country": "Hong Kong",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/hong-kong.jpg"
     },
     {
       "id": 43,
       "name": "Manila",
       "cityIata": "MNL",
-      "country": "Philippines"
+      "country": "Philippines",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/manila.jpg"
     },
     {
       "id": 44,
       "name": "Ho Chi Minh City",
       "cityIata": "SGN",
-      "country": "Vietnam"
+      "country": "Vietnam",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Ho-Chi-Minh-City.jpg"
     },
     {
       "id": 45,
       "name": "Bangalore",
       "cityIata": "BLR",
-      "country": "India"
+      "country": "India",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Bangalore.jpg"
     },
     {
       "id": 46,
       "name": "Cape Town",
       "cityIata": "CPT",
-      "country": "South Africa"
+      "country": "South Africa",
+      "continent": "Africa",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Cape-Town.jpg"
     },
     {
       "id": 47,
       "name": "Lima",
       "cityIata": "LIM",
-      "country": "Peru"
+      "country": "Peru",
+      "continent": "South America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/lima-peru.jpg"
     },
     {
       "id": 48,
       "name": "Johannesburg",
       "cityIata": "JNB",
-      "country": "South Africa"
+      "country": "South Africa",
+      "continent": "Africa",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Johannesburg.jpg"
     },
     {
       "id": 49,
       "name": "Istanbul",
       "cityIata": "IST",
-      "country": "Turkey"
+      "country": "Turkey",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Istanbul.jpg"
     },
     {
       "id": 50,
       "name": "Munich",
       "cityIata": "MUC",
-      "country": "Germany"
+      "country": "Germany",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/munich.jpg"
     },
     {
       "id": 51,
       "name": "Dublin",
       "cityIata": "DUB",
-      "country": "Ireland"
+      "country": "Ireland",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Dublin.jpg"
     },
     {
       "id": 52,
       "name": "Auckland",
       "cityIata": "AKL",
-      "country": "New Zealand"
+      "country": "New Zealand",
+      "continent": "Oceania",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/auckland.jpg"
     },
     {
       "id": 53,
       "name": "Santiago",
       "cityIata": "SCL",
-      "country": "Chile"
+      "country": "Chile",
+      "continent": "South America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Santiago.jpg"
     },
     {
       "id": 54,
       "name": "Osaka",
       "cityIata": "OSA",
-      "country": "Japan"
+      "country": "Japan",
+      "continent": "Asia",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/osaka.jpg"
     },
     {
       "id": 55,
       "name": "Stockholm",
       "cityIata": "STO",
-      "country": "Sweden"
+      "country": "Sweden",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Stockholm.jpg"
     },
     {
       "id": 56,
       "name": "Vienna",
       "cityIata": "VIE",
-      "country": "Austria"
+      "country": "Austria",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Vienna.jpg"
     },
     {
       "id": 57,
       "name": "Zurich",
       "cityIata": "ZRH",
-      "country": "Switzerland"
+      "country": "Switzerland",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/zurich.jpg"
     },
     {
       "id": 58,
       "name": "Edinburgh",
       "cityIata": "EDI",
-      "country": "UK"
+      "country": "UK",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Edinburgh.jpg"
     },
     {
       "id": 59,
       "name": "Barcelona",
       "cityIata": "BCN",
-      "country": "Spain"
+      "country": "Spain",
+      "continent": "Europe",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/Barcelona.jpg"
     },
     {
       "id": 60,
       "name": "Rio de Janeiro",
       "cityIata": "RIO",
-      "country": "Brazil"
+      "country": "Brazil",
+      "continent": "South America",
+      "imageUrl": "https://ik.imagekit.io/aviatick/cities/rio-de-janeiro.jpg"
     }
   ],
   "airports": [
@@ -794,52 +914,62 @@
     {
       "id": 1,
       "name": "American Airlines",
-      "airlineIata": "AA"
-    },
+      "airlineIata": "AA",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/american-airlines.jpg"
+      },
     {
       "id": 2,
       "name": "Delta Airlines",
-      "airlineIata": "DL"
+      "airlineIata": "DL",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/delta-airlines.jpg"
     },
     {
       "id": 3,
       "name": "United Airlines",
-      "airlineIata": "UA"
+      "airlineIata": "UA",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/united-airlines.jpg"
     },
     {
       "id": 4,
       "name": "Southwest Airlines",
-      "airlineIata": "SW"
+      "airlineIata": "SW",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/southwest-airlines.jpg"
     },
     {
       "id": 5,
       "name": "Alaska Airlines",
-      "airlineIata": "AS"
+      "airlineIata": "AS",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/alaska-airlines.jpg"
     },
     {
       "id": 6,
       "name": "Citilink",
-      "airlineIata": "QG"
+      "airlineIata": "QG",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/citilink.jpg"
     },
     {
       "id": 7,
       "name": "Garuda Indonesia",
-      "airlineIata": "GA"
+      "airlineIata": "GA",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/garuda-indonesia.jpg"
     },
     {
       "id": 8,
       "name": "Lion Air",
-      "airlineIata": "JT"
+      "airlineIata": "JT",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/lion-air.jpg"
     },
     {
       "id": 9,
       "name": "Batik Air",
-      "airlineIata": "ID"
+      "airlineIata": "ID",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/batik-air.jpg"
     },
     {
       "id": 10,
       "name": "Sriwijaya Air",
-      "airlineIata": "SJ"
+      "airlineIata": "SJ",
+      "logoUrl": "https://ik.imagekit.io/aviatick/airlines/sriwijaya-air.jpg"
     }
   ],
   "airplanes": [
@@ -2402,1262 +2532,2958 @@
     {
       "id": 1,
       "price": 3000000,
-      "tax": 0.1,
+      "afterDiscountPrice": 2700000,
       "flightId": 1,
-      "airplaneSeatClassId": 1
+      "airplaneSeatClassId": 1,
+      "promoId": 1
     },
     {
       "id": 2,
       "price": 2000000,
-      "tax": 0.1,
+      "afterDiscountPrice": 1800000,
       "flightId": 1,
-      "airplaneSeatClassId": 2
+      "airplaneSeatClassId": 2,
+      "promoId": 1
     },
     {
       "id": 3,
       "price": 800000,
-      "tax": 0.1,
+      "afterDiscountPrice": 720000,
       "flightId": 1,
-      "airplaneSeatClassId": 3
+      "airplaneSeatClassId": 3,
+      "promoId": 1
     },
     {
       "id": 4,
       "price": 8500000,
-      "tax": 0.1,
+      "afterDiscountPrice": 7650000,
       "flightId": 2,
-      "airplaneSeatClassId": 4
+      "airplaneSeatClassId": 4,
+      "promoId": 1
     },
     {
       "id": 5,
       "price": 5000000,
-      "tax": 0.1,
+      "afterDiscountPrice": 4500000,
       "flightId": 2,
-      "airplaneSeatClassId": 5
+      "airplaneSeatClassId": 5,
+      "promoId": 1
     },
     {
       "id": 6,
       "price": 1500000,
-      "tax": 0.1,
+      "afterDiscountPrice": 1350000,
       "flightId": 2,
-      "airplaneSeatClassId": 6
+      "airplaneSeatClassId": 6,
+      "promoId": 1
     },
     {
       "id": 7,
       "price": 7800000,
-      "tax": 0.1,
+      "afterDiscountPrice": 7020000,
       "flightId": 3,
-      "airplaneSeatClassId": 7
+      "airplaneSeatClassId": 7,
+      "promoId": 1
     },
     {
       "id": 8,
       "price": 4800000,
-      "tax": 0.1,
+      "afterDiscountPrice": 4320000,
       "flightId": 3,
-      "airplaneSeatClassId": 8
+      "airplaneSeatClassId": 8,
+      "promoId": 1
     },
     {
       "id": 9,
       "price": 1200000,
-      "tax": 0.1,
+      "afterDiscountPrice": 1080000,
       "flightId": 3,
-      "airplaneSeatClassId": 9
+      "airplaneSeatClassId": 9,
+      "promoId": 1
     },
     {
       "id": 10,
       "price": 9200000,
-      "tax": 0.1,
+      "afterDiscountPrice": 8280000,
       "flightId": 4,
-      "airplaneSeatClassId": 10
+      "airplaneSeatClassId": 10,
+      "promoId": 1
     },
     {
       "id": 11,
       "price": 6200000,
-      "tax": 0.1,
+      "afterDiscountPrice": 5580000,
       "flightId": 4,
-      "airplaneSeatClassId": 11
+      "airplaneSeatClassId": 11,
+      "promoId": 1
     },
     {
       "id": 12,
       "price": 2200000,
-      "tax": 0.1,
+      "afterDiscountPrice": 1980000,
       "flightId": 4,
-      "airplaneSeatClassId": 12
+      "airplaneSeatClassId": 12,
+      "promoId": 1
     },
     {
       "id": 13,
       "price": 8700000,
-      "tax": 0.1,
+      "afterDiscountPrice": 7830000,
       "flightId": 5,
-      "airplaneSeatClassId": 13
+      "airplaneSeatClassId": 13,
+      "promoId": 1
     },
     {
       "id": 14,
       "price": 5700000,
-      "tax": 0.1,
+      "afterDiscountPrice": 5130000,
       "flightId": 5,
-      "airplaneSeatClassId": 14
+      "airplaneSeatClassId": 14,
+      "promoId": 1
     },
     {
       "id": 15,
       "price": 1700000,
-      "tax": 0.1,
+      "afterDiscountPrice": 1530000,
       "flightId": 5,
-      "airplaneSeatClassId": 15
+      "airplaneSeatClassId": 15,
+      "promoId": 1
     },
     {
       "id": 16,
       "price": 9600000,
-      "tax": 0.1,
+      "afterDiscountPrice": 8640000,
       "flightId": 6,
-      "airplaneSeatClassId": 16
+      "airplaneSeatClassId": 16,
+      "promoId": 1
     },
     {
       "id": 17,
       "price": 6600000,
-      "tax": 0.1,
+      "afterDiscountPrice": 5940000,
       "flightId": 6,
-      "airplaneSeatClassId": 17
+      "airplaneSeatClassId": 17,
+      "promoId": 1
     },
     {
       "id": 18,
       "price": 2600000,
-      "tax": 0.1,
+      "afterDiscountPrice": 2340000,
       "flightId": 6,
-      "airplaneSeatClassId": 18
+      "airplaneSeatClassId": 18,
+      "promoId": 1
     },
     {
       "id": 19,
       "price": 10500000,
-      "tax": 0.1,
+      "afterDiscountPrice": 9450000,
       "flightId": 7,
-      "airplaneSeatClassId": 19
+      "airplaneSeatClassId": 19,
+      "promoId": 1
     },
     {
       "id": 20,
       "price": 7500000,
-      "tax": 0.1,
+      "afterDiscountPrice": 6750000,
       "flightId": 7,
-      "airplaneSeatClassId": 20
+      "airplaneSeatClassId": 20,
+      "promoId": 1
     },
     {
       "id": 21,
       "price": 2500000,
-      "tax": 0.1,
+      "afterDiscountPrice": 2250000,
       "flightId": 7,
-      "airplaneSeatClassId": 21
+      "airplaneSeatClassId": 21,
+      "promoId": 1
     },
     {
       "id": 22,
       "price": 11000000,
-      "tax": 0.1,
+      "afterDiscountPrice": 9900000,
       "flightId": 8,
-      "airplaneSeatClassId": 22
+      "airplaneSeatClassId": 22,
+      "promoId": 1
     },
     {
       "id": 23,
       "price": 8500000,
-      "tax": 0.1,
+      "afterDiscountPrice": 7650000,
       "flightId": 8,
-      "airplaneSeatClassId": 23
+      "airplaneSeatClassId": 23,
+      "promoId": 1
     },
     {
       "id": 24,
       "price": 3500000,
-      "tax": 0.1,
+      "afterDiscountPrice": 3150000,
       "flightId": 8,
-      "airplaneSeatClassId": 24
+      "airplaneSeatClassId": 24,
+      "promoId": 1
     },
     {
       "id": 25,
       "price": 11500000,
-      "tax": 0.1,
+      "afterDiscountPrice": 10350000,
       "flightId": 9,
-      "airplaneSeatClassId": 25
+      "airplaneSeatClassId": 25,
+      "promoId": 1
     },
     {
       "id": 26,
       "price": 9500000,
-      "tax": 0.1,
       "flightId": 9,
       "airplaneSeatClassId": 26
     },
     {
       "id": 27,
       "price": 4500000,
-      "tax": 0.1,
       "flightId": 9,
       "airplaneSeatClassId": 27
     },
     {
       "id": 28,
       "price": 12000000,
-      "tax": 0.1,
       "flightId": 10,
       "airplaneSeatClassId": 28
     },
     {
       "id": 29,
       "price": 10000000,
-      "tax": 0.1,
       "flightId": 10,
       "airplaneSeatClassId": 29
     },
     {
       "id": 30,
       "price": 5000000,
-      "tax": 0.1,
       "flightId": 10,
       "airplaneSeatClassId": 30
     },
     {
       "id": 31,
       "price": 12500000,
-      "tax": 0.1,
       "flightId": 11,
       "airplaneSeatClassId": 1
     },
     {
       "id": 32,
       "price": 10500000,
-      "tax": 0.1,
       "flightId": 11,
       "airplaneSeatClassId": 2
     },
     {
       "id": 33,
       "price": 5500000,
-      "tax": 0.1,
       "flightId": 11,
       "airplaneSeatClassId": 3
     },
     {
       "id": 34,
       "price": 13000000,
-      "tax": 0.1,
       "flightId": 12,
       "airplaneSeatClassId": 4
     },
     {
       "id": 35,
       "price": 11000000,
-      "tax": 0.1,
       "flightId": 12,
       "airplaneSeatClassId": 5
     },
     {
       "id": 36,
       "price": 6000000,
-      "tax": 0.1,
       "flightId": 12,
       "airplaneSeatClassId": 6
     },
     {
       "id": 37,
       "price": 13500000,
-      "tax": 0.1,
       "flightId": 13,
       "airplaneSeatClassId": 7
     },
     {
       "id": 38,
       "price": 11500000,
-      "tax": 0.1,
       "flightId": 13,
       "airplaneSeatClassId": 8
     },
     {
       "id": 39,
       "price": 6500000,
-      "tax": 0.1,
       "flightId": 13,
       "airplaneSeatClassId": 9
     },
     {
       "id": 40,
       "price": 14000000,
-      "tax": 0.1,
       "flightId": 14,
       "airplaneSeatClassId": 10
     },
     {
       "id": 41,
       "price": 12000000,
-      "tax": 0.1,
       "flightId": 14,
       "airplaneSeatClassId": 11
     },
     {
       "id": 42,
       "price": 7000000,
-      "tax": 0.1,
       "flightId": 14,
       "airplaneSeatClassId": 12
     },
     {
       "id": 43,
       "price": 14500000,
-      "tax": 0.1,
       "flightId": 15,
       "airplaneSeatClassId": 13
     },
     {
       "id": 44,
       "price": 12500000,
-      "tax": 0.1,
       "flightId": 15,
       "airplaneSeatClassId": 14
     },
     {
       "id": 45,
       "price": 7500000,
-      "tax": 0.1,
       "flightId": 15,
       "airplaneSeatClassId": 15
     },
     {
       "id": 46,
       "price": 15000000,
-      "tax": 0.1,
       "flightId": 16,
       "airplaneSeatClassId": 16
     },
     {
       "id": 47,
       "price": 13000000,
-      "tax": 0.1,
       "flightId": 16,
       "airplaneSeatClassId": 17
     },
     {
       "id": 48,
       "price": 8000000,
-      "tax": 0.1,
       "flightId": 16,
       "airplaneSeatClassId": 18
     },
     {
       "id": 49,
       "price": 15500000,
-      "tax": 0.1,
       "flightId": 17,
       "airplaneSeatClassId": 19
     },
     {
       "id": 50,
       "price": 13500000,
-      "tax": 0.1,
       "flightId": 17,
       "airplaneSeatClassId": 20
     },
     {
       "id": 51,
       "price": 8500000,
-      "tax": 0.1,
       "flightId": 17,
       "airplaneSeatClassId": 21
     },
     {
       "id": 52,
       "price": 16000000,
-      "tax": 0.1,
       "flightId": 18,
       "airplaneSeatClassId": 22
     },
     {
       "id": 53,
       "price": 14000000,
-      "tax": 0.1,
       "flightId": 18,
       "airplaneSeatClassId": 23
     },
     {
       "id": 54,
       "price": 9000000,
-      "tax": 0.1,
       "flightId": 18,
       "airplaneSeatClassId": 24
     },
     {
       "id": 55,
       "price": 16500000,
-      "tax": 0.1,
       "flightId": 19,
       "airplaneSeatClassId": 25
     },
     {
       "id": 56,
       "price": 14500000,
-      "tax": 0.1,
       "flightId": 19,
       "airplaneSeatClassId": 26
     },
     {
       "id": 57,
       "price": 9500000,
-      "tax": 0.1,
       "flightId": 19,
       "airplaneSeatClassId": 27
     },
     {
       "id": 58,
       "price": 17000000,
-      "tax": 0.1,
       "flightId": 20,
       "airplaneSeatClassId": 28
     },
     {
       "id": 59,
       "price": 15000000,
-      "tax": 0.1,
       "flightId": 20,
       "airplaneSeatClassId": 29
     },
     {
       "id": 60,
       "price": 10000000,
-      "tax": 0.1,
       "flightId": 20,
       "airplaneSeatClassId": 30
     },
     {
       "id": 61,
       "price": 17500000,
-      "tax": 0.1,
       "flightId": 21,
       "airplaneSeatClassId": 1
     },
     {
       "id": 62,
       "price": 15500000,
-      "tax": 0.1,
       "flightId": 21,
       "airplaneSeatClassId": 2
     },
     {
       "id": 63,
       "price": 10500000,
-      "tax": 0.1,
       "flightId": 21,
       "airplaneSeatClassId": 3
     },
     {
       "id": 64,
       "price": 18000000,
-      "tax": 0.1,
       "flightId": 22,
       "airplaneSeatClassId": 4
     },
     {
       "id": 65,
       "price": 16000000,
-      "tax": 0.1,
       "flightId": 22,
       "airplaneSeatClassId": 5
     },
     {
       "id": 66,
       "price": 11000000,
-      "tax": 0.1,
       "flightId": 22,
       "airplaneSeatClassId": 6
     },
     {
       "id": 67,
       "price": 18500000,
-      "tax": 0.1,
       "flightId": 23,
       "airplaneSeatClassId": 7
     },
     {
       "id": 68,
       "price": 16500000,
-      "tax": 0.1,
       "flightId": 23,
       "airplaneSeatClassId": 8
     },
     {
       "id": 69,
       "price": 11500000,
-      "tax": 0.1,
       "flightId": 23,
       "airplaneSeatClassId": 9
     },
     {
       "id": 70,
       "price": 19000000,
-      "tax": 0.1,
       "flightId": 24,
       "airplaneSeatClassId": 10
     },
     {
       "id": 71,
       "price": 17000000,
-      "tax": 0.1,
       "flightId": 24,
       "airplaneSeatClassId": 11
     },
     {
       "id": 72,
       "price": 12000000,
-      "tax": 0.1,
       "flightId": 24,
       "airplaneSeatClassId": 12
     },
     {
       "id": 73,
       "price": 19500000,
-      "tax": 0.1,
       "flightId": 25,
       "airplaneSeatClassId": 13
     },
     {
       "id": 74,
       "price": 17500000,
-      "tax": 0.1,
       "flightId": 25,
       "airplaneSeatClassId": 14
     },
     {
       "id": 75,
       "price": 12500000,
-      "tax": 0.1,
       "flightId": 25,
       "airplaneSeatClassId": 15
     },
     {
       "id": 76,
       "price": 20000000,
-      "tax": 0.1,
       "flightId": 26,
       "airplaneSeatClassId": 16
     },
     {
       "id": 77,
       "price": 18000000,
-      "tax": 0.1,
       "flightId": 26,
       "airplaneSeatClassId": 17
     },
     {
       "id": 78,
       "price": 13000000,
-      "tax": 0.1,
       "flightId": 26,
       "airplaneSeatClassId": 18
     },
     {
       "id": 79,
       "price": 20500000,
-      "tax": 0.1,
       "flightId": 27,
       "airplaneSeatClassId": 19
     },
     {
       "id": 80,
       "price": 18500000,
-      "tax": 0.1,
       "flightId": 27,
       "airplaneSeatClassId": 20
     },
     {
       "id": 81,
       "price": 13500000,
-      "tax": 0.1,
       "flightId": 27,
       "airplaneSeatClassId": 21
     },
     {
       "id": 82,
       "price": 21000000,
-      "tax": 0.1,
       "flightId": 28,
       "airplaneSeatClassId": 22
     },
     {
       "id": 83,
       "price": 19000000,
-      "tax": 0.1,
       "flightId": 28,
       "airplaneSeatClassId": 23
     },
     {
       "id": 84,
       "price": 14000000,
-      "tax": 0.1,
       "flightId": 28,
       "airplaneSeatClassId": 24
     },
     {
       "id": 85,
       "price": 21500000,
-      "tax": 0.1,
       "flightId": 29,
       "airplaneSeatClassId": 25
     },
     {
       "id": 86,
       "price": 19500000,
-      "tax": 0.1,
       "flightId": 29,
       "airplaneSeatClassId": 26
     },
     {
       "id": 87,
       "price": 14500000,
-      "tax": 0.1,
       "flightId": 29,
       "airplaneSeatClassId": 27
     },
     {
       "id": 88,
       "price": 22000000,
-      "tax": 0.1,
       "flightId": 30,
       "airplaneSeatClassId": 28
     },
     {
       "id": 89,
       "price": 20000000,
-      "tax": 0.1,
       "flightId": 30,
       "airplaneSeatClassId": 29
     },
     {
       "id": 90,
       "price": 15000000,
-      "tax": 0.1,
       "flightId": 30,
       "airplaneSeatClassId": 30
     },
     {
       "id": 91,
       "price": 3000000,
-      "tax": 0.1,
       "flightId": 31,
       "airplaneSeatClassId": 1
     },
     {
       "id": 92,
       "price": 2000000,
-      "tax": 0.1,
       "flightId": 31,
       "airplaneSeatClassId": 2
     },
     {
       "id": 93,
       "price": 800000,
-      "tax": 0.1,
       "flightId": 31,
       "airplaneSeatClassId": 3
     },
     {
       "id": 94,
       "price": 8500000,
-      "tax": 0.1,
       "flightId": 32,
       "airplaneSeatClassId": 4
     },
     {
       "id": 95,
       "price": 5000000,
-      "tax": 0.1,
       "flightId": 32,
       "airplaneSeatClassId": 5
     },
     {
       "id": 96,
       "price": 1500000,
-      "tax": 0.1,
       "flightId": 32,
       "airplaneSeatClassId": 6
     },
     {
       "id": 97,
       "price": 7800000,
-      "tax": 0.1,
       "flightId": 33,
       "airplaneSeatClassId": 7
     },
     {
       "id": 98,
       "price": 4800000,
-      "tax": 0.1,
       "flightId": 33,
       "airplaneSeatClassId": 8
     },
     {
       "id": 99,
       "price": 1200000,
-      "tax": 0.1,
       "flightId": 33,
       "airplaneSeatClassId": 9
     },
     {
       "id": 100,
       "price": 9200000,
-      "tax": 0.1,
       "flightId": 34,
       "airplaneSeatClassId": 10
     },
     {
       "id": 101,
       "price": 6200000,
-      "tax": 0.1,
       "flightId": 34,
       "airplaneSeatClassId": 11
     },
     {
       "id": 102,
       "price": 2200000,
-      "tax": 0.1,
       "flightId": 34,
       "airplaneSeatClassId": 12
     },
     {
       "id": 103,
       "price": 8700000,
-      "tax": 0.1,
       "flightId": 35,
       "airplaneSeatClassId": 13
     },
     {
       "id": 104,
       "price": 5700000,
-      "tax": 0.1,
       "flightId": 35,
       "airplaneSeatClassId": 14
     },
     {
       "id": 105,
       "price": 1700000,
-      "tax": 0.1,
       "flightId": 35,
       "airplaneSeatClassId": 15
     },
     {
       "id": 106,
       "price": 9600000,
-      "tax": 0.1,
       "flightId": 36,
       "airplaneSeatClassId": 16
     },
     {
       "id": 107,
       "price": 6600000,
-      "tax": 0.1,
       "flightId": 36,
       "airplaneSeatClassId": 17
     },
     {
       "id": 108,
       "price": 2600000,
-      "tax": 0.1,
       "flightId": 36,
       "airplaneSeatClassId": 18
     },
     {
       "id": 109,
       "price": 10500000,
-      "tax": 0.1,
       "flightId": 37,
       "airplaneSeatClassId": 19
     },
     {
       "id": 110,
       "price": 7500000,
-      "tax": 0.1,
       "flightId": 37,
       "airplaneSeatClassId": 20
     },
     {
       "id": 111,
       "price": 2500000,
-      "tax": 0.1,
       "flightId": 37,
       "airplaneSeatClassId": 21
     },
     {
       "id": 112,
       "price": 11000000,
-      "tax": 0.1,
       "flightId": 38,
       "airplaneSeatClassId": 22
     },
     {
       "id": 113,
       "price": 8500000,
-      "tax": 0.1,
       "flightId": 38,
       "airplaneSeatClassId": 23
     },
     {
       "id": 114,
       "price": 3500000,
-      "tax": 0.1,
       "flightId": 38,
       "airplaneSeatClassId": 24
     },
     {
       "id": 115,
       "price": 11500000,
-      "tax": 0.1,
       "flightId": 39,
       "airplaneSeatClassId": 25
     },
     {
       "id": 116,
       "price": 9500000,
-      "tax": 0.1,
       "flightId": 39,
       "airplaneSeatClassId": 26
     },
     {
       "id": 117,
       "price": 4500000,
-      "tax": 0.1,
       "flightId": 39,
       "airplaneSeatClassId": 27
     },
     {
       "id": 118,
       "price": 12000000,
-      "tax": 0.1,
       "flightId": 40,
       "airplaneSeatClassId": 28
     },
     {
       "id": 119,
       "price": 10000000,
-      "tax": 0.1,
       "flightId": 40,
       "airplaneSeatClassId": 29
     },
     {
       "id": 120,
       "price": 5000000,
-      "tax": 0.1,
       "flightId": 40,
       "airplaneSeatClassId": 30
     },
     {
       "id": 121,
       "price": 12500000,
-      "tax": 0.1,
       "flightId": 41,
       "airplaneSeatClassId": 1
     },
     {
       "id": 122,
       "price": 10500000,
-      "tax": 0.1,
       "flightId": 41,
       "airplaneSeatClassId": 2
     },
     {
       "id": 123,
       "price": 5500000,
-      "tax": 0.1,
       "flightId": 41,
       "airplaneSeatClassId": 3
     },
     {
       "id": 124,
       "price": 13000000,
-      "tax": 0.1,
       "flightId": 42,
       "airplaneSeatClassId": 4
     },
     {
       "id": 125,
       "price": 11000000,
-      "tax": 0.1,
       "flightId": 42,
       "airplaneSeatClassId": 5
     },
     {
       "id": 126,
       "price": 6000000,
-      "tax": 0.1,
       "flightId": 42,
       "airplaneSeatClassId": 6
     },
     {
       "id": 127,
       "price": 13500000,
-      "tax": 0.1,
       "flightId": 43,
       "airplaneSeatClassId": 7
     },
     {
       "id": 128,
       "price": 11500000,
-      "tax": 0.1,
       "flightId": 43,
       "airplaneSeatClassId": 8
     },
     {
       "id": 129,
       "price": 6500000,
-      "tax": 0.1,
       "flightId": 43,
       "airplaneSeatClassId": 9
     },
     {
       "id": 130,
       "price": 14000000,
-      "tax": 0.1,
       "flightId": 44,
       "airplaneSeatClassId": 10
     },
     {
       "id": 131,
       "price": 12000000,
-      "tax": 0.1,
       "flightId": 44,
       "airplaneSeatClassId": 11
     },
     {
       "id": 132,
       "price": 7000000,
-      "tax": 0.1,
       "flightId": 44,
       "airplaneSeatClassId": 12
     },
     {
       "id": 133,
       "price": 14500000,
-      "tax": 0.1,
       "flightId": 45,
       "airplaneSeatClassId": 13
     },
     {
       "id": 134,
       "price": 12500000,
-      "tax": 0.1,
       "flightId": 45,
       "airplaneSeatClassId": 14
     },
     {
       "id": 135,
       "price": 7500000,
-      "tax": 0.1,
       "flightId": 45,
       "airplaneSeatClassId": 15
     },
     {
       "id": 136,
       "price": 15000000,
-      "tax": 0.1,
       "flightId": 46,
       "airplaneSeatClassId": 16
     },
     {
       "id": 137,
       "price": 13000000,
-      "tax": 0.1,
       "flightId": 46,
       "airplaneSeatClassId": 17
     },
     {
       "id": 138,
       "price": 8000000,
-      "tax": 0.1,
       "flightId": 46,
       "airplaneSeatClassId": 18
     },
     {
       "id": 139,
       "price": 15500000,
-      "tax": 0.1,
       "flightId": 47,
       "airplaneSeatClassId": 19
     },
     {
       "id": 140,
       "price": 13500000,
-      "tax": 0.1,
       "flightId": 47,
       "airplaneSeatClassId": 20
     },
     {
       "id": 141,
       "price": 8500000,
-      "tax": 0.1,
       "flightId": 47,
       "airplaneSeatClassId": 21
     },
     {
       "id": 142,
       "price": 16000000,
-      "tax": 0.1,
       "flightId": 48,
       "airplaneSeatClassId": 22
     },
     {
       "id": 143,
       "price": 14000000,
-      "tax": 0.1,
       "flightId": 48,
       "airplaneSeatClassId": 23
     },
     {
       "id": 144,
       "price": 9000000,
-      "tax": 0.1,
       "flightId": 48,
       "airplaneSeatClassId": 24
     },
     {
       "id": 145,
       "price": 16500000,
-      "tax": 0.1,
       "flightId": 49,
       "airplaneSeatClassId": 25
     },
     {
       "id": 146,
       "price": 14500000,
-      "tax": 0.1,
       "flightId": 49,
       "airplaneSeatClassId": 26
     },
     {
       "id": 147,
       "price": 9500000,
-      "tax": 0.1,
       "flightId": 49,
       "airplaneSeatClassId": 27
     },
     {
       "id": 148,
       "price": 17000000,
-      "tax": 0.1,
       "flightId": 50,
       "airplaneSeatClassId": 28
     },
     {
       "id": 149,
       "price": 15000000,
-      "tax": 0.1,
       "flightId": 50,
       "airplaneSeatClassId": 29
     },
     {
       "id": 150,
       "price": 10000000,
-      "tax": 0.1,
       "flightId": 50,
       "airplaneSeatClassId": 30
     },
     {
       "id": 151,
       "price": 17500000,
-      "tax": 0.1,
       "flightId": 51,
       "airplaneSeatClassId": 1
     },
     {
       "id": 152,
       "price": 15500000,
-      "tax": 0.1,
       "flightId": 51,
       "airplaneSeatClassId": 2
     },
     {
       "id": 153,
       "price": 10500000,
-      "tax": 0.1,
       "flightId": 51,
       "airplaneSeatClassId": 3
     },
     {
       "id": 154,
       "price": 18000000,
-      "tax": 0.1,
       "flightId": 52,
       "airplaneSeatClassId": 4
     },
     {
       "id": 155,
       "price": 16000000,
-      "tax": 0.1,
       "flightId": 52,
       "airplaneSeatClassId": 5
     },
     {
       "id": 156,
       "price": 11000000,
-      "tax": 0.1,
       "flightId": 52,
       "airplaneSeatClassId": 6
     },
     {
       "id": 157,
       "price": 18500000,
-      "tax": 0.1,
       "flightId": 53,
       "airplaneSeatClassId": 7
     },
     {
       "id": 158,
       "price": 16500000,
-      "tax": 0.1,
       "flightId": 53,
       "airplaneSeatClassId": 8
     },
     {
       "id": 159,
       "price": 11500000,
-      "tax": 0.1,
       "flightId": 53,
       "airplaneSeatClassId": 9
     },
     {
       "id": 160,
       "price": 19000000,
-      "tax": 0.1,
       "flightId": 54,
       "airplaneSeatClassId": 10
     },
     {
       "id": 161,
       "price": 17000000,
-      "tax": 0.1,
       "flightId": 54,
       "airplaneSeatClassId": 11
     },
     {
       "id": 162,
       "price": 12000000,
-      "tax": 0.1,
       "flightId": 54,
       "airplaneSeatClassId": 12
     },
     {
       "id": 163,
       "price": 19500000,
-      "tax": 0.1,
       "flightId": 55,
       "airplaneSeatClassId": 13
     },
     {
       "id": 164,
       "price": 17500000,
-      "tax": 0.1,
       "flightId": 55,
       "airplaneSeatClassId": 14
     },
     {
       "id": 165,
       "price": 12500000,
-      "tax": 0.1,
       "flightId": 55,
       "airplaneSeatClassId": 15
     },
     {
       "id": 166,
       "price": 20000000,
-      "tax": 0.1,
       "flightId": 56,
       "airplaneSeatClassId": 16
     },
     {
       "id": 167,
       "price": 18000000,
-      "tax": 0.1,
       "flightId": 56,
       "airplaneSeatClassId": 17
     },
     {
       "id": 168,
       "price": 13000000,
-      "tax": 0.1,
       "flightId": 56,
       "airplaneSeatClassId": 18
     },
     {
       "id": 169,
       "price": 20500000,
-      "tax": 0.1,
       "flightId": 57,
       "airplaneSeatClassId": 19
     },
     {
       "id": 170,
       "price": 18500000,
-      "tax": 0.1,
       "flightId": 57,
       "airplaneSeatClassId": 20
     },
     {
       "id": 171,
       "price": 13500000,
-      "tax": 0.1,
       "flightId": 57,
       "airplaneSeatClassId": 21
     },
     {
       "id": 172,
       "price": 21000000,
-      "tax": 0.1,
       "flightId": 58,
       "airplaneSeatClassId": 22
     },
     {
       "id": 173,
       "price": 19000000,
-      "tax": 0.1,
       "flightId": 58,
       "airplaneSeatClassId": 23
     },
     {
       "id": 174,
       "price": 14000000,
-      "tax": 0.1,
       "flightId": 58,
       "airplaneSeatClassId": 24
     },
     {
       "id": 175,
       "price": 21500000,
-      "tax": 0.1,
-      "flightId": 159,
+      "flightId": 59,
       "airplaneSeatClassId": 25
     },
     {
       "id": 176,
       "price": 19500000,
-      "tax": 0.1,
-      "flightId": 159,
+      "flightId": 59,
       "airplaneSeatClassId": 26
     },
     {
       "id": 177,
       "price": 14500000,
-      "tax": 0.1,
-      "flightId": 159,
+      "flightId": 59,
       "airplaneSeatClassId": 27
     },
     {
       "id": 178,
       "price": 22000000,
-      "tax": 0.1,
-      "flightId": 160,
+      "flightId": 60,
       "airplaneSeatClassId": 28
     },
     {
       "id": 179,
       "price": 20000000,
-      "tax": 0.1,
-      "flightId": 160,
+      "flightId": 60,
       "airplaneSeatClassId": 29
     },
     {
       "id": 180,
       "price": 15000000,
-      "tax": 0.1,
+      "flightId": 60,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 181,
+      "price": 2000000,
+      "flightId": 61,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 182,
+      "price": 1500000,
+      "flightId": 61,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 183,
+      "price": 900000,
+      "flightId": 61,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 184,
+      "price": 2000000,
+      "flightId": 62,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 185,
+      "price": 4000000,
+      "flightId": 62,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 186,
+      "price": 825000,
+      "flightId": 62,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 187,
+      "price": 3550000,
+      "flightId": 63,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 188,
+      "price": 1500000,
+      "flightId": 63,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 189,
+      "price": 850000,
+      "flightId": 63,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 190,
+      "price": 2000000,
+      "flightId": 64,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 191,
+      "price": 4000000,
+      "flightId": 64,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 192,
+      "price": 825000,
+      "flightId": 64,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 193,
+      "price": 2700000,
+      "flightId": 65,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 194,
+      "price": 1750000,
+      "flightId": 65,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 195,
+      "price": 900000,
+      "flightId": 65,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 196,
+      "price": 1600000,
+      "flightId": 66,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 197,
+      "price": 2700000,
+      "flightId": 66,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 198,
+      "price": 965000,
+      "flightId": 66,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 199,
+      "price": 3550000,
+      "flightId": 67,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 200,
+      "price": 1500000,
+      "flightId": 67,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 201,
+      "price": 825000,
+      "flightId": 67,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 202,
+      "price": 1500000,
+      "flightId": 68,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 203,
+      "price": 2250000,
+      "flightId": 68,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 204,
+      "price": 965000,
+      "flightId": 68,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 205,
+      "price": 4525000,
+      "flightId": 69,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 206,
+      "price": 1800000,
+      "flightId": 69,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 207,
+      "price": 850000,
+      "flightId": 69,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 208,
+      "price": 2000000,
+      "flightId": 70,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 209,
+      "price": 2700000,
+      "flightId": 70,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 210,
+      "price": 850000,
+      "flightId": 70,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 211,
+      "price": 4000000,
+      "flightId": 71,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 212,
+      "price": 1920000,
+      "flightId": 71,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 213,
+      "price": 1250000,
+      "flightId": 71,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 214,
+      "price": 1600000,
+      "flightId": 72,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 215,
+      "price": 3550000,
+      "flightId": 72,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 216,
+      "price": 755000,
+      "flightId": 72,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 217,
+      "price": 2000000,
+      "flightId": 73,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 218,
+      "price": 2000000,
+      "flightId": 73,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 219,
+      "price": 755000,
+      "flightId": 73,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 220,
+      "price": 1600000,
+      "flightId": 74,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 221,
+      "price": 4525000,
+      "flightId": 74,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 222,
+      "price": 965000,
+      "flightId": 74,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 223,
+      "price": 4525000,
+      "flightId": 75,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 224,
+      "price": 1600000,
+      "flightId": 75,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 225,
+      "price": 755000,
+      "flightId": 75,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 226,
+      "price": 1500000,
+      "flightId": 76,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 227,
+      "price": 2000000,
+      "flightId": 76,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 228,
+      "price": 1250000,
+      "flightId": 76,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 229,
+      "price": 3550000,
+      "flightId": 77,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 230,
+      "price": 1500000,
+      "flightId": 77,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 231,
+      "price": 900000,
+      "flightId": 77,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 232,
+      "price": 2000000,
+      "flightId": 78,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 233,
+      "price": 2700000,
+      "flightId": 78,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 234,
+      "price": 965000,
+      "flightId": 78,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 235,
+      "price": 2250000,
+      "flightId": 79,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 236,
+      "price": 2000000,
+      "flightId": 79,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 237,
+      "price": 965000,
+      "flightId": 79,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 238,
+      "price": 1500000,
+      "flightId": 80,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 239,
+      "price": 2000000,
+      "flightId": 80,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 240,
+      "price": 850000,
+      "flightId": 80,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 241,
+      "price": 4525000,
+      "flightId": 81,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 242,
+      "price": 2000000,
+      "flightId": 81,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 243,
+      "price": 965000,
+      "flightId": 81,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 244,
+      "price": 1600000,
+      "flightId": 82,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 245,
+      "price": 2000000,
+      "flightId": 82,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 246,
+      "price": 755000,
+      "flightId": 82,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 247,
+      "price": 2250000,
+      "flightId": 83,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 248,
+      "price": 1500000,
+      "flightId": 83,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 249,
+      "price": 850000,
+      "flightId": 83,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 250,
+      "price": 1800000,
+      "flightId": 84,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 251,
+      "price": 2000000,
+      "flightId": 84,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 252,
+      "price": 755000,
+      "flightId": 84,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 253,
+      "price": 2700000,
+      "flightId": 85,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 254,
+      "price": 1800000,
+      "flightId": 85,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 255,
+      "price": 850000,
+      "flightId": 85,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 256,
+      "price": 2000000,
+      "flightId": 86,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 257,
+      "price": 2000000,
+      "flightId": 86,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 258,
+      "price": 900000,
+      "flightId": 86,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 259,
+      "price": 3550000,
+      "flightId": 87,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 260,
+      "price": 1750000,
+      "flightId": 87,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 261,
+      "price": 965000,
+      "flightId": 87,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 262,
+      "price": 1500000,
+      "flightId": 88,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 263,
+      "price": 3550000,
+      "flightId": 88,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 264,
+      "price": 850000,
+      "flightId": 88,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 265,
+      "price": 2000000,
+      "flightId": 89,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 266,
+      "price": 1800000,
+      "flightId": 89,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 267,
+      "price": 850000,
+      "flightId": 89,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 268,
+      "price": 2000000,
+      "flightId": 90,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 269,
+      "price": 3550000,
+      "flightId": 90,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 270,
+      "price": 755000,
+      "flightId": 90,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 271,
+      "price": 2700000,
+      "flightId": 91,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 272,
+      "price": 2000000,
+      "flightId": 91,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 273,
+      "price": 1250000,
+      "flightId": 91,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 274,
+      "price": 1800000,
+      "flightId": 92,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 275,
+      "price": 2250000,
+      "flightId": 92,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 276,
+      "price": 850000,
+      "flightId": 92,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 277,
+      "price": 4525000,
+      "flightId": 93,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 278,
+      "price": 1800000,
+      "flightId": 93,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 279,
+      "price": 965000,
+      "flightId": 93,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 280,
+      "price": 1920000,
+      "flightId": 94,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 281,
+      "price": 2700000,
+      "flightId": 94,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 282,
+      "price": 825000,
+      "flightId": 94,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 283,
+      "price": 2700000,
+      "flightId": 95,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 284,
+      "price": 1800000,
+      "flightId": 95,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 285,
+      "price": 755000,
+      "flightId": 95,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 286,
+      "price": 1920000,
+      "flightId": 96,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 287,
+      "price": 2250000,
+      "flightId": 96,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 288,
+      "price": 825000,
+      "flightId": 96,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 289,
+      "price": 2700000,
+      "flightId": 97,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 290,
+      "price": 1800000,
+      "flightId": 97,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 291,
+      "price": 900000,
+      "flightId": 97,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 292,
+      "price": 1920000,
+      "flightId": 98,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 293,
+      "price": 4000000,
+      "flightId": 98,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 294,
+      "price": 900000,
+      "flightId": 98,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 295,
+      "price": 4525000,
+      "flightId": 99,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 296,
+      "price": 1800000,
+      "flightId": 99,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 297,
+      "price": 850000,
+      "flightId": 99,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 298,
+      "price": 2000000,
+      "flightId": 100,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 299,
+      "price": 3550000,
+      "flightId": 100,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 300,
+      "price": 755000,
+      "flightId": 100,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 301,
+      "price": 2250000,
+      "flightId": 101,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 302,
+      "price": 1800000,
+      "flightId": 101,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 303,
+      "price": 755000,
+      "flightId": 101,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 304,
+      "price": 2000000,
+      "flightId": 102,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 305,
+      "price": 3550000,
+      "flightId": 102,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 306,
+      "price": 1250000,
+      "flightId": 102,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 307,
+      "price": 3550000,
+      "flightId": 103,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 308,
+      "price": 2000000,
+      "flightId": 103,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 309,
+      "price": 755000,
+      "flightId": 103,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 310,
+      "price": 1800000,
+      "flightId": 104,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 311,
+      "price": 4000000,
+      "flightId": 104,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 312,
+      "price": 755000,
+      "flightId": 104,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 313,
+      "price": 2000000,
+      "flightId": 105,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 314,
+      "price": 1500000,
+      "flightId": 105,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 315,
+      "price": 900000,
+      "flightId": 105,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 316,
+      "price": 1500000,
+      "flightId": 106,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 317,
+      "price": 2700000,
+      "flightId": 106,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 318,
+      "price": 900000,
+      "flightId": 106,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 319,
+      "price": 2700000,
+      "flightId": 107,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 320,
+      "price": 1750000,
+      "flightId": 107,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 321,
+      "price": 900000,
+      "flightId": 107,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 322,
+      "price": 1800000,
+      "flightId": 108,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 323,
+      "price": 4000000,
+      "flightId": 108,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 324,
+      "price": 850000,
+      "flightId": 108,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 325,
+      "price": 2250000,
+      "flightId": 109,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 326,
+      "price": 2000000,
+      "flightId": 109,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 327,
+      "price": 850000,
+      "flightId": 109,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 328,
+      "price": 1750000,
+      "flightId": 110,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 329,
+      "price": 4525000,
+      "flightId": 110,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 330,
+      "price": 755000,
+      "flightId": 110,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 331,
+      "price": 2250000,
+      "flightId": 111,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 332,
+      "price": 1750000,
+      "flightId": 111,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 333,
+      "price": 900000,
+      "flightId": 111,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 334,
+      "price": 2000000,
+      "flightId": 112,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 335,
+      "price": 2250000,
+      "flightId": 112,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 336,
+      "price": 825000,
+      "flightId": 112,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 337,
+      "price": 2250000,
+      "flightId": 113,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 338,
+      "price": 2000000,
+      "flightId": 113,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 339,
+      "price": 850000,
+      "flightId": 113,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 340,
+      "price": 1500000,
+      "flightId": 114,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 341,
+      "price": 4000000,
+      "flightId": 114,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 342,
+      "price": 1250000,
+      "flightId": 114,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 343,
+      "price": 4525000,
+      "flightId": 115,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 344,
+      "price": 1800000,
+      "flightId": 115,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 345,
+      "price": 755000,
+      "flightId": 115,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 346,
+      "price": 1800000,
+      "flightId": 116,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 347,
+      "price": 2000000,
+      "flightId": 116,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 348,
+      "price": 965000,
+      "flightId": 116,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 349,
+      "price": 3550000,
+      "flightId": 117,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 350,
+      "price": 1750000,
+      "flightId": 117,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 351,
+      "price": 825000,
+      "flightId": 117,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 352,
+      "price": 2000000,
+      "flightId": 118,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 353,
+      "price": 3550000,
+      "flightId": 118,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 354,
+      "price": 755000,
+      "flightId": 118,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 355,
+      "price": 4525000,
+      "flightId": 119,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 356,
+      "price": 1500000,
+      "flightId": 119,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 357,
+      "price": 825000,
+      "flightId": 119,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 358,
+      "price": 1600000,
+      "flightId": 120,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 359,
+      "price": 2000000,
+      "flightId": 120,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 360,
+      "price": 965000,
+      "flightId": 120,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 361,
+      "price": 2250000,
+      "flightId": 121,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 362,
+      "price": 1750000,
+      "flightId": 121,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 363,
+      "price": 825000,
+      "flightId": 121,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 364,
+      "price": 2000000,
+      "flightId": 122,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 365,
+      "price": 4525000,
+      "flightId": 122,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 366,
+      "price": 965000,
+      "flightId": 122,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 367,
+      "price": 2700000,
+      "flightId": 123,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 368,
+      "price": 1500000,
+      "flightId": 123,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 369,
+      "price": 1250000,
+      "flightId": 123,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 370,
+      "price": 1600000,
+      "flightId": 124,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 371,
+      "price": 3550000,
+      "flightId": 124,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 372,
+      "price": 825000,
+      "flightId": 124,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 373,
+      "price": 2700000,
+      "flightId": 125,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 374,
+      "price": 1800000,
+      "flightId": 125,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 375,
+      "price": 755000,
+      "flightId": 125,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 376,
+      "price": 2000000,
+      "flightId": 126,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 377,
+      "price": 4000000,
+      "flightId": 126,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 378,
+      "price": 850000,
+      "flightId": 126,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 379,
+      "price": 3550000,
+      "flightId": 127,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 380,
+      "price": 1800000,
+      "flightId": 127,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 381,
+      "price": 965000,
+      "flightId": 127,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 382,
+      "price": 2000000,
+      "flightId": 128,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 383,
+      "price": 4525000,
+      "flightId": 128,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 384,
+      "price": 900000,
+      "flightId": 128,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 385,
+      "price": 4525000,
+      "flightId": 129,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 386,
+      "price": 1800000,
+      "flightId": 129,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 387,
+      "price": 825000,
+      "flightId": 129,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 388,
+      "price": 1600000,
+      "flightId": 130,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 389,
+      "price": 4000000,
+      "flightId": 130,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 390,
+      "price": 900000,
+      "flightId": 130,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 391,
+      "price": 2000000,
+      "flightId": 131,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 392,
+      "price": 1750000,
+      "flightId": 131,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 393,
+      "price": 965000,
+      "flightId": 131,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 394,
+      "price": 2000000,
+      "flightId": 132,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 395,
+      "price": 2700000,
+      "flightId": 132,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 396,
+      "price": 755000,
+      "flightId": 132,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 397,
+      "price": 4000000,
+      "flightId": 133,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 398,
+      "price": 1750000,
+      "flightId": 133,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 399,
+      "price": 965000,
+      "flightId": 133,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 400,
+      "price": 1500000,
+      "flightId": 134,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 401,
+      "price": 2000000,
+      "flightId": 134,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 402,
+      "price": 755000,
+      "flightId": 134,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 403,
+      "price": 3550000,
+      "flightId": 135,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 404,
+      "price": 1800000,
+      "flightId": 135,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 405,
+      "price": 965000,
+      "flightId": 135,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 406,
+      "price": 1800000,
+      "flightId": 136,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 407,
+      "price": 2250000,
+      "flightId": 136,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 408,
+      "price": 900000,
+      "flightId": 136,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 409,
+      "price": 2250000,
+      "flightId": 137,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 410,
+      "price": 1800000,
+      "flightId": 137,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 411,
+      "price": 1250000,
+      "flightId": 137,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 412,
+      "price": 1920000,
+      "flightId": 138,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 413,
+      "price": 3550000,
+      "flightId": 138,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 414,
+      "price": 965000,
+      "flightId": 138,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 415,
+      "price": 4525000,
+      "flightId": 139,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 416,
+      "price": 1750000,
+      "flightId": 139,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 417,
+      "price": 965000,
+      "flightId": 139,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 418,
+      "price": 1920000,
+      "flightId": 140,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 419,
+      "price": 4525000,
+      "flightId": 140,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 420,
+      "price": 900000,
+      "flightId": 140,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 421,
+      "price": 2000000,
+      "flightId": 141,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 422,
+      "price": 1750000,
+      "flightId": 141,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 423,
+      "price": 900000,
+      "flightId": 141,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 424,
+      "price": 1920000,
+      "flightId": 142,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 425,
+      "price": 4525000,
+      "flightId": 142,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 426,
+      "price": 900000,
+      "flightId": 142,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 427,
+      "price": 2000000,
+      "flightId": 143,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 428,
+      "price": 1800000,
+      "flightId": 143,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 429,
+      "price": 900000,
+      "flightId": 143,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 430,
+      "price": 1600000,
+      "flightId": 144,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 431,
+      "price": 2700000,
+      "flightId": 144,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 432,
+      "price": 1250000,
+      "flightId": 144,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 433,
+      "price": 4525000,
+      "flightId": 145,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 434,
+      "price": 1750000,
+      "flightId": 145,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 435,
+      "price": 825000,
+      "flightId": 145,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 436,
+      "price": 1750000,
+      "flightId": 146,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 437,
+      "price": 4525000,
+      "flightId": 146,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 438,
+      "price": 965000,
+      "flightId": 146,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 439,
+      "price": 2000000,
+      "flightId": 147,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 440,
+      "price": 1920000,
+      "flightId": 147,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 441,
+      "price": 1250000,
+      "flightId": 147,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 442,
+      "price": 1500000,
+      "flightId": 148,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 443,
+      "price": 4000000,
+      "flightId": 148,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 444,
+      "price": 1250000,
+      "flightId": 148,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 445,
+      "price": 3550000,
+      "flightId": 149,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 446,
+      "price": 2000000,
+      "flightId": 149,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 447,
+      "price": 755000,
+      "flightId": 149,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 448,
+      "price": 1600000,
+      "flightId": 150,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 449,
+      "price": 4000000,
+      "flightId": 150,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 450,
+      "price": 825000,
+      "flightId": 150,
+      "airplaneSeatClassId": 30
+    },
+    {
+      "id": 451,
+      "price": 4525000,
+      "flightId": 151,
+      "airplaneSeatClassId": 1
+    },
+    {
+      "id": 452,
+      "price": 1500000,
+      "flightId": 151,
+      "airplaneSeatClassId": 2
+    },
+    {
+      "id": 453,
+      "price": 755000,
+      "flightId": 151,
+      "airplaneSeatClassId": 3
+    },
+    {
+      "id": 454,
+      "price": 1600000,
+      "flightId": 152,
+      "airplaneSeatClassId": 4
+    },
+    {
+      "id": 455,
+      "price": 2250000,
+      "flightId": 152,
+      "airplaneSeatClassId": 5
+    },
+    {
+      "id": 456,
+      "price": 1250000,
+      "flightId": 152,
+      "airplaneSeatClassId": 6
+    },
+    {
+      "id": 457,
+      "price": 2000000,
+      "flightId": 153,
+      "airplaneSeatClassId": 7
+    },
+    {
+      "id": 458,
+      "price": 1600000,
+      "flightId": 153,
+      "airplaneSeatClassId": 8
+    },
+    {
+      "id": 459,
+      "price": 1250000,
+      "flightId": 153,
+      "airplaneSeatClassId": 9
+    },
+    {
+      "id": 460,
+      "price": 1600000,
+      "flightId": 154,
+      "airplaneSeatClassId": 10
+    },
+    {
+      "id": 461,
+      "price": 4525000,
+      "flightId": 154,
+      "airplaneSeatClassId": 11
+    },
+    {
+      "id": 462,
+      "price": 755000,
+      "flightId": 154,
+      "airplaneSeatClassId": 12
+    },
+    {
+      "id": 463,
+      "price": 2700000,
+      "flightId": 155,
+      "airplaneSeatClassId": 13
+    },
+    {
+      "id": 464,
+      "price": 1750000,
+      "flightId": 155,
+      "airplaneSeatClassId": 14
+    },
+    {
+      "id": 465,
+      "price": 850000,
+      "flightId": 155,
+      "airplaneSeatClassId": 15
+    },
+    {
+      "id": 466,
+      "price": 1920000,
+      "flightId": 156,
+      "airplaneSeatClassId": 16
+    },
+    {
+      "id": 467,
+      "price": 2000000,
+      "flightId": 156,
+      "airplaneSeatClassId": 17
+    },
+    {
+      "id": 468,
+      "price": 850000,
+      "flightId": 156,
+      "airplaneSeatClassId": 18
+    },
+    {
+      "id": 469,
+      "price": 4000000,
+      "flightId": 157,
+      "airplaneSeatClassId": 19
+    },
+    {
+      "id": 470,
+      "price": 1920000,
+      "flightId": 157,
+      "airplaneSeatClassId": 20
+    },
+    {
+      "id": 471,
+      "price": 900000,
+      "flightId": 157,
+      "airplaneSeatClassId": 21
+    },
+    {
+      "id": 472,
+      "price": 2000000,
+      "flightId": 158,
+      "airplaneSeatClassId": 22
+    },
+    {
+      "id": 473,
+      "price": 2000000,
+      "flightId": 158,
+      "airplaneSeatClassId": 23
+    },
+    {
+      "id": 474,
+      "price": 965000,
+      "flightId": 158,
+      "airplaneSeatClassId": 24
+    },
+    {
+      "id": 475,
+      "price": 2700000,
+      "flightId": 159,
+      "airplaneSeatClassId": 25
+    },
+    {
+      "id": 476,
+      "price": 1920000,
+      "flightId": 159,
+      "airplaneSeatClassId": 26
+    },
+    {
+      "id": 477,
+      "price": 755000,
+      "flightId": 159,
+      "airplaneSeatClassId": 27
+    },
+    {
+      "id": 478,
+      "price": 1920000,
+      "flightId": 160,
+      "airplaneSeatClassId": 28
+    },
+    {
+      "id": 479,
+      "price": 4525000,
+      "flightId": 160,
+      "airplaneSeatClassId": 29
+    },
+    {
+      "id": 480,
+      "price": 755000,
       "flightId": 160,
       "airplaneSeatClassId": 30
+    }
+  ],
+  "promos": [
+    {
+      "id": 1,
+      "name": "Grand Openning Aviatick Promotion",
+      "discount": 0.1,
+      "validFrom": "2024-06-01T00:00:00Z",
+      "validUntil": "2024-12-31T23:59:59Z",
+      "createdAt": "2024-06-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Aviatick 1th Anniversary Promotion",
+      "discount": 0.1,
+      "validFrom": "2024-06-01T00:00:00Z",
+      "validUntil": "2024-12-31T23:59:59Z",
+      "createdAt": "2024-06-01T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Aviatick 2th Anniversary Promotion",
+      "discount": 0.1,
+      "validFrom": "2024-06-11T00:00:00Z",
+      "validUntil": "2024-06-13T06:00:00Z",
+      "createdAt": "2024-06-11T00:00:00Z"
     }
   ]
 }

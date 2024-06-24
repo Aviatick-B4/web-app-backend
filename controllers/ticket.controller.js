@@ -4,21 +4,128 @@ const prisma = new PrismaClient();
 
 module.exports = {
   getAll: async (req, res, next) => {
+    const { page = 1, limit = 10, promo = '' } = req.query;
+    const isPromo = promo.toLowerCase() === 'true';
+
+    try {
+      const tickets = await prisma.ticket.findMany({
+        skip: (parseInt(page) - 1) * parseInt(limit),
+        take: parseInt(limit),
+        where: isPromo ? { promoId: { not: null } } : {},
+        include: {
+          airplaneSeatClass: {
+            include: {
+              airplane: {
+                include: {
+                  airline: true,
+                },
+              },
+            },
+          },
+          flight: {
+            include: {
+              arrivalAirport: {
+                include: {
+                  city: true,
+                },
+              },
+              departureAirport: {
+                include: {
+                  city: true,
+                },
+              },
+            },
+          },
+        },
+      });
+
+      const formattedTickets = tickets.map((ticket) => getFormattedTicket(ticket));
+      const count = await prisma.ticket.count({
+        where: isPromo ? { promoId: { not: null } } : {},
+      });
+      const pagination = getPagination(
+        req,
+        parseInt(page),
+        parseInt(limit),
+        count
+      );
+
+      res.status(200).json({
+        status: true,
+        message: 'Flight ticket(s) fetched',
+        data: { tickets: formattedTickets, pagination },
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+  
+  getById: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const ticket = await prisma.ticket.findUnique({
+        where: {
+          id: parseInt(id)
+        },
+        include: {
+          airplaneSeatClass: {
+            include: {
+              airplane: {
+                include: {
+                  airline: true,
+                },
+              },
+            },
+          },
+          flight: {
+            include: {
+              arrivalAirport: {
+                include: {
+                  city: true,
+                },
+              },
+              departureAirport: {
+                include: {
+                  city: true,
+                },
+              },
+            },
+          },
+        }
+      });
+
+      if (!ticket) {
+        return res.status(404).json({
+          status: false,
+          message: `Ticket record with id ${id} does not exist`,
+          data: null
+        });
+      }
+
+      return res.status(200).json({
+        status: true, 
+        message: `Successfully fetched ticket with id ${id}`,
+        data: getFormattedTicket(ticket)
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+  search: async (req, res, next) => {
     const {
       page = 1,
       limit = 10,
       from: originCity,
       to: destinationCity,
-      departure: departureDate,
-      return: returnDate,
+      departure,
       passengers: passengersCount,
-      seat_class: seatClass
+      seat_class: seatClass,
     } = req.query;
 
     if (
       !originCity ||
       !destinationCity ||
-      !departureDate ||
+      !departure ||
       !passengersCount ||
       !seatClass
     ) {
@@ -26,53 +133,43 @@ module.exports = {
         status: false,
         message:
           "Field 'from', 'to', 'departure', 'passengers', and 'seat_class' are required",
-        data: null
+        data: null,
       });
     }
+
+    const departureDate = new Date(departure);
+    if (!departureDate.getDate()) {
+      return res.status(400).json({
+        status: false,
+        message: 'Invalid date (only accepts YYYY-MM-DD format)',
+        data: null,
+      });
+    }
+
+    const departureAfterDay = new Date(departure);
+    departureAfterDay.setDate(departureAfterDay.getDate() + 1);
 
     try {
       const searchFilter = {
         airplaneSeatClass: {
-          type: seatClass
+          type: seatClass,
         },
-        OR: [
-          {
-            flight: {
-              departureTime: {
-                gt: new Date(departureDate)
-              },
-              departureAirport: {
-                city: {
-                  cityIata: originCity
-                }
-              },
-              arrivalAirport: {
-                city: {
-                  cityIata: destinationCity
-                }
-              }
-            }
+        flight: {
+          departureTime: {
+            gte: departureDate,
+            lt: departureAfterDay,
           },
-          returnDate
-            ? {
-                flight: {
-                  departureTime: {
-                    gt: new Date(returnDate)
-                  },
-                  departureAirport: {
-                    city: {
-                      cityIata: destinationCity
-                    }
-                  },
-                  arrivalAirport: {
-                    city: {
-                      cityIata: originCity
-                    }
-                  }
-                }
-              }
-            : {}
-        ]
+          departureAirport: {
+            city: {
+              cityIata: originCity,
+            },
+          },
+          arrivalAirport: {
+            city: {
+              cityIata: destinationCity,
+            },
+          },
+        },
       };
 
       const tickets = await prisma.ticket.findMany({
@@ -84,53 +181,93 @@ module.exports = {
             include: {
               airplane: {
                 include: {
-                  airline: true
-                }
-              }
-            }
+                  airline: true,
+                },
+              },
+            },
           },
           flight: {
             include: {
               arrivalAirport: {
                 include: {
-                  city: true
-                }
+                  city: true,
+                },
               },
               departureAirport: {
                 include: {
-                  city: true
-                }
-              }
-            }
-          }
-        }
+                  city: true,
+                },
+              },
+            },
+          },
+        },
       });
 
-      const formattedTickets = { departure: [], return: [] };
-      tickets.forEach((ticket) => {
-        const departureTime = ticket.flight.departureTime
-          .toISOString()
-          .slice(0, 10);
-        if (departureTime === returnDate) {
-          formattedTickets.return.push(ticket);
-        } else {
-          formattedTickets.departure.push(ticket);
-        }
-      });
-
+      const formattedTickets = tickets.map((ticket) => getFormattedTicket(ticket));
       const count = await prisma.ticket.count({ where: searchFilter });
-      const pagination = getPagination(req, parseInt(page), parseInt(limit), count);
+      const pagination = getPagination(
+        req,
+        parseInt(page),
+        parseInt(limit),
+        count
+      );
 
       res.status(200).json({
         status: true,
         message: 'Flight ticket(s) fetched',
-        data: {
-          tickets: formattedTickets,
-          pagination
-        }
+        data: { tickets: formattedTickets, pagination },
       });
     } catch (error) {
       next(error);
     }
-  }
+  },
 };
+
+function getFormattedTicket(ticket) {
+  return {
+    id: ticket.id,
+    price: ticket.price,
+    afterDiscountPrice: ticket.afterDiscountPrice,
+    promo: ticket.promoId,
+    flight: {
+      id: ticket.flight.id,
+      code: ticket.flight.flightNumber,
+      departure: {
+        time: ticket.flight.departureTime,
+        city: ticket.flight.departureAirport.city.name,
+        continent: ticket.flight.departureAirport.city.continent,
+        imageUrl: ticket.flight.departureAirport.city.imageUrl,
+        cityIata: ticket.flight.departureAirport.city.cityIata,
+        country: ticket.flight.departureAirport.city.country,
+        airport: ticket.flight.departureAirport.name,
+        airportCode: ticket.flight.departureAirport.airportCode,
+      },
+      arrival: {
+        time: ticket.flight.arrivalTime,
+        city: ticket.flight.arrivalAirport.city.name,
+        continent: ticket.flight.arrivalAirport.city.continent,
+        imageUrl: ticket.flight.arrivalAirport.city.imageUrl,
+        cityIata: ticket.flight.arrivalAirport.city.cityIata,
+        country: ticket.flight.arrivalAirport.city.country,
+        airport: ticket.flight.arrivalAirport.name,
+        airportCode: ticket.flight.arrivalAirport.airportCode,
+      },
+    },
+    airplane: {
+      model: ticket.airplaneSeatClass.airplane.model,
+      passengerCapacity: ticket.airplaneSeatClass.airplane.passengerCapacity,
+      baggageCapacity: ticket.airplaneSeatClass.airplane.baggageCapacity,
+      cabinCapacity: ticket.airplaneSeatClass.airplane.cabinCapacity,
+      inFlightFacility: ticket.airplaneSeatClass.airplane.inFlightFacility,
+      seatClass: {
+        type: ticket.airplaneSeatClass.type,
+        seatCount: ticket.airplaneSeatClass.totalSeat,
+      },
+      airline: {
+        name: ticket.airplaneSeatClass.airplane.airline.name,
+        code: ticket.airplaneSeatClass.airplane.airline.airlineIata,
+        logoUrl: ticket.airplaneSeatClass.airplane.airline.logoUrl,
+      },
+    },
+  };
+}

@@ -34,13 +34,14 @@
         <div class="payment-form">
           <h2>Isi Data Pembayaran</h2>
           <input type="hidden" id="bookingId" value="<%= bookingId %>" />
+          <input type="hidden" id="authToken" value="<%= token %>" />
           <select id="paymentMethod" name="paymentMethod">
             <option value="gopay">Gopay</option>
             <option value="mandiri_va">Mandiri Virtual Account</option>
             <option value="credit_card">Credit Card</option>
           </select>
-          <button id="pay-button" class="btn btn-pay">Bayar</button>
           <div id="snap-container" style="width: 100%; height: 500px"></div>
+          <button id="pay-button" class="btn btn-pay">Bayar</button>
           <!-- Container for Snap Embed -->
         </div>
         <div class="booking-details">
@@ -64,13 +65,15 @@
           // const paymentMethod = document.getElementById('paymentMethod').value;
           const bookingId = document.getElementById('bookingId').value;
           const paymentMethod = 'midtrans';
+          const token = document.getElementById('authToken').value;
 
           const response = await fetch(
-            `/api/v1/payments/midtrans/token/${bookingId}`,
+            `/api/v1/payments/midtrans/token/${bookingId}?token=${token}`,
             {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
               },
               body: JSON.stringify({ paymentMethod }),
             }
@@ -83,7 +86,7 @@
               onSuccess: function (result) {
                 alert('Payment success!');
                 console.log(result);
-                // window.location.href = '/'; // Redirect on success
+                window.location.href = '/'; // Redirect on success
               },
               onPending: function (result) {
                 alert('Waiting for your payment...');
