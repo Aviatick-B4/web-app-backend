@@ -59,6 +59,58 @@ module.exports = {
       next(error);
     }
   },
+  
+  getById: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const ticket = await prisma.ticket.findUnique({
+        where: {
+          id: parseInt(id)
+        },
+        include: {
+          airplaneSeatClass: {
+            include: {
+              airplane: {
+                include: {
+                  airline: true,
+                },
+              },
+            },
+          },
+          flight: {
+            include: {
+              arrivalAirport: {
+                include: {
+                  city: true,
+                },
+              },
+              departureAirport: {
+                include: {
+                  city: true,
+                },
+              },
+            },
+          },
+        }
+      });
+
+      if (!ticket) {
+        return res.status(404).json({
+          status: false,
+          message: `Ticket record with id ${id} does not exist`,
+          data: null
+        });
+      }
+
+      return res.status(200).json({
+        status: true, 
+        message: `Successfully fetched ticket with id ${id}`,
+        data: getFormattedTicket(ticket)
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
   search: async (req, res, next) => {
     const {
       page = 1,
