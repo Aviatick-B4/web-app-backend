@@ -39,7 +39,7 @@ module.exports = {
         },
       });
 
-      const formattedTickets = getFormattedTickets(tickets);
+      const formattedTickets = tickets.map((ticket) => getFormattedTicket(ticket));
       const count = await prisma.ticket.count({
         where: isPromo ? { promoId: { not: null } } : {},
       });
@@ -54,6 +54,58 @@ module.exports = {
         status: true,
         message: 'Flight ticket(s) fetched',
         data: { tickets: formattedTickets, pagination },
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+  
+  getById: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const ticket = await prisma.ticket.findUnique({
+        where: {
+          id: parseInt(id)
+        },
+        include: {
+          airplaneSeatClass: {
+            include: {
+              airplane: {
+                include: {
+                  airline: true,
+                },
+              },
+            },
+          },
+          flight: {
+            include: {
+              arrivalAirport: {
+                include: {
+                  city: true,
+                },
+              },
+              departureAirport: {
+                include: {
+                  city: true,
+                },
+              },
+            },
+          },
+        }
+      });
+
+      if (!ticket) {
+        return res.status(404).json({
+          status: false,
+          message: `Ticket record with id ${id} does not exist`,
+          data: null
+        });
+      }
+
+      return res.status(200).json({
+        status: true, 
+        message: `Successfully fetched ticket with id ${id}`,
+        data: getFormattedTicket(ticket)
       });
     } catch (error) {
       next(error);
@@ -151,7 +203,7 @@ module.exports = {
         },
       });
 
-      const formattedTickets = getFormattedTickets(tickets);
+      const formattedTickets = tickets.map((ticket) => getFormattedTicket(ticket));
       const count = await prisma.ticket.count({ where: searchFilter });
       const pagination = getPagination(
         req,
@@ -171,55 +223,51 @@ module.exports = {
   },
 };
 
-function getFormattedTickets(tickets) {
-  const formattedTickets = tickets.map((ticket) => {
-    return {
-      id: ticket.id,
-      price: ticket.price,
-      afterDiscountPrice: ticket.afterDiscountPrice,
-      promo: ticket.promoId,
-      flight: {
-        id: ticket.flight.id,
-        code: ticket.flight.flightNumber,
-        departure: {
-          time: ticket.flight.departureTime,
-          city: ticket.flight.departureAirport.city.name,
-          continent: ticket.flight.departureAirport.city.continent,
-          imageUrl: ticket.flight.departureAirport.city.imageUrl,
-          cityIata: ticket.flight.departureAirport.city.cityIata,
-          country: ticket.flight.departureAirport.city.country,
-          airport: ticket.flight.departureAirport.name,
-          airportCode: ticket.flight.departureAirport.airportCode,
-        },
-        arrival: {
-          time: ticket.flight.arrivalTime,
-          city: ticket.flight.arrivalAirport.city.name,
-          continent: ticket.flight.arrivalAirport.city.continent,
-          imageUrl: ticket.flight.arrivalAirport.city.imageUrl,
-          cityIata: ticket.flight.arrivalAirport.city.cityIata,
-          country: ticket.flight.arrivalAirport.city.country,
-          airport: ticket.flight.arrivalAirport.name,
-          airportCode: ticket.flight.arrivalAirport.airportCode,
-        },
+function getFormattedTicket(ticket) {
+  return {
+    id: ticket.id,
+    price: ticket.price,
+    afterDiscountPrice: ticket.afterDiscountPrice,
+    promo: ticket.promoId,
+    flight: {
+      id: ticket.flight.id,
+      code: ticket.flight.flightNumber,
+      departure: {
+        time: ticket.flight.departureTime,
+        city: ticket.flight.departureAirport.city.name,
+        continent: ticket.flight.departureAirport.city.continent,
+        imageUrl: ticket.flight.departureAirport.city.imageUrl,
+        cityIata: ticket.flight.departureAirport.city.cityIata,
+        country: ticket.flight.departureAirport.city.country,
+        airport: ticket.flight.departureAirport.name,
+        airportCode: ticket.flight.departureAirport.airportCode,
       },
-      airplane: {
-        model: ticket.airplaneSeatClass.airplane.model,
-        passengerCapacity: ticket.airplaneSeatClass.airplane.passengerCapacity,
-        baggageCapacity: ticket.airplaneSeatClass.airplane.baggageCapacity,
-        cabinCapacity: ticket.airplaneSeatClass.airplane.cabinCapacity,
-        inFlightFacility: ticket.airplaneSeatClass.airplane.inFlightFacility,
-        seatClass: {
-          type: ticket.airplaneSeatClass.type,
-          seatCount: ticket.airplaneSeatClass.totalSeat,
-        },
-        airline: {
-          name: ticket.airplaneSeatClass.airplane.airline.name,
-          code: ticket.airplaneSeatClass.airplane.airline.airlineIata,
-          logoUrl: ticket.airplaneSeatClass.airplane.airline.logoUrl,
-        },
+      arrival: {
+        time: ticket.flight.arrivalTime,
+        city: ticket.flight.arrivalAirport.city.name,
+        continent: ticket.flight.arrivalAirport.city.continent,
+        imageUrl: ticket.flight.arrivalAirport.city.imageUrl,
+        cityIata: ticket.flight.arrivalAirport.city.cityIata,
+        country: ticket.flight.arrivalAirport.city.country,
+        airport: ticket.flight.arrivalAirport.name,
+        airportCode: ticket.flight.arrivalAirport.airportCode,
       },
-    };
-  });
-
-  return formattedTickets;
+    },
+    airplane: {
+      model: ticket.airplaneSeatClass.airplane.model,
+      passengerCapacity: ticket.airplaneSeatClass.airplane.passengerCapacity,
+      baggageCapacity: ticket.airplaneSeatClass.airplane.baggageCapacity,
+      cabinCapacity: ticket.airplaneSeatClass.airplane.cabinCapacity,
+      inFlightFacility: ticket.airplaneSeatClass.airplane.inFlightFacility,
+      seatClass: {
+        type: ticket.airplaneSeatClass.type,
+        seatCount: ticket.airplaneSeatClass.totalSeat,
+      },
+      airline: {
+        name: ticket.airplaneSeatClass.airplane.airline.name,
+        code: ticket.airplaneSeatClass.airplane.airline.airlineIata,
+        logoUrl: ticket.airplaneSeatClass.airplane.airline.logoUrl,
+      },
+    },
+  };
 }
