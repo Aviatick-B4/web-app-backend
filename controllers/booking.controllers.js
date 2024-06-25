@@ -184,13 +184,19 @@ module.exports = {
 
       if (isRoundTrip) {
         await prisma.flight.update({
+          where: { id: departureFlight.flight.id },
+          data: { count: departureFlight.flight.count + 1 },
+        });
+
+        await prisma.flight.update({
           where: { id: returnFlight.flight.id },
           data: { count: returnFlight.flight.count + 1 },
-        }),
-          await prisma.booking.update({
-            where: { id: newBooking.id },
-            data: { isRoundTrip: true },
-          });
+        });
+
+        await prisma.booking.update({
+          where: { id: newBooking.id },
+          data: { isRoundTrip: true },
+        });
       }
 
       const result = {
