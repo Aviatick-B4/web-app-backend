@@ -68,7 +68,7 @@ module.exports = {
         });
       }
 
-      const departureFlight = await prisma.ticket.findUnique({
+      const departureFlightPromise = prisma.ticket.findUnique({
         where: { id: departureTicketId },
         include: {
           flight: {
@@ -81,6 +81,26 @@ module.exports = {
         },
       });
 
+      const returnFlightPromise = isRoundTrip
+        ? prisma.ticket.findUnique({
+            where: { id: returnTicketId },
+            include: {
+              flight: {
+                include: {
+                  departureAirport: true,
+                  arrivalAirport: true,
+                },
+              },
+              airplaneSeatClass: true,
+            },
+          })
+        : Promise.resolve(null);
+
+      const [departureFlight, returnFlight] = await Promise.all([
+        departureFlightPromise,
+        returnFlightPromise,
+      ]);
+
       if (!departureFlight) {
         return res.status(400).json({
           status: 'error',
@@ -89,51 +109,36 @@ module.exports = {
         });
       }
 
-      let returnFlight;
-      let returnTicketPrice = 0;
-      if (isRoundTrip) {
-        returnFlight = await prisma.ticket.findUnique({
-          where: { id: returnTicketId },
-          include: {
-            flight: {
-              include: {
-                departureAirport: true,
-                arrivalAirport: true,
-              },
-            },
-            airplaneSeatClass: true,
-          },
+      if (isRoundTrip && !returnFlight) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Return flight not found',
+          data: null,
         });
+      }
 
-        if (!returnFlight) {
-          return res.status(400).json({
-            status: 'error',
-            message: 'Return flight not found',
-            data: null,
-          });
-        }
-
-        if (
-          departureFlight.flight.departureAirport.id !==
-            returnFlight.flight.arrivalAirport.id ||
+      if (
+        isRoundTrip &&
+        (departureFlight.flight.departureAirport.id !==
+          returnFlight.flight.arrivalAirport.id ||
           departureFlight.flight.arrivalAirport.id !==
-            returnFlight.flight.departureAirport.id
-        ) {
-          return res.status(400).json({
-            status: 'error',
-            message:
-              'Invalid round trip. Departure and return flights do not match.',
-            data: null,
-          });
-        }
-
-        returnTicketPrice = returnFlight.price * (totalPassengers - baby);
+            returnFlight.flight.departureAirport.id)
+      ) {
+        return res.status(400).json({
+          status: 'error',
+          message:
+            'Invalid round trip. Departure and return flights do not match.',
+          data: null,
+        });
       }
 
       const booking_code = crypto.randomBytes(5).toString('hex').toUpperCase();
 
       const departureTicketPrice =
         departureFlight.price * (totalPassengers - baby);
+      const returnTicketPrice = isRoundTrip
+        ? returnFlight.price * (totalPassengers - baby)
+        : 0;
       const total_price = departureTicketPrice + returnTicketPrice;
       const tax = Math.round(total_price * 0.1);
       const donation_amount = donation ? 1000 : 0;
@@ -183,11 +188,6 @@ module.exports = {
       });
 
       if (isRoundTrip) {
-        await prisma.flight.update({
-          where: { id: departureFlight.flight.id },
-          data: { count: departureFlight.flight.count + 1 },
-        });
-
         await prisma.flight.update({
           where: { id: returnFlight.flight.id },
           data: { count: returnFlight.flight.count + 1 },
