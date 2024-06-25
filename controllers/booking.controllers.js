@@ -178,14 +178,14 @@ module.exports = {
       });
 
       await prisma.flight.update({
-        where: { id: departureTicketId },
-        data: { count: departureFlight.count + 1 },
+        where: { id: departureFlight.flight.id },
+        data: { count: departureFlight.flight.count + 1 },
       });
 
       if (isRoundTrip) {
         await prisma.flight.update({
-          where: { id: returnTicketId },
-          data: { count: returnFlight.count + 1 },
+          where: { id: returnFlight.flight.id },
+          data: { count: returnFlight.flight.count + 1 },
         }),
           await prisma.booking.update({
             where: { id: newBooking.id },
