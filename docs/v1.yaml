@@ -4,7 +4,7 @@ info:
   description: API developed by Aviatick's team to handle all of the business logics inside the app.
   version: 1.0.0
 servers:
-  - url: https://aviatick-backend-weld.vercel.app/api/v1
+  - url: https://aviatick-backend-git-development-aviaticks-projects.vercel.app/api/v1
   - url: http://localhost:3000/api/v1
 tags:
   - name: Auth
