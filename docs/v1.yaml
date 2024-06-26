@@ -4,6 +4,7 @@ info:
   description: API developed by Aviatick's team to handle all of the business logics inside the app.
   version: 1.0.0
 servers:
+  - url: https://aviatick-backend-git-development-aviaticks-projects.vercel.app/api/v1
   - url: https://aviatick-backend-weld.vercel.app/api/v1
   - url: http://localhost:3000/api/v1
 tags:
@@ -244,15 +245,15 @@ components:
         id:
           type: integer
           example: 3
-        flight_id:
+        departureTicketId:
           type: integer
-          example: 1
+          example: 4
+        returnTicketId:
+          type: integer
+          example: 98
         booking_code:
           type: string
           example: "1E63B67630"
-        seat_class:
-          type: string
-          example: "Economy"
         total_passengers:
           type: integer
           example: 3
@@ -262,9 +263,67 @@ components:
         bookingTax:
           type: number
           example: 600000
+        donation:
+          type: number
+          example: 1000
         status:
           type: string
           example: "UNPAID"
+        departureFlight:
+          type: object
+          properties:
+            flightNumber:
+              type: string
+              example: DL200
+            departureTime:
+              type: string
+              format: date-time
+              example: 2024-06-02T09:00:00.000Z
+            arrivalTime:
+              type: string
+              format: date-time
+              example: 2024-06-02T13:00:00.000Z
+            departureAirport:
+              type: string
+              example: Los Angeles International Airport
+            arrivalAirport:
+              type: string
+              example: O'Hare International Airport
+            seatClass:
+              type: string
+              example: First
+            price:
+              type: number
+              format: float
+              example: 8500000
+        returnFlight:
+          type: object
+          nullable: true
+          properties:
+            flightNumber:
+              type: string
+              example: UA303
+            departureTime:
+              type: string
+              format: date-time
+              example: 2024-07-03T10:00:00.000Z
+            arrivalTime:
+              type: string
+              format: date-time
+              example: 2024-07-03T14:00:00.000Z
+            departureAirport:
+              type: string
+              example: O'Hare International Airport
+            arrivalAirport:
+              type: string
+              example: Los Angeles International Airport
+            seatClass:
+              type: string
+              example: Business
+            price:
+              type: number
+              format: float
+              example: 4800000
         paid_before:
           type: string
           format: date-time
@@ -1521,7 +1580,7 @@ paths:
           required: false
           schema:
             type: string
-            default: Asia, Africa, South America, North America, Europe, Oceania
+            enum: [Asia, Africa, South America, North America, Europe, Oceania]
         - name: page
           in: query
           description: Page number for pagination
@@ -1691,11 +1750,19 @@ paths:
       security:  
         - bearerAuth: [] 
 
-  /bookings/new-booking:
+  /bookings/new-booking/{tripType}:
     post:
       summary: Create a new booking
       tags: 
         - Bookings
+      parameters:
+        - in: path
+          name: tripType
+          required: true
+          schema:
+            type: string
+            enum: [singletrip, roundtrip]
+          description: Booking berdasarkan trip type
       requestBody:
         required: true
         content:
@@ -1703,9 +1770,12 @@ paths:
             schema:
               type: object
               properties:
-                flightId:
+                departureTicketId:
                   type: integer
-                  example: 1
+                  example: 4
+                returnTicketId:
+                  type: integer
+                  example: 98
                 adult:
                   type: integer
                   example: 1
@@ -1715,13 +1785,13 @@ paths:
                 baby:
                   type: integer
                   example: 0
-                seatClass:
-                  type: string
-                  example: "Economy"
                 passenger:
                   type: array
                   items:
                     $ref: "#/components/schemas/Passenger"
+                donation:
+                  type: boolean
+                  example: true
       responses:
         200:
           description: Successfully created booking
@@ -1750,7 +1820,24 @@ paths:
                     example: false
                   message:
                     type: string
-                    example: "Can't find user with id 1"
+                    example: Invalid trip type. Only "roundtrip" and "singletrip" are allowed.
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: User not authenticated
                   data:
                     type: object
                     nullable: true
@@ -1767,9 +1854,9 @@ paths:
           name: status
           schema:
             type: string
+            enum: [UNPAID, PAID, CANCELED]
           required: false
           description: Booking berdasarkan status
-          example: UNPAID, PAID, CANCELED
         - in: query
           name: search
           schema:
@@ -1816,6 +1903,10 @@ paths:
                           type: string
                           example: "1E63B67630"
                         paid_before:
+                          type: string
+                          format: date-time
+                          example: "2024-05-30T16:38:51.927Z"
+                        createdAt:
                           type: string
                           format: date-time
                           example: "2024-05-30T16:38:51.927Z"
@@ -1900,23 +1991,126 @@ paths:
                         type: string
                         format: date-time
                         example: "2024-05-30T16:38:51.927Z"
+                      createdAt:
+                        type: string
+                        format: date-time
+                        example: "2024-06-25T10:49:11.875Z"
                       flight_detail:
                         type: object
                         properties:
-                          departure_city:
-                            type: string
-                            example: "New York"
-                          arrival_city:
-                            type: string
-                            example: "Los Angeles"
-                          departure_time:
-                            type: string
-                            format: date-time
-                            example: "2024-06-01T08:00:00.000Z"
-                          arrival_time:
-                            type: string
-                            format: date-time
-                            example: "2024-06-01T12:00:00.000Z"
+                          departure_flight:
+                            type: object
+                            properties:
+                              flightNumber:
+                                type: string
+                                example: DL200
+                              departure_city:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 2
+                                  name:
+                                    type: string
+                                    example: Los Angeles
+                                  continent:
+                                    type: string
+                                    example: North America
+                                  imageUrl:
+                                    type: string
+                                    example: https://ik.imagekit.io/aviatick/cities/los-angeles.jpg
+                                  cityIata:
+                                    type: string
+                                    example: LAX
+                                  country:
+                                    type: string
+                                    example: USA
+                              arrival_city:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 3
+                                  name:
+                                    type: string
+                                    example: Chicago
+                                  continent:
+                                    type: string
+                                    example: North America
+                                  imageUrl:
+                                    type: string
+                                    example: https://ik.imagekit.io/aviatick/cities/chicago.jpg
+                                  cityIata:
+                                    type: string
+                                    example: CHI
+                                  country:
+                                    type: string
+                                    example: USA
+                              departure_time:
+                                type: string
+                                format: date-time
+                                example: 2024-06-02T09:00:00.000Z
+                              arrival_time:
+                                type: string
+                                format: date-time
+                                example: 2024-06-02T13:00:00.000Z
+                          return_flight:
+                            type: object
+                            nullable: true
+                            properties:
+                              flightNumber:
+                                type: string
+                                example: UA303
+                              departure_city:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 3
+                                  name:
+                                    type: string
+                                    example: Chicago
+                                  continent:
+                                    type: string
+                                    example: North America
+                                  imageUrl:
+                                    type: string
+                                    example: https://ik.imagekit.io/aviatick/cities/chicago.jpg
+                                  cityIata:
+                                    type: string
+                                    example: CHI
+                                  country:
+                                    type: string
+                                    example: USA
+                              arrival_city:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 2
+                                  name:
+                                    type: string
+                                    example: Los Angeles
+                                  continent:
+                                    type: string
+                                    example: North America
+                                  imageUrl:
+                                    type: string
+                                    example: https://ik.imagekit.io/aviatick/cities/los-angeles.jpg
+                                  cityIata:
+                                    type: string
+                                    example: LAX
+                                  country:
+                                    type: string
+                                    example: USA
+                              departure_time:
+                                type: string
+                                format: date-time
+                                example: 2024-07-03T10:00:00.000Z
+                              arrival_time:
+                                type: string
+                                format: date-time
+                                example: 2024-07-03T14:00:00.000Z
                       passengers:
                         type: array
                         properties:
@@ -1944,10 +2138,13 @@ paths:
                         properties:
                           total_price:
                             type: number
-                            example: 6600000
+                            example: 6601000
                           tax:
                             type: number
                             example: 600000
+                          donation:
+                            type: number
+                            example: 1000
                       urlPayment:
                         type: string
                         example: "http://localhost:3000/payment-form/1?token=ahdviohavoaivioadjvioajiv"

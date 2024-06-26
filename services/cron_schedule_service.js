@@ -1,6 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-const cron = require('node-cron');
 
 // Fungsi untuk menghasilkan angka acak dalam rentang tertentu dan membulatkannya ke kelipatan seratus ribu
 function getRandomPrice(min, max) {
@@ -1154,7 +1153,7 @@ async function addFlight() {
 
   try {
     for (const flight of flightsData) {
-      const newFlight = await prisma.flight.create({ data: flight });
+      const newFlight = await prisma.flight.createMany({ data: flight });
 
       const ticketPromises = ticketClasses.map((ticketClass) =>
         prisma.ticket.create({
@@ -1172,11 +1171,5 @@ async function addFlight() {
     console.error('Error adding flight and tickets:', error);
   }
 }
-
-const flightCron = cron.schedule('0 0 * * *', addFlight, {
-  scheduled: false,
-  timezone: 'Asia/Jakarta',
-});
-
 
 module.exports = { addFlight };
