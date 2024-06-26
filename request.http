@@ -123,7 +123,7 @@ Content-Type: application/json
 }
 
 ### LOGIN USER
-POST http://localhost:3000/api/v1/auth/login
+POST https://aviatick-backend-git-development-aviaticks-projects.vercel.app/api/v1/auth/login
 Content-Type: application/json
 
 {
@@ -216,54 +216,31 @@ GET http://localhost:3000/api/v1/tickets?promo=true
 
 
 ### CREATE BOOKING
-POST https://aviatick-backend-weld.vercel.app/api/v1/bookings/new-booking
+POST https://aviatick-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/new-booking/singleTrip
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbE5hbWUiOiJLaWJvdyBBamEiLCJmYW1pbHlOYW1lIjpudWxsLCJwaG9uZU51bWJlciI6IjgxMjEyMzQ1Njc4IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MzA2Njk1fQ.6exslQ_W6rGbAIwVvaNKG-fJR0TEMsfCd3EMGuCqKt8
 
 {
-    "userId": 2,
-    "flightId": 1,
-    "adult": 2,
-    "child": 0,
-    "baby": 1,
-    "seatClass": "Economy",
-    "passenger": [
-        {
-            "title": "Mr",
-            "fullName": "Kibow",
-            "familyName": "Ewok",
-            "birthDate": "1980-01-01T00:00:00.000Z",
-            "nationality": "Indonesia",
-            "identityType": "KTP",
-            "issuingCountry": "Indonesia",
-            "identityNumber": "123456123",
-            "expiredDate": "2025-01-01T00:00:00.000Z",
-            "ageGroup": "ADULT"
-        },
-        {
-            "title": "Mrs",
-            "fullName": "Puan",
-            "familyName": "Maharani",
-            "birthDate": "1985-02-01T00:00:00.000Z",
-            "nationality": "Indonesia",
-            "identityType": "KTP",
-            "issuingCountry": "Indonesia",
-            "identityNumber": "987654123",
-            "expiredDate": "2025-01-01T00:00:00.000Z",
-            "ageGroup": "ADULT"
-        },
-        {
-            "title": "Baby",
-            "fullName": "Iwan",
-            "familyName": "Aja",
-            "birthDate": "2024-01-01T00:00:00.000Z",
-            "nationality": "Indonesia",
-            "identityType": "KTP",
-            "issuingCountry": "Indonesia",
-            "identityNumber": "000000000",
-            "expiredDate": "2025-01-01T00:00:00.000Z",
-            "ageGroup": "BABY"
-        }
-    ]
+  "departureTicketId": 1,
+  "returnTicketId": 98,
+  "adult": 1,
+  "child": 0,
+  "baby": 0,
+  "passenger": [
+    {
+      "title": "Mr.",
+      "fullName": "John Doe",
+      "familyName": "Doe",
+      "birthDate": "1980-01-01T00:00:00.000Z",
+      "nationality": "USA",
+      "identityType": "Passport",
+      "issuingCountry": "USA",
+      "identityNumber": "123456789",
+      "expiredDate": "2025-01-01T00:00:00.000Z",
+      "ageGroup": "ADULT"
+    }
+  ],
+  "donation": true
 }
 
 ### GET ALL 
