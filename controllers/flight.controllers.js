@@ -75,8 +75,11 @@ module.exports = {
         departureTime: flight.departureTime,
         arrivalTime: flight.arrivalTime,
         airline: flight.ticket[0]?.airplaneSeatClass?.airplane?.airline?.name,
+        airlineLogo:
+          flight.ticket[0]?.airplaneSeatClass?.airplane?.airline?.logoUrl,
         price: flight.ticket.length > 0 ? flight.ticket[0].price : null,
         count: flight.count,
+        ticketId: flight.ticket.map((t) => t.id),
       }));
 
       const count = await prisma.flight.count({
