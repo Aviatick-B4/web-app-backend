@@ -173,14 +173,6 @@ module.exports = {
         include: { passenger: true },
       });
 
-      const urlPayment = `${req.protocol}://${req.get('host')}/payment-form/${
-        newBooking.id
-      }?token=${token}`;
-
-      await prisma.booking.update({
-        where: { id: newBooking.id },
-        data: { urlPayment: urlPayment },
-      });
 
       await prisma.flight.update({
         where: { id: departureFlight.flight.id },
@@ -231,7 +223,6 @@ module.exports = {
           : null,
         paid_before: newBooking.expiredPaid,
         created_at: newBooking.createdAt,
-        urlPayment: urlPayment,
       };
 
       await prisma.notification.create({
