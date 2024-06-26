@@ -1702,6 +1702,9 @@ paths:
                       token:
                         type: string
                         example: 2304b11f-fd1f-425e-b481-ced5e3f349c6
+                      redirect_url:
+                        type: string
+                        example: https://app.sandbox.midtrans.com/snap/v4/redirection/631e93e3-702f-4188-9d0c-2cef1042f032
         400:
           description: Invalid request
           content:
