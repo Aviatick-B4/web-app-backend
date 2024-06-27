@@ -287,11 +287,8 @@ module.exports = {
 
       let token = jwt.sign({ id: req.user.id }, JWT_SECRET_KEY);
 
-      return res.status(200).json({
-        status: true,
-        message: 'Successfully logged in with google',
-        data: { user: userWithoutPassword, token },
-      });
+      link = `${req.protocol}://${req.get('host')}/?token=${token}`;
+      return res.redirect(link);
     } catch (error) {
       next(error);
     }
