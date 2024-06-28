@@ -4,6 +4,7 @@ const { generateHash, compareHash } = require('../libs/bcrypt');
 const sendEmail = require('../utils/sendEmail');
 const getRenderedHtml = require('../utils/getRenderedHtml');
 const otp = require('../utils/generateOtp');
+const axios = require('axios');
 const prisma = new PrismaClient();
 const { JWT_SECRET_KEY } = process.env;
 
@@ -274,21 +275,53 @@ module.exports = {
   },
   googleLogin: async (req, res, next) => {
     try {
-      const updateUser = await prisma.user.update({
+      // GET ACCESS TOKEN
+      const { access_token } = req.body;
+  
+      if (!access_token) {
+        return res.status(400).json({
+          status: false,
+          message: "Missing required field",
+          data: null,
+        });
+      }
+  
+      const googleData = await axios.get(`https://www.googleapis.com/oauth2/v3/userinfo?access_token=${access_token}`);
+  
+      // UPSERT USER DATA IN CASE USER ALREADY EXIST
+      const user = await prisma.user.upsert({
         where: {
-          id: req.user.id,
+          email: googleData?.data?.email,
         },
-        data: {
+        update: {
+          fullName: googleData?.data?.name,
+          googleId: googleData?.data?.sub,
+          emailIsVerified: true,
+        },
+        create: {
+          email: googleData?.data?.email,
+          fullName: googleData?.data?.name,
+          password: await bcrypt.hash(googleData?.data?.sub, 10),
+          googleId: googleData?.data?.sub,
           emailIsVerified: true,
         },
       });
-
-      const { password, ...userWithoutPassword } = req.user;
-
-      let token = jwt.sign({ id: req.user.id }, JWT_SECRET_KEY);
-
-      const link = `https://aviatick.vercel.app/?token=${token}`;
-      return res.redirect(link);
+  
+      // DELETE USER PASSWORD FROM VARIABLE
+      delete user.password;
+  
+      // CREATE TOKEN
+      const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
+  
+      // RETURN
+      return res.status(200).json({
+        status: true,
+        message: "Successfully login with Google",
+        data: {
+          user,
+          token,
+        },
+      });
     } catch (error) {
       next(error);
     }

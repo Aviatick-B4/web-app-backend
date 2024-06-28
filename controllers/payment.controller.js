@@ -78,9 +78,8 @@ module.exports = {
           phone: checkBook.user.phoneNumber,
         },
         callback_url: {
-          finish: `https://aviatick.vercel.app/success/${bookingId}`,
-          cancel: `https://aviatick.vercel.app/cancel/${bookingId}`,
-          pending: `https://aviatick.vercel.app/pending/${bookingId}`,
+          finish: `https://aviatick.vercel.app/success`,
+          cancel: `https://aviatick.vercel.app/error`,
         },
       };
 
