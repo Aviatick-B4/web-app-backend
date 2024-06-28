@@ -142,7 +142,7 @@ module.exports = {
       const total_price = departureTicketPrice + returnTicketPrice;
       const tax = Math.round(total_price * 0.1);
       const donation_amount = donation ? 1000 : 0;
-      const expiredPaid = new Date(Date.now() + 24 * 60 * 60 * 1000);
+      const expiredPaid = new Date(Date.now() + 15 * 60 * 1000);
 
       const newBooking = await prisma.booking.create({
         data: {

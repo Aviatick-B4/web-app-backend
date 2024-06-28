@@ -970,51 +970,6 @@ paths:
         "302":
           description: Redirect to Google for authentication.
 
-  /auth/google/callback:
-    get:
-      tags:
-        - Auth
-      operationId: get-login-user-with-google-callback
-      summary: Google OAuth 2.0 Callback
-      description: Handles the callback after successful Google authentication.
-      parameters:
-        - name: code
-          in: query
-          required: true
-          description: Authorization code received from Google.
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: boolean
-                        example: true
-                      message:
-                        type: string
-                        example: "success"
-                  - type: object
-                    properties:
-                      err:
-                        type: string
-                        example: null
-                      data:
-                        type: object
-                        properties:
-                          user:
-                            allOf:
-                              - $ref: "#/components/schemas/User"
-                              - type: object
-                          token:
-                              type: integer
-                              example: 2304b11f-fd1f-425e-b481-ced5e3f349c6
-  
   /auth/forgot-password:
     post:
       tags:
