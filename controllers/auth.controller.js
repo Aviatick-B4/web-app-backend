@@ -287,7 +287,8 @@ module.exports = {
 
       let token = jwt.sign({ id: req.user.id }, JWT_SECRET_KEY);
 
-      link = `${req.protocol}://${req.get('host')}/?token=${token}`;
+      // link = `${req.protocol}://${req.get('host')}/?token=${token}`;
+      link = `https://aviatick.vercel.app/?token=${token}`;
       return res.redirect(link);
     } catch (error) {
       next(error);
