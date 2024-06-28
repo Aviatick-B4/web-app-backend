@@ -142,7 +142,7 @@ module.exports = {
       const total_price = departureTicketPrice + returnTicketPrice;
       const tax = Math.round(total_price * 0.1);
       const donation_amount = donation ? 1000 : 0;
-      const expiredPaid = new Date(Date.now() + 15 * 60 * 1000);
+      const expiredPaid = new Date(Date.now() + 24 * 60 * 60 * 1000);
 
       const newBooking = await prisma.booking.create({
         data: {
@@ -171,15 +171,6 @@ module.exports = {
           },
         },
         include: { passenger: true },
-      });
-
-      const urlPayment = `${req.protocol}://${req.get('host')}/payment-form/${
-        newBooking.id
-      }?token=${token}`;
-
-      await prisma.booking.update({
-        where: { id: newBooking.id },
-        data: { urlPayment: urlPayment },
       });
 
       await prisma.flight.update({
@@ -231,7 +222,6 @@ module.exports = {
           : null,
         paid_before: newBooking.expiredPaid,
         created_at: newBooking.createdAt,
-        urlPayment: urlPayment,
       };
 
       await prisma.notification.create({

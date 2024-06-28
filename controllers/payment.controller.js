@@ -42,7 +42,8 @@ module.exports = {
       const checkBook = await prisma.booking.findUnique({
         where: { id: bookingId },
         include: {
-          flight: true,
+          departureTicket: true,
+          returnTicket: true,
           user: true,
         },
       });
@@ -76,6 +77,11 @@ module.exports = {
           email: checkBook.user.email,
           phone: checkBook.user.phoneNumber,
         },
+        callback_url: {
+          finish: `https://aviatick.vercel.app/success/${bookingId}`,
+          cancel: `https://aviatick.vercel.app/cancel/${bookingId}`,
+          pending: `https://aviatick.vercel.app/pending/${bookingId}`,
+        },
       };
 
       const transaction = await snap.createTransaction(parameter);
@@ -83,7 +89,7 @@ module.exports = {
       res.status(200).json({
         status: true,
         message: 'Token retrieved successfully',
-        data: { token: transaction.token },
+        data: transaction,
       });
     } catch (error) {
       console.error('Token creation failed:', error);
@@ -108,7 +114,6 @@ module.exports = {
         payment_type,
       } = req.body;
       transactionResult = await prisma.$transaction(async (prisma) => {
-
         if (
           transaction_status !== 'capture' &&
           transaction_status !== 'settlement'
