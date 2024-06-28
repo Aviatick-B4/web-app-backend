@@ -19,15 +19,6 @@ router.get(
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-// router.get(
-//   '/google/callback',
-//   passport.authenticate('google', {
-//     failureRedirect: '/google',
-//     session: false,
-//   }),
-//   auth.googleLogin
-// );
-
 router.post('/forgot-password', auth.sendResetPasswordEmail);
 router.post('/reset-password', auth.resetPassword);
 router.post('/change-password', restrict, auth.changePassword);
