@@ -1956,112 +1956,93 @@ paths:
                                 type: string
                                 example: DL200
                               departure_city:
-                                type: object
-                                properties:
-                                  id:
-                                    type: integer
-                                    example: 2
-                                  name:
-                                    type: string
-                                    example: Los Angeles
-                                  continent:
-                                    type: string
-                                    example: North America
-                                  imageUrl:
-                                    type: string
-                                    example: https://ik.imagekit.io/aviatick/cities/los-angeles.jpg
-                                  cityIata:
-                                    type: string
-                                    example: LAX
-                                  country:
-                                    type: string
-                                    example: USA
+                                type: string
+                                example: Los Angeles
+                              departure_city_iata:
+                                type: string
+                                example: LAX
                               arrival_city:
-                                type: object
-                                properties:
-                                  id:
-                                    type: integer
-                                    example: 3
-                                  name:
-                                    type: string
-                                    example: Chicago
-                                  continent:
-                                    type: string
-                                    example: North America
-                                  imageUrl:
-                                    type: string
-                                    example: https://ik.imagekit.io/aviatick/cities/chicago.jpg
-                                  cityIata:
-                                    type: string
-                                    example: CHI
-                                  country:
-                                    type: string
-                                    example: USA
+                                type: string
+                                example: Chicago
+                              arrival_city_iata:
+                                type: string
+                                example: CHI
                               departure_time:
                                 type: string
                                 format: date-time
-                                example: 2024-06-02T09:00:00.000Z
+                                example: '2024-06-02T09:00:00.000Z'
                               arrival_time:
                                 type: string
                                 format: date-time
-                                example: 2024-06-02T13:00:00.000Z
+                                example: '2024-06-02T13:00:00.000Z'
+                              airline:
+                                type: object
+                                properties:
+                                  name:
+                                    type: string
+                                    example: Delta Airlines
+                                  logo_url:
+                                    type: string
+                                    example: 'https://ik.imagekit.io/aviatick/airlines/delta-airlines.jpg'
+                              seat_class:
+                                type: string
+                                example: First
+                              airport:
+                                type: object
+                                properties:
+                                  departure:
+                                    type: string
+                                    example: Los Angeles International Airport
+                                  arrival:
+                                    type: string
+                                    example: O'Hare International Airport
                           return_flight:
                             type: object
-                            nullable: true
                             properties:
                               flightNumber:
                                 type: string
                                 example: UA303
                               departure_city:
-                                type: object
-                                properties:
-                                  id:
-                                    type: integer
-                                    example: 3
-                                  name:
-                                    type: string
-                                    example: Chicago
-                                  continent:
-                                    type: string
-                                    example: North America
-                                  imageUrl:
-                                    type: string
-                                    example: https://ik.imagekit.io/aviatick/cities/chicago.jpg
-                                  cityIata:
-                                    type: string
-                                    example: CHI
-                                  country:
-                                    type: string
-                                    example: USA
+                                type: string
+                                example: Chicago
+                              departure_city_iata:
+                                type: string
+                                example: CHI
                               arrival_city:
-                                type: object
-                                properties:
-                                  id:
-                                    type: integer
-                                    example: 2
-                                  name:
-                                    type: string
-                                    example: Los Angeles
-                                  continent:
-                                    type: string
-                                    example: North America
-                                  imageUrl:
-                                    type: string
-                                    example: https://ik.imagekit.io/aviatick/cities/los-angeles.jpg
-                                  cityIata:
-                                    type: string
-                                    example: LAX
-                                  country:
-                                    type: string
-                                    example: USA
+                                type: string
+                                example: Los Angeles
+                              arrival_city_iata:
+                                type: string
+                                example: LAX
                               departure_time:
                                 type: string
                                 format: date-time
-                                example: 2024-07-03T10:00:00.000Z
+                                example: '2024-07-03T10:00:00.000Z'
                               arrival_time:
                                 type: string
                                 format: date-time
-                                example: 2024-07-03T14:00:00.000Z
+                                example: '2024-07-03T14:00:00.000Z'
+                              airline:
+                                type: object
+                                properties:
+                                  name:
+                                    type: string
+                                    example: United Airlines
+                                  logo_url:
+                                    type: string
+                                    example: 'https://ik.imagekit.io/aviatick/airlines/united-airlines.jpg'
+                              seat_class:
+                                type: string
+                                example: Business
+                              airport:
+                                type: object
+                                properties:
+                                  departure:
+                                    type: string
+                                    example: O'Hare International Airport
+                                  arrival:
+                                    type: string
+                                    example: Los Angeles International Airport
                       passengers:
                         type: array
                         properties:
