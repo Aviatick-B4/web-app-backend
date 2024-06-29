@@ -351,7 +351,7 @@ module.exports = {
       }
 
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY);
-      const baseUrl = `${req.protocol}://${req.get('host')}`;
+      const baseUrl = process.env.CLIENT_BASE_URL;
       const html = getRenderedHtml('resetPasswordEmail', {
         name: user.fullName,
         resetPasswordUrl: `${baseUrl}/reset-password?token=${token}`,
