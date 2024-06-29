@@ -408,13 +408,22 @@ module.exports = {
               flight: {
                 include: {
                   departureAirport: {
-                    select: {
+                    include: {
                       city: true,
                     },
                   },
                   arrivalAirport: {
-                    select: {
+                    include: {
                       city: true,
+                    },
+                  },
+                },
+              },
+              airplaneSeatClass: {
+                include: {
+                  airplane: {
+                    include: {
+                      airline: true, // Include airline information
                     },
                   },
                 },
@@ -426,13 +435,22 @@ module.exports = {
               flight: {
                 include: {
                   departureAirport: {
-                    select: {
+                    include: {
                       city: true,
                     },
                   },
                   arrivalAirport: {
-                    select: {
+                    include: {
                       city: true,
+                    },
+                  },
+                },
+              },
+              airplaneSeatClass: {
+                include: {
+                  airplane: {
+                    include: {
+                      airline: true, // Include airline information
                     },
                   },
                 },
@@ -469,19 +487,53 @@ module.exports = {
           departure_flight: {
             flightNumber: booking.departureTicket.flight.flightNumber,
             departure_city:
-              booking.departureTicket.flight.departureAirport.city,
-            arrival_city: booking.departureTicket.flight.arrivalAirport.city,
+              booking.departureTicket.flight.departureAirport.city.name,
+            departure_city_iata:
+              booking.departureTicket.flight.departureAirport.city.cityIata,
+            arrival_city:
+              booking.departureTicket.flight.arrivalAirport.city.name,
+            arrival_city_iata:
+              booking.departureTicket.flight.arrivalAirport.city.cityIata,
             departure_time: booking.departureTicket.flight.departureTime,
             arrival_time: booking.departureTicket.flight.arrivalTime,
+            airline: {
+              name: booking.departureTicket.airplaneSeatClass.airplane.airline
+                .name, // Nama maskapai
+              logo_url:
+                booking.departureTicket.airplaneSeatClass.airplane.airline
+                  .logoUrl, // URL logo maskapai
+            },
+            seat_class: booking.departureTicket.airplaneSeatClass.type, // Kelas kursi pesawat
+            airport: {
+              departure: booking.departureTicket.flight.departureAirport.name, // Nama bandara keberangkatan
+              arrival: booking.departureTicket.flight.arrivalAirport.name, // Nama bandara kedatangan
+            },
           },
           return_flight: booking.returnTicket
             ? {
                 flightNumber: booking.returnTicket.flight.flightNumber,
                 departure_city:
-                  booking.returnTicket.flight.departureAirport.city,
-                arrival_city: booking.returnTicket.flight.arrivalAirport.city,
+                  booking.returnTicket.flight.departureAirport.city.name,
+                departure_city_iata:
+                  booking.returnTicket.flight.departureAirport.city.cityIata,
+                arrival_city:
+                  booking.returnTicket.flight.arrivalAirport.city.name,
+                arrival_city_iata:
+                  booking.returnTicket.flight.arrivalAirport.city.cityIata,
                 departure_time: booking.returnTicket.flight.departureTime,
                 arrival_time: booking.returnTicket.flight.arrivalTime,
+                airline: {
+                  name: booking.returnTicket.airplaneSeatClass.airplane.airline
+                    .name, // Nama maskapai
+                  logo_url:
+                    booking.returnTicket.airplaneSeatClass.airplane.airline
+                      .logoUrl, // URL logo maskapai
+                },
+                seat_class: booking.returnTicket.airplaneSeatClass.type, // Kelas kursi pesawat
+                airport: {
+                  departure: booking.returnTicket.flight.departureAirport.name, // Nama bandara keberangkatan
+                  arrival: booking.returnTicket.flight.arrivalAirport.name, // Nama bandara kedatangan
+                },
               }
             : null,
         },
