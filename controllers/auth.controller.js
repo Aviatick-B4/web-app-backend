@@ -319,6 +319,7 @@ module.exports = {
       const fullName = googleData?.data?.name;
       const nameParts = fullName.split(' ');
       const familyName = nameParts.length > 1 ? nameParts.pop() : '';
+      const firstName = nameParts.join(' ');
 
       // Upserts user data in case the user already exists in the database
       const user = await prisma.user.upsert({
@@ -326,14 +327,14 @@ module.exports = {
           email: googleData?.data?.email, // Uses the email from the Google data as a unique identifier
         },
         update: {
-          fullName: fullName, // Updates the user's full name if they already exist
+          fullName: firstName, // Updates the user's full name if they already exist
           familyName: familyName, // Updates the user's family name if they already exist
           googleId: googleData?.data?.sub, // Updates the user's Google ID
           emailIsVerified: true, // Ensures the email is marked as verified
         },
         create: {
           email: googleData?.data?.email,
-          fullName: fullName,
+          fullName: firstName,
           familyName: familyName,
           password: '',
           emailIsVerified: true,
