@@ -14,7 +14,7 @@ router.post('/resend-otp', auth.resendOtp);
 router.delete('/users', restrict, auth.deleteUser);
 
 router.post('/login', auth.login);
-router.get(
+router.post(
   '/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
