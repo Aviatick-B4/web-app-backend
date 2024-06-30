@@ -174,7 +174,7 @@ module.exports = {
         include: { passenger: true },
       });
 
-      const urlPayment = `${req.protocol}://${req.get('host')}/pembayaran?token=${token}`;
+      const urlPayment = `http://localhost:5173/pembayaran?token=${token}`;
 
       await prisma.booking.update({
         where: { id: newBooking.id },
