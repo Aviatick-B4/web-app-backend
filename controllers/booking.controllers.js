@@ -2,6 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const crypto = require('crypto');
 const { convertDate } = require('../utils/formatedDate');
+const { CLIENT_BASE_URL } = process.env;
 
 module.exports = {
   booking: async (req, res, next) => {
@@ -173,6 +174,13 @@ module.exports = {
         include: { passenger: true },
       });
 
+      const urlPayment = `${req.protocol}://${req.get('host')}/pembayaran?token=${token}`;
+
+      await prisma.booking.update({
+        where: { id: newBooking.id },
+        data: { urlPayment: urlPayment },
+      });
+
       await prisma.flight.update({
         where: { id: departureFlight.flight.id },
         data: { count: departureFlight.flight.count + 1 },
@@ -222,6 +230,7 @@ module.exports = {
           : null,
         paid_before: newBooking.expiredPaid,
         created_at: newBooking.createdAt,
+        urlPayment: urlPayment,
       };
 
       await prisma.notification.create({
