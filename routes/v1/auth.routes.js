@@ -14,9 +14,17 @@ router.post('/resend-otp', auth.resendOtp);
 router.delete('/users', restrict, auth.deleteUser);
 
 router.post('/login', auth.login);
-router.post(
+router.get(
   '/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
+);
+router.get(
+  '/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/google',
+    session: false,
+  }),
+  auth.googleLogin
 );
 
 router.post('/forgot-password', auth.sendResetPasswordEmail);
