@@ -1984,6 +1984,9 @@ paths:
                                   logo_url:
                                     type: string
                                     example: 'https://ik.imagekit.io/aviatick/airlines/delta-airlines.jpg'
+                                  facility:
+                                    type: string
+                                    example: WiFi, Entertainment, Meal
                               seat_class:
                                 type: string
                                 example: First
@@ -2031,6 +2034,9 @@ paths:
                                   logo_url:
                                     type: string
                                     example: 'https://ik.imagekit.io/aviatick/airlines/united-airlines.jpg'
+                                  facility:
+                                    type: string
+                                    example: WiFi, Entertainment, Meal
                               seat_class:
                                 type: string
                                 example: Business
