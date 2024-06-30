@@ -2,6 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const crypto = require('crypto');
 const { convertDate } = require('../utils/formatedDate');
+const { createPaymentMidtrans } = require('../controllers/payment.controller');
 
 module.exports = {
   booking: async (req, res, next) => {
@@ -292,7 +293,7 @@ module.exports = {
       next(error);
     }
   },
-  
+
   prepareBooking: async (req, res, next) => {
     try {
       const authHeader = req.headers.authorization;
@@ -320,7 +321,8 @@ module.exports = {
       if (!validTripTypes.includes(tripType)) {
         return res.status(400).json({
           status: 'error',
-          message: 'Invalid trip type. Only "roundtrip" and "singletrip" are allowed.',
+          message:
+            'Invalid trip type. Only "roundtrip" and "singletrip" are allowed.',
           data: null,
         });
       }
@@ -340,7 +342,8 @@ module.exports = {
       if (passenger.length !== totalPassengers) {
         return res.status(400).json({
           status: 'error',
-          message: 'Total number of passengers does not match the provided passenger details',
+          message:
+            'Total number of passengers does not match the provided passenger details',
           data: null,
         });
       }
@@ -413,15 +416,19 @@ module.exports = {
       ) {
         return res.status(400).json({
           status: 'error',
-          message: 'Invalid round trip. Departure and return flights do not match.',
+          message:
+            'Invalid round trip. Departure and return flights do not match.',
           data: null,
         });
       }
 
       const booking_code = crypto.randomBytes(5).toString('hex').toUpperCase();
 
-      const departureTicketPrice = departureFlight.price * (totalPassengers - baby);
-      const returnTicketPrice = isRoundTrip ? returnFlight.price * (totalPassengers - baby) : 0;
+      const departureTicketPrice =
+        departureFlight.price * (totalPassengers - baby);
+      const returnTicketPrice = isRoundTrip
+        ? returnFlight.price * (totalPassengers - baby)
+        : 0;
       const total_price = departureTicketPrice + returnTicketPrice;
       const tax = Math.round(total_price * 0.1);
       const donation_amount = donation ? 1000 : 0;
@@ -565,6 +572,133 @@ module.exports = {
         status: true,
         message: 'Success creating new Booking',
         data: result,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  BookingCompleted: async (req, res, next) => {
+    try {
+      const {
+        userId,
+        departureTicketId,
+        returnTicketId,
+        bookingCode,
+        expiredPaid,
+        totalPrice,
+        bookingTax,
+        donation,
+        createdAt,
+        passenger,
+        isRoundTrip,
+        departureFlight,
+        returnFlight,
+      } = req.body;
+
+      const newBooking = await prisma.booking.create({
+        data: {
+          userId,
+          departureTicketId,
+          returnTicketId,
+          bookingCode,
+          expiredPaid,
+          totalPrice,
+          bookingTax,
+          donation,
+          createdAt,
+          passenger: {
+            create: passenger.map((p) => ({
+              title: p.title,
+              fullName: p.fullName,
+              familyName: p.familyName,
+              birthDate: p.birthDate,
+              nationality: p.nationality,
+              identityType: p.identityType,
+              issuingCountry: p.issuingCountry,
+              identityNumber: p.identityNumber,
+              expiredDate: p.expiredDate,
+              ageGroup: p.ageGroup,
+            })),
+          },
+        },
+        include: { passenger: true },
+      });
+
+      await prisma.flight.update({
+        where: { id: departureFlight.flight.id },
+        data: { count: departureFlight.flight.count + 1 },
+      });
+
+      if (isRoundTrip) {
+        await prisma.flight.update({
+          where: { id: returnFlight.flight.id },
+          data: { count: returnFlight.flight.count + 1 },
+        });
+
+        await prisma.booking.update({
+          where: { id: newBooking.id },
+          data: { isRoundTrip: true },
+        });
+      }
+
+      const result = {
+        id: newBooking.id,
+        departureTicketId: newBooking.departureTicketId,
+        returnTicketId: newBooking.returnTicketId,
+        booking_code: newBooking.bookingCode,
+        total_passengers: passenger.length,
+        total_price: newBooking.totalPrice,
+        bookingTax: newBooking.bookingTax,
+        donation: newBooking.donation,
+        status: newBooking.status,
+        departureFlight: {
+          flightNumber: departureFlight.flight.flightNumber,
+          departureTime: departureFlight.flight.departureTime,
+          arrivalTime: departureFlight.flight.arrivalTime,
+          departureAirport: departureFlight.flight.departureAirport.name,
+          arrivalAirport: departureFlight.flight.arrivalAirport.name,
+          seatClass: departureFlight.airplaneSeatClass.type,
+          price: departureFlight.price,
+        },
+        returnFlight: isRoundTrip
+          ? {
+              flightNumber: returnFlight.flight.flightNumber,
+              departureTime: returnFlight.flight.departureTime,
+              arrivalTime: returnFlight.flight.arrivalTime,
+              departureAirport: returnFlight.flight.departureAirport.name,
+              arrivalAirport: returnFlight.flight.arrivalAirport.name,
+              seatClass: returnFlight.airplaneSeatClass.type,
+              price: returnFlight.price,
+            }
+          : null,
+        paid_before: newBooking.expiredPaid,
+        created_at: newBooking.createdAt,
+      };
+
+      await prisma.notification.create({
+        data: {
+          title: 'New Booking',
+          message: `Successful in making a new booking, complete it before ${result.paid_before}`,
+          type: 'transaction',
+          userId: userId,
+          createdAt: convertDate(new Date()),
+        },
+      });
+
+      const paymentRequest = {
+        params: { bookingId: newBooking.id },
+        body: { paymentMethod: 'midtrans' }, 
+      };
+      const paymentResponse = await createPaymentMidtrans(paymentRequest, res, next);
+
+      return res.status(200).json({
+        status: true,
+        message: 'Success creating new Booking',
+        data: {
+          booking: result,
+          payment: paymentResponse.data ,
+        },
       });
     } catch (error) {
       next(error);
