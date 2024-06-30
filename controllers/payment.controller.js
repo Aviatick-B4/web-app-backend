@@ -85,6 +85,11 @@ module.exports = {
 
       const transaction = await snap.createTransaction(parameter);
 
+      await prisma.booking.update({
+        where: { id: bookingId },
+        data: { urlPayment: transaction.redirect_url },
+      });
+
       res.status(200).json({
         status: true,
         message: 'Token retrieved successfully',
