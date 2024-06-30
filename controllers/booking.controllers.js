@@ -292,7 +292,7 @@ module.exports = {
       next(error);
     }
   },
-  
+
   prepareBooking: async (req, res, next) => {
     try {
       const authHeader = req.headers.authorization;
@@ -320,7 +320,8 @@ module.exports = {
       if (!validTripTypes.includes(tripType)) {
         return res.status(400).json({
           status: 'error',
-          message: 'Invalid trip type. Only "roundtrip" and "singletrip" are allowed.',
+          message:
+            'Invalid trip type. Only "roundtrip" and "singletrip" are allowed.',
           data: null,
         });
       }
@@ -340,7 +341,8 @@ module.exports = {
       if (passenger.length !== totalPassengers) {
         return res.status(400).json({
           status: 'error',
-          message: 'Total number of passengers does not match the provided passenger details',
+          message:
+            'Total number of passengers does not match the provided passenger details',
           data: null,
         });
       }
@@ -413,15 +415,19 @@ module.exports = {
       ) {
         return res.status(400).json({
           status: 'error',
-          message: 'Invalid round trip. Departure and return flights do not match.',
+          message:
+            'Invalid round trip. Departure and return flights do not match.',
           data: null,
         });
       }
 
       const booking_code = crypto.randomBytes(5).toString('hex').toUpperCase();
 
-      const departureTicketPrice = departureFlight.price * (totalPassengers - baby);
-      const returnTicketPrice = isRoundTrip ? returnFlight.price * (totalPassengers - baby) : 0;
+      const departureTicketPrice =
+        departureFlight.price * (totalPassengers - baby);
+      const returnTicketPrice = isRoundTrip
+        ? returnFlight.price * (totalPassengers - baby)
+        : 0;
       const total_price = departureTicketPrice + returnTicketPrice;
       const tax = Math.round(total_price * 0.1);
       const donation_amount = donation ? 1000 : 0;
@@ -717,30 +723,61 @@ module.exports = {
         });
       }
 
-      const booking = await prisma.booking.findUnique({
+      const bookingQuery = prisma.booking.findUnique({
         where: { id: parseInt(bookingId) },
-        include: {
+        select: {
+          id: true,
+          bookingCode: true,
+          status: true,
+          expiredPaid: true,
+          createdAt: true,
+          totalPrice: true,
+          bookingTax: true,
+          donation: true,
+          urlPayment: true,
           departureTicket: {
-            include: {
+            select: {
               flight: {
-                include: {
+                select: {
+                  flightNumber: true,
+                  departureTime: true,
+                  arrivalTime: true,
                   departureAirport: {
-                    include: {
-                      city: true,
+                    select: {
+                      name: true,
+                      city: {
+                        select: {
+                          name: true,
+                          cityIata: true,
+                        },
+                      },
                     },
                   },
                   arrivalAirport: {
-                    include: {
-                      city: true,
+                    select: {
+                      name: true,
+                      city: {
+                        select: {
+                          name: true,
+                          cityIata: true,
+                        },
+                      },
                     },
                   },
                 },
               },
               airplaneSeatClass: {
-                include: {
+                select: {
+                  type: true,
                   airplane: {
-                    include: {
-                      airline: true,
+                    select: {
+                      inFlightFacility: true,
+                      airline: {
+                        select: {
+                          name: true,
+                          logoUrl: true,
+                        },
+                      },
                     },
                   },
                 },
@@ -748,35 +785,65 @@ module.exports = {
             },
           },
           returnTicket: {
-            include: {
+            select: {
               flight: {
-                include: {
+                select: {
+                  flightNumber: true,
+                  departureTime: true,
+                  arrivalTime: true,
                   departureAirport: {
-                    include: {
-                      city: true,
+                    select: {
+                      name: true,
+                      city: {
+                        select: {
+                          name: true,
+                          cityIata: true,
+                        },
+                      },
                     },
                   },
                   arrivalAirport: {
-                    include: {
-                      city: true,
+                    select: {
+                      name: true,
+                      city: {
+                        select: {
+                          name: true,
+                          cityIata: true,
+                        },
+                      },
                     },
                   },
                 },
               },
               airplaneSeatClass: {
-                include: {
+                select: {
+                  type: true,
                   airplane: {
-                    include: {
-                      airline: true,
+                    select: {
+                      inFlightFacility: true,
+                      airline: {
+                        select: {
+                          name: true,
+                          logoUrl: true,
+                        },
+                      },
                     },
                   },
                 },
               },
             },
           },
-          passenger: true,
+          passenger: {
+            select: {
+              title: true,
+              fullName: true,
+              identityNumber: true,
+            },
+          },
         },
       });
+
+      const booking = await bookingQuery;
 
       if (!booking) {
         return res.status(404).json({
@@ -819,10 +886,10 @@ module.exports = {
               logo_url:
                 booking.departureTicket.airplaneSeatClass.airplane.airline
                   .logoUrl,
-              facility:
-                booking.departureTicket.airplaneSeatClass.airplane
-                  .inFlightFacility,
             },
+            in_flight_facility:
+              booking.departureTicket.airplaneSeatClass.airplane
+                .inFlightFacility,
             seat_class: booking.departureTicket.airplaneSeatClass.type,
             airport: {
               departure: booking.departureTicket.flight.departureAirport.name,
@@ -848,10 +915,10 @@ module.exports = {
                   logo_url:
                     booking.returnTicket.airplaneSeatClass.airplane.airline
                       .logoUrl,
-                  facility:
-                    booking.returnTicket.airplaneSeatClass.airplane
-                      .inFlightFacility,
                 },
+                in_flight_facility:
+                  booking.returnTicket.airplaneSeatClass.airplane
+                    .inFlightFacility,
                 seat_class: booking.returnTicket.airplaneSeatClass.type,
                 airport: {
                   departure: booking.returnTicket.flight.departureAirport.name,
