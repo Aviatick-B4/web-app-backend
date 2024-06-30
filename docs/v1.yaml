@@ -1847,6 +1847,585 @@ paths:
                     example: null
       security:  
         - bearerAuth: []
+
+  /bookings/prepare:
+    post:
+      summary: Prepare Booking
+      description: Memvalidasi dan mempersiapkan data booking
+      tags:
+        - Bookings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tripType:
+                  type: string
+                  enum: [roundtrip, singletrip]
+                  example: roundtrip
+                departureTicketId:
+                  type: integer
+                  example: 1
+                returnTicketId:
+                  type: integer
+                  example: 2
+                adult:
+                  type: integer
+                  example: 2
+                child:
+                  type: integer
+                  example: 1
+                baby:
+                  type: integer
+                  example: 0
+                passenger:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      title:
+                        type: string
+                        example: Mr
+                      fullName:
+                        type: string
+                        example: John Doe
+                      familyName:
+                        type: string
+                        example: Doe
+                      birthDate:
+                        type: string
+                        format: date
+                        example: 1990-01-01
+                      nationality:
+                        type: string
+                        example: US
+                      identityType:
+                        type: string
+                        example: passport
+                      issuingCountry:
+                        type: string
+                        example: US
+                      identityNumber:
+                        type: string
+                        example: 123456789
+                      expiredDate:
+                        type: string
+                        format: date
+                        example: 2030-01-01
+                      ageGroup:
+                        type: string
+                        example: adult
+                donation:
+                  type: boolean
+                  example: true
+      responses:
+        '200':
+          description: Booking data prepared successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Booking data prepared successfully
+                  data:
+                    type: object
+                    properties:
+                      userId:
+                        type: integer
+                        example: 1
+                      departureTicketId:
+                        type: integer
+                        example: 1
+                      returnTicketId:
+                        type: integer
+                        example: 2
+                      bookingCode:
+                        type: string
+                        example: ABCDE12345
+                      expiredPaid:
+                        type: string
+                        format: date-time
+                        example: 2023-10-10T10:10:10.000Z
+                      totalPrice:
+                        type: integer
+                        example: 500000
+                      bookingTax:
+                        type: integer
+                        example: 50000
+                      donation:
+                        type: integer
+                        example: 1000
+                      createdAt:
+                        type: string
+                        format: date-time
+                        example: 2023-10-10T10:00:00.000Z
+                      passenger:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                              example: Mr
+                            fullName:
+                              type: string
+                              example: John Doe
+                            familyName:
+                              type: string
+                              example: Doe
+                            birthDate:
+                              type: string
+                              format: date
+                              example: 1990-01-01
+                            nationality:
+                              type: string
+                              example: US
+                            identityType:
+                              type: string
+                              example: passport
+                            issuingCountry:
+                              type: string
+                              example: US
+                            identityNumber:
+                              type: string
+                              example: 123456789
+                            expiredDate:
+                              type: string
+                              format: date
+                              example: 2030-01-01
+                            ageGroup:
+                              type: string
+                              example: adult
+                      isRoundTrip:
+                        type: boolean
+                        example: true
+                      departureFlight:
+                        type: object
+                        properties:
+                          flight:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              flightNumber:
+                                type: string
+                                example: FL123
+                              departureTime:
+                                type: string
+                                format: date-time
+                                example: 2023-10-10T12:00:00.000Z
+                              arrivalTime:
+                                type: string
+                                format: date-time
+                                example: 2023-10-10T14:00:00.000Z
+                              departureAirport:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 1
+                                  name:
+                                    type: string
+                                    example: JFK Airport
+                              arrivalAirport:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 2
+                                  name:
+                                    type: string
+                                    example: LAX Airport
+                              count:
+                                type: integer
+                                example: 100
+                          price:
+                            type: integer
+                            example: 200000
+                          airplaneSeatClass:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                example: Economy
+                      returnFlight:
+                        type: object
+                        properties:
+                          flight:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 2
+                              flightNumber:
+                                type: string
+                                example: FL456
+                              departureTime:
+                                type: string
+                                format: date-time
+                                example: 2023-10-20T12:00:00.000Z
+                              arrivalTime:
+                                type: string
+                                format: date-time
+                                example: 2023-10-20T14:00:00.000Z
+                              departureAirport:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 2
+                                  name:
+                                    type: string
+                                    example: LAX Airport
+                              arrivalAirport:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 1
+                                  name:
+                                    type: string
+                                    example: JFK Airport
+                              count:
+                                type: integer
+                                example: 100
+                          price:
+                            type: integer
+                            example: 200000
+                          airplaneSeatClass:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                example: Economy
+  /booking/complete:
+    post:
+      summary: Complete Booking
+      description: Menyelesaikan proses booking
+      tags:
+        - Bookings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                  example: 1
+                departureTicketId:
+                  type: integer
+                  example: 1
+                returnTicketId:
+                  type: integer
+                  example: 2
+                bookingCode:
+                  type: string
+                  example: ABCDE12345
+                expiredPaid:
+                  type: string
+                  format: date-time
+                  example: 2023-10-10T10:10:10.000Z
+                totalPrice:
+                  type: integer
+                  example: 500000
+                bookingTax:
+                  type: integer
+                  example: 50000
+                donation:
+                  type: integer
+                  example: 1000
+                createdAt:
+                  type: string
+                  format: date-time
+                  example: 2023-10-10T10:00:00.000Z
+                passenger:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      title:
+                        type: string
+                        example: Mr
+                      fullName:
+                        type: string
+                        example: John Doe
+                      familyName:
+                        type: string
+                        example: Doe
+                      birthDate:
+                        type: string
+                        format: date
+                        example: 1990-01-01
+                      nationality:
+                        type: string
+                        example: US
+                      identityType:
+                        type: string
+                        example: passport
+                      issuingCountry:
+                        type: string
+                        example: US
+                      identityNumber:
+                        type: string
+                        example: 123456789
+                      expiredDate:
+                        type: string
+                        format: date
+                        example: 2030-01-01
+                      ageGroup:
+                        type: string
+                        example: adult
+                isRoundTrip:
+                  type: boolean
+                  example: true
+                departureFlight:
+                  type: object
+                  properties:
+                    flight:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        flightNumber:
+                          type: string
+                          example: FL123
+                        departureTime:
+                          type: string
+                          format: date-time
+                          example: 2023-10-10T12:00:00.000Z
+                        arrivalTime:
+                          type: string
+                          format: date-time
+                          example: 2023-10-10T14:00:00.000Z
+                        departureAirport:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: JFK Airport
+                        arrivalAirport:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 2
+                            name:
+                              type: string
+                              example: LAX Airport
+                        count:
+                          type: integer
+                          example: 100
+                    price:
+                      type: integer
+                      example: 200000
+                    airplaneSeatClass:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: Economy
+                returnFlight:
+                  type: object
+                  properties:
+                    flight:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 2
+                        flightNumber:
+                          type: string
+                          example: FL456
+                        departureTime:
+                          type: string
+                          format: date-time
+                          example: 2023-10-20T12:00:00.000Z
+                        arrivalTime:
+                          type: string
+                          format: date-time
+                          example: 2023-10-20T14:00:00.000Z
+                        departureAirport:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 2
+                            name:
+                              type: string
+                              example: LAX Airport
+                        arrivalAirport:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: JFK Airport
+                        count:
+                          type: integer
+                          example: 100
+                    price:
+                      type: integer
+                      example: 200000
+                    airplaneSeatClass:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: Economy
+      responses:
+        '200':
+          description: Success creating new Booking
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Success creating new Booking
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      departureTicketId:
+                        type: integer
+                        example: 1
+                      returnTicketId:
+                        type: integer
+                        example: 2
+                      booking_code:
+                        type: string
+                        example: ABCDE12345
+                      total_passengers:
+                        type: integer
+                        example: 3
+                      total_price:
+                        type: integer
+                        example: 500000
+                      bookingTax:
+                        type: integer
+                        example: 50000
+                      donation:
+                        type: integer
+                        example: 1000
+                      status:
+                        type: string
+                        example: pending
+                      departureFlight:
+                        type: object
+                        properties:
+                          flightNumber:
+                            type: string
+                            example: FL123
+                          departureTime:
+                            type: string
+                            format: date-time
+                            example: 2023-10-10T12:00:00.000Z
+                          arrivalTime:
+                            type: string
+                            format: date-time
+                            example: 2023-10-10T14:00:00.000Z
+                          departureAirport:
+                            type: string
+                            example: JFK Airport
+                          arrivalAirport:
+                            type: string
+                            example: LAX Airport
+                          seatClass:
+                            type: string
+                            example: Economy
+                          price:
+                            type: integer
+                            example: 200000
+                      returnFlight:
+                        type: object
+                        properties:
+                          flightNumber:
+                            type: string
+                            example: FL456
+                          departureTime:
+                            type: string
+                            format: date-time
+                            example: 2023-10-20T12:00:00.000Z
+                          arrivalTime:
+                            type: string
+                            format: date-time
+                            example: 2023-10-20T14:00:00.000Z
+                          departureAirport:
+                            type: string
+                            example: LAX Airport
+                          arrivalAirport:
+                            type: string
+                            example: JFK Airport
+                          seatClass:
+                            type: string
+                            example: Economy
+                          price:
+                            type: integer
+                            example: 200000
+                      paid_before:
+                        type: string
+                        format: date-time
+                        example: 2023-10-10T10:10:10.000Z
+                      created_at:
+                        type: string
+                        format: date-time
+                        example: 2023-10-10T10:10:10.000Z
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: Invalid input data
+                  data:
+                    type: object
+                    nullable: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: No authorization token provided
+                  data:
+                    type: object
+                    nullable: true
+      security:
+        - bearerAuth: []
   /bookings/booking-history:
     get:
       summary: Get all bookings for a user with filter
