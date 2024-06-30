@@ -315,19 +315,29 @@ module.exports = {
         `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${access_token}`
       );
 
+      // Extracts the full name and family name from the Google data
+      const fullName = googleData?.data?.name;
+      const nameParts = fullName.split(' ');
+      const familyName = nameParts.length > 1 ? nameParts.pop() : '';
+
       // Upserts user data in case the user already exists in the database
       const user = await prisma.user.upsert({
         where: {
           email: googleData?.data?.email, // Uses the email from the Google data as a unique identifier
         },
         update: {
-          name: googleData?.data?.name, // Updates the user's name if they already exist
+          fullName: fullName, // Updates the user's full name if they already exist
+          familyName: familyName, // Updates the user's family name if they already exist
+          googleId: googleData?.data?.sub, // Updates the user's Google ID
+          emailIsVerified: true, // Ensures the email is marked as verified
         },
         create: {
           email: googleData?.data?.email,
-          fullName: googleData?.data?.name,
+          fullName: fullName,
+          familyName: familyName,
           password: '',
           emailIsVerified: true,
+          googleId: googleData?.data?.sub,
         },
       });
 
@@ -335,7 +345,7 @@ module.exports = {
       delete user.password;
 
       // Creates a JWT token for the user
-      const token = jwt.sign(user, JWT_SECRET);
+      const token = jwt.sign(user, JWT_SECRET_KEY);
 
       // Returns a successful response with the user data and token
       return res.status(200).json({
