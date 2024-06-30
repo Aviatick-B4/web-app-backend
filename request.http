@@ -41,18 +41,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hb
   "passenger": [
     {
       "title": "Mr",
-      "fullName": "John Doe",
-      "familyName": "Doe",
+      "fullName": "Kibow",
+      "familyName": "Robawa",
       "birthDate": "1980-01-01T00:00:00.000Z",
       "nationality": "US",
       "identityType": "Passport",
       "issuingCountry": "US",
-      "identityNumber": "123456789",
+      "identityNumber": "345123257648456",
       "expiredDate": "2025-01-01T00:00:00.000Z",
       "ageGroup": "ADULT"
     }
   ],
-  "donation": true
+  "donation": false
 }
 
 ### login
@@ -70,7 +70,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MjM1Nzk2fQ.QZAJTNvSuvzJkItTIuoSd3FUcgts9uFkWAyZ4cV2imI
 
 ### GET BOOKING DETAIL BY BOOKING ID
-GET http://localhost:3000/api/v1/bookings/booking-history/77
+GET http://localhost:3000/api/v1/bookings/booking-history/184
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MjM1Nzk2fQ.QZAJTNvSuvzJkItTIuoSd3FUcgts9uFkWAyZ4cV2imI
 

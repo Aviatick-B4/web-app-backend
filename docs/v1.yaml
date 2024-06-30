@@ -1851,6 +1851,14 @@ paths:
   /bookings/prepare/{tripType}:
     post:
       summary: Prepare Booking
+      parameters:
+        - in: path
+          name: tripType
+          required: true
+          schema:
+            type: string
+            enum: [singletrip, roundtrip]
+          description: Booking berdasarkan trip type
       description: Memvalidasi dan mempersiapkan data booking
       tags:
         - Bookings
@@ -2069,7 +2077,9 @@ paths:
                               type:
                                 type: string
                                 example: Economy
-  /booking/complete:
+      security:
+      - bearerAuth: []
+  /bookings/complete:
     post:
       summary: Complete Booking
       description: Menyelesaikan proses booking
@@ -2997,6 +3007,9 @@ paths:
                                   logo_url:
                                     type: string
                                     example: 'https://ik.imagekit.io/aviatick/airlines/delta-airlines.jpg'
+                                  facility:
+                                    type: string
+                                    example: WiFi, Entertainment, Meal
                               seat_class:
                                 type: string
                                 example: First
@@ -3044,6 +3057,9 @@ paths:
                                   logo_url:
                                     type: string
                                     example: 'https://ik.imagekit.io/aviatick/airlines/united-airlines.jpg'
+                                  facility:
+                                    type: string
+                                    example: WiFi, Entertainment, Meal
                               seat_class:
                                 type: string
                                 example: Business

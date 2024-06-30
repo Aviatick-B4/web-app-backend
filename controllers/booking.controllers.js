@@ -853,28 +853,59 @@ module.exports = {
 
       const booking = await prisma.booking.findUnique({
         where: { id: parseInt(bookingId) },
-        include: {
+        select: {
+          id: true,
+          bookingCode: true,
+          status: true,
+          expiredPaid: true,
+          createdAt: true,
+          totalPrice: true,
+          bookingTax: true,
+          donation: true,
+          urlPayment: true,
           departureTicket: {
-            include: {
+            select: {
               flight: {
-                include: {
+                select: {
+                  flightNumber: true,
+                  departureTime: true,
+                  arrivalTime: true,
                   departureAirport: {
-                    include: {
-                      city: true,
+                    select: {
+                      name: true,
+                      city: {
+                        select: {
+                          name: true,
+                          cityIata: true,
+                        },
+                      },
                     },
                   },
                   arrivalAirport: {
-                    include: {
-                      city: true,
+                    select: {
+                      name: true,
+                      city: {
+                        select: {
+                          name: true,
+                          cityIata: true,
+                        },
+                      },
                     },
                   },
                 },
               },
               airplaneSeatClass: {
-                include: {
+                select: {
+                  type: true,
                   airplane: {
-                    include: {
-                      airline: true, // Include airline information
+                    select: {
+                      inFlightFacility: true,
+                      airline: {
+                        select: {
+                          name: true,
+                          logoUrl: true,
+                        },
+                      },
                     },
                   },
                 },
@@ -882,33 +913,61 @@ module.exports = {
             },
           },
           returnTicket: {
-            include: {
+            select: {
               flight: {
-                include: {
+                select: {
+                  flightNumber: true,
+                  departureTime: true,
+                  arrivalTime: true,
                   departureAirport: {
-                    include: {
-                      city: true,
+                    select: {
+                      name: true,
+                      city: {
+                        select: {
+                          name: true,
+                          cityIata: true,
+                        },
+                      },
                     },
                   },
                   arrivalAirport: {
-                    include: {
-                      city: true,
+                    select: {
+                      name: true,
+                      city: {
+                        select: {
+                          name: true,
+                          cityIata: true,
+                        },
+                      },
                     },
                   },
                 },
               },
               airplaneSeatClass: {
-                include: {
+                select: {
+                  type: true,
                   airplane: {
-                    include: {
-                      airline: true, // Include airline information
+                    select: {
+                      inFlightFacility: true,
+                      airline: {
+                        select: {
+                          name: true,
+                          logoUrl: true,
+                        },
+                      },
                     },
                   },
                 },
               },
             },
           },
-          passenger: true,
+          passenger: {
+            select: {
+              title: true,
+              fullName: true,
+              identityNumber: true,
+            },
+          },
         },
       });
 
@@ -920,13 +979,11 @@ module.exports = {
         });
       }
 
-      const passengers = booking.passenger.map((passenger) => {
-        return {
-          title: passenger.title,
-          fullname: passenger.fullName,
-          ktp: passenger.identityNumber,
-        };
-      });
+      const passengers = booking.passenger.map((passenger) => ({
+        title: passenger.title,
+        fullname: passenger.fullName,
+        ktp: passenger.identityNumber,
+      }));
 
       const result = {
         id: booking.id,
@@ -949,15 +1006,18 @@ module.exports = {
             arrival_time: booking.departureTicket.flight.arrivalTime,
             airline: {
               name: booking.departureTicket.airplaneSeatClass.airplane.airline
-                .name, // Nama maskapai
+                .name,
               logo_url:
                 booking.departureTicket.airplaneSeatClass.airplane.airline
-                  .logoUrl, // URL logo maskapai
+                  .logoUrl,
             },
-            seat_class: booking.departureTicket.airplaneSeatClass.type, // Kelas kursi pesawat
+            in_flight_facility:
+              booking.departureTicket.airplaneSeatClass.airplane
+                .inFlightFacility,
+            seat_class: booking.departureTicket.airplaneSeatClass.type,
             airport: {
-              departure: booking.departureTicket.flight.departureAirport.name, // Nama bandara keberangkatan
-              arrival: booking.departureTicket.flight.arrivalAirport.name, // Nama bandara kedatangan
+              departure: booking.departureTicket.flight.departureAirport.name,
+              arrival: booking.departureTicket.flight.arrivalAirport.name,
             },
           },
           return_flight: booking.returnTicket
@@ -975,15 +1035,18 @@ module.exports = {
                 arrival_time: booking.returnTicket.flight.arrivalTime,
                 airline: {
                   name: booking.returnTicket.airplaneSeatClass.airplane.airline
-                    .name, // Nama maskapai
+                    .name,
                   logo_url:
                     booking.returnTicket.airplaneSeatClass.airplane.airline
-                      .logoUrl, // URL logo maskapai
+                      .logoUrl,
                 },
-                seat_class: booking.returnTicket.airplaneSeatClass.type, // Kelas kursi pesawat
+                in_flight_facility:
+                  booking.returnTicket.airplaneSeatClass.airplane
+                    .inFlightFacility,
+                seat_class: booking.returnTicket.airplaneSeatClass.type,
                 airport: {
-                  departure: booking.returnTicket.flight.departureAirport.name, // Nama bandara keberangkatan
-                  arrival: booking.returnTicket.flight.arrivalAirport.name, // Nama bandara kedatangan
+                  departure: booking.returnTicket.flight.departureAirport.name,
+                  arrival: booking.returnTicket.flight.arrivalAirport.name,
                 },
               }
             : null,
