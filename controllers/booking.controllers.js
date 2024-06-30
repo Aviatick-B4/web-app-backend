@@ -47,6 +47,55 @@ module.exports = {
         donation,
       } = req.body;
 
+      if (
+        departureTicketId == null ||
+        (tripType === 'roundtrip' && returnTicketId == null) ||
+        adult == null ||
+        child == null ||
+        baby == null ||
+        !Array.isArray(passenger)
+      ) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'All fields are required in the request body',
+          data: null,
+        });
+      }
+
+      if (passenger.length === 0) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Passenger details cannot be empty',
+          data: null,
+        });
+      }
+
+      const requiredPassengerFields = [
+        'title',
+        'fullName',
+        'familyName',
+        'birthDate',
+        'nationality',
+        'identityType',
+        'issuingCountry',
+        'identityNumber',
+        'expiredDate',
+        'ageGroup',
+      ];
+
+      for (let i = 0; i < passenger.length; i++) {
+        const p = passenger[i];
+        for (const field of requiredPassengerFields) {
+          if (!p[field]) {
+            return res.status(400).json({
+              status: 'error',
+              message: `Field ${field} is required for each passenger`,
+              data: null,
+            });
+          }
+        }
+      }
+
       const totalPassengers = adult + child + baby;
 
       if (passenger.length !== totalPassengers) {
@@ -413,7 +462,7 @@ module.exports = {
                 include: {
                   airplane: {
                     include: {
-                      airline: true, // Include airline information
+                      airline: true,
                     },
                   },
                 },
@@ -440,7 +489,7 @@ module.exports = {
                 include: {
                   airplane: {
                     include: {
-                      airline: true, // Include airline information
+                      airline: true,
                     },
                   },
                 },
@@ -488,15 +537,18 @@ module.exports = {
             arrival_time: booking.departureTicket.flight.arrivalTime,
             airline: {
               name: booking.departureTicket.airplaneSeatClass.airplane.airline
-                .name, // Nama maskapai
+                .name,
               logo_url:
                 booking.departureTicket.airplaneSeatClass.airplane.airline
-                  .logoUrl, // URL logo maskapai
+                  .logoUrl,
+              facility:
+                booking.departureTicket.airplaneSeatClass.airplane
+                  .inFlightFacility,
             },
-            seat_class: booking.departureTicket.airplaneSeatClass.type, // Kelas kursi pesawat
+            seat_class: booking.departureTicket.airplaneSeatClass.type,
             airport: {
-              departure: booking.departureTicket.flight.departureAirport.name, // Nama bandara keberangkatan
-              arrival: booking.departureTicket.flight.arrivalAirport.name, // Nama bandara kedatangan
+              departure: booking.departureTicket.flight.departureAirport.name,
+              arrival: booking.departureTicket.flight.arrivalAirport.name,
             },
           },
           return_flight: booking.returnTicket
@@ -514,15 +566,18 @@ module.exports = {
                 arrival_time: booking.returnTicket.flight.arrivalTime,
                 airline: {
                   name: booking.returnTicket.airplaneSeatClass.airplane.airline
-                    .name, // Nama maskapai
+                    .name,
                   logo_url:
                     booking.returnTicket.airplaneSeatClass.airplane.airline
-                      .logoUrl, // URL logo maskapai
+                      .logoUrl,
+                  facility:
+                    booking.returnTicket.airplaneSeatClass.airplane
+                      .inFlightFacility,
                 },
-                seat_class: booking.returnTicket.airplaneSeatClass.type, // Kelas kursi pesawat
+                seat_class: booking.returnTicket.airplaneSeatClass.type,
                 airport: {
-                  departure: booking.returnTicket.flight.departureAirport.name, // Nama bandara keberangkatan
-                  arrival: booking.returnTicket.flight.arrivalAirport.name, // Nama bandara kedatangan
+                  departure: booking.returnTicket.flight.departureAirport.name,
+                  arrival: booking.returnTicket.flight.arrivalAirport.name,
                 },
               }
             : null,
