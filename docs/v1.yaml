@@ -1848,7 +1848,7 @@ paths:
       security:  
         - bearerAuth: []
 
-  /bookings/prepare:
+  /bookings/prepare/{tripType}:
     post:
       summary: Prepare Booking
       description: Memvalidasi dan mempersiapkan data booking
@@ -1861,62 +1861,25 @@ paths:
             schema:
               type: object
               properties:
-                tripType:
-                  type: string
-                  enum: [roundtrip, singletrip]
-                  example: roundtrip
                 departureTicketId:
                   type: integer
-                  example: 1
+                  example: 4
                 returnTicketId:
                   type: integer
-                  example: 2
+                  example: 98
                 adult:
                   type: integer
-                  example: 2
+                  example: 1
                 child:
                   type: integer
-                  example: 1
+                  example: 0
                 baby:
                   type: integer
                   example: 0
                 passenger:
                   type: array
                   items:
-                    type: object
-                    properties:
-                      title:
-                        type: string
-                        example: Mr
-                      fullName:
-                        type: string
-                        example: John Doe
-                      familyName:
-                        type: string
-                        example: Doe
-                      birthDate:
-                        type: string
-                        format: date
-                        example: 1990-01-01
-                      nationality:
-                        type: string
-                        example: US
-                      identityType:
-                        type: string
-                        example: passport
-                      issuingCountry:
-                        type: string
-                        example: US
-                      identityNumber:
-                        type: string
-                        example: 123456789
-                      expiredDate:
-                        type: string
-                        format: date
-                        example: 2030-01-01
-                      ageGroup:
-                        type: string
-                        example: adult
+                    $ref: "#/components/schemas/Passenger"
                 donation:
                   type: boolean
                   example: true
@@ -2106,7 +2069,7 @@ paths:
                               type:
                                 type: string
                                 example: Economy
-  /booking/complete:
+  /bookings/complete:
     post:
       summary: Complete Booking
       description: Menyelesaikan proses booking
