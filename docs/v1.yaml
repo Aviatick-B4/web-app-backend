@@ -958,78 +958,63 @@ paths:
       security:  
         - bearerAuth: [] 
   /auth/google:
-    post:
-      summary: Login by Google by Access Token
+    get:
       tags:
         - Auth
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                access_token:
-                  type: string
-                  example: ya29.a0AXooCgsJUw2LZB7y5pTKZK7NPEUM7ehfBs-6AaF6Jj3MsOPT1ih4NoemDxDBR2KETaS2YulZ62IuPcmtsE_04vOfsL85qhdKFysCDunvrGAdwh68huXM7_42leXW0tlKlk4hWO64nYNYqsJjVoYvaKCEVfqP-TOBmCDOaCgYKAVMSARISFQHGX2Mixra-LLm6wRoWlIQNS_wAyw0171
-              required:
-                - access_token
+      operationId: get-login-user-with-google
+      summary: Initiate Google OAuth 2.0 Authentication
+      description: Redirects the user to Google for authentication.
+      security:
+        - google_oauth: []
       responses:
-        '200':
-          description: Successfully login with Google
+        "302":
+          description: Redirect to Google for authentication.
+
+  /auth/google/callback:
+    get:
+      tags:
+        - Auth
+      operationId: get-login-user-with-google-callback
+      summary: Google OAuth 2.0 Callback
+      description: Handles the callback after successful Google authentication.
+      parameters:
+        - name: code
+          in: query
+          required: true
+          description: Authorization code received from Google.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: Successfully login with Google
-                  data:
-                    type: object
+                allOf:
+                  - type: object
                     properties:
-                      user:
+                      status:
+                        type: boolean
+                        example: true
+                      message:
+                        type: string
+                        example: "success"
+                  - type: object
+                    properties:
+                      err:
+                        type: string
+                        example: null
+                      data:
                         type: object
                         properties:
-                          id:
-                            type: integer
-                            example: 1
-                          email:
-                            type: string
-                            example: user@example.com
-                          fullName:
-                            type: string
-                            example: John Doe
-                          googleId:
-                            type: string
-                            example: 1234567890
-                          emailIsVerified:
-                            type: boolean
-                            example: true
-                      token:
-                        type: string
-                        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-        '400':
-          description: Input must be required
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Missing required field
-                  data:
-                    type: object
-                    nullable: true
-                    example: null
-
+                          user:
+                            allOf:
+                              - $ref: "#/components/schemas/User"
+                              - type: object
+                          token:
+                              type: integer
+                              example: 2304b11f-fd1f-425e-b481-ced5e3f349c6
+      
   /auth/forgot-password:
     post:
       tags:
