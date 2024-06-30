@@ -297,6 +297,59 @@ module.exports = {
       next(error);
     }
   },
+  LoginGoogle: async (req, res, next) => {
+    try {
+      // Destructures 'access_token' from the request body
+      const { access_token } = req.body;
+
+      if (!access_token) {
+        return res.status(400).json({
+          status: false,
+          message: 'Missing required field',
+          data: null,
+        });
+      }
+
+      // Gets Google user data using the access token
+      const googleData = await axios.get(
+        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${access_token}`
+      );
+
+      // Upserts user data in case the user already exists in the database
+      const user = await prisma.user.upsert({
+        where: {
+          email: googleData?.data?.email, // Uses the email from the Google data as a unique identifier
+        },
+        update: {
+          name: googleData?.data?.name, // Updates the user's name if they already exist
+        },
+        create: {
+          email: googleData?.data?.email,
+          fullName: googleData?.data?.name,
+          password: '',
+          emailIsVerified: true,
+        },
+      });
+
+      // Deletes the user's password from the user object for security reasons
+      delete user.password;
+
+      // Creates a JWT token for the user
+      const token = jwt.sign(user, JWT_SECRET);
+
+      // Returns a successful response with the user data and token
+      return res.status(200).json({
+        status: true,
+        message: 'Successfully login with Google',
+        data: {
+          user,
+          token,
+        },
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
   sendResetPasswordEmail: async (req, res, next) => {
     try {
       const { email } = req.body;
