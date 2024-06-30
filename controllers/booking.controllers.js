@@ -723,7 +723,7 @@ module.exports = {
         });
       }
 
-      const bookingQuery = prisma.booking.findUnique({
+      const booking = await prisma.booking.findUnique({
         where: { id: parseInt(bookingId) },
         select: {
           id: true,
@@ -843,8 +843,6 @@ module.exports = {
         },
       });
 
-      const booking = await bookingQuery;
-
       if (!booking) {
         return res.status(404).json({
           status: false,
@@ -853,13 +851,11 @@ module.exports = {
         });
       }
 
-      const passengers = booking.passenger.map((passenger) => {
-        return {
-          title: passenger.title,
-          fullname: passenger.fullName,
-          ktp: passenger.identityNumber,
-        };
-      });
+      const passengers = booking.passenger.map((passenger) => ({
+        title: passenger.title,
+        fullname: passenger.fullName,
+        ktp: passenger.identityNumber,
+      }));
 
       const result = {
         id: booking.id,
