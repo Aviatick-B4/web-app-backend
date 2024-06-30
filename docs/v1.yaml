@@ -1851,6 +1851,14 @@ paths:
   /bookings/prepare/{tripType}:
     post:
       summary: Prepare Booking
+      parameters:
+        - in: path
+          name: tripType
+          required: true
+          schema:
+            type: string
+            enum: [singletrip, roundtrip]
+          description: Booking berdasarkan trip type
       description: Memvalidasi dan mempersiapkan data booking
       tags:
         - Bookings
@@ -2069,6 +2077,8 @@ paths:
                               type:
                                 type: string
                                 example: Economy
+      security:
+      - bearerAuth: []
   /bookings/complete:
     post:
       summary: Complete Booking
