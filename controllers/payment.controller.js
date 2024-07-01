@@ -11,7 +11,7 @@ const {
 const { CLIENT_BASE_URL } = process.env;
 
 // Setting the environment (true for production, false for development)
-const isProduction =  false;
+const isProduction = false;
 
 let snap = new midtransClient.Snap({
   isProduction: isProduction,
@@ -90,7 +90,10 @@ module.exports = {
     try {
       const bookingId = Number(req.params.bookingId);
       const { paymentMethod } = req.body;
-      const paymentResponse = await createPaymentMidtrans(bookingId, paymentMethod);
+      const paymentResponse = await createPaymentMidtrans(
+        bookingId,
+        paymentMethod
+      );
       res.status(200).json(paymentResponse);
     } catch (error) {
       res.status(500).json({
