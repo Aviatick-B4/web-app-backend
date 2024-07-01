@@ -737,16 +737,20 @@ module.exports = {
 
       const paymentRequest = {
         params: { bookingId: newBooking.id },
-        body: { paymentMethod: 'midtrans' }, 
+        body: { paymentMethod: 'midtrans' },
       };
-      const paymentResponse = await createPaymentMidtrans(paymentRequest, res, next);
+      const paymentResponse = await createPaymentMidtrans(
+        paymentRequest,
+        res,
+        next
+      );
 
       return res.status(200).json({
         status: true,
         message: 'Success creating new Booking',
         data: {
           booking: result,
-          payment: paymentResponse.data ,
+          payment: paymentResponse.data,
         },
       });
     } catch (error) {
@@ -891,7 +895,7 @@ module.exports = {
     try {
       const { id: userId } = req.user;
       const { bookingId } = req.params;
-  
+
       if (!userId) {
         return res.status(400).json({
           status: false,
@@ -899,8 +903,8 @@ module.exports = {
           data: null,
         });
       }
-  
-      const booking = await prisma.booking.findUnique({
+
+      const bookingPromise = prisma.booking.findUnique({
         where: { id: parseInt(bookingId) },
         select: {
           id: true,
@@ -914,6 +918,7 @@ module.exports = {
           urlPayment: true,
           departureTicket: {
             select: {
+              id: true,
               flight: {
                 select: {
                   flightNumber: true,
@@ -963,6 +968,7 @@ module.exports = {
           },
           returnTicket: {
             select: {
+              id: true,
               flight: {
                 select: {
                   flightNumber: true,
@@ -1010,16 +1016,24 @@ module.exports = {
               },
             },
           },
-          passenger: {
-            select: {
-              title: true,
-              fullName: true,
-              identityNumber: true,
-            },
-          },
         },
       });
-  
+
+      // Fetch passenger details separately
+      const passengersPromise = prisma.passenger.findMany({
+        where: { bookingId: parseInt(bookingId) },
+        select: {
+          title: true,
+          fullName: true,
+          identityNumber: true,
+        },
+      });
+
+      const [booking, passengers] = await Promise.all([
+        bookingPromise,
+        passengersPromise,
+      ]);
+
       if (!booking) {
         return res.status(404).json({
           status: false,
@@ -1027,13 +1041,13 @@ module.exports = {
           data: null,
         });
       }
-  
-      const passengers = booking.passenger.map((passenger) => ({
+
+      const passengerDetails = passengers.map((passenger) => ({
         title: passenger.title,
         fullname: passenger.fullName,
         ktp: passenger.identityNumber,
       }));
-  
+
       const result = {
         id: booking.id,
         booking_code: booking.bookingCode,
@@ -1043,17 +1057,26 @@ module.exports = {
         flight_detail: {
           departure_flight: {
             flightNumber: booking.departureTicket.flight.flightNumber,
-            departure_city: booking.departureTicket.flight.departureAirport.city.name,
-            departure_city_iata: booking.departureTicket.flight.departureAirport.city.cityIata,
-            arrival_city: booking.departureTicket.flight.arrivalAirport.city.name,
-            arrival_city_iata: booking.departureTicket.flight.arrivalAirport.city.cityIata,
+            departure_city:
+              booking.departureTicket.flight.departureAirport.city.name,
+            departure_city_iata:
+              booking.departureTicket.flight.departureAirport.city.cityIata,
+            arrival_city:
+              booking.departureTicket.flight.arrivalAirport.city.name,
+            arrival_city_iata:
+              booking.departureTicket.flight.arrivalAirport.city.cityIata,
             departure_time: booking.departureTicket.flight.departureTime,
             arrival_time: booking.departureTicket.flight.arrivalTime,
             airline: {
-              name: booking.departureTicket.airplaneSeatClass.airplane.airline.name,
-              logo_url: booking.departureTicket.airplaneSeatClass.airplane.airline.logoUrl,
+              name: booking.departureTicket.airplaneSeatClass.airplane.airline
+                .name,
+              logo_url:
+                booking.departureTicket.airplaneSeatClass.airplane.airline
+                  .logoUrl,
             },
-            in_flight_facility: booking.departureTicket.airplaneSeatClass.airplane.inFlightFacility,
+            in_flight_facility:
+              booking.departureTicket.airplaneSeatClass.airplane
+                .inFlightFacility,
             seat_class: booking.departureTicket.airplaneSeatClass.type,
             airport: {
               departure: booking.departureTicket.flight.departureAirport.name,
@@ -1063,17 +1086,26 @@ module.exports = {
           return_flight: booking.returnTicket
             ? {
                 flightNumber: booking.returnTicket.flight.flightNumber,
-                departure_city: booking.returnTicket.flight.departureAirport.city.name,
-                departure_city_iata: booking.returnTicket.flight.departureAirport.city.cityIata,
-                arrival_city: booking.returnTicket.flight.arrivalAirport.city.name,
-                arrival_city_iata: booking.returnTicket.flight.arrivalAirport.city.cityIata,
+                departure_city:
+                  booking.returnTicket.flight.departureAirport.city.name,
+                departure_city_iata:
+                  booking.returnTicket.flight.departureAirport.city.cityIata,
+                arrival_city:
+                  booking.returnTicket.flight.arrivalAirport.city.name,
+                arrival_city_iata:
+                  booking.returnTicket.flight.arrivalAirport.city.cityIata,
                 departure_time: booking.returnTicket.flight.departureTime,
                 arrival_time: booking.returnTicket.flight.arrivalTime,
                 airline: {
-                  name: booking.returnTicket.airplaneSeatClass.airplane.airline.name,
-                  logo_url: booking.returnTicket.airplaneSeatClass.airplane.airline.logoUrl,
+                  name: booking.returnTicket.airplaneSeatClass.airplane.airline
+                    .name,
+                  logo_url:
+                    booking.returnTicket.airplaneSeatClass.airplane.airline
+                      .logoUrl,
                 },
-                in_flight_facility: booking.returnTicket.airplaneSeatClass.airplane.inFlightFacility,
+                in_flight_facility:
+                  booking.returnTicket.airplaneSeatClass.airplane
+                    .inFlightFacility,
                 seat_class: booking.returnTicket.airplaneSeatClass.type,
                 airport: {
                   departure: booking.returnTicket.flight.departureAirport.name,
@@ -1082,7 +1114,7 @@ module.exports = {
               }
             : null,
         },
-        passengers: passengers,
+        passengers: passengerDetails,
         price_detail: {
           total_price: booking.totalPrice,
           tax: booking.bookingTax,
@@ -1090,7 +1122,7 @@ module.exports = {
         },
         url_payment: booking.urlPayment,
       };
-  
+
       return res.status(200).json({
         status: true,
         message: 'Success getting booking detail',
