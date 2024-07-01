@@ -427,6 +427,15 @@ module.exports = {
         });
       }
 
+      const MIN_PASSWORD_LENGTH = 6;
+      if (password.length < MIN_PASSWORD_LENGTH) {
+        return res.status(400).json({
+          status: false,
+          message: `Field 'password' must have minimum of ${MIN_PASSWORD_LENGTH} characters`,
+          data: null,
+        });
+      }
+
       jwt.verify(token, process.env.JWT_SECRET_KEY, async (error, data) => {
         if (error) {
           return res.status(401).json({
@@ -497,6 +506,15 @@ module.exports = {
       return res.status(400).json({
         status: false,
         message: `Field 'oldPassword' do not match the current password`,
+        data: null,
+      });
+    }
+
+    const MIN_PASSWORD_LENGTH = 6;
+    if (newPassword.length < MIN_PASSWORD_LENGTH) {
+      return res.status(400).json({
+        status: false,
+        message: `Field 'newPassword' must have minimum of ${MIN_PASSWORD_LENGTH} characters`,
         data: null,
       });
     }
