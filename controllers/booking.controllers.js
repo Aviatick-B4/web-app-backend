@@ -284,10 +284,17 @@ module.exports = {
         },
       });
 
+      const paymentResponse = await createPaymentMidtrans(
+        newBooking.id,
+        'midtrans'
+      );
       return res.status(200).json({
         status: true,
         message: 'Success creating new Booking',
-        data: result,
+        data: {
+          booking: result,
+          payment: paymentResponse.data,
+        },
       });
     } catch (error) {
       next(error);
@@ -750,7 +757,7 @@ module.exports = {
         message: 'Success creating new Booking',
         data: {
           booking: result,
-          payment: paymentResponse.data,
+          payment: paymentResponse,
         },
       });
     } catch (error) {

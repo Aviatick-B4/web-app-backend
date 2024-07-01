@@ -19,92 +19,85 @@ let snap = new midtransClient.Snap({
   clientKey: isProduction ? PAYMENT_PROD_CLIENT_KEY : PAYMENT_DEV_CLIENT_KEY,
 });
 
+async function createPaymentMidtrans(bookingId, paymentMethod) {
+  try {
+    if (isNaN(bookingId)) {
+      throw new Error('Invalid booking ID');
+    }
+
+    if (!paymentMethod) {
+      throw new Error('Payment method is required');
+    }
+
+    const checkBook = await prisma.booking.findUnique({
+      where: { id: bookingId },
+      include: {
+        departureTicket: true,
+        returnTicket: true,
+        user: true,
+      },
+    });
+
+    if (!checkBook) {
+      throw new Error(`Booking Not Found With Id ${bookingId}`);
+    }
+
+    if (checkBook.status === 'PAID') {
+      throw new Error('Booking has already been paid');
+    }
+
+    const parameter = {
+      transaction_details: {
+        order_id: `BOOKING with ID ${checkBook.id}-${Date.now()}`,
+        gross_amount: checkBook.totalPrice,
+      },
+      credit_card: {
+        secure: true,
+      },
+      customer_details: {
+        first_name: checkBook.user.fullName,
+        email: checkBook.user.email,
+        phone: checkBook.user.phoneNumber,
+      },
+      callback_url: {
+        finish: `${CLIENT_BASE_URL}/success`,
+        cancel: `${CLIENT_BASE_URL}/error`,
+      },
+    };
+
+    const transaction = await snap.createTransaction(parameter);
+
+    await prisma.booking.update({
+      where: { id: bookingId },
+      data: { urlPayment: transaction.redirect_url },
+    });
+
+    return {
+      status: true,
+      message: 'Token retrieved successfully',
+      data: transaction,
+    };
+  } catch (error) {
+    console.error('Token creation failed:', error);
+    throw new Error('Server error during token creation');
+  }
+}
+
 module.exports = {
-  createPaymentMidtrans: async (req, res, next) => {
+  createPaymentMidtrans,
+
+  createPaymentMidtransHandler: async (req, res, next) => {
     try {
       const bookingId = Number(req.params.bookingId);
-      if (isNaN(bookingId)) {
-        return res.status(400).json({
-          status: false,
-          message: 'Invalid booking ID',
-          data: null,
-        });
-      }
-
       const { paymentMethod } = req.body;
-      if (!paymentMethod) {
-        return res.status(400).json({
-          status: false,
-          message: 'Payment method is required',
-          data: null,
-        });
-      }
-
-      const checkBook = await prisma.booking.findUnique({
-        where: { id: bookingId },
-        include: {
-          departureTicket: true,
-          returnTicket: true,
-          user: true,
-        },
-      });
-
-      if (!checkBook) {
-        return res.status(404).json({
-          status: false,
-          message: `Booking Not Found With Id ${bookingId}`,
-          data: null,
-        });
-      }
-
-      if (checkBook.status === 'PAID') {
-        return res.status(400).json({
-          status: false,
-          message: 'Booking has already been paid',
-          data: null,
-        });
-      }
-
-      const parameter = {
-        transaction_details: {
-          order_id: `BOOKING with ID ${checkBook.id}-${Date.now()}`,
-          gross_amount: checkBook.totalPrice,
-        },
-        credit_card: {
-          secure: true,
-        },
-        customer_details: {
-          first_name: checkBook.user.fullName,
-          email: checkBook.user.email,
-          phone: checkBook.user.phoneNumber,
-        },
-        callback_url: {
-          finish: `${CLIENT_BASE_URL}/success`,
-          cancel: `${CLIENT_BASE_URL}/error`,
-        },
-      };
-
-      const transaction = await snap.createTransaction(parameter);
-
-      await prisma.booking.update({
-        where: { id: bookingId },
-        data: { urlPayment: transaction.redirect_url },
-      });
-
-      return {
-        status: true,
-        message: 'Token retrieved successfully',
-        data: transaction,
-      };
+      const paymentResponse = await createPaymentMidtrans(bookingId, paymentMethod);
+      res.status(200).json(paymentResponse);
     } catch (error) {
-      console.error('Token creation failed:', error);
-      if (!res.headersSent) {
-        res.status(500).json({
-          status: false,
-          message: 'Server error during token creation',
-          data: null,
-        });
-      }
+      res.status(500).json({
+        status: false,
+        message: error.message,
+        data: null,
+      });
     }
   },
 
