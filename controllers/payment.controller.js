@@ -11,7 +11,7 @@ const {
 const { CLIENT_BASE_URL } = process.env;
 
 // Setting the environment (true for production, false for development)
-const isProduction = false;
+const isProduction =  ;
 
 let snap = new midtransClient.Snap({
   isProduction: isProduction,
