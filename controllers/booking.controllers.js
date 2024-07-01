@@ -723,7 +723,7 @@ module.exports = {
         });
       }
 
-      const booking = await prisma.booking.findUnique({
+      const bookingPromise = prisma.booking.findUnique({
         where: { id: parseInt(bookingId) },
         select: {
           id: true,
@@ -737,6 +737,7 @@ module.exports = {
           urlPayment: true,
           departureTicket: {
             select: {
+              id: true,
               flight: {
                 select: {
                   flightNumber: true,
@@ -786,6 +787,7 @@ module.exports = {
           },
           returnTicket: {
             select: {
+              id: true,
               flight: {
                 select: {
                   flightNumber: true,
@@ -833,15 +835,23 @@ module.exports = {
               },
             },
           },
-          passenger: {
-            select: {
-              title: true,
-              fullName: true,
-              identityNumber: true,
-            },
-          },
         },
       });
+
+      // Fetch passenger details separately
+      const passengersPromise = prisma.passenger.findMany({
+        where: { bookingId: parseInt(bookingId) },
+        select: {
+          title: true,
+          fullName: true,
+          identityNumber: true,
+        },
+      });
+
+      const [booking, passengers] = await Promise.all([
+        bookingPromise,
+        passengersPromise,
+      ]);
 
       if (!booking) {
         return res.status(404).json({
@@ -851,7 +861,7 @@ module.exports = {
         });
       }
 
-      const passengers = booking.passenger.map((passenger) => ({
+      const passengerDetails = passengers.map((passenger) => ({
         title: passenger.title,
         fullname: passenger.fullName,
         ktp: passenger.identityNumber,
@@ -923,7 +933,7 @@ module.exports = {
               }
             : null,
         },
-        passengers: passengers,
+        passengers: passengerDetails,
         price_detail: {
           total_price: booking.totalPrice,
           tax: booking.bookingTax,
