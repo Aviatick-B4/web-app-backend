@@ -90,11 +90,11 @@ module.exports = {
         data: { urlPayment: transaction.redirect_url },
       });
 
-      res.status(200).json({
+      return {
         status: true,
         message: 'Token retrieved successfully',
         data: transaction,
-      });
+      };
     } catch (error) {
       console.error('Token creation failed:', error);
       if (!res.headersSent) {
