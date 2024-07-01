@@ -1,30 +1,58 @@
 ##############################################
 ################## LOCAL ####################
 ##############################################
-POST http://localhost:3000/api/v1/bookings/new-booking
+POST http://localhost:3000/api/v1/bookings/new-booking/singletrip
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MDA5ODEwfQ.sWTENa76Pugpf0kGItlsbpFztYLn3E75t6CBJmfT7RQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MjM1Nzk2fQ.QZAJTNvSuvzJkItTIuoSd3FUcgts9uFkWAyZ4cV2imI
 
 {
-    "flightId": 6,
-    "adult": 1,
-    "child": 0,
-    "baby": 0,
-    "seatClass": "Business",
-    "passenger": [
-        {
-            "title": "Mr",
-            "fullName": "By",
-            "familyName": "Ewok",
-            "birthDate": "1980-01-01T00:00:00.000Z",
-            "nationality": "Indonesia",
-            "identityType": "KTP",
-            "issuingCountry": "Indonesia",
-            "identityNumber": "123456123",
-            "expiredDate": "2025-01-01T00:00:00.000Z",
-            "ageGroup": "ADULT"
-        }
-    ]
+  "departureTicketId": 10,
+  "adult": 1,
+  "child": 0,
+  "baby": 0,
+  "passenger": [
+    {
+      "title": "Mr",
+      "fullName": "John Doe",
+      "familyName": "Doe",
+      "birthDate": "1980-01-01T00:00:00.000Z",
+      "nationality": "US",
+      "identityType": "Passport",
+      "issuingCountry": "US",
+      "identityNumber": "123456789",
+      "expiredDate": "2025-01-01T00:00:00.000Z",
+      "ageGroup": "ADULT"
+    }
+  ],
+  "donation": true
+}
+
+### ROUND TRIP
+POST http://localhost:3000/api/v1/bookings/new-booking/roundtrip
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MjM1Nzk2fQ.QZAJTNvSuvzJkItTIuoSd3FUcgts9uFkWAyZ4cV2imI
+
+{
+  "departureTicketId": 4,
+  "returnTicketId": 98,
+  "adult": 1,
+  "child": 0,
+  "baby": 0,
+  "passenger": [
+    {
+      "title": "Mr",
+      "fullName": "Kibow",
+      "familyName": "Robawa",
+      "birthDate": "1980-01-01T00:00:00.000Z",
+      "nationality": "US",
+      "identityType": "Passport",
+      "issuingCountry": "US",
+      "identityNumber": "345123257648456",
+      "expiredDate": "2025-01-01T00:00:00.000Z",
+      "ageGroup": "ADULT"
+    }
+  ],
+  "donation": false
 }
 
 ### login
@@ -36,35 +64,35 @@ Content-Type: application/json
     "password": "123456"
 }
 
-### GET ALL 
-GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history
-
 ### GET ALL BOOKING HISTORY 
 GET http://localhost:3000/api/v1/bookings/booking-history
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4NzE4MjY0fQ.EnWyfzgzq1ybgq14qS3bxJFTBVMp62y2GQvZMVGpmz8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MjM1Nzk2fQ.QZAJTNvSuvzJkItTIuoSd3FUcgts9uFkWAyZ4cV2imI
 
-### GET BOOKING HISTORY BY BOOKING ID
-GET http://localhost:3000/api/v1/bookings/booking-history/7
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4NzE4MjY0fQ.EnWyfzgzq1ybgq14qS3bxJFTBVMp62y2GQvZMVGpmz8
+### GET BOOKING DETAIL BY BOOKING ID
+GET http://localhost:3000/api/v1/bookings/booking-history/184
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MjM1Nzk2fQ.QZAJTNvSuvzJkItTIuoSd3FUcgts9uFkWAyZ4cV2imI
 
 ### GET BOOKING BY BOOKING STATUS
 GET http://localhost:3000/api/v1/bookings/booking-history?status=UNPAID
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4NzE4MjY0fQ.EnWyfzgzq1ybgq14qS3bxJFTBVMp62y2GQvZMVGpmz8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MjM1Nzk2fQ.QZAJTNvSuvzJkItTIuoSd3FUcgts9uFkWAyZ4cV2imI
 
 ### GET BOOKING BY BOOKING CODE
-GET http://localhost:3000/api/v1/bookings/booking-history?search=CB1D829851
+GET http://localhost:3000/api/v1/bookings/booking-history?search=736C101A79
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4NzE4MjY0fQ.EnWyfzgzq1ybgq14qS3bxJFTBVMp62y2GQvZMVGpmz8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MjM1Nzk2fQ.QZAJTNvSuvzJkItTIuoSd3FUcgts9uFkWAyZ4cV2imI
 
 ### GET BOOKING BY BOOKING ID
-GET http://localhost:3000/api/v1/bookings/booking-history/2
+GET http://localhost:3000/api/v1/bookings/booking-history/47
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE4NzE4MjY0fQ.EnWyfzgzq1ybgq14qS3bxJFTBVMp62y2GQvZMVGpmz8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MjM1Nzk2fQ.QZAJTNvSuvzJkItTIuoSd3FUcgts9uFkWAyZ4cV2imI
 
 ### GET BOOKING BY CREATED AT BOOKING
-GET http://localhost:3000/api/v1/bookings/booking-history?date=2024-06-03
+GET http://localhost:3000/api/v1/bookings/booking-history?date=2024-06-24
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJzZW1lbmEgbWVuYSIsImZhbWlseU5hbWUiOm51bGwsInBob25lTnVtYmVyIjoiMDMyMTIzNDY4NDY0IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MjM1Nzk2fQ.QZAJTNvSuvzJkItTIuoSd3FUcgts9uFkWAyZ4cV2imI
 
 ### REGISTER USER
 POST http://localhost:3000/api/v1/auth/register
@@ -83,7 +111,7 @@ Content-Type: application/json
 
 {
     "email": "21082010208@student.upnjatim.ac.id",
-    "otp": "353649"
+    "otp": "631018"
 }
 
 ### RESEND 
@@ -95,7 +123,7 @@ Content-Type: application/json
 }
 
 ### LOGIN USER
-POST http://localhost:3000/api/v1/auth/login
+POST https://aviatick-backend-git-development-aviaticks-projects.vercel.app/api/v1/auth/login
 Content-Type: application/json
 
 {
@@ -188,60 +216,37 @@ GET http://localhost:3000/api/v1/tickets?promo=true
 
 
 ### CREATE BOOKING
-POST https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/new-booking
+POST https://aviatick-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/new-booking/singleTrip
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbE5hbWUiOiJLaWJvdyBBamEiLCJmYW1pbHlOYW1lIjpudWxsLCJwaG9uZU51bWJlciI6IjgxMjEyMzQ1Njc4IiwiZW1haWwiOiIyMTA4MjAxMDIwOEBzdHVkZW50LnVwbmphdGltLmFjLmlkIiwiaWRlbnRpdHlUeXBlIjpudWxsLCJpZGVudGl0eU51bWJlciI6bnVsbCwibmF0aW9uYWxpdHkiOm51bGwsImVtYWlsSXNWZXJpZmllZCI6dHJ1ZSwiZ29vZ2xlSWQiOm51bGwsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzE5MzA2Njk1fQ.6exslQ_W6rGbAIwVvaNKG-fJR0TEMsfCd3EMGuCqKt8
 
 {
-    "userId": 2,
-    "flightId": 1,
-    "adult": 2,
-    "child": 0,
-    "baby": 1,
-    "seatClass": "Economy",
-    "passenger": [
-        {
-            "title": "Mr",
-            "fullName": "Kibow",
-            "familyName": "Ewok",
-            "birthDate": "1980-01-01T00:00:00.000Z",
-            "nationality": "Indonesia",
-            "identityType": "KTP",
-            "issuingCountry": "Indonesia",
-            "identityNumber": "123456123",
-            "expiredDate": "2025-01-01T00:00:00.000Z",
-            "ageGroup": "ADULT"
-        },
-        {
-            "title": "Mrs",
-            "fullName": "Puan",
-            "familyName": "Maharani",
-            "birthDate": "1985-02-01T00:00:00.000Z",
-            "nationality": "Indonesia",
-            "identityType": "KTP",
-            "issuingCountry": "Indonesia",
-            "identityNumber": "987654123",
-            "expiredDate": "2025-01-01T00:00:00.000Z",
-            "ageGroup": "ADULT"
-        },
-        {
-            "title": "Baby",
-            "fullName": "Iwan",
-            "familyName": "Aja",
-            "birthDate": "2024-01-01T00:00:00.000Z",
-            "nationality": "Indonesia",
-            "identityType": "KTP",
-            "issuingCountry": "Indonesia",
-            "identityNumber": "000000000",
-            "expiredDate": "2025-01-01T00:00:00.000Z",
-            "ageGroup": "BABY"
-        }
-    ]
+  "departureTicketId": 1,
+  "returnTicketId": 98,
+  "adult": 1,
+  "child": 0,
+  "baby": 0,
+  "passenger": [
+    {
+      "title": "Mr.",
+      "fullName": "John Doe",
+      "familyName": "Doe",
+      "birthDate": "1980-01-01T00:00:00.000Z",
+      "nationality": "USA",
+      "identityType": "Passport",
+      "issuingCountry": "USA",
+      "identityNumber": "123456789",
+      "expiredDate": "2025-01-01T00:00:00.000Z",
+      "ageGroup": "ADULT"
+    }
+  ],
+  "donation": true
 }
 
 ### GET ALL 
-GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history
+GET https://aviatick-backend-weld.vercel.app/api/v1/bookings/booking-history
 
 ### GET DETAIL 
-GET https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history/3
+GET https://aviatick-backend-weld.vercel.app/api/v1/bookings/booking-history/3
 
 

@@ -1,6 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-const cron = require('node-cron');
 
 // Fungsi untuk menghasilkan angka acak dalam rentang tertentu dan membulatkannya ke kelipatan seratus ribu
 function getRandomPrice(min, max) {
@@ -20,7 +19,7 @@ async function addFlight() {
     return new Date(new Date().getTime() + millisecondsOffset).toISOString();
   }
 
-//   convert to UTC+7
+  //   convert to UTC+7
   const departureTimeUTC7 = getTimeOffset(7);
 
   const flightsData = [
@@ -1153,30 +1152,23 @@ async function addFlight() {
   ];
 
   try {
-    for (const flight of flightsData) {
-      const newFlight = await prisma.flight.create({ data: flight });
-
-      const ticketPromises = ticketClasses.map((ticketClass) =>
-        prisma.ticket.create({
-          data: {
-            price: ticketClass.price,
-            flightId: newFlight.id,
-            airplaneSeatClassId: ticketClass.classId,
-          },
-        })
-      );
-
-      const newTickets = await Promise.all(ticketPromises);
-    }
+    const newFlights = await prisma.flight.createManyAndReturn({
+      data: flightsData,
+    });
+    const tickets = [];
+    newFlights.forEach((flight) => {
+      ticketClasses.forEach((ticketClass) => {
+        tickets.push({
+          price: ticketClass.price,
+          flightId: flight.id,
+          airplaneSeatClassId: ticketClass.classId,
+        });
+      });
+    });
+    await prisma.ticket.createMany({ data: tickets });
   } catch (error) {
     console.error('Error adding flight and tickets:', error);
   }
 }
-
-const flightCron = cron.schedule('0 0 * * *', addFlight, {
-  scheduled: false,
-  timezone: 'Asia/Jakarta',
-});
-
 
 module.exports = { addFlight };
