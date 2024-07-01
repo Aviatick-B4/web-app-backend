@@ -8,6 +8,7 @@ const {
   PAYMENT_PROD_CLIENT_KEY,
   PAYMENT_PROD_SERVER_KEY,
 } = process.env;
+const { CLIENT_BASE_URL } = process.env;
 
 // Setting the environment (true for production, false for development)
 const isProduction = false;
@@ -78,8 +79,8 @@ module.exports = {
           phone: checkBook.user.phoneNumber,
         },
         callback_url: {
-          finish: `https://aviatick.vercel.app/success`,
-          cancel: `https://aviatick.vercel.app/error`,
+          finish: `${CLIENT_BASE_URL}/success`,
+          cancel: `${CLIENT_BASE_URL}/error`,
         },
       };
 
