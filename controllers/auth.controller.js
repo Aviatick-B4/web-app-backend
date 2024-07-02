@@ -31,6 +31,15 @@ module.exports = {
         });
       }
 
+      const MIN_PASSWORD_LENGTH = 6;
+      if (password.length < MIN_PASSWORD_LENGTH) {
+        return res.status(400).json({
+          status: false,
+          message: `Password must have minimum of ${MIN_PASSWORD_LENGTH} characters`,
+          data: null,
+        });
+      }
+
       let encryptedPassword = await generateHash(password);
 
       let user = await prisma.user.create({

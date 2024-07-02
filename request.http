@@ -99,8 +99,8 @@ POST http://localhost:3000/api/v1/auth/register
 Content-Type: application/json
 
 {
-    "fullName": "semena mena",
-    "email": "21082010208@student.upnjatim.ac.id",
+    "fullName": "segitu gitu",
+    "email": "uqebwqozmpye@nespressopixie.com",
     "phoneNumber": "032123468464",
     "password": "123456"
 }
@@ -110,8 +110,8 @@ POST http://localhost:3000/api/v1/auth/verify-otp
 Content-Type: application/json
 
 {
-    "email": "21082010208@student.upnjatim.ac.id",
-    "otp": "631018"
+    "email": "uqebwqozmpye@nespressopixie.com",
+    "otp": "451025"
 }
 
 ### RESEND 
