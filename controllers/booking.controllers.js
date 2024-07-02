@@ -323,6 +323,7 @@ module.exports = {
           message: `Successful in making a new booking, complete it before ${result.paid_before}`,
           type: 'transaction',
           userId: userId,
+          bookingId: newBooking.id,
           createdAt: convertDate(new Date()),
         },
       });
