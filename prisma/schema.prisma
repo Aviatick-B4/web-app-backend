@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
@@ -34,24 +34,25 @@ enum Role {
 }
 
 model Booking {
-  id                Int         @id @default(autoincrement())
-  bookingCode       String      @map("booking_code")
-  status            String      @default("UNPAID")
-  expiredPaid       DateTime    @map("expired_paid")
-  createdAt         DateTime    @map("created_at")
-  totalPrice        Float       @map("total_price")
-  bookingTax        Float       @map("booking_tax")
-  donation          Float       @default(0)
-  urlPayment        String?     @map("url_payment")
-  departureTicket   Ticket      @relation("departureTicket", fields: [departureTicketId], references: [id])
-  departureTicketId Int         @map("departure_ticket_id")
-  returnTicket      Ticket?     @relation("returnTicket", fields: [returnTicketId], references: [id])
-  returnTicketId    Int?        @map("return_ticket_id")
-  user              User        @relation(fields: [userId], references: [id])
-  userId            Int         @map("user_id")
-  isRoundTrip       Boolean     @default(false) @map("is_round_trip")
+  id                Int            @id @default(autoincrement())
+  bookingCode       String         @map("booking_code")
+  status            String         @default("UNPAID")
+  expiredPaid       DateTime       @map("expired_paid")
+  createdAt         DateTime       @map("created_at")
+  totalPrice        Float          @map("total_price")
+  bookingTax        Float          @map("booking_tax")
+  donation          Float          @default(0)
+  urlPayment        String?        @map("url_payment")
+  departureTicket   Ticket         @relation("departureTicket", fields: [departureTicketId], references: [id])
+  departureTicketId Int            @map("departure_ticket_id")
+  returnTicket      Ticket?        @relation("returnTicket", fields: [returnTicketId], references: [id])
+  returnTicketId    Int?           @map("return_ticket_id")
+  user              User           @relation(fields: [userId], references: [id])
+  userId            Int            @map("user_id")
+  isRoundTrip       Boolean        @default(false) @map("is_round_trip")
   passenger         Passenger[]
   Payment           Payment[]
+  Notification      Notification[]
 
   @@map("bookings")
 }
@@ -74,6 +75,8 @@ model Notification {
   createdAt DateTime          @map("created_at")
   user      User              @relation(fields: [userId], references: [id])
   userId    Int               @map("user_id")
+  booking   Booking?          @relation(fields: [bookingId], references: [id])
+  bookingId Int?              @map("booking_id")
 
   @@map("notifications")
 }
