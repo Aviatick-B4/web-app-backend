@@ -4,6 +4,7 @@ const { generateHash, compareHash } = require('../libs/bcrypt');
 const sendEmail = require('../utils/sendEmail');
 const getRenderedHtml = require('../utils/getRenderedHtml');
 const otp = require('../utils/generateOtp');
+const separateName = require('../utils/separateName');
 const axios = require('axios');
 const prisma = new PrismaClient();
 const { JWT_SECRET_KEY } = process.env;
@@ -40,11 +41,22 @@ module.exports = {
         });
       }
 
+      const MIN_PASSWORD_LENGTH = 6;
+      if (password.length < MIN_PASSWORD_LENGTH) {
+        return res.status(400).json({
+          status: false,
+          message: `Password must have minimum of ${MIN_PASSWORD_LENGTH} characters`,
+          data: null,
+        });
+      }
+
       let encryptedPassword = await generateHash(password);
+      const { firstName, familyName } = separateName(fullName);
 
       let user = await prisma.user.create({
         data: {
-          fullName,
+          fullName: firstName,
+          familyName,
           phoneNumber,
           email,
           password: encryptedPassword,
@@ -326,9 +338,7 @@ module.exports = {
 
       // Extracts the full name and family name from the Google data
       const fullName = googleData?.data?.name;
-      const nameParts = fullName.split(' ');
-      const familyName = nameParts.length > 1 ? nameParts.pop() : '';
-      const firstName = nameParts.join(' ');
+      const { firstName, familyName } = separateName(fullName);
 
       // Upserts user data in case the user already exists in the database
       const user = await prisma.user.upsert({
@@ -394,7 +404,7 @@ module.exports = {
         });
       }
 
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY);
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, { expiresIn: '30m' });
       const baseUrl = process.env.CLIENT_BASE_URL;
       const html = getRenderedHtml('resetPasswordEmail', {
         name: user.fullName,
@@ -436,11 +446,22 @@ module.exports = {
         });
       }
 
-      jwt.verify(token, process.env.JWT_SECRET_KEY, async (error, data) => {
+      const MIN_PASSWORD_LENGTH = 6;
+      if (password.length < MIN_PASSWORD_LENGTH) {
+        return res.status(400).json({
+          status: false,
+          message: `Field 'password' must have minimum of ${MIN_PASSWORD_LENGTH} characters`,
+          data: null,
+        });
+      }
+
+      jwt.verify(token, process.env.JWT_SECRET_KEY, async (error, data) => {        
         if (error) {
-          return res.status(401).json({
+          return res.status(400).json({
             status: false,
-            message: 'Unauthorized',
+            message: error.name === 'TokenExpiredError'
+              ? 'Token is expired'
+              : `Invalid token: ${error.message}`,
             data: null,
           });
         }
@@ -506,6 +527,15 @@ module.exports = {
       return res.status(400).json({
         status: false,
         message: `Field 'oldPassword' do not match the current password`,
+        data: null,
+      });
+    }
+
+    const MIN_PASSWORD_LENGTH = 6;
+    if (newPassword.length < MIN_PASSWORD_LENGTH) {
+      return res.status(400).json({
+        status: false,
+        message: `Field 'newPassword' must have minimum of ${MIN_PASSWORD_LENGTH} characters`,
         data: null,
       });
     }
@@ -599,20 +629,12 @@ module.exports = {
         });
       }
 
-      const nameParts = fullName.split(' ');
-      let familyName = '';
-      let firstName = fullName
-      
-      if(nameParts.length > 1){
-        familyName = nameParts.pop();
-        firstName = nameParts.join(' ');
-      }
-
+      const { firstName, familyName } = separateName(fullName);
       const updatedUser = await prisma.user.update({
         where: { id },
         data: {
           fullName: firstName,
-          familyName: familyName || null,
+          familyName,
           phoneNumber,
           identityType,
           identityNumber,

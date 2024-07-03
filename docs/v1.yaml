@@ -894,9 +894,6 @@ paths:
                 fullName:
                   type: string
                   example: Shonny
-                familyName:
-                  type: string
-                  example: Wakwaw
                 phoneNumber:
                   type: string
                   example: 123456789
@@ -1450,10 +1447,10 @@ paths:
                         properties:
                           next:
                             type: string
-                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets?page=3&limit=10&promo=true
+                            example: https://https://aviatick-backend-weld.vercel.app/api/v1/tickets?page=3&limit=10&promo=true
                           prev:
                             type: string
-                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets/?page=1&limit=10&promo=true
+                            example: https://https://aviatick-backend-weld.vercel.app/api/v1/tickets/?page=1&limit=10&promo=true
                           total:
                             type: integer
                             example: 50
@@ -1585,10 +1582,10 @@ paths:
                         properties:
                           next:
                             type: string
-                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets?limit=10&page=4&from=BCN&to=RIO&departure=2024-06-03&passengers=2&seat_class=Economy
+                            example: https://aviatick-backend-weld.vercel.app/api/v1/tickets/search?limit=10&page=4&from=BCN&to=RIO&departure=2024-06-03&passengers=2&seat_class=Economy
                           prev:
                             type: string
-                            example: https://web-app-backend-git-development-aviaticks-projects.vercel.app/api/v1/tickets?limit=10&page=2&from=BCN&to=RIO&departure=2024-06-03&passengers=2&seat_class=Economy
+                            example: https://aviatick-backend-weld.vercel.app/api/v1/tickets/search?limit=10&page=2&from=BCN&to=RIO&departure=2024-06-03&passengers=2&seat_class=Economy
                           total:
                             type: integer
                             example: 50
@@ -1878,7 +1875,7 @@ paths:
                               example: Mr
                             fullName:
                               type: string
-                              example: John Doe
+                              example: John
                             familyName:
                               type: string
                               example: Doe
@@ -2064,9 +2061,6 @@ paths:
                       fullName:
                         type: string
                         example: John Doe
-                      familyName:
-                        type: string
-                        example: Doe
                       birthDate:
                         type: string
                         format: date

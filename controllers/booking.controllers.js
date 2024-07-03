@@ -3,6 +3,7 @@ const prisma = new PrismaClient();
 const crypto = require('crypto');
 const { convertDate } = require('../utils/formatedDate');
 const { createPaymentMidtrans } = require('../controllers/payment.controller');
+const separateName = require('../utils/separateName');
 
 module.exports = {
   prepareBooking: async (req, res, next) => {
@@ -74,7 +75,6 @@ module.exports = {
       const requiredPassengerFields = [
         'title',
         'fullName',
-        'familyName',
         'birthDate',
         'nationality',
         'identityType',
@@ -249,18 +249,21 @@ module.exports = {
           donation,
           createdAt,
           passenger: {
-            create: passenger.map((p) => ({
-              title: p.title,
-              fullName: p.fullName,
-              familyName: p.familyName,
-              birthDate: p.birthDate,
-              nationality: p.nationality,
-              identityType: p.identityType,
-              issuingCountry: p.issuingCountry,
-              identityNumber: p.identityNumber,
-              expiredDate: p.expiredDate,
-              ageGroup: p.ageGroup,
-            })),
+            create: passenger.map((p) => {
+              const { firstName, familyName } = separateName(p.fullName);
+              return {
+                title: p.title,
+                fullName: firstName,
+                familyName: familyName,
+                birthDate: p.birthDate,
+                nationality: p.nationality,
+                identityType: p.identityType,
+                issuingCountry: p.issuingCountry,
+                identityNumber: p.identityNumber,
+                expiredDate: p.expiredDate,
+                ageGroup: p.ageGroup,
+              }
+            }),
           },
         },
         include: { passenger: true },
