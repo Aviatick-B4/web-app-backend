@@ -4,6 +4,7 @@ const { generateHash, compareHash } = require('../libs/bcrypt');
 const sendEmail = require('../utils/sendEmail');
 const getRenderedHtml = require('../utils/getRenderedHtml');
 const otp = require('../utils/generateOtp');
+const separateName = require('../utils/separateName');
 const axios = require('axios');
 const prisma = new PrismaClient();
 const { JWT_SECRET_KEY } = process.env;
@@ -41,10 +42,12 @@ module.exports = {
       }
 
       let encryptedPassword = await generateHash(password);
+      const { firstName, familyName } = separateName(fullName);
 
       let user = await prisma.user.create({
         data: {
-          fullName,
+          fullName: firstName,
+          familyName,
           phoneNumber,
           email,
           password: encryptedPassword,
@@ -326,9 +329,7 @@ module.exports = {
 
       // Extracts the full name and family name from the Google data
       const fullName = googleData?.data?.name;
-      const nameParts = fullName.split(' ');
-      const familyName = nameParts.length > 1 ? nameParts.pop() : '';
-      const firstName = nameParts.join(' ');
+      const { firstName, familyName } = separateName(fullName);
 
       // Upserts user data in case the user already exists in the database
       const user = await prisma.user.upsert({
@@ -568,7 +569,6 @@ module.exports = {
       const { id } = req.user;
       const {
         fullName,
-        familyName,
         phoneNumber,
         identityType,
         identityNumber,
@@ -587,10 +587,11 @@ module.exports = {
         });
       }
 
+      const { firstName, familyName } = separateName(fullName);
       const updatedUser = await prisma.user.update({
         where: { id },
         data: {
-          fullName,
+          fullName: firstName,
           familyName,
           phoneNumber,
           identityType,
