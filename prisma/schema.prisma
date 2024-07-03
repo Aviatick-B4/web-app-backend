@@ -205,19 +205,19 @@ model Promo {
 }
 
 model Passenger {
-  id             Int      @id @default(autoincrement())
+  id             Int       @id @default(autoincrement())
   title          String
-  fullName       String   @map("full_name")
-  familyName     String   @map("family_name")
-  birthDate      DateTime @map("birth_date") @db.Date
+  fullName       String    @map("full_name")
+  familyName     String?   @map("family_name")
+  birthDate      DateTime  @map("birth_date") @db.Date
   nationality    String
-  identityType   String   @map("identity_type")
-  issuingCountry String   @map("issuing_country")
-  identityNumber String   @map("identity_number")
-  expiredDate    DateTime @map("expired_date")
-  ageGroup       AgeGroup @map("age_group")
-  booking        Booking  @relation(fields: [bookingId], references: [id])
-  bookingId      Int      @map("booking_id")
+  identityType   String?   @map("identity_type")
+  issuingCountry String?   @map("issuing_country")
+  identityNumber String?   @map("identity_number")
+  expiredDate    DateTime? @map("expired_date")
+  ageGroup       AgeGroup  @map("age_group")
+  booking        Booking   @relation(fields: [bookingId], references: [id])
+  bookingId      Int       @map("booking_id")
 
   @@map("passengers")
 }
