@@ -72,38 +72,52 @@ module.exports = {
         });
       }
 
-      const requiredPassengerFields = [
-        'title',
-        'fullName',
-        'birthDate',
-        'nationality',
-        'identityType',
-        'issuingCountry',
-        'identityNumber',
-        'expiredDate',
-        'ageGroup',
-      ];
-
       const today = new Date();
 
       for (let i = 0; i < passenger.length; i++) {
         const p = passenger[i];
 
-        for (const field of requiredPassengerFields) {
-          if (!p[field]) {
-            return res.status(400).json({
-              status: 'error',
-              message: `Field ${field} is required for each passenger`,
-              data: null,
-            });
+        const baseFields = [
+          'fullName',
+          'birthDate',
+          'title',
+          'ageGroup',
+          'nationality',
+        ];
+        const additionalAdultFields = [
+          'identityType',
+          'identityNumber',
+          'expiredDate',
+          'issuingCountry',
+        ];
+
+        if (p.ageGroup === 'ADULT') {
+          for (const field of [...baseFields, ...additionalAdultFields]) {
+            if (!p[field]) {
+              return res.status(400).json({
+                status: 'error',
+                message: `Field ${field} is required for each adult passenger`,
+                data: null,
+              });
+            }
+          }
+        } else {
+          for (const field of baseFields) {
+            if (!p[field]) {
+              return res.status(400).json({
+                status: 'error',
+                message: `Field ${field} is required for each child or baby passenger`,
+                data: null,
+              });
+            }
           }
         }
 
         const birthDate = new Date(p.birthDate);
-        if (birthDate >= today) {
+        if (isNaN(birthDate.getTime()) || birthDate >= today) {
           return res.status(400).json({
             status: 'error',
-            message: `Birth date for passenger ${p.fullName} must be before the current date`,
+            message: `${field}: Birth date for passenger ${p.fullName} must be before the current date`,
             data: null,
           });
         }
@@ -132,13 +146,15 @@ module.exports = {
           });
         }
 
-        const exDate = new Date(p.expiredDate);
-        if (exDate <= today) {
-          return res.status(400).json({
-            status: 'error',
-            message: `Expired date for passenger ${p.fullName} must be after the current date`,
-            data: null,
-          });
+        if (p.expiredDate) {
+          const expiredDate = new Date(p.expiredDate);
+          if (isNaN(expiredDate.getTime()) || expiredDate <= today) {
+            return res.status(400).json({
+              status: 'error',
+              message: `Expired date for passenger ${p.fullName} must be a valid date after the current date`,
+              data: null,
+            });
+          }
         }
 
         if (p.identityType === 'KTP' && !/^\d{16}$/.test(p.identityNumber)) {
@@ -326,15 +342,15 @@ module.exports = {
               return {
                 title: p.title,
                 fullName: firstName,
-                familyName: familyName,
+                familyName: familyName || '',
                 birthDate: p.birthDate,
                 nationality: p.nationality,
-                identityType: p.identityType,
-                issuingCountry: p.issuingCountry,
-                identityNumber: p.identityNumber,
-                expiredDate: p.expiredDate,
+                identityType: p.identityType || '',
+                issuingCountry: p.issuingCountry || '',
+                identityNumber: p.identityNumber || '',
+                expiredDate: p.expiredDate || null,
                 ageGroup: p.ageGroup,
-              }
+              };
             }),
           },
         },
