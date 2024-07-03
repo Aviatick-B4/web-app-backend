@@ -394,7 +394,7 @@ module.exports = {
         });
       }
 
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY);
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, { expiresIn: '30m' });
       const baseUrl = process.env.CLIENT_BASE_URL;
       const html = getRenderedHtml('resetPasswordEmail', {
         name: user.fullName,
@@ -445,11 +445,13 @@ module.exports = {
         });
       }
 
-      jwt.verify(token, process.env.JWT_SECRET_KEY, async (error, data) => {
+      jwt.verify(token, process.env.JWT_SECRET_KEY, async (error, data) => {        
         if (error) {
-          return res.status(401).json({
+          return res.status(400).json({
             status: false,
-            message: 'Unauthorized',
+            message: error.name === 'TokenExpiredError'
+              ? 'Token is expired'
+              : `Invalid token: ${error.message}`,
             data: null,
           });
         }
