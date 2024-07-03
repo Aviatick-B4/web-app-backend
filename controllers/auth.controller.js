@@ -22,6 +22,15 @@ module.exports = {
         });
       }
 
+      const phoneRegex = /^0[2-9]\d{8,12}$/;
+      if (!phoneRegex.test(phoneNumber)) {
+        return res.status(400).json({
+          status: false,
+          message: 'Phone number must start with 0 and be 10-14 digits long',
+          data: null,
+        });
+      }
+
       let exist = await prisma.user.findUnique({ where: { email } });
 
       if (exist) {
@@ -334,13 +343,13 @@ module.exports = {
       // Upserts user data in case the user already exists in the database
       const user = await prisma.user.upsert({
         where: {
-          email: googleData?.data?.email, // Uses the email from the Google data as a unique identifier
+          email: googleData?.data?.email,
         },
         update: {
-          fullName: firstName, // Updates the user's full name if they already exist
-          familyName: familyName, // Updates the user's family name if they already exist
-          googleId: googleData?.data?.sub, // Updates the user's Google ID
-          emailIsVerified: true, // Ensures the email is marked as verified
+          fullName: firstName, 
+          familyName: familyName, 
+          googleId: googleData?.data?.sub, 
+          emailIsVerified: true, 
         },
         create: {
           email: googleData?.data?.email,
@@ -583,6 +592,39 @@ module.exports = {
         return res.status(404).json({
           status: false,
           message: 'User not found',
+          data: null,
+        });
+      }
+
+      const phoneRegex = /^0[2-9]\d{8,12}$/;
+      if (!phoneRegex.test(phoneNumber)) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Phone number must start with 0 and be 10-13 digits long',
+          data: null,
+        });
+      }
+
+      if (identityType === 'KTP' && !/^\d{16}$/.test(identityNumber)) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'KTP number must be 16 digits',
+          data: null,
+        });
+      }
+
+      if (identityType === 'SIM' && !/^\d{16}$/.test(identityNumber)) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'SIM number must be 16 digits',
+          data: null,
+        });
+      }
+
+      if (identityType === 'Passport' && !/^[A-Z]\d{6}$/.test(identityNumber)) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Passport number must be 1 letter followed by 6 digits',
           data: null,
         });
       }

@@ -422,7 +422,10 @@ components:
           type: string
           format: date-time
           example: "2024-06-01T12:30:00.000Z"
-        UserId:
+        userId:
+          type: integer
+          example: 1
+        bookingId:
           type: integer
           example: 1
   requestBodies:
@@ -1245,7 +1248,7 @@ paths:
     get:
       tags:
         - Auth
-      summary: (Admin Only) Fetch all users
+      summary: Fetch all users
       responses:
         200:
           description: Users fetched successfully
@@ -1270,7 +1273,7 @@ paths:
     get:
       tags:
         - Auth
-      summary: (Admin Only) Fetch user by ID
+      summary: Fetch user by ID
       parameters:
       - schema:
           type: integer
@@ -1350,7 +1353,7 @@ paths:
     get:
       tags:
         - Cities
-      summary: (Admin Only) Fetch cities data based on city or country name
+      summary: Fetch cities data based on city or country name
       parameters:
         - in: query
           name: search
@@ -1587,7 +1590,7 @@ paths:
                             type: integer
                             example: 50
 
-  /flights/favorite:
+  /tickets/favorite:
     get:
       tags:
           - Flights 
@@ -1689,7 +1692,7 @@ paths:
                         nullable: true
                         example: 9
 
-  /payments/midtrans/token/{bookingId}:
+  /payments/midtrans/{bookingId}:
     post:
       tags:
         - Payments
@@ -2751,7 +2754,7 @@ paths:
     post:
       tags:
         - Promos
-      summary: (Admin Only) Create a new promo
+      summary: Create a new promo
       requestBody:
         $ref: "#/components/requestBodies/NewPromo"
       responses:
@@ -2791,7 +2794,7 @@ paths:
     get:
       tags:
         - Promos
-      summary: (Admin Only) Get all promos
+      summary: Get all promos
       responses:
         200:
           description: Successfully retrieved all promos
@@ -2816,7 +2819,7 @@ paths:
     put:
       tags:
         - Promos
-      summary: (Admin Only) Update promo for a ticket
+      summary: Update promo for a ticket
       parameters:
         - in: path
           name: ticketId
@@ -3020,7 +3023,7 @@ paths:
     post:
       tags:
         - Notifications
-      summary: (Admin Only) Create a new notification
+      summary: Create a new notification
       requestBody:
         $ref: "#/components/requestBodies/NewNotification"
       responses:
@@ -3129,7 +3132,7 @@ paths:
     put:
       tags:
         - Airlines
-      summary: (Admin Only) Update airline's logo
+      summary: Update airline's logo
       parameters:
         - in: path
           name: id
