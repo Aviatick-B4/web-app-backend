@@ -891,9 +891,6 @@ paths:
                 fullName:
                   type: string
                   example: Shonny
-                familyName:
-                  type: string
-                  example: Wakwaw
                 phoneNumber:
                   type: string
                   example: 123456789
@@ -1875,7 +1872,7 @@ paths:
                               example: Mr
                             fullName:
                               type: string
-                              example: John Doe
+                              example: John
                             familyName:
                               type: string
                               example: Doe
@@ -2061,9 +2058,6 @@ paths:
                       fullName:
                         type: string
                         example: John Doe
-                      familyName:
-                        type: string
-                        example: Doe
                       birthDate:
                         type: string
                         format: date
