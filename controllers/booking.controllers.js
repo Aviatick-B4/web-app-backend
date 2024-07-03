@@ -84,8 +84,11 @@ module.exports = {
         'ageGroup',
       ];
 
+      const today = new Date();
+
       for (let i = 0; i < passenger.length; i++) {
         const p = passenger[i];
+
         for (const field of requiredPassengerFields) {
           if (!p[field]) {
             return res.status(400).json({
@@ -94,6 +97,75 @@ module.exports = {
               data: null,
             });
           }
+        }
+
+        const birthDate = new Date(p.birthDate);
+        if (birthDate >= today) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Birth date for passenger ${p.fullName} must be before the current date`,
+            data: null,
+          });
+        }
+
+        const age = today.getFullYear() - birthDate.getFullYear();
+        const ageMonth = today.getMonth() - birthDate.getMonth();
+        const isUnder2Years = age < 2 || (age === 2 && ageMonth < 0);
+
+        if (p.ageGroup === 'ADULT' && age < 17) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Passenger ${p.fullName} is too young to be an adult`,
+            data: null,
+          });
+        } else if (p.ageGroup === 'CHILD' && (age < 2 || age >= 17)) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Passenger ${p.fullName} is not the right age for a child`,
+            data: null,
+          });
+        } else if (p.ageGroup === 'BABY' && !isUnder2Years) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Passenger ${p.fullName} is too old to be a baby`,
+            data: null,
+          });
+        }
+
+        const exDate = new Date(p.expiredDate);
+        if (exDate <= today) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Expired date for passenger ${p.fullName} must be after the current date`,
+            data: null,
+          });
+        }
+
+        if (p.identityType === 'KTP' && !/^\d{16}$/.test(p.identityNumber)) {
+          return res.status(400).json({
+            status: 'error',
+            message: `KTP number for passenger ${p.fullName} must be 16 digits`,
+            data: null,
+          });
+        }
+
+        if (p.identityType === 'SIM' && !/^\d{16}$/.test(p.identityNumber)) {
+          return res.status(400).json({
+            status: 'error',
+            message: `SIM number for passenger ${p.fullName} must be 16 digits`,
+            data: null,
+          });
+        }
+
+        if (
+          p.identityType === 'Passport' &&
+          !/^[A-Z]\d{6}$/.test(p.identityNumber)
+        ) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Passport number for passenger ${p.fullName} must be 1 letter followed by 6 digits`,
+            data: null,
+          });
         }
       }
 
@@ -336,12 +408,15 @@ module.exports = {
         body: { paymentMethod: 'midtrans' },
       };
 
-        const paymentResponse = await createPaymentMidtrans(newBooking.id, 'midtrans');
-        return res.status(200).json({
-          status: true,
-          message: 'Success creating new Booking',
-          data: {
-            booking: result,
+      const paymentResponse = await createPaymentMidtrans(
+        newBooking.id,
+        'midtrans'
+      );
+      return res.status(200).json({
+        status: true,
+        message: 'Success creating new Booking',
+        data: {
+          booking: result,
           payment: paymentResponse.data,
         },
       });
