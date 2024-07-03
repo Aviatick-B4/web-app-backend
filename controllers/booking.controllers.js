@@ -113,6 +113,15 @@ module.exports = {
           }
         }
 
+        const birthDateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
+        if (!birthDateRegex.test(p.birthDate)) {
+          return res.status(400).json({
+            status: 'error',
+            message: `birthDate: Birth date format for passenger ${p.fullName} is invalid. Expected format: YYYY-MM-DDTHH:mm:ss.sssZ`,
+            data: null,
+          });
+        }
+
         const birthDate = new Date(p.birthDate);
         if (isNaN(birthDate.getTime()) || birthDate >= today) {
           return res.status(400).json({
