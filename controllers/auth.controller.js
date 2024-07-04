@@ -605,6 +605,14 @@ module.exports = {
         });
       }
 
+      if (!identityNumber) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Nomor identitas tidak boleh kosong',
+          data: null,
+        });
+      }
+
       if (identityType === 'KTP' && !/^\d{16}$/.test(identityNumber)) {
         return res.status(400).json({
           status: false,

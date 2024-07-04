@@ -61,6 +61,7 @@ async function createPaymentMidtrans(bookingId, paymentMethod) {
       },
       callback_url: {
         finish: `${CLIENT_BASE_URL}/success`,
+        pending: `${CLIENT_BASE_URL}/riwayat-pemesanan`,
         cancel: `${CLIENT_BASE_URL}/error`,
       },
     };
@@ -137,7 +138,7 @@ module.exports = {
             });
           }
         }
-        // const bookingId = parseInt(parts[1]);
+
         const bookingId = parts[0].split(' ')[3];
 
         if (isNaN(bookingId)) {
