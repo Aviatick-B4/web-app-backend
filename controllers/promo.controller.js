@@ -27,15 +27,6 @@ module.exports = {
         });
       }
 
-      // const convertValidFrom = new Date(validFrom);
-      // const convertValidUntil = new Date(validUntil);
-      // const convertUTCValidFrom = new Date(
-      //   convertValidFrom.getTime() + 7 * 60 * 60 * 1000
-      // ).toISOString();
-      // const convertUTCValidUntil = new Date(
-      //   convertValidUntil.getTime() + 7 * 60 * 60 * 1000
-      // ).toISOString();
-
       const newPromo = await prisma.promo.create({
         data: {
           name,
