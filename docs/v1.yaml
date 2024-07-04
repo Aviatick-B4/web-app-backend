@@ -541,28 +541,6 @@ components:
                 type: string
                 format: date-time
                 example: "2024-06-21T00:00:00Z"
-    NewPayment:
-      required: true
-      content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                paymentMethod:
-                  type: string
-                  example: credit_card
-                cardNumber:
-                  type: string
-                  example: 4515678901234
-                cardHolderName:
-                  type: string
-                  example: John Doe
-                cvv:
-                  type: string
-                  example: 123
-                expiryDate:
-                  type: string
-                  example: 12/24
     RequestTokenMidtrans:
       required: true
       content:
@@ -927,13 +905,13 @@ paths:
                   example: Shonny
                 phoneNumber:
                   type: string
-                  example: 123456789
+                  example: 081234567890
                 identityType:
                   type: string
                   example: KTP
                 identityNumber:
                   type: string
-                  example: 1234567890123
+                  example: 1234567890123456
                 nationality:
                   type: string
                   example: Singapore
@@ -942,21 +920,54 @@ paths:
           description: User profile updated successfully
           content:
             application/json:
-                schema:
-                  type: object
-                  properties:
-                    status:
-                      type: boolean
-                      example: true
-                    message:
-                      type: string
-                      example: User profile updated successfully
-                    data:
-                      type: object
-                      properties:
-                        user:
-                          allOf:
-                            - $ref: "#/components/schemas/User"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User profile updated successfully
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      fullName:
+                        type: string
+                        example: Shonny
+                      familyName:
+                        type: string
+                        example: Doe
+                      phoneNumber:
+                        type: string
+                        example: 081234567890
+                      identityType:
+                        type: string
+                        example: KTP
+                      identityNumber:
+                        type: string
+                        example: 1234567890123456
+                      nationality:
+                        type: string
+                        example: Singapore
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Nomor telepon harus dimulai dengan 0 dan memiliki panjang 10-13 digit
+                  data:
+                    example: null
         404:
           description: User not found
           content:
@@ -2904,124 +2915,7 @@ paths:
                     data: null
       security:  
         - bearerAuth: []
-  /payments/payment/{bookingId}:
-    post:
-      tags:
-        - Payments
-      summary: Validate payment with credit card 
-      parameters:
-        - name: bookingId
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        $ref: "#/components/requestBodies/NewPayment"
-      responses:
-        200:
-          description: Payment validated successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                  message:
-                    type: string
-                    example: Credit card payment validated successfully
-                  data:
-                    type: object
-                    properties:
-                      booking:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                            example: 1
-                          bookingCode:
-                            type: string
-                            example: "C8D3543BB0"
-                          status:
-                            type: string
-                            example: "PAID"
-                          expiredPaid:
-                            type: string
-                            format: date-time
-                            example: "2024-05-28T15:34:29.303Z"
-                          totalPrice:
-                            type: number
-                            example: 11550000
-                          flightId:
-                            type: integer
-                            example: 5
-                          userId:
-                            type: integer
-                            example: 1
-                      payment:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                            example: 1
-                          name:
-                            type: string
-                            example: "credit_card"
-                          paidAt:
-                            type: string
-                            format: date-time
-                            example: "2024-05-28T14:35:04.298Z"
-                          bookingId:
-                            type: integer
-                            example: 1
-        400:
-          description: Invalid Booking ID
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Invalid booking ID
-                  data:
-                    example: ~
-        404:
-          description: Booking not found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Booking not found
-                  data:
-                    example: ~
-        500:
-          description: Server error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Server error during payment validation
-                  data:
-                    example: ~
-      security:  
-        - bearerAuth: [] 
+  
   /notifications:
     post:
       tags:

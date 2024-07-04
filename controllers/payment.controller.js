@@ -59,9 +59,9 @@ async function createPaymentMidtrans(bookingId, paymentMethod) {
         email: checkBook.user.email,
         phone: checkBook.user.phoneNumber,
       },
-      callback_url: {
+      callbacks: {
         finish: `${CLIENT_BASE_URL}/success`,
-        pending: `${CLIENT_BASE_URL}/riwayat-pemesanan`,
+        unfinish: `${CLIENT_BASE_URL}/riwayat-pemesanan`,
         cancel: `${CLIENT_BASE_URL}/error`,
       },
     };
@@ -120,6 +120,25 @@ module.exports = {
           transaction_status !== 'capture' &&
           transaction_status !== 'settlement'
         ) {
+          if (transaction_status === 'expire' || transaction_status == "cancel" || transaction_status == "deny") {
+            const parts = order_id.split('-');
+            const bookingId = parts[0].split(' ')[3];
+  
+            if (!isNaN(bookingId)) {
+              await prisma.booking.update({
+                where: { id: Number(bookingId) },
+                data: { status: 'CANCELED' },
+              });
+            }
+  
+            if (!res.headersSent) {
+              return res.status(400).json({
+                status: false,
+                message: 'Transaction expired. Booking status updated to CANCEL.',
+              });
+            }
+          }
+  
           if (!res.headersSent) {
             return res.status(400).json({
               status: false,
@@ -128,7 +147,7 @@ module.exports = {
             });
           }
         }
-
+  
         const parts = order_id.split('-');
         if (parts.length < 2 || isNaN(parseInt(parts[1]))) {
           if (!res.headersSent) {
@@ -138,9 +157,9 @@ module.exports = {
             });
           }
         }
-
+  
         const bookingId = parts[0].split(' ')[3];
-
+  
         if (isNaN(bookingId)) {
           if (!res.headersSent) {
             return res.status(400).json({
@@ -149,7 +168,7 @@ module.exports = {
             });
           }
         }
-
+  
         const newPayment = await prisma.payment.create({
           data: {
             name: payment_type,
@@ -157,13 +176,12 @@ module.exports = {
             bookingId: Number(bookingId),
           },
         });
-
+  
         const updatedBooking = await prisma.booking.update({
           where: { id: Number(bookingId) },
           data: { status: 'PAID' },
         });
-
-        // Create a notification for the user
+  
         const notification = await prisma.notification.create({
           data: {
             title: 'Payment Successfully',
@@ -173,14 +191,14 @@ module.exports = {
             createdAt: new Date(),
           },
         });
-
+  
         return {
           newPaymentId: newPayment.id,
           updatedBookingId: updatedBooking.id,
           notificationId: notification.id,
         };
       });
-
+  
       if (transactionResult && !res.headersSent) {
         res.status(200).json({
           status: true,
@@ -203,112 +221,6 @@ module.exports = {
         res.status(500).json({
           status: false,
           message: 'Server error during payment confirmation',
-          data: null,
-        });
-      }
-    }
-  },
-  validateFakePayment: async (req, res, next) => {
-    try {
-      const bookingId = Number(req.params.bookingId);
-      if (isNaN(bookingId)) {
-        return res.status(400).json({
-          status: false,
-          message: 'Invalid booking ID',
-          data: null,
-        });
-      }
-
-      const { paymentMethod, cardNumber, cardHolderName, cvv, expiryDate } =
-        req.body;
-      if (!paymentMethod) {
-        return res.status(400).json({
-          status: false,
-          message: 'Payment method is required',
-          data: null,
-        });
-      }
-
-      const booking = await prisma.booking.findUnique({
-        where: { id: bookingId },
-        include: {
-          user: true,
-        },
-      });
-
-      if (!booking) {
-        return res.status(404).json({
-          status: false,
-          message: 'Booking not found',
-          data: null,
-        });
-      }
-
-      if (booking.status === 'PAID') {
-        return res.status(400).json({
-          status: false,
-          message: 'Booking has already been paid',
-          data: null,
-        });
-      }
-
-      let responseMessage = '';
-      if (paymentMethod === 'credit_card') {
-        if (!cardNumber || !cardHolderName || !cvv || !expiryDate) {
-          return res.status(400).json({
-            status: false,
-            message: 'Credit card details are required',
-            data: null,
-          });
-        }
-        responseMessage = 'Credit card payment validated successfully';
-      } else if (paymentMethod === 'mandiri_va' || paymentMethod === 'gopay') {
-        responseMessage = 'Payment method validated successfully';
-      } else {
-        return res.status(400).json({
-          status: false,
-          message: 'Invalid payment method',
-          data: null,
-        });
-      }
-
-      // Create a notification for the user
-      await prisma.notification.create({
-        data: {
-          title: 'Payment Successfully',
-          message: `Payment for booking ID ${bookingId} has been successfully.`,
-          type: 'transaction',
-          userId: booking.userId,
-          createdAt: new Date(),
-        },
-      });
-
-      // Update booking status to PAID
-      await prisma.booking.update({
-        where: { id: bookingId },
-        data: { status: 'PAID' },
-      });
-
-      // Create a payment record
-      await prisma.payment.create({
-        data: {
-          name: paymentMethod,
-          paidAt: new Date(),
-          bookingId: bookingId,
-        },
-      });
-
-      res.status(200).json({
-        status: true,
-        message: responseMessage,
-        data: null,
-      });
-    } catch (error) {
-      console.error('Payment validation failed:', error);
-      if (!res.headersSent) {
-        res.status(500).json({
-          status: false,
-          message: 'Server error during payment validation',
           data: null,
         });
       }
