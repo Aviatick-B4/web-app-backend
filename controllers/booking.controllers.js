@@ -856,4 +856,39 @@ module.exports = {
       next(error);
     }
   },
+
+  updateBookingStatus: async (req, res, next) => {
+    try {
+      const convertValidUntil = new Date();
+      const convertUTCValidUntil = new Date(
+        convertValidUntil.getTime() + 7 * 60 * 60 * 1000
+      ).toISOString();
+      const expiredBookings = await prisma.booking.findMany({
+        where: {
+          status: 'UNPAID',
+          expiredPaid: {
+            lt: convertUTCValidUntil,
+          },
+        },
+      });
+
+      await Promise.all(
+        expiredBookings.map(async (booking) => {
+          await prisma.booking.update({
+            where: { id: booking.id },
+            data: { status: 'CANCELED' },
+          });
+        })
+      );
+
+      res.status(200).json({
+        status: true,
+        message: 'Expired bookings updated successfully',
+        data: expiredBookings,
+      });
+    } catch (error) {
+      console.error('Failed to update expired bookings:', error);
+      next(error);
+    }
+  },
 };
