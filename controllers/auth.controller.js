@@ -599,32 +599,32 @@ module.exports = {
       const phoneRegex = /^0[2-9]\d{8,12}$/;
       if (!phoneRegex.test(phoneNumber)) {
         return res.status(400).json({
-          status: 'error',
-          message: 'Phone number must start with 0 and be 10-13 digits long',
+          status: false,
+          message: 'Nomor telepon harus dimulai dengan 0 dan memiliki panjang 10-13 digit',
           data: null,
         });
       }
 
       if (identityType === 'KTP' && !/^\d{16}$/.test(identityNumber)) {
         return res.status(400).json({
-          status: 'error',
-          message: 'KTP number must be 16 digits',
+          status: false,
+          message: 'Nomor KTP harus terdiri dari 16 digit',
           data: null,
         });
       }
 
       if (identityType === 'SIM' && !/^\d{16}$/.test(identityNumber)) {
         return res.status(400).json({
-          status: 'error',
-          message: 'SIM number must be 16 digits',
+          status: false,
+          message: 'Nomor SIM harus terdiri dari 16 digit',
           data: null,
         });
       }
 
-      if (identityType === 'Passport' && !/^[A-Z]\d{6}$/.test(identityNumber)) {
+      if (identityType === 'Paspor' && !/^[A-Z]\d{6}$/.test(identityNumber)) {
         return res.status(400).json({
-          status: 'error',
-          message: 'Passport number must be 1 letter followed by 6 digits',
+          status: false,
+          message: 'Nomor paspor harus terdiri dari 1 huruf diikuti oleh 6 digit',
           data: null,
         });
       }
