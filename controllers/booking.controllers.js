@@ -91,6 +91,38 @@ module.exports = {
           'issuingCountry',
         ];
 
+        if (!p.title) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Titel tidak boleh kosong`,
+            data: null,
+          });
+        }
+
+        if (!p.fullName) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Nama lengkap tidak boleh kosong`,
+            data: null,
+          });
+        }
+
+        if (!p.birthDate) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Tanggal lahir tidak boleh kosong`,
+            data: null,
+          });
+        }
+
+        if (!p.nationality) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Kewarganegaraan tidak boleh kosong`,
+            data: null,
+          });
+        }
+
         if (p.ageGroup === 'ADULT') {
           for (const field of [...baseFields, ...additionalAdultFields]) {
             if (!p[field]) {
@@ -117,7 +149,7 @@ module.exports = {
         if (!birthDateRegex.test(p.birthDate)) {
           return res.status(400).json({
             status: 'error',
-            message: `birthDate: Birth date format for passenger ${p.fullName} is invalid. Expected format: YYYY-MM-DDTHH:mm:ss.sssZ`,
+            message: `Format tanggal lahir untuk penumpang ${p.fullName} tidak valid. Format yang diharapkan: YYYY-MM-DDTHH:mm:ss.sssZ`,
             data: null,
           });
         }
@@ -126,7 +158,7 @@ module.exports = {
         if (isNaN(birthDate.getTime()) || birthDate >= today) {
           return res.status(400).json({
             status: 'error',
-            message: `${field}: Birth date for passenger ${p.fullName} must be before the current date`,
+            message: `Tanggal lahir untuk penumpang ${p.fullName} harus sebelum tanggal saat ini`,
             data: null,
           });
         }
@@ -138,19 +170,19 @@ module.exports = {
         if (p.ageGroup === 'ADULT' && age < 17) {
           return res.status(400).json({
             status: 'error',
-            message: `Passenger ${p.fullName} is too young to be an adult`,
+            message: `Umur penumpang ${p.fullName} tidak sesuai`,
             data: null,
           });
         } else if (p.ageGroup === 'CHILD' && (age < 2 || age >= 17)) {
           return res.status(400).json({
             status: 'error',
-            message: `Passenger ${p.fullName} is not the right age for a child`,
+            message: `Umur penumpang ${p.fullName} tidak sesuai`,
             data: null,
           });
         } else if (p.ageGroup === 'BABY' && !isUnder2Years) {
           return res.status(400).json({
             status: 'error',
-            message: `Passenger ${p.fullName} is too old to be a baby`,
+            message: `Umur penumpang ${p.fullName} tidak sesuai`,
             data: null,
           });
         }
@@ -160,7 +192,7 @@ module.exports = {
           if (isNaN(expiredDate.getTime()) || expiredDate <= today) {
             return res.status(400).json({
               status: 'error',
-              message: `Expired date for passenger ${p.fullName} must be a valid date after the current date`,
+              message: `Tanggal kedaluwarsa untuk penumpang ${p.fullName} harus merupakan tanggal valid setelah tanggal saat ini`,
               data: null,
             });
           }
@@ -169,7 +201,7 @@ module.exports = {
         if (p.identityType === 'KTP' && !/^\d{16}$/.test(p.identityNumber)) {
           return res.status(400).json({
             status: 'error',
-            message: `KTP number for passenger ${p.fullName} must be 16 digits`,
+            message: `Nomor KTP untuk penumpang ${p.fullName} harus terdiri dari 16 digit`,
             data: null,
           });
         }
@@ -177,7 +209,7 @@ module.exports = {
         if (p.identityType === 'SIM' && !/^\d{16}$/.test(p.identityNumber)) {
           return res.status(400).json({
             status: 'error',
-            message: `SIM number for passenger ${p.fullName} must be 16 digits`,
+            message: `Nomor SIM untuk penumpang ${p.fullName} harus terdiri dari 16 digit`,
             data: null,
           });
         }
@@ -188,7 +220,7 @@ module.exports = {
         ) {
           return res.status(400).json({
             status: 'error',
-            message: `Passport number for passenger ${p.fullName} must be 1 letter followed by 6 digits`,
+            message: `Nomor paspor untuk penumpang ${p.fullName} harus terdiri dari 1 huruf kapital diikuti oleh 6 digit angka`,
             data: null,
           });
         }
