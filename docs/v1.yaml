@@ -422,7 +422,10 @@ components:
           type: string
           format: date-time
           example: "2024-06-01T12:30:00.000Z"
-        UserId:
+        userId:
+          type: integer
+          example: 1
+        bookingId:
           type: integer
           example: 1
   requestBodies:
@@ -464,28 +467,59 @@ components:
           schema:
             type: object
             properties:
-              userId:
+              departureTicketId:
+                  type: integer
+                  example: 4
+              returnTicketId:
                 type: integer
-                example: 1
-              flightId:
-                type: integer
-                example: 1
+                example: 98
               adult:
                 type: integer
-                example: 2
+                example: 1
               child:
                 type: integer
                 example: 0
               baby:
                 type: integer
-                example: 1
+                example: 0
               seatClass:
                 type: string
                 example: "Economy"
-              passenger:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Passenger'
+              Passenger:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    example: "Mr."
+                  fullName:
+                    type: string
+                    example: "John Doe"
+                  birthDate:
+                    type: string
+                    format: date-time
+                    example: "1980-01-01T00:00:00.000Z"
+                  nationality:
+                    type: string
+                    example: "USA"
+                  identityType:
+                    type: string
+                    example: "Passport"
+                  issuingCountry:
+                    type: string
+                    example: "USA"
+                  identityNumber:
+                    type: string
+                    example: "A123456"
+                  expiredDate:
+                    type: string
+                    format: date-time
+                    example: "2025-01-01T00:00:00.000Z"
+                  ageGroup:
+                    type: string
+                    example: "ADULT"
+              donation:
+                  type: boolean
+                  example: true
     NewPromo:
       required: true
       content:
@@ -507,28 +541,6 @@ components:
                 type: string
                 format: date-time
                 example: "2024-06-21T00:00:00Z"
-    NewPayment:
-      required: true
-      content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                paymentMethod:
-                  type: string
-                  example: credit_card
-                cardNumber:
-                  type: string
-                  example: 4515678901234
-                cardHolderName:
-                  type: string
-                  example: John Doe
-                cvv:
-                  type: string
-                  example: 123
-                expiryDate:
-                  type: string
-                  example: 12/24
     RequestTokenMidtrans:
       required: true
       content:
@@ -891,18 +903,15 @@ paths:
                 fullName:
                   type: string
                   example: Shonny
-                familyName:
-                  type: string
-                  example: Wakwaw
                 phoneNumber:
                   type: string
-                  example: 123456789
+                  example: 081234567890
                 identityType:
                   type: string
                   example: KTP
                 identityNumber:
                   type: string
-                  example: 1234567890123
+                  example: 1234567890123456
                 nationality:
                   type: string
                   example: Singapore
@@ -911,21 +920,54 @@ paths:
           description: User profile updated successfully
           content:
             application/json:
-                schema:
-                  type: object
-                  properties:
-                    status:
-                      type: boolean
-                      example: true
-                    message:
-                      type: string
-                      example: User profile updated successfully
-                    data:
-                      type: object
-                      properties:
-                        user:
-                          allOf:
-                            - $ref: "#/components/schemas/User"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User profile updated successfully
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      fullName:
+                        type: string
+                        example: Shonny
+                      familyName:
+                        type: string
+                        example: Doe
+                      phoneNumber:
+                        type: string
+                        example: 081234567890
+                      identityType:
+                        type: string
+                        example: KTP
+                      identityNumber:
+                        type: string
+                        example: 1234567890123456
+                      nationality:
+                        type: string
+                        example: Singapore
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Nomor telepon harus dimulai dengan 0 dan memiliki panjang 10-13 digit
+                  data:
+                    example: null
         404:
           description: User not found
           content:
@@ -1248,7 +1290,7 @@ paths:
     get:
       tags:
         - Auth
-      summary: (Admin Only) Fetch all users
+      summary: Fetch all users
       responses:
         200:
           description: Users fetched successfully
@@ -1273,7 +1315,7 @@ paths:
     get:
       tags:
         - Auth
-      summary: (Admin Only) Fetch user by ID
+      summary: Fetch user by ID
       parameters:
       - schema:
           type: integer
@@ -1353,7 +1395,7 @@ paths:
     get:
       tags:
         - Cities
-      summary: (Admin Only) Fetch cities data based on city or country name
+      summary: Fetch cities data based on city or country name
       parameters:
         - in: query
           name: search
@@ -1590,7 +1632,7 @@ paths:
                             type: integer
                             example: 50
 
-  /flights/favorite:
+  /tickets/favorite:
     get:
       tags:
           - Flights 
@@ -1692,7 +1734,7 @@ paths:
                         nullable: true
                         example: 9
 
-  /payments/midtrans/token/{bookingId}:
+  /payments/midtrans/{bookingId}:
     post:
       tags:
         - Payments
@@ -1792,33 +1834,8 @@ paths:
         - Bookings
       requestBody:
         required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                departureTicketId:
-                  type: integer
-                  example: 4
-                returnTicketId:
-                  type: integer
-                  example: 98
-                adult:
-                  type: integer
-                  example: 1
-                child:
-                  type: integer
-                  example: 0
-                baby:
-                  type: integer
-                  example: 0
-                passenger:
-                  type: array
-                  items:
-                    $ref: "#/components/schemas/Passenger"
-                donation:
-                  type: boolean
-                  example: true
+        $ref: "#/components/requestBodies/NewBooking"
+  
       responses:
         '200':
           description: Booking data prepared successfully
@@ -1875,10 +1892,7 @@ paths:
                               example: Mr
                             fullName:
                               type: string
-                              example: John Doe
-                            familyName:
-                              type: string
-                              example: Doe
+                              example: John
                             birthDate:
                               type: string
                               format: date
@@ -2061,9 +2075,6 @@ paths:
                       fullName:
                         type: string
                         example: John Doe
-                      familyName:
-                        type: string
-                        example: Doe
                       birthDate:
                         type: string
                         format: date
@@ -2757,7 +2768,7 @@ paths:
     post:
       tags:
         - Promos
-      summary: (Admin Only) Create a new promo
+      summary: Create a new promo
       requestBody:
         $ref: "#/components/requestBodies/NewPromo"
       responses:
@@ -2797,7 +2808,7 @@ paths:
     get:
       tags:
         - Promos
-      summary: (Admin Only) Get all promos
+      summary: Get all promos
       responses:
         200:
           description: Successfully retrieved all promos
@@ -2822,7 +2833,7 @@ paths:
     put:
       tags:
         - Promos
-      summary: (Admin Only) Update promo for a ticket
+      summary: Update promo for a ticket
       parameters:
         - in: path
           name: ticketId
@@ -2904,129 +2915,12 @@ paths:
                     data: null
       security:  
         - bearerAuth: []
-  /payments/payment/{bookingId}:
-    post:
-      tags:
-        - Payments
-      summary: Validate payment with credit card 
-      parameters:
-        - name: bookingId
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        $ref: "#/components/requestBodies/NewPayment"
-      responses:
-        200:
-          description: Payment validated successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                  message:
-                    type: string
-                    example: Credit card payment validated successfully
-                  data:
-                    type: object
-                    properties:
-                      booking:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                            example: 1
-                          bookingCode:
-                            type: string
-                            example: "C8D3543BB0"
-                          status:
-                            type: string
-                            example: "PAID"
-                          expiredPaid:
-                            type: string
-                            format: date-time
-                            example: "2024-05-28T15:34:29.303Z"
-                          totalPrice:
-                            type: number
-                            example: 11550000
-                          flightId:
-                            type: integer
-                            example: 5
-                          userId:
-                            type: integer
-                            example: 1
-                      payment:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                            example: 1
-                          name:
-                            type: string
-                            example: "credit_card"
-                          paidAt:
-                            type: string
-                            format: date-time
-                            example: "2024-05-28T14:35:04.298Z"
-                          bookingId:
-                            type: integer
-                            example: 1
-        400:
-          description: Invalid Booking ID
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Invalid booking ID
-                  data:
-                    example: ~
-        404:
-          description: Booking not found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Booking not found
-                  data:
-                    example: ~
-        500:
-          description: Server error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Server error during payment validation
-                  data:
-                    example: ~
-      security:  
-        - bearerAuth: [] 
+  
   /notifications:
     post:
       tags:
         - Notifications
-      summary: (Admin Only) Create a new notification
+      summary: Create a new notification
       requestBody:
         $ref: "#/components/requestBodies/NewNotification"
       responses:
@@ -3135,7 +3029,7 @@ paths:
     put:
       tags:
         - Airlines
-      summary: (Admin Only) Update airline's logo
+      summary: Update airline's logo
       parameters:
         - in: path
           name: id

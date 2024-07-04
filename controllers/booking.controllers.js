@@ -3,6 +3,7 @@ const prisma = new PrismaClient();
 const crypto = require('crypto');
 const { convertDate } = require('../utils/formatedDate');
 const { createPaymentMidtrans } = require('../controllers/payment.controller');
+const separateName = require('../utils/separateName');
 
 module.exports = {
   prepareBooking: async (req, res, next) => {
@@ -71,29 +72,157 @@ module.exports = {
         });
       }
 
-      const requiredPassengerFields = [
-        'title',
-        'fullName',
-        'familyName',
-        'birthDate',
-        'nationality',
-        'identityType',
-        'issuingCountry',
-        'identityNumber',
-        'expiredDate',
-        'ageGroup',
-      ];
+      const today = new Date();
 
       for (let i = 0; i < passenger.length; i++) {
         const p = passenger[i];
-        for (const field of requiredPassengerFields) {
-          if (!p[field]) {
+
+        const baseFields = [
+          'fullName',
+          'birthDate',
+          'title',
+          'ageGroup',
+          'nationality',
+        ];
+        const additionalAdultFields = [
+          'identityType',
+          'identityNumber',
+          'expiredDate',
+          'issuingCountry',
+        ];
+
+        if (!p.title) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Titel tidak boleh kosong`,
+            data: null,
+          });
+        }
+
+        if (!p.fullName) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Nama lengkap tidak boleh kosong`,
+            data: null,
+          });
+        }
+
+        if (!p.birthDate) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Tanggal lahir tidak boleh kosong`,
+            data: null,
+          });
+        }
+
+        if (!p.nationality) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Kewarganegaraan tidak boleh kosong`,
+            data: null,
+          });
+        }
+
+        if (p.ageGroup === 'ADULT') {
+          for (const field of [...baseFields, ...additionalAdultFields]) {
+            if (!p[field]) {
+              return res.status(400).json({
+                status: 'error',
+                message: `Field ${field} is required for each adult passenger`,
+                data: null,
+              });
+            }
+          }
+        } else {
+          for (const field of baseFields) {
+            if (!p[field]) {
+              return res.status(400).json({
+                status: 'error',
+                message: `Field ${field} is required for each child or baby passenger`,
+                data: null,
+              });
+            }
+          }
+        }
+
+        const birthDateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
+        if (!birthDateRegex.test(p.birthDate)) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Format tanggal lahir untuk penumpang ${p.fullName} tidak valid. Format yang diharapkan: YYYY-MM-DDTHH:mm:ss.sssZ`,
+            data: null,
+          });
+        }
+
+        const birthDate = new Date(p.birthDate);
+        if (isNaN(birthDate.getTime()) || birthDate >= today) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Tanggal lahir untuk penumpang ${p.fullName} harus sebelum tanggal saat ini`,
+            data: null,
+          });
+        }
+
+        const age = today.getFullYear() - birthDate.getFullYear();
+        const ageMonth = today.getMonth() - birthDate.getMonth();
+        const isUnder2Years = age < 2 || (age === 2 && ageMonth < 0);
+
+        if (p.ageGroup === 'ADULT' && age < 17) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Umur penumpang ${p.fullName} tidak sesuai`,
+            data: null,
+          });
+        } else if (p.ageGroup === 'CHILD' && (age < 2 || age >= 17)) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Umur penumpang ${p.fullName} tidak sesuai`,
+            data: null,
+          });
+        } else if (p.ageGroup === 'BABY' && !isUnder2Years) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Umur penumpang ${p.fullName} tidak sesuai`,
+            data: null,
+          });
+        }
+
+        if (p.expiredDate) {
+          const expiredDate = new Date(p.expiredDate);
+          if (isNaN(expiredDate.getTime()) || expiredDate <= today) {
             return res.status(400).json({
               status: 'error',
-              message: `Field ${field} is required for each passenger`,
+              message: `Tanggal kedaluwarsa untuk penumpang ${p.fullName} harus merupakan tanggal valid setelah tanggal saat ini`,
               data: null,
             });
           }
+        }
+
+        if (p.identityType === 'KTP' && !/^\d{16}$/.test(p.identityNumber)) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Nomor KTP untuk penumpang ${p.fullName} harus terdiri dari 16 digit`,
+            data: null,
+          });
+        }
+
+        if (p.identityType === 'SIM' && !/^\d{16}$/.test(p.identityNumber)) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Nomor SIM untuk penumpang ${p.fullName} harus terdiri dari 16 digit`,
+            data: null,
+          });
+        }
+
+        if (
+          p.identityType === 'Passport' &&
+          !/^[A-Z]\d{6}$/.test(p.identityNumber)
+        ) {
+          return res.status(400).json({
+            status: 'error',
+            message: `Nomor paspor untuk penumpang ${p.fullName} harus terdiri dari 1 huruf kapital diikuti oleh 6 digit`,
+            data: null,
+          });
         }
       }
 
@@ -249,18 +378,21 @@ module.exports = {
           donation,
           createdAt,
           passenger: {
-            create: passenger.map((p) => ({
-              title: p.title,
-              fullName: p.fullName,
-              familyName: p.familyName,
-              birthDate: p.birthDate,
-              nationality: p.nationality,
-              identityType: p.identityType,
-              issuingCountry: p.issuingCountry,
-              identityNumber: p.identityNumber,
-              expiredDate: p.expiredDate,
-              ageGroup: p.ageGroup,
-            })),
+            create: passenger.map((p) => {
+              const { firstName, familyName } = separateName(p.fullName);
+              return {
+                title: p.title,
+                fullName: firstName,
+                familyName: familyName || '',
+                birthDate: p.birthDate,
+                nationality: p.nationality,
+                identityType: p.identityType || '',
+                issuingCountry: p.issuingCountry || '',
+                identityNumber: p.identityNumber || '',
+                expiredDate: p.expiredDate || null,
+                ageGroup: p.ageGroup,
+              };
+            }),
           },
         },
         include: { passenger: true },
@@ -333,12 +465,15 @@ module.exports = {
         body: { paymentMethod: 'midtrans' },
       };
 
-        const paymentResponse = await createPaymentMidtrans(newBooking.id, 'midtrans');
-        return res.status(200).json({
-          status: true,
-          message: 'Success creating new Booking',
-          data: {
-            booking: result,
+      const paymentResponse = await createPaymentMidtrans(
+        newBooking.id,
+        'midtrans'
+      );
+      return res.status(200).json({
+        status: true,
+        message: 'Success creating new Booking',
+        data: {
+          booking: result,
           payment: paymentResponse.data,
         },
       });
@@ -718,6 +853,41 @@ module.exports = {
         data: result,
       });
     } catch (error) {
+      next(error);
+    }
+  },
+
+  updateBookingStatus: async (req, res, next) => {
+    try {
+      const convertValidUntil = new Date();
+      const convertUTCValidUntil = new Date(
+        convertValidUntil.getTime() + 7 * 60 * 60 * 1000
+      ).toISOString();
+      const expiredBookings = await prisma.booking.findMany({
+        where: {
+          status: 'UNPAID',
+          expiredPaid: {
+            lt: convertUTCValidUntil,
+          },
+        },
+      });
+
+      await Promise.all(
+        expiredBookings.map(async (booking) => {
+          await prisma.booking.update({
+            where: { id: booking.id },
+            data: { status: 'CANCELED' },
+          });
+        })
+      );
+
+      res.status(200).json({
+        status: true,
+        message: 'Expired bookings updated successfully',
+        data: expiredBookings,
+      });
+    } catch (error) {
+      console.error('Failed to update expired bookings:', error);
       next(error);
     }
   },

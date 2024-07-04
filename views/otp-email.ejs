@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -12,6 +12,97 @@
             <%= otp %>
         </strong></p>
     <p>Please use this code to complete your registration.</p>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviatick - OTP Code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: white;
+            border-radius: 5px;
+            color: #4d4d4d;
+        }
+
+        .heading {
+            font-size: 24px;
+            margin: 10px 0;
+            font-weight: 400;
+            color: black;
+        }
+
+        .content {
+            margin: 15px 0;
+        }
+
+        .content.greeting {
+            margin-bottom: -10px;
+        }
+
+        .content.greeting span {
+            color: #00A8D0;
+            font-weight: 600;
+        }
+
+        .content.note {
+            font-size: 12px;
+        }
+
+        .button {
+            background-color: #00A8D0;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="https://ik.imagekit.io/aviatick/logo-blue.png" alt="Aviatick Logo" width="60">
+        <h1 class="heading">OTP Code</h1>
+        <hr>
+        <p class="content greeting">
+            Halo <span>
+                <%= fullName %>
+            </span>,
+        </p>
+        <p class="content greeting">
+            Code OTP <span>
+                <%= otp %>
+            </span>
+        </p>
+
+        <p class="content note">
+            Silakan gunakan kode ini untuk menyelesaikan pendaftaran Anda.
+        </p>
+    </div>
 </body>
 
 </html>

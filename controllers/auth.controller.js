@@ -4,6 +4,7 @@ const { generateHash, compareHash } = require('../libs/bcrypt');
 const sendEmail = require('../utils/sendEmail');
 const getRenderedHtml = require('../utils/getRenderedHtml');
 const otp = require('../utils/generateOtp');
+const separateName = require('../utils/separateName');
 const axios = require('axios');
 const prisma = new PrismaClient();
 const { JWT_SECRET_KEY } = process.env;
@@ -17,6 +18,15 @@ module.exports = {
         return res.status(400).json({
           status: false,
           message: 'All required fields must be filled',
+          data: null,
+        });
+      }
+
+      const phoneRegex = /^0[2-9]\d{8,12}$/;
+      if (!phoneRegex.test(phoneNumber)) {
+        return res.status(400).json({
+          status: false,
+          message: 'Phone number must start with 0 and be 10-14 digits long',
           data: null,
         });
       }
@@ -41,10 +51,12 @@ module.exports = {
       }
 
       let encryptedPassword = await generateHash(password);
+      const { firstName, familyName } = separateName(fullName);
 
       let user = await prisma.user.create({
         data: {
-          fullName,
+          fullName: firstName,
+          familyName,
           phoneNumber,
           email,
           password: encryptedPassword,
@@ -326,20 +338,18 @@ module.exports = {
 
       // Extracts the full name and family name from the Google data
       const fullName = googleData?.data?.name;
-      const nameParts = fullName.split(' ');
-      const familyName = nameParts.length > 1 ? nameParts.pop() : '';
-      const firstName = nameParts.join(' ');
+      const { firstName, familyName } = separateName(fullName);
 
       // Upserts user data in case the user already exists in the database
       const user = await prisma.user.upsert({
         where: {
-          email: googleData?.data?.email, // Uses the email from the Google data as a unique identifier
+          email: googleData?.data?.email,
         },
         update: {
-          fullName: firstName, // Updates the user's full name if they already exist
-          familyName: familyName, // Updates the user's family name if they already exist
-          googleId: googleData?.data?.sub, // Updates the user's Google ID
-          emailIsVerified: true, // Ensures the email is marked as verified
+          fullName: firstName,
+          familyName: familyName,
+          googleId: googleData?.data?.sub,
+          emailIsVerified: true,
         },
         create: {
           email: googleData?.data?.email,
@@ -394,7 +404,9 @@ module.exports = {
         });
       }
 
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, { expiresIn: '30m' });
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, {
+        expiresIn: '30m',
+      });
       const baseUrl = process.env.CLIENT_BASE_URL;
       const html = getRenderedHtml('resetPasswordEmail', {
         name: user.fullName,
@@ -445,13 +457,14 @@ module.exports = {
         });
       }
 
-      jwt.verify(token, process.env.JWT_SECRET_KEY, async (error, data) => {        
+      jwt.verify(token, process.env.JWT_SECRET_KEY, async (error, data) => {
         if (error) {
           return res.status(400).json({
             status: false,
-            message: error.name === 'TokenExpiredError'
-              ? 'Token is expired'
-              : `Invalid token: ${error.message}`,
+            message:
+              error.name === 'TokenExpiredError'
+                ? 'Token is expired'
+                : `Invalid token: ${error.message}`,
             data: null,
           });
         }
@@ -568,7 +581,6 @@ module.exports = {
       const { id } = req.user;
       const {
         fullName,
-        familyName,
         phoneNumber,
         identityType,
         identityNumber,
@@ -587,10 +599,54 @@ module.exports = {
         });
       }
 
+      const phoneRegex = /^0[2-9]\d{8,12}$/;
+      if (!phoneRegex.test(phoneNumber)) {
+        return res.status(400).json({
+          status: false,
+          message:
+            'Nomor telepon harus dimulai dengan 0 dan memiliki panjang 10-13 digit',
+          data: null,
+        });
+      }
+
+      if (!identityNumber) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Nomor identitas tidak boleh kosong',
+          data: null,
+        });
+      }
+
+      if (identityType === 'KTP' && !/^\d{16}$/.test(identityNumber)) {
+        return res.status(400).json({
+          status: false,
+          message: 'Nomor KTP harus terdiri dari 16 digit',
+          data: null,
+        });
+      }
+
+      if (identityType === 'SIM' && !/^\d{16}$/.test(identityNumber)) {
+        return res.status(400).json({
+          status: false,
+          message: 'Nomor SIM harus terdiri dari 16 digit',
+          data: null,
+        });
+      }
+
+      if (identityType === 'Paspor' && !/^[A-Z]\d{6}$/.test(identityNumber)) {
+        return res.status(400).json({
+          status: false,
+          message:
+            'Nomor paspor harus terdiri dari 1 huruf kapital diikuti oleh 6 digit',
+          data: null,
+        });
+      }
+
+      const { firstName, familyName } = separateName(fullName);
       const updatedUser = await prisma.user.update({
         where: { id },
         data: {
-          fullName,
+          fullName: firstName,
           familyName,
           phoneNumber,
           identityType,

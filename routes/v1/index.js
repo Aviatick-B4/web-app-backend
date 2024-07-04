@@ -13,6 +13,7 @@ const notificationRoutes = require('./notification.routes');
 const flightRoutes = require('./flight.routes');
 const { addFlight } = require('../../services/cron_schedule_service');
 const { updatePromoStatus } = require('../../controllers/promo.controller');
+const { updateBookingStatus } = require('../../controllers/booking.controllers');
 
 const swaggerUI = require('swagger-ui-express');
 const yaml = require('yaml');
@@ -64,6 +65,15 @@ router.post('/api/update-promo-status', async (req, res) => {
   } catch (error) {
     console.error('Failed to update promo status:', error);
     res.status(500).send('Failed to update promo status');
+  }
+});
+
+router.post('/api/update-booking-status', async (req, res) => {
+  try {
+    await updateBookingStatus(req, res);
+  } catch (error) {
+    console.error('Failed to update booking status:', error);
+    res.status(500).send('Failed to update booking status');
   }
 });
 
