@@ -346,10 +346,10 @@ module.exports = {
           email: googleData?.data?.email,
         },
         update: {
-          fullName: firstName, 
-          familyName: familyName, 
-          googleId: googleData?.data?.sub, 
-          emailIsVerified: true, 
+          fullName: firstName,
+          familyName: familyName,
+          googleId: googleData?.data?.sub,
+          emailIsVerified: true,
         },
         create: {
           email: googleData?.data?.email,
@@ -404,7 +404,9 @@ module.exports = {
         });
       }
 
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, { expiresIn: '30m' });
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, {
+        expiresIn: '30m',
+      });
       const baseUrl = process.env.CLIENT_BASE_URL;
       const html = getRenderedHtml('resetPasswordEmail', {
         name: user.fullName,
@@ -455,13 +457,14 @@ module.exports = {
         });
       }
 
-      jwt.verify(token, process.env.JWT_SECRET_KEY, async (error, data) => {        
+      jwt.verify(token, process.env.JWT_SECRET_KEY, async (error, data) => {
         if (error) {
           return res.status(400).json({
             status: false,
-            message: error.name === 'TokenExpiredError'
-              ? 'Token is expired'
-              : `Invalid token: ${error.message}`,
+            message:
+              error.name === 'TokenExpiredError'
+                ? 'Token is expired'
+                : `Invalid token: ${error.message}`,
             data: null,
           });
         }
@@ -600,7 +603,8 @@ module.exports = {
       if (!phoneRegex.test(phoneNumber)) {
         return res.status(400).json({
           status: false,
-          message: 'Nomor telepon harus dimulai dengan 0 dan memiliki panjang 10-13 digit',
+          message:
+            'Nomor telepon harus dimulai dengan 0 dan memiliki panjang 10-13 digit',
           data: null,
         });
       }
@@ -624,7 +628,8 @@ module.exports = {
       if (identityType === 'Paspor' && !/^[A-Z]\d{6}$/.test(identityNumber)) {
         return res.status(400).json({
           status: false,
-          message: 'Nomor paspor harus terdiri dari 1 huruf diikuti oleh 6 digit',
+          message:
+            'Nomor paspor harus terdiri dari 1 huruf kapital diikuti oleh 6 digit',
           data: null,
         });
       }

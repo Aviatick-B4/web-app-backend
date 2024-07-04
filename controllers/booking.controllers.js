@@ -220,7 +220,7 @@ module.exports = {
         ) {
           return res.status(400).json({
             status: 'error',
-            message: `Nomor paspor untuk penumpang ${p.fullName} harus terdiri dari 1 huruf kapital diikuti oleh 6 digit angka`,
+            message: `Nomor paspor untuk penumpang ${p.fullName} harus terdiri dari 1 huruf kapital diikuti oleh 6 digit`,
             data: null,
           });
         }
