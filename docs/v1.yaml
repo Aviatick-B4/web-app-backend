@@ -572,7 +572,7 @@ components:
                   example: 100000
                 payment_type:
                   type: string
-                  example: 'credit_cart'
+                  example: 'credit_card'
     NewNotification:
       required: true
       content:
@@ -1632,7 +1632,7 @@ paths:
                             type: integer
                             example: 50
 
-  /tickets/favorite:
+  /flights/favorite:
     get:
       tags:
           - Flights 
