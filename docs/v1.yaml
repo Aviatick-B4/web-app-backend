@@ -468,8 +468,8 @@ components:
             type: object
             properties:
               departureTicketId:
-                  type: integer
-                  example: 4
+                type: integer
+                example: 4
               returnTicketId:
                 type: integer
                 example: 98
@@ -482,44 +482,44 @@ components:
               baby:
                 type: integer
                 example: 0
-              seatClass:
-                type: string
-                example: "Economy"
-              Passenger:
-                type: object
-                properties:
-                  title:
-                    type: string
-                    example: "Mr."
-                  fullName:
-                    type: string
-                    example: "John Doe"
-                  birthDate:
-                    type: string
-                    format: date-time
-                    example: "1980-01-01T00:00:00.000Z"
-                  nationality:
-                    type: string
-                    example: "USA"
-                  identityType:
-                    type: string
-                    example: "Passport"
-                  issuingCountry:
-                    type: string
-                    example: "USA"
-                  identityNumber:
-                    type: string
-                    example: "A123456"
-                  expiredDate:
-                    type: string
-                    format: date-time
-                    example: "2025-01-01T00:00:00.000Z"
-                  ageGroup:
-                    type: string
-                    example: "ADULT"
+              passenger:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    fullName:
+                      type: string
+                      example: "John Doe"
+                    birthDate:
+                      type: string
+                      format: date-time
+                      example: "2000-01-01T00:00:00.000Z"
+                    title:
+                      type: string
+                      example: "Mr"
+                    ageGroup:
+                      type: string
+                      enum: [ADULT, CHILD, BABY]
+                      example: "ADULT"
+                    nationality:
+                      type: string
+                      example: "ID"
+                    identityType:
+                      type: string
+                      example: "KTP"
+                    identityNumber:
+                      type: string
+                      example: "1234567890123456"
+                    expiredDate:
+                      type: string
+                      format: date-time
+                      example: "2030-01-01T00:00:00.000Z"
+                    issuingCountry:
+                      type: string
+                      example: "ID"
               donation:
-                  type: boolean
-                  example: true
+                type: boolean
+                example: true
     NewPromo:
       required: true
       content:
@@ -572,7 +572,7 @@ components:
                   example: 100000
                 payment_type:
                   type: string
-                  example: 'credit_cart'
+                  example: 'credit_card'
     NewNotification:
       required: true
       content:
@@ -1632,7 +1632,7 @@ paths:
                             type: integer
                             example: 50
 
-  /tickets/favorite:
+  /flights/favorite:
     get:
       tags:
           - Flights 
