@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Aviatick API
-  description: API developed by Aviatick's team to handle all of the business logics inside the app.
+  description: API developed by Aviatick's team to handle all of the business logics inside the Aviatick apps.
   version: 1.0.0
 servers:
   - url: https://aviatick-backend-git-development-aviaticks-projects.vercel.app/api/v1
