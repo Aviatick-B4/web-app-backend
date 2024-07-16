@@ -19,6 +19,11 @@ async function addFlight() {
     return new Date(new Date().getTime() + millisecondsOffset).toISOString();
   }
 
+  const airlines = ['QG', 'GA', 'JT', 'ID', 'SJ'];
+  function getRandomAirline() {
+    return airlines[Math.floor(Math.random() * airlines.length)];
+  }
+
   //   convert to UTC+7
   const departureTimeUTC7 = getTimeOffset(7);
 
@@ -1143,6 +1148,355 @@ async function addFlight() {
       departureAirportId: 60,
       arrivalAirportId: 59,
     },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 6,
+      arrivalAirportId: 7,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 7,
+      arrivalAirportId: 6,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 6,
+      arrivalAirportId: 8,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 8,
+      arrivalAirportId: 6,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 6,
+      arrivalAirportId: 9,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 9,
+      arrivalAirportId: 6,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 6,
+      arrivalAirportId: 10,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 10,
+      arrivalAirportId: 6,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 6,
+      arrivalAirportId: 31,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 31,
+      arrivalAirportId: 6,
+    },
+    // Surabaya to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 7,
+      arrivalAirportId: 8,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 8,
+      arrivalAirportId: 7,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 7,
+      arrivalAirportId: 9,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 9,
+      arrivalAirportId: 7,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 7,
+      arrivalAirportId: 10,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 10,
+      arrivalAirportId: 7,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 7,
+      arrivalAirportId: 31,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 31,
+      arrivalAirportId: 7,
+    },
+    // Bali to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 8,
+      arrivalAirportId: 9,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 9,
+      arrivalAirportId: 8,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 8,
+      arrivalAirportId: 10,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 10,
+      arrivalAirportId: 8,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 8,
+      arrivalAirportId: 31,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 31,
+      arrivalAirportId: 8,
+    },
+    // Makassar to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 9,
+      arrivalAirportId: 10,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 10,
+      arrivalAirportId: 9,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 9,
+      arrivalAirportId: 31,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 31,
+      arrivalAirportId: 9,
+    },
+    // Medan to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 10,
+      arrivalAirportId: 31,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 31,
+      arrivalAirportId: 10,
+    },
+    // Bandung to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 31,
+      arrivalAirportId: 32,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 32,
+      arrivalAirportId: 31,
+    },
+    // Jogja to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 32,
+      arrivalAirportId: 33,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 33,
+      arrivalAirportId: 32,
+    },
+    // Semarang to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 33,
+      arrivalAirportId: 34,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 34,
+      arrivalAirportId: 33,
+    },
+    // Palembang to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 34,
+      arrivalAirportId: 35,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 35,
+      arrivalAirportId: 34,
+    },
+    // Padang to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 35,
+      arrivalAirportId: 36,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 36,
+      arrivalAirportId: 35,
+    },
+    // Balikpapan to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 36,
+      arrivalAirportId: 37,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 37,
+      arrivalAirportId: 36,
+    },
+    // Boyolali to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 37,
+      arrivalAirportId: 38,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 38,
+      arrivalAirportId: 37,
+    },
+    // Limbung to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 38,
+      arrivalAirportId: 39,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 39,
+      arrivalAirportId: 38,
+    },
+    // Manado to other cities
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(7),
+      arrivalTime: getTimeOffset(10),
+      departureAirportId: 39,
+      arrivalAirportId: 40,
+    },
+    {
+      flightNumber: getRandomAirline() + Math.floor(100 + Math.random() * 900),
+      departureTime: getTimeOffset(11),
+      arrivalTime: getTimeOffset(14),
+      departureAirportId: 40,
+      arrivalAirportId: 39,
+    },
   ];
 
   const ticketClasses = [
@@ -1151,17 +1505,42 @@ async function addFlight() {
     { classId: 3, price: getRandomPrice(750000, 2000000) }, // Economy
   ];
 
+  const airplaneSeatClassMap = {
+    6: [16, 17, 18],
+    7: [19, 20, 21],
+    9: [22, 23, 24],
+    10: [25, 26, 27],
+    31: [28, 29, 30],
+    32: [28, 29, 30],
+    33: [28, 29, 30],
+    34: [28, 29, 30],
+    35: [28, 29, 30],
+    36: [28, 29, 30],
+    37: [28, 29, 30],
+    38: [28, 29, 30],
+    39: [28, 29, 30],
+    40: [28, 29, 30],
+  };
+
+  function getDynamicSeatClassIds(flight) {
+    if (airplaneSeatClassMap[flight.departureAirportId]) {
+      return airplaneSeatClassMap[flight.departureAirportId];
+    }
+    return [1, 2, 3];
+  }
+
   try {
     const newFlights = await prisma.flight.createManyAndReturn({
       data: flightsData,
     });
     const tickets = [];
     newFlights.forEach((flight) => {
-      ticketClasses.forEach((ticketClass) => {
+      const seatClassIds = getDynamicSeatClassIds(flight);
+      seatClassIds.forEach((classId, index) => {
         tickets.push({
-          price: ticketClass.price,
+          price: ticketClasses[index].price,
           flightId: flight.id,
-          airplaneSeatClassId: ticketClass.classId,
+          airplaneSeatClassId: classId,
         });
       });
     });
