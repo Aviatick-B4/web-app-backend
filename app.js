@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 
 const corsOptions = {
   origin: 'https://www.aviatick.site',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  methods: '*',
   credentials: true,
   optionsSuccessStatus: 204,
 };

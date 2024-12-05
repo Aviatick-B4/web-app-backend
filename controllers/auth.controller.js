@@ -6,6 +6,7 @@ const getRenderedHtml = require('../utils/getRenderedHtml');
 const otp = require('../utils/generateOtp');
 const separateName = require('../utils/separateName');
 const axios = require('axios');
+const { axiosInstance } = require('../libs/googleOAuthClient2');
 const prisma = new PrismaClient();
 const { JWT_SECRET_KEY } = process.env;
 
@@ -332,7 +333,7 @@ module.exports = {
       }
 
       // Gets Google user data using the access token
-      const googleData = await axios.get(
+      const googleData = await axiosInstance.get(
         `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${access_token}`
       );
 
